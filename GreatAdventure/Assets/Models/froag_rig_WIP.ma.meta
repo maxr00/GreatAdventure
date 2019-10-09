@@ -1,0 +1,470 @@
+fileFormatVersion: 2
+guid: 3b3bbdce48a43d14689bc27ab628e1c3
+ModelImporter:
+  serializedVersion: 26
+  internalIDToNameTable: []
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.5
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 3
+    human:
+    - boneName: pelvis_jnt
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: L_hip_jnt
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: R_hip_jnt
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: L_knee_jnt
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: R_knee_jnt
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: L_ankle_jnt
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: R_ankle_jnt
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: COG_jnt
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: L_shoulder_jnt
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: R_shoulder_jnt
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: L_elbow_jnt
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: R_elbow_jnt
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: L_wrist_jnt
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: R_wrist_jnt
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: hat_jnt
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: froag_rig_WIP(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Frog_Pirate
+      parentName: froag_rig_WIP(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Mesh_grp
+      parentName: Frog_Pirate
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Frog_msh
+      parentName: Mesh_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Skeleton_grp
+      parentName: Frog_Pirate
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: root_jnt
+      parentName: Skeleton_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pelvis_jnt
+      parentName: root_jnt
+      position: {x: -0, y: 0.625, z: 0}
+      rotation: {x: -0.024021862, y: -0.19552201, z: 0.11955377, w: 0.9730884}
+      scale: {x: 1, y: 1, z: 1}
+    - name: COG_jnt
+      parentName: pelvis_jnt
+      position: {x: 0.03569526, y: 0.14177792, z: 0.00024028511}
+      rotation: {x: 0.044745326, y: 0.1929309, z: -0.123691685, w: 0.9723559}
+      scale: {x: 1, y: 1, z: 1}
+    - name: hat_jnt
+      parentName: COG_jnt
+      position: {x: -0, y: 0.33533674, z: -0.20084147}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_shoulder_jnt
+      parentName: COG_jnt
+      position: {x: -0.38009846, y: 0.015359204, z: -0.13983597}
+      rotation: {x: -0.519833, y: 0.51983297, z: 0.47934708, w: -0.47934705}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_elbow_jnt
+      parentName: L_shoulder_jnt
+      position: {x: -0, y: 3.469447e-17, z: 0.2894114}
+      rotation: {x: -0.07967425, y: 0.000000059604638, z: 0.00000004470348, w: 0.9968209}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_wrist_jnt
+      parentName: L_elbow_jnt
+      position: {x: -3.2973087e-17, y: 7.632783e-17, z: 0.25418463}
+      rotation: {x: 0.045997415, y: -0.045997415, z: 0.70560914, w: 0.70560914}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_shoulder_jnt
+      parentName: COG_jnt
+      position: {x: 0.3800985, y: 0.015358542, z: -0.139836}
+      rotation: {x: -0.4793469, y: -0.4793469, z: 0.51983327, w: 0.51983327}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_elbow_jnt
+      parentName: R_shoulder_jnt
+      position: {x: 1.110223e-16, y: 0.00000010113936, z: -0.28940946}
+      rotation: {x: -0.07967476, y: 0.00000007450579, z: 0.000000014901158, w: 0.9968209}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_wrist_jnt
+      parentName: R_elbow_jnt
+      position: {x: -1.110223e-16, y: 0.00000016409093, z: -0.25418618}
+      rotation: {x: 0.045997415, y: -0.045997415, z: 0.70560914, w: 0.70560914}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_hip_jnt
+      parentName: pelvis_jnt
+      position: {x: -0.21191892, y: 6.071532e-18, z: 1.3877788e-17}
+      rotation: {x: 0.6264391, y: 0.07805092, z: -0.21547626, w: 0.7450182}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_knee_jnt
+      parentName: L_hip_jnt
+      position: {x: -0, y: 6.938894e-18, z: 0.2604965}
+      rotation: {x: 0.20975785, y: -0, z: -0, w: 0.9777534}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_ankle_jnt
+      parentName: L_knee_jnt
+      position: {x: -5.2513144e-17, y: 2.385988e-17, z: 0.27807146}
+      rotation: {x: -0.77441925, y: 1.632444e-16, z: 1.5051602e-16, w: 0.6326728}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_toe_jnt
+      parentName: L_ankle_jnt
+      position: {x: 5.551115e-17, y: -0.019290933, z: 0.32191744}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_hip_jnt
+      parentName: pelvis_jnt
+      position: {x: 0.12755242, y: -0.084692694, z: -0.14651647}
+      rotation: {x: -0.7450182, y: 0.21547626, z: 0.07805092, w: 0.6264391}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_knee_jnt
+      parentName: R_hip_jnt
+      position: {x: -2.7755576e-17, y: -0.00000009344715, z: -0.2604972}
+      rotation: {x: 0.20975785, y: -2.9697694e-31, z: -2.0789237e-33, w: 0.9777534}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_ankle_jnt
+      parentName: R_knee_jnt
+      position: {x: 2.7755576e-17, y: 0.000000013007628, z: -0.2780715}
+      rotation: {x: -0.77441925, y: 0, z: -0, w: 0.6326728}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_toe_jnt
+      parentName: R_ankle_jnt
+      position: {x: -0, y: 0.0192909, z: -0.3219175}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: group1
+      parentName: froag_rig_WIP(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: curve1
+      parentName: group1
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: group2
+      parentName: froag_rig_WIP(Clone)
+      position: {x: -0.38009846, y: 0.78432065, z: -0.13983597}
+      rotation: {x: 0.530382, y: -0.530382, z: -0.46764833, w: 0.46764833}
+      scale: {x: 1, y: 1, z: 1}
+    - name: curve2
+      parentName: group2
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: group3
+      parentName: froag_rig_WIP(Clone)
+      position: {x: 0.3800985, y: 0.78432, z: -0.139836}
+      rotation: {x: -0.46764833, y: -0.46764833, z: 0.530382, w: 0.530382}
+      scale: {x: 1, y: 1, z: 1}
+    - name: curve3
+      parentName: group3
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: group4
+      parentName: froag_rig_WIP(Clone)
+      position: {x: -0.66723186, y: 0.78432065, z: -0.17607611}
+      rotation: {x: 0.4664159, y: -0.4664159, z: -0.53146607, w: 0.53146607}
+      scale: {x: 1, y: 1, z: 1}
+    - name: curve4
+      parentName: group4
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: group5
+      parentName: froag_rig_WIP(Clone)
+      position: {x: 0.66723, y: 0.78432, z: -0.176076}
+      rotation: {x: 0.5314661, y: 0.5314661, z: -0.46641594, w: -0.46641594}
+      scale: {x: 1, y: 1, z: 1}
+    - name: curve5
+      parentName: group5
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: group6
+      parentName: froag_rig_WIP(Clone)
+      position: {x: -0.91926533, y: 0.78432065, z: -0.14307664}
+      rotation: {x: 5.204171e-18, y: -0.7071068, z: 5.204171e-18, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: curve6
+      parentName: group6
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: group7
+      parentName: froag_rig_WIP(Clone)
+      position: {x: 0.919265, y: 0.78432, z: -0.1430765}
+      rotation: {x: 0.7071068, y: 4.3297806e-17, z: -0.7071068, w: 4.3297806e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: curve7
+      parentName: group7
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: group8
+      parentName: froag_rig_WIP(Clone)
+      position: {x: -0.18965814, y: 0.045458067, z: -0.07756348}
+      rotation: {x: -1.110223e-16, y: 0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: curve8
+      parentName: group8
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: group9
+      parentName: froag_rig_WIP(Clone)
+      position: {x: 0.189658, y: 0.04545805, z: -0.0775635}
+      rotation: {x: 1, y: -0, z: 0, w: 2.8327693e-16}
+      scale: {x: 1, y: 1, z: 1}
+    - name: curve9
+      parentName: group9
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_ankle_IK_handle
+      parentName: froag_rig_WIP(Clone)
+      position: {x: -0.18965814, y: 0.04710531, z: -0.07756348}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_ankle_IK_handle
+      parentName: froag_rig_WIP(Clone)
+      position: {x: 0.189658, y: 0.047105294, z: -0.0775635}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_toe_IK_handle
+      parentName: froag_rig_WIP(Clone)
+      position: {x: 0.189658, y: 0.027814394, z: 0.244354}
+      rotation: {x: 1, y: -1.2719802e-17, z: 2.4980018e-16, w: -1.6155446e-15}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_toe_IK_handle
+      parentName: froag_rig_WIP(Clone)
+      position: {x: -0.18965814, y: 0.027814377, z: 0.24435395}
+      rotation: {x: 1.6653345e-15, y: -1.110223e-16, z: -8.210874e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface1
+      parentName: froag_rig_WIP(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform2
+      parentName: polySurface1
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface2
+      parentName: froag_rig_WIP(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform1
+      parentName: polySurface2
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ikHandle1
+      parentName: froag_rig_WIP(Clone)
+      position: {x: -0.9190685, y: 0.78656125, z: -0.14273372}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ikHandle2
+      parentName: froag_rig_WIP(Clone)
+      position: {x: 0.91946185, y: 0.7865606, z: -0.14273357}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 0.5
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
