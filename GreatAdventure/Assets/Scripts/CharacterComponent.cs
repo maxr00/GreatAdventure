@@ -12,7 +12,8 @@ public class CharacterComponent : MonoBehaviour
 
     public Sprite characterIcon;
     public Vector3 characterOffset;
-    
+    public float cameraRadius; // Value used to describe radius of cicle that the camera should keep in frame during dialogue
+
     private Emotion currentEmotion;  
     private Vector3 currentOffset;
 

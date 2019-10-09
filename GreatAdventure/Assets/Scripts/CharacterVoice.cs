@@ -8,6 +8,7 @@ public class CharacterVoice : MonoBehaviour
     const int twoSyllableChars = 5; // Minimum num of characters a word contains to be 2 syllables
     const int threeSyllableChars = 7; // Minimum num of characters a word contains to be 3 syllables
 
+    bool stopped = false;
 
     AudioSource src;
 
@@ -22,9 +23,14 @@ public class CharacterVoice : MonoBehaviour
         src = GetComponent<AudioSource>();
     }
 
+    public void StopSpeaking()
+    {
+        stopped = true;
+    }
+
     public void Speak(string text)
     {
-        //Debug.Log("Saying:\"" + text + "\"");
+        stopped = false;
 
         string[] words = text.Split(new char[]{' ','-'});
 
@@ -35,6 +41,9 @@ public class CharacterVoice : MonoBehaviour
     {
         foreach (string word in words)
         {
+            if (stopped)
+                break;
+
             yield return StartCoroutine(SayWord(word));
         }
     }
@@ -45,6 +54,9 @@ public class CharacterVoice : MonoBehaviour
 
         foreach(AudioClip clip in sounds)
         {
+            if (stopped)
+                break;
+
             if(clip != null)
             {
                 src.clip = clip;

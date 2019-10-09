@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DialogueComponent : MonoBehaviour
 {
+    public static DialogueComponent currentActiveDialogue = null;
+
     public DialogueAsset m_dialogueAsset; // holds asset data from editor
     int m_currentDialogueIndex;
     TextDisplay m_textDisplay;
@@ -145,6 +147,7 @@ public class DialogueComponent : MonoBehaviour
             if (dialogue.m_nextDialogueData.Count == 0)
             {
                 isActive = false;
+                currentActiveDialogue = null;
             }
         }
         // selecting player option
@@ -306,6 +309,7 @@ public class DialogueComponent : MonoBehaviour
             if (dialogue.m_nextDialogueData.Count == 0)
             {
                 isActive = false;
+                currentActiveDialogue = null;
             }
         }
     }
@@ -331,12 +335,14 @@ public class DialogueComponent : MonoBehaviour
             isActive = true;
             nextDialogue = true;
             m_currentDialogueIndex = m_dialogueAsset.m_startIndex;
+            currentActiveDialogue = this;
         }
     }
 
     public void StopDialogue()
     {
         isActive = false;
+        currentActiveDialogue = null;
     }
 
     private void DisplayDialogueOptions(List<int> next_dialogue_list)
