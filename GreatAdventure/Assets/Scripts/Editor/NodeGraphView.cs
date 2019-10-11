@@ -353,6 +353,7 @@ public class NodeGraphView : GUILayout
 
     private void RemoveNode(int node_id)
     {
+        m_nodeIDsSelected.Remove(node_id);
         m_nodeGraphModel.RemoveNode(node_id);
     }
 

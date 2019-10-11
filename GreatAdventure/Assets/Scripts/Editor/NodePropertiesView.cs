@@ -22,6 +22,8 @@ public class NodePropertiesView : GUILayout
         BeginArea(m_nodePropertiesRect);
         scrollPosition = BeginScrollView(scrollPosition, false, false, Width(m_nodePropertiesRect.width), Height(m_nodePropertiesRect.height));
 
+        EditorGUI.BeginChangeCheck();
+
         // display first node properties
         if (selected_nodes != null) // if there has been a node selected, display that node's properties
         {
@@ -223,6 +225,12 @@ public class NodePropertiesView : GUILayout
                 DisplayMarkupCheatSheet();
             }
         }
+
+        if (EditorGUI.EndChangeCheck())
+        {
+            Undo.RecordObject(asset.m_dialogueAsset, "");
+        }
+
         EndScrollView();
         EndArea();
     }

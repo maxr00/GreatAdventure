@@ -67,7 +67,7 @@ public class DialogueAssetBuilder : ScriptableObject
         SaveBuiltDialogueData(model_data);
 
         EditorUtility.SetDirty(m_dialogueAsset); // tells unity to data in this asset has changed and needs to saved if user asks
-        //AssetDatabase.SaveAssets();
+        AssetDatabase.SaveAssets();
     }
 
     private void ClearAsset()

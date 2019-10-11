@@ -86,6 +86,11 @@ public class DialogueEditor : EditorWindow
         if (GUI.changed) Repaint();
     }
 
+    public void OnDestroy()
+    {
+        m_dialogueAssetBuilder.SaveAsset(m_dialogueAssetBuilder.m_nodeGraphModel);
+    }
+
     private void ProcessNodeEvents(Event e)
     {
         if (m_nodeGraphView.ProcessEvents(e, m_dialogueAssetBuilder))
