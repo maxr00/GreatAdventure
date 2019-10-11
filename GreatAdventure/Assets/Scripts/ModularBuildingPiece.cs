@@ -95,6 +95,9 @@ public class ModularBuildingPiece : MonoBehaviour
     }
     public void Update()
     {
+        if (Application.isPlaying)
+            locked = true;
+
         if (!Application.isEditor || locked)
             return;
 
