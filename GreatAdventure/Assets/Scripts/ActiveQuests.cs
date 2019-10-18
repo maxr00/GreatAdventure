@@ -35,7 +35,7 @@ public static class ActiveQuests
        return GetQuestFromName(questName).isComplete;        
     }
 
-    public static void MarkQuestAsComplete(string questName, Quest quest)
+    public static void MarkQuestAsComplete(string questName)
     {
         GetQuestFromName(questName).isComplete = true;
         Debug.Log(questName + " is complete");
