@@ -194,7 +194,7 @@ public class DialogueComponent : MonoBehaviour
         foreach (Quest quest in dialogue.questsToComplete)
         {
             if (ActiveQuests.HasQuest(quest.questName))
-                ActiveQuests.MarkQuestAsComplete(quest.questName, quest);
+                ActiveQuests.MarkQuestAsComplete(quest.questName);
         }
     }
 
