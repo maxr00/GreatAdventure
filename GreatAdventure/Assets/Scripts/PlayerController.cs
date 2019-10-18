@@ -59,10 +59,10 @@ public class PlayerController : MonoBehaviour
             rbody.AddForce(Vector3.down * standingGravity, ForceMode.Acceleration); // Stay on ground
 
             // Ramp check
-            Physics.Raycast(new Ray(transform.position + forward * bodyRadius, -transform.up), out var hitRamp, groundCheckHeight, groundLayer);
+            Physics.Raycast(new Ray(transform.position + forward * bodyRadius, -Vector3.up), out var hitRamp, groundCheckHeight, groundLayer);
 
             var move = horiz * Vector3.right + vert * Vector3.forward;
-            move = Vector3.ProjectOnPlane(move, hitRamp.normal).normalized;
+            //move = Vector3.ProjectOnPlane(move, hitRamp.normal).normalized;
 
             Debug.DrawLine(transform.position, transform.position + move, Color.red);
 
@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
                     rbody.AddForce(move * moveSpeed, ForceMode.Impulse);
                 }
 
-                transform.forward = rbody.velocity;
+                transform.forward = Vector3.Lerp(transform.forward, Vector3.ProjectOnPlane(rbody.velocity, hitRamp.normal).normalized, 0.5f);
             }
             else
             {
