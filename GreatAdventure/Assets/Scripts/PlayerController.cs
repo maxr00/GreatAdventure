@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
                     rbody.AddForce(move * moveSpeed, ForceMode.Impulse);
                 }
 
-                transform.forward = Vector3.Lerp(transform.forward, Vector3.ProjectOnPlane(rbody.velocity, hitRamp.normal).normalized, 0.5f);
+                transform.forward = Vector3.Lerp(transform.forward, Vector3.ProjectOnPlane(rbody.velocity, hitRamp.normal).normalized, 0.6f);
             }
             else
             {
