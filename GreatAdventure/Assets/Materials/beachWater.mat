@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: water
-  m_Shader: {fileID: 4800000, guid: ced64c1a592a064488b4a79dee64ba83, type: 3}
+  m_Name: beachWater
+  m_Shader: {fileID: 4800000, guid: d1ba6f48c0e57e846acd9ed97aab9f20, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -72,7 +72,8 @@ Material:
     - _DistortScale: 2.5
     - _DistortSpeed: 6
     - _DstBlend: 0
-    - _Foam: 1
+    - _Foam: 2
+    - _FoamDepth: 5
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
