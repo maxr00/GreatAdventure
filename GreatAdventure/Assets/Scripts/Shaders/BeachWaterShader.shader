@@ -6,8 +6,10 @@
         _MainTex ("Texture", 2D) = "white" {}
 		_NoiseTex("Noise Texture", 2D) = "black" {}
 		_UVScale("Scale", float) = 1
+		_WaveHeight("Wave Vertical Height", float) = 0.1
 		_Amplitude("Wave Amplitude", float) = 1
 		_Speed("Speed", float) = 1
+		_VerticalSpeed("Vertical Speed", float) = 2
 		_Foam("Foam Thickness", float) = 1
 		_FoamDepth("Foam Depth", float) = 1
 		_Amount("Distortion Amount", float) = 0.03
@@ -52,7 +54,9 @@
 			float _UVScale;
 			float _Amplitude;
 			float _Speed;
+			float _VerticalSpeed;
 			float _Amount;
+			float _WaveHeight;
 			float _Foam;
 			float _FoamDepth;
 			float _DistortSpeed;
@@ -64,9 +68,11 @@
             {
                 v2f o;
 
+
 				o.amp = sin(_Time.z * _Speed + (v.vertex.x * v.vertex.z));
 
 				v.vertex.x += o.amp * _Amplitude;
+				v.vertex.y +=  (1-step(0.9, 1 - v.uv.x)) * _WaveHeight * sin(_Time.x * _VerticalSpeed + (v.vertex.x * v.vertex.z));
                 o.vertex = UnityObjectToClipPos(v.vertex);
 				
 				o.screenPos = ComputeScreenPos(o.vertex);
