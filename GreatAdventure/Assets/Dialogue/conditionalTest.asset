@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7193887033171413697
+--- !u!114 &-5424478913170305253
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,18 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: 2016932864
+  m_Name: 902423040
   m_EditorClassIdentifier: 
-  node_id: 2016932864
+  node_id: 902423040
   m_isStartNode: 0
-  branchingIndex: 0
-  characterName: Player
-  dialogueText: 'uh, ok bye
-
-
-    why am i talking to a door anyway?'
-  previewDialogueText: bye
-  characterSpeakingIndex: 0
+  branchingIndex: 1
+  characterName: Cube
+  dialogueText: "you have an <i><b>eye???</i></b> \ni wont ask any questions..."
+  previewDialogueText: 
+  characterSpeakingIndex: 1
   emotion: 0
   itemsToGive: []
   questsToAdd: []
@@ -36,8 +33,37 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 
---- !u!114 &-6526787208359209145
+  m_nextDialogueData: 00142caa
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dd4f336407e46342afbdf2e5056f0f1, type: 3}
+  m_Name: conditionalTest
+  m_EditorClassIdentifier: 
+  m_startIndex: -750744064
+  m_runtimeBuiltData:
+  - {fileID: 3043693444226550668}
+  - {fileID: 6802948873747271378}
+  - {fileID: 4286179137000768432}
+  - {fileID: -5424478913170305253}
+  - {fileID: 5338622565486044040}
+  - {fileID: 4183072642399756981}
+  - {fileID: 249377097314084349}
+  m_assetData: 6`302384512`1095143424`-1796308992`61480320`-731319552`1210635904`-416590336`-750744064`-1441522176`1877797120`-1871798784`902423040`-750744064`1058159104`-914369024`2094070656`-1796308992`-416590336`2060846592`601785600`-174746496`2016932864`-416590336`893820032`1457362048`-911336064`-1439951872`902423040`-115528832`-337923968`7`1095143424`748`204`150`75`False`1095143424`61480320`0`1`1095143424`-1334602752`0`-750744064`89`234`150`105`True`-750744064`-1021087104`0`2`-750744064`1877797120`0`-750744064`-914369024`1`-416590336`305`165`150`105`False`-416590336`-1441522176`0`2`-416590336`1457362048`0`-416590336`601785600`0`902423040`305`348`150`75`False`902423040`1058159104`0`1`902423040`-337923968`0`-1439951872`527`346`150`75`False`-1439951872`-115528832`0`1`-1439951872`97907328`0`2016932864`514`116`150`75`False`2016932864`893820032`0`1`2016932864`-502263040`0`-1796308992`514`205`150`75`False`-1796308992`2060846592`0`1`-1796308992`-731319552`0`
+  m_charactersInvolvedStrings:
+  - Player
+  - Cube
+  m_CharactersInvoled:
+  - {fileID: 0}
+  - {fileID: 0}
+  m_isActiveDialogue: 1
+--- !u!114 &249377097314084349
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,42 +97,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_nextDialogueData: 00904641
---- !u!114 &-2608180392090306189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -750744064
-  m_EditorClassIdentifier: 
-  node_id: -750744064
-  m_isStartNode: 1
-  branchingIndex: 0
-  characterName: Cube
-  dialogueText: show me what you have
-  previewDialogueText: 
-  characterSpeakingIndex: 1
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 1
-  itemsToCheck:
-  - {fileID: 11400000, guid: a57c214f3586b6a4ebf3f4263e0ada60, type: 2}
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 1
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 00562be700e2c935
---- !u!114 &-1836942581279321543
+--- !u!114 &3043693444226550668
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,7 +135,78 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_nextDialogueData: 
---- !u!114 &-191939718354041236
+--- !u!114 &4183072642399756981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: 2016932864
+  m_EditorClassIdentifier: 
+  node_id: 2016932864
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: Player
+  dialogueText: 'uh, ok bye
+
+
+    why am i talking to a door anyway?'
+  previewDialogueText: bye
+  characterSpeakingIndex: 0
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 
+--- !u!114 &4286179137000768432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -416590336
+  m_EditorClassIdentifier: 
+  node_id: -416590336
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: Cube
+  dialogueText: wow nothing
+  previewDialogueText: 
+  characterSpeakingIndex: 1
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 1
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 00f437780080ee94
+--- !u!114 &5338622565486044040
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,36 +244,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_nextDialogueData: 
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dd4f336407e46342afbdf2e5056f0f1, type: 3}
-  m_Name: conditionalTest
-  m_EditorClassIdentifier: 
-  m_startIndex: -750744064
-  m_runtimeBuiltData:
-  - {fileID: -1836942581279321543}
-  - {fileID: -2608180392090306189}
-  - {fileID: 5822672540509006736}
-  - {fileID: 7757389599641653931}
-  - {fileID: -191939718354041236}
-  - {fileID: -7193887033171413697}
-  - {fileID: -6526787208359209145}
-  m_assetData: 6`302384512`1095143424`-1796308992`61480320`-731319552`1210635904`-416590336`-750744064`-1441522176`1877797120`-1871798784`902423040`-750744064`1058159104`-914369024`2094070656`-1796308992`-416590336`2060846592`601785600`-174746496`2016932864`-416590336`893820032`1457362048`-911336064`-1439951872`902423040`-115528832`-337923968`7`1095143424`748`204`150`75`False`1095143424`61480320`0`1`1095143424`-1334602752`0`-750744064`89`234`150`105`True`-750744064`-1021087104`0`2`-750744064`1877797120`0`-750744064`-914369024`1`-416590336`305`165`150`105`False`-416590336`-1441522176`0`2`-416590336`1457362048`0`-416590336`601785600`0`902423040`305`348`150`75`False`902423040`1058159104`0`1`902423040`-337923968`0`-1439951872`527`346`150`75`False`-1439951872`-115528832`0`1`-1439951872`97907328`0`2016932864`514`116`150`75`False`2016932864`893820032`0`1`2016932864`-502263040`0`-1796308992`514`205`150`75`False`-1796308992`2060846592`0`1`-1796308992`-731319552`0`
-  m_charactersInvolvedStrings:
-  - Player
-  - Cube
-  m_CharactersInvoled:
-  - {fileID: 0}
-  - {fileID: 0}
-  m_isActiveDialogue: 1
---- !u!114 &5822672540509006736
+--- !u!114 &6802948873747271378
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -221,21 +254,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -416590336
+  m_Name: -750744064
   m_EditorClassIdentifier: 
-  node_id: -416590336
-  m_isStartNode: 0
+  node_id: -750744064
+  m_isStartNode: 1
   branchingIndex: 0
   characterName: Cube
-  dialogueText: wow nothing
+  dialogueText: show me what you have
   previewDialogueText: 
   characterSpeakingIndex: 1
   emotion: 0
   itemsToGive: []
   questsToAdd: []
   questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
+  isConditionalBranching: 1
+  itemsToCheck:
+  - {fileID: 11400000, guid: a57c214f3586b6a4ebf3f4263e0ada60, type: 2}
   questsRequired: []
   questsCompleted: []
   m_isBranching: 1
@@ -244,38 +278,4 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 00f437780080ee94
---- !u!114 &7757389599641653931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: 902423040
-  m_EditorClassIdentifier: 
-  node_id: 902423040
-  m_isStartNode: 0
-  branchingIndex: 1
-  characterName: Cube
-  dialogueText: "you have an <i><b>eye???</i></b> \ni wont ask any questions..."
-  previewDialogueText: 
-  characterSpeakingIndex: 1
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 00142caa
+  m_nextDialogueData: 00562be700e2c935
