@@ -21,6 +21,7 @@
 
 		ColorMask 0 // dont write to color channels
 		ZWrite Off // Don't write to the Depth buffer
+
 		Stencil
 		{
 			Ref[_StencilMask] // ReferenceValue = 1

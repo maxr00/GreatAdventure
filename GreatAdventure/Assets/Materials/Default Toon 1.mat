@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Default Toon 1
-  m_Shader: {fileID: 4800000, guid: 9d7b4d0f647839b49a6a0e59927938f5, type: 3}
+  m_Shader: {fileID: 4800000, guid: 4d912d7aaae79904b92474b34b7f32ff, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -32,11 +32,13 @@ Material:
     - _Glossiness: 0.5
     - _HighlightSize: 0.9
     - _Metallic: 0
+    - _Outline: 5
     - _RimPower: 6
     - _SpecularSize: 0.8
     - _StencilMask: 2
     m_Colors:
-    - _Color: {r: 0.8117647, g: 0.7529412, b: 0.58431375, a: 1}
+    - _Color: {r: 1, g: 0.94481134, b: 0.8160377, a: 1}
     - _HighlightColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 1, g: 0, b: 0.02352953, a: 1}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
