@@ -7,16 +7,16 @@
 		_Ramp("Ramp Texture", 2D) = "white" {}
         _Glossiness ("Smoothness", Range(0,1)) = 0.5
         _Metallic ("Metallic", Range(0,1)) = 0.0
+		_StencilMask ("Mask Layer", Range(0, 255)) = 2
     }
     SubShader
     {
-		Blend SrcAlpha OneMinusSrcAlpha
         Tags { "RenderType"="Opaque" }
         LOD 200
 
 		Stencil
 		{
-			Ref 1 // ReferenceValue = 1
+			Ref [_StencilMask] // ReferenceValue = 1
 			Comp NotEqual // Only render pixels whose reference value differs from the value in the buffer.
 		}
 

@@ -3,12 +3,17 @@
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+		_StencilMask ("Mask Layer", Range(0, 255)) = 1
     }
     SubShader
     {
         LOD 100
-		Blend One OneMinusSrcAlpha
-        Tags { "Queue" = "Geometry-1" } // write to stencil buffer before drawing any geometry to the screen
+        Tags 
+		{ 
+			"Queue" = "Geometry-100" // write to stencil buffer before drawing any geometry to the screen
+			"RenderType" = "Opaque" 
+			"ForceNoShadowCasting" = "True" 
+		} 
 		ColorMask 0 // dont write to color channels
 		ZWrite Off // Don't write to the Depth buffer
 
@@ -16,7 +21,7 @@
         {
 			Stencil
 			{
-				Ref 1 // ReferenceValue = 1
+				Ref [_StencilMask] // ReferenceValue = 1
 				Comp Always
 				Pass Replace
 			}
