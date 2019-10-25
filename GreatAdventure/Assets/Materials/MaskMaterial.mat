@@ -8,12 +8,12 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: MaskMaterial
-  m_Shader: {fileID: 4800000, guid: 35f6ec060b3a3d740b0cf985d9ed8618, type: 3}
+  m_Shader: {fileID: 4800000, guid: 37ccc8cb564e5b7439f0d048ec7c98f9, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 1900
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -71,6 +71,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _StencilMask: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
