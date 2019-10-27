@@ -31,6 +31,18 @@ public class PlayerController : MonoBehaviour
 
     public bool allowMovement = true;
 
+    Vector3[] forwardDirs =
+        {
+            Vector3.forward,
+            (Vector3.forward + Vector3.right).normalized,
+            Vector3.right,
+            (-Vector3.forward + Vector3.right).normalized,
+            -Vector3.forward,
+            (-Vector3.forward - Vector3.right).normalized,
+            -Vector3.right,
+            (Vector3.forward - Vector3.right).normalized,
+        };
+
     void Start()
     {
         rbody = GetComponent<Rigidbody>();
@@ -80,10 +92,23 @@ public class PlayerController : MonoBehaviour
                     rbody.AddForce(move * moveSpeed, ForceMode.Impulse);
                 }
 
-                if((transform.forward + Vector3.ProjectOnPlane(rbody.velocity, hitRamp.normal).normalized).sqrMagnitude > 0.1f)
-                    transform.forward = Vector3.Lerp(transform.forward, Vector3.ProjectOnPlane(rbody.velocity, hitRamp.normal).normalized, 0.3f);
-                else
-                    transform.forward = Vector3.Lerp(transform.forward, Vector3.ProjectOnPlane(rbody.velocity, hitRamp.normal).normalized, 0.6f);
+                //if((transform.forward + Vector3.ProjectOnPlane(rbody.velocity, hitRamp.normal).normalized).sqrMagnitude > 0.1f)
+                //    transform.forward = Vector3.Lerp(transform.forward, Vector3.ProjectOnPlane(rbody.velocity, hitRamp.normal).normalized, 0.3f); 
+                //else
+                //    transform.forward = Vector3.Lerp(transform.forward, Vector3.ProjectOnPlane(rbody.velocity, hitRamp.normal).normalized, 0.6f); // Turn around 180 degrees
+
+                Vector3 dir = Vector3.forward;
+                float min = 0;
+                foreach(Vector3 d in forwardDirs)
+                {
+                    if(min < Vector3.Dot(d, rbody.velocity.normalized))
+                    {
+                        dir = d;
+                        min = Vector3.Dot(d, rbody.velocity.normalized);
+                    }
+                }
+
+                transform.forward = Vector3.Lerp(transform.forward, Vector3.ProjectOnPlane(dir, hitRamp.normal), 0.6f);
             }
             else
             {
