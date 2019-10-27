@@ -15,10 +15,12 @@
 		_Amount("Distortion Amount", float) = 0.03
 		_DistortSpeed("Distortion Speed", float) = 2
 		_DistortScale("Distortion Scale", float) = 1
+		_Falloff("Falloff", float) = 0.95
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+		Blend SrcAlpha OneMinusSrcAlpha
+        Tags { "RenderType"="Transparent" }
         LOD 100
 
         Pass
@@ -63,6 +65,7 @@
 			float _DistortScale;
             float4 _MainTex_ST;
 			float4 _Tint;
+			float _Falloff;
 
             v2f vert (appdata v)
             {
@@ -90,13 +93,15 @@
                 // sample the texture
                 fixed4 col = tex2D(_MainTex, i.uv + distortion * _Amount);
 
-				half4 foam = (1 - saturate(_Foam * i.uv.x)) * sin(1 - i.uv.x * i.uv.x * 40) * sin(1 - i.uv.x * i.uv.x * 40); 
-				foam = foam * saturate(i.amp + 0.8);
+				half4 foam = (1 - saturate(2 * i.uv.x)) * sin(1 - i.uv.x * i.uv.x * 40) * sin(1 - i.uv.x * i.uv.x * 40); // foam waves
+				foam = foam * saturate(i.amp + 0.8) * _Foam;
 
 				half depth = LinearEyeDepth(SAMPLE_DEPTH_TEXTURE_PROJ(_CameraDepthTexture, UNITY_PROJ_COORD(i.screenPos)));
 				foam = max(foam, 1 - saturate(_FoamDepth * (depth - i.screenPos.w)));
 
 				col += foam * _Tint;
+
+				col.a = 1 - step(i.uv.x, _Falloff) * (i.uv.x - _Falloff) * (i.uv.x - _Falloff);
 
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
