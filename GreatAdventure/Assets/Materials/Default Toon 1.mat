@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Default Toon 1
-  m_Shader: {fileID: 4800000, guid: 4d912d7aaae79904b92474b34b7f32ff, type: 3}
+  m_Shader: {fileID: 4800000, guid: 9d7b4d0f647839b49a6a0e59927938f5, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
