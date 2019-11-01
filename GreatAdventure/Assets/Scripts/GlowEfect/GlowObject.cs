@@ -21,7 +21,6 @@ public class GlowObject : MonoBehaviour
 
     public void Start()
     {
-        TurnOnGlow();
     }
 
     public void TurnOnGlow()
@@ -33,13 +32,11 @@ public class GlowObject : MonoBehaviour
     public void TurnOffGlow()
     {
         targetColor = Color.black;
-        enabled = false;
     }
 
     void Update()
     {
         currentColor = Color.Lerp(currentColor, targetColor, Time.deltaTime * LerpFactor);
-
         for (int i = 0; i < materials.Count; ++i)
         {
             materials[i].SetColor("_GlowColor", currentColor);
