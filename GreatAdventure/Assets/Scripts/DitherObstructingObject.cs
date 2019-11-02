@@ -5,7 +5,7 @@ using UnityEngine;
 public class DitherObstructingObject : MonoBehaviour
 {
     public Transform player, cam;
-
+    public float DitherTransparency = 0.5f;
     Shader normalShader;
     Shader ditherShader;
 
@@ -41,7 +41,7 @@ public class DitherObstructingObject : MonoBehaviour
                 GameObject hitObject = hit.transform.gameObject;
                 hitObject.GetComponent<Renderer>().material.shader = ditherShader;
                 hitObject.GetComponent<Renderer>().material.renderQueue = 3000;
-                hitObject.GetComponent<Renderer>().material.SetFloat("_Transparency", 0.5f);
+                hitObject.GetComponent<Renderer>().material.SetFloat("_Transparency", DitherTransparency);
             }
         }
         pastHits = hits;
