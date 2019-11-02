@@ -16,6 +16,7 @@
 			"Queue" = "Geometry-100" // write to stencil buffer before drawing any geometry to the screen
 			"RenderType" = "Opaque"
 			"ForceNoShadowCasting" = "True"
+			"LightMode" = "Always"
 		}
         LOD 200
 

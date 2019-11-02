@@ -44,6 +44,19 @@ public class Interactable : MonoBehaviour
                     Activate();
                 }
             }
+            GlowObject glowObj = gameObject.GetComponent<GlowObject>();
+            if (glowObj != null)
+            {
+                glowObj.TurnOnGlow();
+            }
+        }
+        else
+        {
+            GlowObject glowObj = gameObject.GetComponent<GlowObject>();
+            if (glowObj != null)
+            {
+                glowObj.TurnOffGlow();
+            }
         }
     }
 
@@ -62,6 +75,20 @@ public class Interactable : MonoBehaviour
                     Activate();
                 }
             }
+        }
+        GlowObject glowObj = gameObject.GetComponent<GlowObject>();
+        if (glowObj != null)
+        {
+            glowObj.TurnOnGlow();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        GlowObject glowObj = gameObject.GetComponent<GlowObject>();
+        if (glowObj != null)
+        {
+            glowObj.TurnOffGlow();
         }
     }
 

@@ -36,6 +36,7 @@ Material:
     - _RimPower: 6
     - _SpecularSize: 0.8
     - _StencilMask: 2
+    - _Transparency: 1
     m_Colors:
     - _Color: {r: 1, g: 0.94481134, b: 0.8160377, a: 1}
     - _HighlightColor: {r: 1, g: 1, b: 1, a: 1}
