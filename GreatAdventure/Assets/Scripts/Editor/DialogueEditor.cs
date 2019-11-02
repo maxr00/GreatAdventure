@@ -67,8 +67,21 @@ public class DialogueEditor : EditorWindow
         return false;
     }
 
+    public void OnBeforeAssemblyReload()
+    {
+        m_dialogueAssetBuilder.SaveAsset(m_dialogueAssetBuilder.m_nodeGraphModel);
+    }
+
+    public void OnAfterAssemblyReload()
+    {
+        m_dialogueAssetBuilder.LoadEditorSaveData();   
+    }
+
     private void OnEnable()
     {
+        AssemblyReloadEvents.beforeAssemblyReload += OnBeforeAssemblyReload;
+        AssemblyReloadEvents.afterAssemblyReload += OnAfterAssemblyReload;
+
         resizerStyle = new GUIStyle();
         resizerStyle.normal.background = EditorGUIUtility.Load("icons/d_AvatarBlendBackground.png") as Texture2D;
         m_nodeGraphView = new NodeGraphView();

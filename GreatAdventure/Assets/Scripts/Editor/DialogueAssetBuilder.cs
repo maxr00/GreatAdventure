@@ -136,7 +136,6 @@ public class DialogueAssetBuilder : ScriptableObject
             nextData.Sort(delegate (NextDialogueDataContent c1, NextDialogueDataContent c2) { return c1.branchingIndex.CompareTo(c2.branchingIndex); });
             foreach(NextDialogueDataContent next_data in nextData)
             {
-                Debug.Log(next_data.branchingIndex);
                 dialogue.m_nextDialogueData.Add(next_data.nextNodeIndex);
             }
 
