@@ -10,6 +10,7 @@
         _Glossiness ("Smoothness", Range(0,1)) = 0.5
         _Metallic ("Metallic", Range(0,1)) = 0.0
 		_StencilMask ("Mask Layer", Range(0, 255)) = 2
+		_Transparency("Transparency", Range(0,1)) = 1.0
     }
     SubShader
     {
@@ -23,6 +24,7 @@
 		}
 
         CGPROGRAM
+		#include "Dither.cginc"
         // Physically based Standard lighting model, and enable shadows on all light types
         //#pragma surface surf Standard fullforwardshadows
 		#pragma surface surf Ramp
@@ -36,8 +38,9 @@
         struct Input
         {
             float2 uv_MainTex;
+			float4 screenPos;
         };
-
+		half _Transparency;
         half _Glossiness;
         half _Metallic;
         fixed4 _Color1;
@@ -58,6 +61,10 @@
             fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * ((c1 * _Color1) +	 ((1-c1) * _Color2));
             o.Albedo = c.rgb;
             o.Alpha = c.a;
+
+			// Screen-door transparency: Discard pixel if below threshold.
+			if (_Transparency != 1.0f)
+				Dither(IN.screenPos, _Transparency);
         }
 
 		half4 LightingRamp(SurfaceOutput s, half3 lightDir, half atten) 

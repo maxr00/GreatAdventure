@@ -5,16 +5,12 @@ using UnityEngine;
 public class DitherObstructingObject : MonoBehaviour
 {
     public Transform player, cam;
-    public float DitherTransparency = 0.5f;
-    Shader normalShader;
-    Shader ditherShader;
+    public float DitherTransparency = 0.7f;
 
     RaycastHit[] pastHits;
     // Start is called before the first frame update
     void Start()
     {
-        normalShader = Shader.Find("Custom/CartoonShader");
-        ditherShader = Shader.Find("Custom/CartoonShaderDitherTransparency");
         pastHits = null;
     }
 
@@ -26,7 +22,8 @@ public class DitherObstructingObject : MonoBehaviour
             foreach (var hit in pastHits)
             {
                 Debug.DrawLine(player.position, cam.position, Color.blue);
-                hit.transform.gameObject.GetComponent<Renderer>().material.shader = normalShader;
+                hit.transform.gameObject.GetComponent<Renderer>().material.renderQueue = -1; // from shader
+                hit.transform.gameObject.GetComponent<Renderer>().material.SetFloat("_Transparency", 1.0f);
             }
         }
 
@@ -39,8 +36,7 @@ public class DitherObstructingObject : MonoBehaviour
             foreach(var hit in hits)
             {
                 GameObject hitObject = hit.transform.gameObject;
-                hitObject.GetComponent<Renderer>().material.shader = ditherShader;
-                hitObject.GetComponent<Renderer>().material.renderQueue = 3000;
+                hitObject.GetComponent<Renderer>().material.renderQueue = 3000; // transparent
                 hitObject.GetComponent<Renderer>().material.SetFloat("_Transparency", DitherTransparency);
             }
         }
