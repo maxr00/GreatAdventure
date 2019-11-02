@@ -6,9 +6,6 @@ public class DitherObstructingObject : MonoBehaviour
 {
     public Transform player, cam;
 
-    //GameObject last = null;
-
-
     Shader normalShader;
     Shader ditherShader;
 
@@ -46,22 +43,7 @@ public class DitherObstructingObject : MonoBehaviour
                 hitObject.GetComponent<Renderer>().material.renderQueue = 3000;
                 hitObject.GetComponent<Renderer>().material.SetFloat("_Transparency", 0.5f);
             }
-
-            //if (hit.transform.gameObject != last)
-            //{
-            //    last = hit.transform.gameObject;
-            //    last.GetComponent<Renderer>().material.shader = ditherShader;
-            //    last.GetComponent<Renderer>().material.renderQueue = 3000;
-            //    hit.transform.gameObject.GetComponent<Renderer>().material.SetFloat("_Transparency", 0.5f);
-            //}
         }
         pastHits = hits;
-        //else
-        //{
-        //    Debug.DrawLine(player.position, cam.position, Color.blue);
-        //    if (last != null)
-        //        last.GetComponent<Renderer>().material.shader = normalShader;
-        //    last = null;
-        //}
     }
 }
