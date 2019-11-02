@@ -2,8 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class CharacterFollow : MonoBehaviour
 {
+    public Transform target;
+
+    public float minDistance = 2;
+    public float safeDistance = 4;
+    public float maxDistance = 8;
+    public float maxDistanceMultiplier = 3;
+
     public float moveSpeed = 1.2f;
     public float maxSpeed = 10;
     public float burstSpeed = 20;
@@ -21,14 +28,13 @@ public class PlayerController : MonoBehaviour
 
     public LayerMask groundLayer;
 
-    [HideInInspector]
-    public bool interacting;
+    public float dist = 0;
+    public float distMult;
 
     Rigidbody rbody;
     CharacterAnimationController animController;
 
     bool wasMoving = true;
-
     public bool allowMovement = true;
 
     Vector3[] forwardDirs =
@@ -51,10 +57,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        float horiz = Input.GetAxisRaw("Horizontal");
-        float vert  = Input.GetAxisRaw("Vertical");
-
-        var forward = new Vector3(horiz, 0, vert).normalized;
+        var forward = new Vector3(target.position.x - transform.position.x, 0, target.position.z - transform.position.z).normalized;
         if (!allowMovement)
             forward = Vector3.zero;
 
@@ -62,8 +65,26 @@ public class PlayerController : MonoBehaviour
         Debug.DrawLine(transform.position, transform.position - transform.up * groundCheckHeight, Color.blue);
         Debug.DrawLine(transform.position + forward, transform.position + forward - transform.up * groundCheckHeight, Color.gray);
 
+        dist = Vector3.Distance(target.position, transform.position);
+        distMult = 0;
+        if(dist < minDistance)
+        {
+            distMult = 0;
+        }
+        else if (dist >= maxDistance)
+        {
+            distMult = maxDistanceMultiplier;
+        }
+        else if(dist <= safeDistance)
+        {
+            distMult = (dist - minDistance) / (safeDistance - minDistance);
+        }
+        else if (dist > safeDistance)
+        {
+            distMult = Mathf.Lerp(1, maxDistanceMultiplier, (dist - safeDistance) / (maxDistance - safeDistance));
+        }
 
-        if( Physics.Raycast(new Ray(transform.position, -Vector3.up), out var hit, groundCheckHeight, groundLayer) // Directly down
+        if (Physics.Raycast(new Ray(transform.position, -Vector3.up), out var hit, groundCheckHeight, groundLayer) // Directly down
             || Physics.Raycast(new Ray(transform.position + forward * bodyRadius, -Vector3.up), out var hitEdge, groundCheckHeight, groundLayer)) // Stuck on edge check
         {
             // Grounded
@@ -72,26 +93,25 @@ public class PlayerController : MonoBehaviour
             // Ramp check
             Physics.Raycast(new Ray(transform.position + forward * bodyRadius, -Vector3.up), out var hitRamp, groundCheckHeight, groundLayer);
 
-            var move = horiz * Vector3.right + vert * Vector3.forward;
-            //move = move.normalized; // feels better without
+            var move = forward.x * Vector3.right + forward.z * Vector3.forward;
             //move = Vector3.ProjectOnPlane(move, hitRamp.normal).normalized;
 
             Debug.DrawLine(transform.position, transform.position + move, Color.red);
 
-            if(wasMoving)
+            if (wasMoving)
             {
                 if (Vector3.Dot(rbody.velocity.normalized, move) < turnThreshold)
                 {
                     // If turning around, make it faster but slowing fighting velocity 
                     rbody.velocity = new Vector3(rbody.velocity.x / turnSlowdown, rbody.velocity.y, rbody.velocity.z / turnSlowdown);
-                    rbody.AddForce(move * moveSpeed * turnSpeedup, ForceMode.Impulse);
+                    rbody.AddForce(move * moveSpeed * turnSpeedup * distMult, ForceMode.Impulse);
                 }
                 else
                 {
                     // Continue movement force
-                    rbody.AddForce(move * moveSpeed, ForceMode.Impulse);
+                    rbody.AddForce(move * moveSpeed * distMult, ForceMode.Impulse);
                 }
-
+                
                 // Smooth Turning:
                 /*
                     if((transform.forward + Vector3.ProjectOnPlane(rbody.velocity, hitRamp.normal).normalized).sqrMagnitude > 0.1f)
@@ -103,9 +123,9 @@ public class PlayerController : MonoBehaviour
                 // 8-Dir Turning:
                 Vector3 dir = Vector3.forward;
                 float min = 0;
-                foreach(Vector3 d in forwardDirs)
+                foreach (Vector3 d in forwardDirs)
                 {
-                    if(min < Vector3.Dot(d, rbody.velocity.normalized))
+                    if (min < Vector3.Dot(d, rbody.velocity.normalized))
                     {
                         dir = d;
                         min = Vector3.Dot(d, rbody.velocity.normalized);
@@ -116,7 +136,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                rbody.AddForce(move * burstSpeed, ForceMode.Impulse);
+                rbody.AddForce(move * burstSpeed * distMult, ForceMode.Impulse);
             }
         }
         else
@@ -130,7 +150,7 @@ public class PlayerController : MonoBehaviour
             rbody.velocity = new Vector3(rbody.velocity.x / stoppedSlowing, rbody.velocity.y, rbody.velocity.z / stoppedSlowing);
         }
 
-        if(rbody.velocity.sqrMagnitude < 0.1f) // has the player stopped moving / is standing still?
+        if (rbody.velocity.sqrMagnitude < 0.1f) // has the player stopped moving / is standing still?
         {
             wasMoving = false;
         }
@@ -146,11 +166,6 @@ public class PlayerController : MonoBehaviour
         }
 
         // Update animation controller details
-        animController.movement = forward;
-    }
-
-    private void Update()
-    {
-        interacting = Input.GetAxisRaw("Interact") != 0;
+        animController.movement = Vector3.forward;
     }
 }

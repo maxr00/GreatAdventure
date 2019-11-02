@@ -10,6 +10,7 @@ public class GlowObject : MonoBehaviour
     private List<Material> materials = new List<Material>();
     private Color currentColor;
     private Color targetColor;
+    private bool isOn = false;
 
     private void Awake()
     {
@@ -25,8 +26,12 @@ public class GlowObject : MonoBehaviour
 
     public void TurnOnGlow()
     {
-        targetColor = GlowColor;
-        enabled = true;
+        if (isOn)
+        {
+            targetColor = GlowColor;
+            enabled = true;
+        }
+        isOn = true;
     }
 
     public void TurnOffGlow()
@@ -45,6 +50,7 @@ public class GlowObject : MonoBehaviour
         if (currentColor.Equals(targetColor))
         {
             enabled = false;
+            isOn = false;
         }
     }
 }
