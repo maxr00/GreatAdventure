@@ -22,8 +22,13 @@ public class DitherObstructingObject : MonoBehaviour
             foreach (var hit in pastHits)
             {
                 Debug.DrawLine(player.position, cam.position, Color.blue);
-                hit.transform.gameObject.GetComponent<Renderer>().material.renderQueue = -1; // from shader
-                hit.transform.gameObject.GetComponent<Renderer>().material.SetFloat("_Transparency", 1.0f);
+                Renderer hitRend = hit.transform.gameObject.GetComponent<Renderer>();
+
+                if (hitRend != null)
+                {
+                    hitRend.material.renderQueue = -1; // from shader
+                    hitRend.material.SetFloat("_Transparency", 1.0f);
+                }
             }
         }
 
@@ -35,9 +40,13 @@ public class DitherObstructingObject : MonoBehaviour
 
             foreach(var hit in hits)
             {
-                GameObject hitObject = hit.transform.gameObject;
-                hitObject.GetComponent<Renderer>().material.renderQueue = 3000; // transparent
-                hitObject.GetComponent<Renderer>().material.SetFloat("_Transparency", DitherTransparency);
+                Renderer hitRend = hit.transform.gameObject.GetComponent<Renderer>();
+
+                if (hitRend != null)
+                {
+                    hitRend.material.renderQueue = 3000; // transparent
+                    hitRend.material.SetFloat("_Transparency", DitherTransparency);
+                }
             }
         }
         pastHits = hits;
