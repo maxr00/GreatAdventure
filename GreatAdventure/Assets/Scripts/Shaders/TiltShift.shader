@@ -5,8 +5,7 @@
         _MainTex ("Texture", 2D) = "white" {}
 		_BlurAmount("BlurAmount",  Range(0,0.05)) = 0.025
 		_BlurCenter("BlurCenter", Range(0, 5)) = 1.0
-		_Gauss("Gaussian Blur", float) = 0
-		_StandardDeviation("Standard Deviation (Gauss only)", Range(0, 0.1)) = 0.02
+		_StandardDeviation("Standard Deviation", Range(0, 0.1)) = 0.02
     }
     SubShader
     {
