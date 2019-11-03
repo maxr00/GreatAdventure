@@ -5,10 +5,13 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class TiltShiftPostProcess : MonoBehaviour
 {
-    public Material EffectMaterial;
+    public Material tiltMaterial;
 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
-        Graphics.Blit(source, destination, EffectMaterial);
+        var temporaryTexture = RenderTexture.GetTemporary(source.width, source.height);
+        Graphics.Blit(source, temporaryTexture, tiltMaterial, 0);
+        Graphics.Blit(temporaryTexture, destination, tiltMaterial, 1);
+        RenderTexture.ReleaseTemporary(temporaryTexture);
     }
 }
