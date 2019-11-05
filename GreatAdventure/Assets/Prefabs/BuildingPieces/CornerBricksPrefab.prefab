@@ -1,0 +1,166 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7123498952786545660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7123498952786545656}
+  - component: {fileID: 7123498952786545659}
+  - component: {fileID: 7123498952786545658}
+  - component: {fileID: 7123498952786545661}
+  m_Layer: 0
+  m_Name: CornerBricksPrefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7123498952786545656
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7123498952786545660}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &7123498952786545659
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7123498952786545660}
+  m_Mesh: {fileID: 0}
+--- !u!23 &7123498952786545658
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7123498952786545660}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 3f2bded6bf548b94294e76d753fa4b39, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!114 &7123498952786545661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7123498952786545660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7844f08cfa2fd7d42adaa3ac089ae116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locked: 0
+  repeats: {x: 0, y: 0, z: 0}
+  filter: {fileID: 7123498952786545659}
+  mode: 0
+  switchHorizontalAxes: 0
+  universalScale: {x: 0.4, y: 0.4, z: 0.4}
+  universalOffset: {x: -0.25, y: 0.14, z: 0}
+  horizontalCurve: 0
+  horizontalCurveDepth: 0
+  verticalCurve: 0
+  singleMesh: {fileID: 3369316746193770658, guid: 664a3b2d3b4bdcd48a3e6106e910ea11,
+    type: 3}
+  singleRotation: {x: 0, y: 0, z: 0}
+  ThreeSlice_TopLeft:
+    mesh: {fileID: 7541607064032026909, guid: 9d8da421ffa41ea43a0091333dae9f89, type: 3}
+    scale: {x: 1, y: 1, z: 1}
+    offsets:
+    - {x: 0, y: 0, z: 0}
+    - {x: 0, y: 0, z: 0}
+    - {x: 0, y: 0, z: 0}
+    - {x: 0, y: 0, z: 0}
+  ThreeSlice_Horizontal:
+    mesh: {fileID: 4891869329734334784, guid: 9d8da421ffa41ea43a0091333dae9f89, type: 3}
+    scale: {x: 1, y: 1, z: 1}
+    offsets:
+    - {x: 0, y: 0.25, z: 0}
+    - {x: 0, y: -0.25, z: 0}
+    - {x: -0.25, y: 0, z: 0}
+    - {x: 0.25, y: 0, z: 0}
+  ThreeSlice_Middle:
+    mesh: {fileID: 0}
+    scale: {x: 1, y: 1, z: 1}
+    offset: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+  spacing: {x: 0, y: 0, z: 0}
+  favoredSide: 1
+  nineSliced:
+  - mesh: {fileID: 0}
+    scale: {x: 1, y: 1, z: 1}
+    offset: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+  - mesh: {fileID: 0}
+    scale: {x: 1, y: 1, z: 1}
+    offset: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+  - mesh: {fileID: 0}
+    scale: {x: 1, y: 1, z: 1}
+    offset: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+  - mesh: {fileID: 0}
+    scale: {x: 1, y: 1, z: 1}
+    offset: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+  - mesh: {fileID: 0}
+    scale: {x: 1, y: 1, z: 1}
+    offset: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+  - mesh: {fileID: 0}
+    scale: {x: 1, y: 1, z: 1}
+    offset: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+  - mesh: {fileID: 0}
+    scale: {x: 1, y: 1, z: 1}
+    offset: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+  - mesh: {fileID: 0}
+    scale: {x: 1, y: 1, z: 1}
+    offset: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+  - mesh: {fileID: 0}
+    scale: {x: 1, y: 1, z: 1}
+    offset: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0}

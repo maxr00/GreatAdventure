@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MarketHouseDetail
+  m_Name: DowntownHouse
   m_Shader: {fileID: 4800000, guid: 9d7b4d0f647839b49a6a0e59927938f5, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -69,7 +69,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 1
+    - _Glossiness: 0
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
@@ -81,10 +81,11 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _StencilMask: 2
+    - _Transparency: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 0.9386792, a: 1}
+    - _Color: {r: 0.8113208, g: 0.78740215, b: 0.71564615, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _LightSource: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
