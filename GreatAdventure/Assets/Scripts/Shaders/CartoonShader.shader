@@ -5,7 +5,6 @@
         _Color ("Color", Color) = (1,1,1,1)
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
 		_Ramp("Ramp Texture", 2D) = "white" {}
-		_Transparency("Transparency", Range(0,1)) = 1.0
     }
     SubShader
     {
@@ -27,9 +26,7 @@
         struct Input
         {
             float2 uv_MainTex;
-			float4 screenPos;
         };
-		half _Transparency;
         fixed4 _Color;
 
         // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
@@ -45,10 +42,6 @@
             fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
             o.Albedo = c.rgb;
             o.Alpha = c.a;
-
-			// Screen-door transparency: Discard pixel if below threshold.
-			if (_Transparency != 1.0f)
-				Dither(IN.screenPos, _Transparency);
         }
 
 		half4 LightingRamp(SurfaceOutput s, half3 lightDir, half atten) 
