@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CharacterFollow : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class CharacterFollow : MonoBehaviour
 
     public float dist = 0;
     public float distMult;
+    public float navMeshDist = 10;
 
     Rigidbody rbody;
     CharacterAnimationController animController;
@@ -53,10 +55,26 @@ public class CharacterFollow : MonoBehaviour
     {
         rbody = GetComponent<Rigidbody>();
         animController = GetComponent<CharacterAnimationController>();
+        gameObject.GetComponent<NavMeshAgent>().isStopped = true;
+        gameObject.GetComponent<NavMeshAgent>().speed = 10;
     }
 
     void FixedUpdate()
     {
+        //if not on screen, use navmesha agent
+        dist = Vector3.Distance(target.position, transform.position);
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        if (dist >= navMeshDist)
+        {
+            agent.isStopped = false;
+            agent.destination = target.position;
+            return;
+        }
+        else
+        {
+            agent.isStopped = true;
+        }
+
         var forward = new Vector3(target.position.x - transform.position.x, 0, target.position.z - transform.position.z).normalized;
         if (!allowMovement)
             forward = Vector3.zero;
@@ -65,7 +83,7 @@ public class CharacterFollow : MonoBehaviour
         Debug.DrawLine(transform.position, transform.position - transform.up * groundCheckHeight, Color.blue);
         Debug.DrawLine(transform.position + forward, transform.position + forward - transform.up * groundCheckHeight, Color.gray);
 
-        dist = Vector3.Distance(target.position, transform.position);
+        
         distMult = 0;
         if(dist < minDistance)
         {
