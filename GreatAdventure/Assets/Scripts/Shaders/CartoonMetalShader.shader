@@ -15,7 +15,6 @@
 
 		_RimColor ("Rim Color", Color) = (1,1,1,1)
 		_RimPower ("Rim Power", Range(0,20)) = 6
-		_Transparency("Transparency", Range(0,1)) = 1.0
     }
     SubShader
     {
@@ -23,7 +22,6 @@
         LOD 200
 
         CGPROGRAM
-		#include "Dither.cginc"
         // Physically based Standard lighting model, and enable shadows on all light types
         //#pragma surface surf Standard fullforwardshadows
 		#pragma surface surf Ramp
@@ -40,9 +38,7 @@
 			float2 uv_Normal;
 			float3 viewDir;
 			float3 lightDir;
-			float4 screenPos;
         };
-		half _Transparency;
 		float  _SpecularSize;
 		float _Brightness;
 		float  _HighlightSize;
@@ -80,10 +76,6 @@
 			half rim = 1 - saturate(dot(normalize(IN.viewDir), o.Normal)); // Rim light factor
 			o.Emission = _RimColor.rgb * pow(rim, _RimPower);
             o.Alpha = c.a;
-
-			// Screen-door transparency: Discard pixel if below threshold.
-			if (_Transparency != 1.0f)
-				Dither(IN.screenPos, _Transparency);
         }
 
 		half4 LightingRamp(SurfaceOutput s, half3 lightDir, half atten) 
