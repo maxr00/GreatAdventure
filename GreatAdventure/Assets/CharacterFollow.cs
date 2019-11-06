@@ -31,7 +31,10 @@ public class CharacterFollow : MonoBehaviour
 
     public float dist = 0;
     public float distMult;
+
     public float navMeshDist = 10;
+    public bool isNavMesh = false;
+    public float navMoveSpeed = 5;
 
     Rigidbody rbody;
     CharacterAnimationController animController;
@@ -55,8 +58,13 @@ public class CharacterFollow : MonoBehaviour
     {
         rbody = GetComponent<Rigidbody>();
         animController = GetComponent<CharacterAnimationController>();
-        gameObject.GetComponent<NavMeshAgent>().isStopped = true;
-        gameObject.GetComponent<NavMeshAgent>().speed = 10;
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+
+        if (agent != null)
+        {
+            gameObject.GetComponent<NavMeshAgent>().isStopped = true;
+            gameObject.GetComponent<NavMeshAgent>().speed = navMoveSpeed;
+        }
     }
 
     void FixedUpdate()
@@ -64,15 +72,21 @@ public class CharacterFollow : MonoBehaviour
         //if not on screen, use navmesha agent
         dist = Vector3.Distance(target.position, transform.position);
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
-        if (dist >= navMeshDist)
+        if (agent != null)
         {
-            agent.isStopped = false;
-            agent.destination = target.position;
-            return;
-        }
-        else
-        {
-            agent.isStopped = true;
+            if (dist >= navMeshDist)
+            {
+                isNavMesh = true;
+                agent.isStopped = false;
+                agent.destination = target.position;
+                gameObject.GetComponent<NavMeshAgent>().speed = navMoveSpeed;
+                return;
+            }
+            else
+            {
+                isNavMesh = false;
+                agent.isStopped = true;
+            }
         }
 
         var forward = new Vector3(target.position.x - transform.position.x, 0, target.position.z - transform.position.z).normalized;
@@ -83,9 +97,9 @@ public class CharacterFollow : MonoBehaviour
         Debug.DrawLine(transform.position, transform.position - transform.up * groundCheckHeight, Color.blue);
         Debug.DrawLine(transform.position + forward, transform.position + forward - transform.up * groundCheckHeight, Color.gray);
 
-        
+
         distMult = 0;
-        if(dist < minDistance)
+        if (dist < minDistance)
         {
             distMult = 0;
         }
@@ -93,7 +107,7 @@ public class CharacterFollow : MonoBehaviour
         {
             distMult = maxDistanceMultiplier;
         }
-        else if(dist <= safeDistance)
+        else if (dist <= safeDistance)
         {
             distMult = (dist - minDistance) / (safeDistance - minDistance);
         }
@@ -129,7 +143,7 @@ public class CharacterFollow : MonoBehaviour
                     // Continue movement force
                     rbody.AddForce(move * moveSpeed * distMult, ForceMode.Impulse);
                 }
-                
+
                 // Smooth Turning:
                 /*
                     if((transform.forward + Vector3.ProjectOnPlane(rbody.velocity, hitRamp.normal).normalized).sqrMagnitude > 0.1f)
