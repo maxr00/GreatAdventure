@@ -4,10 +4,11 @@
     {
         _Color ("Color", Color) = (1,1,1,1)
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
-        _Glossiness ("Smoothness", Range(0,1)) = 0.5
-        _Metallic ("Metallic", Range(0,1)) = 0.0
+		_Glossiness("Smoothness", Range(0,1)) = 0.5
+		_Metallic("Metallic", Range(0,1)) = 0.0
 		_StencilMask("Mask Layer", Range(0, 255)) = 1
 		_Transparency("Transparency", Range(0,1)) = 1.0
+		_FallOff("FallOff", Range(0,1)) = 1
     }
     SubShader
     {
@@ -45,10 +46,12 @@
         {
             float2 uv_MainTex;
 			float4 screenPos;
+			float3 worldPos;
         };
 		half _Transparency;
         half _Glossiness;
         half _Metallic;
+		half _FallOff;
         fixed4 _Color;
 
         // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
@@ -68,9 +71,17 @@
             o.Smoothness = _Glossiness;
             o.Alpha = c.a;
 
+			float3 localPos = IN.worldPos - mul(unity_ObjectToWorld, float4(0, 0, 0, 1)).xyz;
+			float dist = length(localPos);
+			float transp_factor = dist == 0 ? 0 : 1 / pow((dist * dist), _FallOff);
+			transp_factor = clamp(transp_factor, 0, 1);
+			float transparency = transp_factor * _Transparency;
+
 			// Screen-door transparency: Discard pixel if below threshold.
-			if (_Transparency != 1.0f)
-				Dither(IN.screenPos, _Transparency);
+			if (transparency != 1.0f)
+				Dither(IN.screenPos, transparency);
+
+			//o.Albedo = float3(transparency, 0, 0);
         }
         ENDCG
     }
