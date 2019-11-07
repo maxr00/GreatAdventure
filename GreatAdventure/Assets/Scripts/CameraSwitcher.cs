@@ -9,8 +9,9 @@ public class CameraSwitcher : MonoBehaviour
 
     public CinemachineVirtualCamera defaultCamera;
     public CinemachineVirtualCamera dialogueCamera;
+    public CinemachineVirtualCamera carCamera;
 
-    public enum State { GAMEPLAY, DIALOGUE };
+    public enum State { GAMEPLAY, DIALOGUE, CAR };
     public State currState;
 
     void Start()
@@ -22,21 +23,29 @@ public class CameraSwitcher : MonoBehaviour
     {
         if(currState == State.GAMEPLAY)
         {
+            defaultCamera.gameObject.SetActive(true);
+            dialogueCamera.gameObject.SetActive(false);
+            carCamera.gameObject.SetActive(false);
             if (DialogueComponent.currentActiveDialogue != null)
             {
                 currState = State.DIALOGUE;
-                defaultCamera.gameObject.SetActive(false);
-                dialogueCamera.gameObject.SetActive(true);
             }
         }
         else if(currState == State.DIALOGUE)
         {
+            defaultCamera.gameObject.SetActive(false);
+            dialogueCamera.gameObject.SetActive(true);
+            carCamera.gameObject.SetActive(false);
             if (DialogueComponent.currentActiveDialogue == null)
             {
                 currState = State.GAMEPLAY;
-                defaultCamera.gameObject.SetActive(true);
-                dialogueCamera.gameObject.SetActive(false);
             }
+        }
+        else if(currState == State.CAR)
+        {
+            defaultCamera.gameObject.SetActive(false);
+            dialogueCamera.gameObject.SetActive(false);
+            carCamera.gameObject.SetActive(true);
         }
     }
 }

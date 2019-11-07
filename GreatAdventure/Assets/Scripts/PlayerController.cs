@@ -73,6 +73,8 @@ public class PlayerController : MonoBehaviour
             Physics.Raycast(new Ray(transform.position + forward * bodyRadius, -Vector3.up), out var hitRamp, groundCheckHeight, groundLayer);
 
             var move = horiz * Vector3.right + vert * Vector3.forward;
+            if (!allowMovement)
+                move = Vector3.zero;
             //move = move.normalized; // feels better without
             //move = Vector3.ProjectOnPlane(move, hitRamp.normal).normalized;
 
