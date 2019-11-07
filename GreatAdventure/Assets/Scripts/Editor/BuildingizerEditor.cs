@@ -13,7 +13,10 @@ public class BuildingizerEditor : Editor
 
         if (GUILayout.Button("BUILDINGIZE"))
         {
-            (target as Buildingizer).Buildingize();
+            foreach(var t in targets)
+            {
+                (t as Buildingizer).Buildingize();
+            }
         }
 
         GUILayout.Space(15);
