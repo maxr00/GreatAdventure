@@ -17,12 +17,9 @@ public class EnterCar : MonoBehaviour
         cam.currState = CameraSwitcher.State.CAR;
 
         oldParent = player.transform.parent;
-        //playerTarget.transform.parent = transform;
-
-        //playerTarget.transform.position = transform.position;
+        playerTarget.GetComponent<SeeThroughWall>().enabled = false;
 
         player.allowMovement = false;
-        //playerTarget.GetComponent<CameraFollow>().enabled = false;
 
         entered = true;
     }
@@ -32,13 +29,11 @@ public class EnterCar : MonoBehaviour
         GetComponent<CarControls>().enabled = false;
         cam.currState = CameraSwitcher.State.GAMEPLAY;
 
-        //playerTarget.transform.parent = oldParent;
         oldParent = null;
 
-        player.allowMovement = true;
-        //playerTarget.GetComponent<CameraFollow>().enabled = true;
+        playerTarget.GetComponent<SeeThroughWall>().enabled = true;
 
-        //playerTarget.transform.position = player.transform.position;
+        player.allowMovement = true;
 
         entered = false;
     }
