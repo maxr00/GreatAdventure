@@ -3,6 +3,11 @@
 [ExecuteInEditMode]
 public class Buildingizer : MonoBehaviour
 {
+    public GameObject foundation;
+    public float foundationY = 0;
+
+    public GameObject inside;
+
     public GameObject cornerBricks;
     public float repeatsPerScale = 1;
     public float bricksInset = 0.3f;
@@ -39,6 +44,10 @@ public class Buildingizer : MonoBehaviour
         Vector3 scale = transform.lossyScale;
         Vector3 maxBound = transform.lossyScale * 0.5f;
 
+        // Foundation and Inside
+        GameObject.Instantiate(foundation, new Vector3(transform.position.x, foundationY, transform.position.z), Quaternion.identity, parent.transform).transform.localScale = new Vector3(scale.x, 0.1f, scale.z);
+        GameObject.Instantiate(inside, transform.position, Quaternion.identity, parent.transform).transform.localScale = scale * 0.99f;
+
         // Corner Bricks
         GameObject[] bricks = new GameObject[]
         {
@@ -55,8 +64,6 @@ public class Buildingizer : MonoBehaviour
         // Windows
         float boundsOverF1 = Mathf.Max(transform.position.y + maxBound.y - floor1WindowsY, 0);
 
-        Debug.Log(boundsOverF1 / floorWindowDistance);
-
         Vector3 numWindows = new Vector3Int(
             (int)(windowsPerScale * scale.x), 
             (int)Mathf.Max( Mathf.Round(boundsOverF1 / floorWindowDistance), 1), 
@@ -64,7 +71,7 @@ public class Buildingizer : MonoBehaviour
         Vector3 windowDist = new Vector3(scale.x / numWindows.x, 0, scale.z / numWindows.z);
         Vector3 start = new Vector3(-maxBound.x + windowDist.x / 2, 0, -maxBound.z + windowDist.z / 2);
 
-        int doorIndex = Random.Range(0, (int)((doorForward == Direction.X_POS || doorForward == Direction.X_NEG) ? numWindows.x : numWindows.z) );
+        int doorIndex = Random.Range(0, (int)((doorForward == Direction.X_POS || doorForward == Direction.X_NEG) ? numWindows.z : numWindows.x) );
 
         for(int y = 0; y < numWindows.y; y++)
         {
