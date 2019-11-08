@@ -93,6 +93,10 @@ public class CharacterVoice : MonoBehaviour
     string RemoveDups(string word)
     {
         char[] c = word.ToCharArray();
+
+        if (c.Length == 0)
+            return word;
+
         string text = "" + c[0];
         for (int i = 1; i < c.Length - 1; i++)
         {
