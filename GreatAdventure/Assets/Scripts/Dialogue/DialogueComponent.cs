@@ -362,8 +362,6 @@ public class DialogueComponent : MonoBehaviour
         m_dialogueAsset.m_dialogueData.TryGetValue(next_dialogue_list[0], out header_dialogue);
         CharacterComponent characterComp;
         m_dialogueAsset.m_characterData.TryGetValue(header_dialogue.characterName, out characterComp);
-        m_textDisplay.DisplayDialogueHeader(header_dialogue.characterName, characterComp.characterIcon);
-        m_textDisplay.NewLine();
 
         // displaying text for each dialogue option
         int drawIndex = 0;
@@ -391,7 +389,7 @@ public class DialogueComponent : MonoBehaviour
             }
             ++drawIndex;
         }
-
+        m_textDisplay.DisplayDialogueHeader(header_dialogue.characterName, characterComp.characterIcon);
         hasPlayerOptions = true;
         nextDialogue = false;
     }

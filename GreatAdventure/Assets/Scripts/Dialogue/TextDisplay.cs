@@ -21,7 +21,7 @@ public class TextDisplay : MonoBehaviour
     public float optionOffset = 60;
 
     public Vector3 header_start_pos = new Vector3(310, 240, 0);
-    public Vector3 character_icon_pos = new Vector3(150, 240, 0);
+    //public Vector3 character_icon_pos = new Vector3(150, 240, 0);
     private GameObject characterIcon;
 
     //dialogue bubble details
@@ -44,7 +44,7 @@ public class TextDisplay : MonoBehaviour
     private float currentLineOffset = 0.0f;
     private bool stopTypewriterEffect = false;
 
-    float aspectRatio = 0;
+    public float aspectRatio = 0;
 
     private void Start()
     {
@@ -55,15 +55,18 @@ public class TextDisplay : MonoBehaviour
         characterIcon.GetComponent<Image>().enabled = false;
         startPos = MainDialogueStart;
 
-        aspectRatio = Camera.main.aspect;
+        aspectRatio = 1;// Camera.main.aspect;
 
         for (int i = 0; i < 3; ++i)
         {
             DialogueOptionBubbles[i] = GameObject.Instantiate(DialogueOptionBubble, textPool.GetComponent<Transform>());
             DialogueOptionBubbleOutlines[i] = GameObject.Instantiate(DialogueOptionBubbleOutline, textPool.GetComponent<Transform>());
-            Vector3 defaultPosition = DialogueOptionBubbles[i].GetComponent<RectTransform>().position;
-            DialogueOptionBubbles[i].GetComponent<RectTransform>().position = defaultPosition + new Vector3(0, (-110 * i) / aspectRatio, 0);
-            DialogueOptionBubbleOutlines[i].GetComponent<RectTransform>().position = defaultPosition + new Vector3(0,(-110 * i) / aspectRatio, 0);
+            Vector2 defaultOffMin = DialogueOptionBubbles[i].GetComponent<RectTransform>().offsetMin;
+            Vector2 defaultOffMax = DialogueOptionBubbles[i].GetComponent<RectTransform>().offsetMax;
+            DialogueOptionBubbles[i].GetComponent<RectTransform>().offsetMin = defaultOffMin + new Vector2(0, (-50 * i));
+            DialogueOptionBubbleOutlines[i].GetComponent<RectTransform>().offsetMin = defaultOffMin + new Vector2(0, (-50 * i));
+            DialogueOptionBubbles[i].GetComponent<RectTransform>().offsetMax = defaultOffMax + new Vector2(0, (-50 * i));
+            DialogueOptionBubbleOutlines[i].GetComponent<RectTransform>().offsetMax = defaultOffMax + new Vector2(0, (-50 * i));
             DialogueOptionBubbles[i].SetActive(false);
             DialogueOptionBubbleOutlines[i].SetActive(false);
         }
@@ -81,7 +84,7 @@ public class TextDisplay : MonoBehaviour
     {
         newLineOffset = 1.2f;
         header_start_pos = new Vector3(0, 0, 0);
-        character_icon_pos = new Vector3(0, 0, 0);
+        //character_icon_pos = new Vector3(0, 0, 0);
 
         textPool.GetComponent<RectTransform>().position = obj_pos;
         textPool.GetComponent<RectTransform>().sizeDelta = new Vector2(5, 5);
@@ -186,7 +189,7 @@ public class TextDisplay : MonoBehaviour
         {
             characterIcon.GetComponent<Image>().enabled = true;
             characterIcon.GetComponent<Image>().sprite = header_icon;
-            characterIcon.GetComponent<RectTransform>().position = character_icon_pos;
+            //characterIcon.GetComponent<RectTransform>().position = character_icon_pos;
 
         }
         PopulateModifierList(dialogue_header_text);
@@ -775,6 +778,9 @@ public class TextDisplay : MonoBehaviour
         string displayText = Regex.Replace(textComponent.text, tag_pattern, "");
         if (displayText == " ")
             return textComponent.fontSize / 4.0f;
+
+        Debug.Log(textComponent.preferredWidth);
+
         return textComponent.preferredWidth;
     }
 }
