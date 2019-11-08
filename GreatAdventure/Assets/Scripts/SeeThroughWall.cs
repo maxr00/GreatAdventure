@@ -44,38 +44,15 @@ public class SeeThroughWall : MonoBehaviour
 
                 if (hitRend != null)
                 {
-                    //last?.GetComponent<Renderer>()?.material.SetInt("_StencilMask", 2);
-                    hitRend.material.SetInt("_StencilMask", 1);
-                    //last = hit.transform.gameObject;
-                    hitRend.material.renderQueue = 3000; // transparent
+                    string isMaskable = hitRend.material.GetTag("Maskable", true, "false");
+                    if (isMaskable != "false")
+                    {
+                        hitRend.material.SetInt("_StencilMask", 1);
+                        hitRend.material.renderQueue = 3000; // transparent
+                    }
                 }
             }
         }
         pastHits = hits;
-
-
-
-        //RaycastHit hit;
-        
-        //if (Physics.Raycast(player.position, cam.position - player.position, out hit, Vector3.Distance(player.position, cam.position) ))
-        //{
-        //    if (hit.transform.gameObject.GetComponent<Renderer>() == null) { return; }
-        //    Debug.DrawRay(player.position, cam.position - player.position, Color.red);
-
-        //    if(hit.transform.gameObject != last)
-        //    {
-        //        last?.GetComponent<Renderer>()?.material.SetInt("_StencilMask", 2);
-        //        hit.transform.gameObject.GetComponent<Renderer>()?.material.SetInt("_StencilMask", 1);
-        //        last = hit.transform.gameObject;
-        //        last.GetComponent<Renderer>().material.renderQueue = 3000; // transparent
-        //    }
-        //}
-        //else
-        //{
-        //    Debug.DrawLine(player.position, cam.position, Color.blue);
-        //    if (last != null) last.GetComponent<Renderer>().material.renderQueue = -1; // from shader
-        //    last?.GetComponent<Renderer>()?.material.SetInt("_StencilMask", 2);
-        //    last = null;
-        //}
     }
 }

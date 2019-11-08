@@ -13,7 +13,11 @@
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags 
+		{ 
+			"RenderType"="Opaque" 
+			"Maskable" = "True"
+		}
         LOD 200
 
 		Stencil
