@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: AppearOld
   m_EditorClassIdentifier: 
   questName: Find a way to appear old enough to get the package
-  isComplete: 0
+  isComplete: 1
+  subQuests: []
+  parentQuest: {fileID: 11400000, guid: d79931f9136aa3a4ba736f10e801501f, type: 2}

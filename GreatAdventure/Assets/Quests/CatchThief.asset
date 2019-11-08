@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questName: Catch the document thief!
   isComplete: 0
+  subQuests: []
+  parentQuest: {fileID: 11400000, guid: 85bc5e077eca166418d182a4f0414fdc, type: 2}

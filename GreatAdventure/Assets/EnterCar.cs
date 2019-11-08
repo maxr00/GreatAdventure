@@ -11,6 +11,11 @@ public class EnterCar : MonoBehaviour
     bool entered = false;
     Transform oldParent = null;
 
+    public void Enable()
+    {
+        gameObject.SetActive(true);
+    }
+
     public void Enter()
     {
         GetComponent<CarControls>().enabled = true;

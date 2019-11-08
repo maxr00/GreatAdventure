@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: AquireDocuments
   m_EditorClassIdentifier: 
   questName: Acquire Documents for the Mysterious Trenchcoat Man
-  isComplete: 0
+  isComplete: 1
+  subQuests: []
+  parentQuest: {fileID: 11400000, guid: 7d295227e23b7cf49a7795842d5c8fa9, type: 2}

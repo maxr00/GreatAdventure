@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: PickupPackage
   m_EditorClassIdentifier: 
   questName: Pickup a package from The Onion Emporeum
-  isComplete: 0
+  isComplete: 1
+  subQuests: []
+  parentQuest: {fileID: 11400000, guid: b3fbeacf43312544c866cb9d93382513, type: 2}
