@@ -15,12 +15,22 @@ public class TextDisplay : MonoBehaviour
 
     public GameObject CharacterIconPrefab;
     public Sprite clearSprite;
-    public Vector3 MainDialogueStart = new Vector3(50, 125, 0);
-    public float newLineOffset = 32;
+    public Vector3 MainDialogueStart = new Vector3(120, 140, 0);
+    public Vector3 OptionDialogueStart = new Vector3(275, 220, 0);
+    public float newLineOffset = 48;
+    public float optionOffset = 60;
 
-    public Vector3 header_start_pos = new Vector3(125, 130, 0);
-    public Vector3 character_icon_pos = new Vector3(50, 150, 0);
+    public Vector3 header_start_pos = new Vector3(310, 240, 0);
+    public Vector3 character_icon_pos = new Vector3(150, 240, 0);
     private GameObject characterIcon;
+
+    //dialogue bubble details
+    public GameObject DialogueBubble;
+    public GameObject DialogueBubbleOutline;
+    public GameObject DialogueOptionBubble;
+    public GameObject DialogueOptionBubbleOutline;
+    private GameObject[] DialogueOptionBubbles = new GameObject[3];
+    private GameObject[] DialogueOptionBubbleOutlines = new GameObject[3];
 
     private Vector3 startPos = new Vector3();
     private bool done = true;
@@ -33,7 +43,8 @@ public class TextDisplay : MonoBehaviour
     private float pause_time = 1.0f;
     private float currentLineOffset = 0.0f;
     private bool stopTypewriterEffect = false;
-    // worldspace values
+
+    float aspectRatio = 0;
 
     private void Start()
     {
@@ -43,15 +54,24 @@ public class TextDisplay : MonoBehaviour
         characterIcon = GameObject.Instantiate(CharacterIconPrefab, textPool.GetComponent<Transform>());
         characterIcon.GetComponent<Image>().enabled = false;
         startPos = MainDialogueStart;
+
+        aspectRatio = Camera.main.aspect;
+
+        for (int i = 0; i < 3; ++i)
+        {
+            DialogueOptionBubbles[i] = GameObject.Instantiate(DialogueOptionBubble, textPool.GetComponent<Transform>());
+            DialogueOptionBubbleOutlines[i] = GameObject.Instantiate(DialogueOptionBubbleOutline, textPool.GetComponent<Transform>());
+            Vector3 defaultPosition = DialogueOptionBubbles[i].GetComponent<RectTransform>().position;
+            DialogueOptionBubbles[i].GetComponent<RectTransform>().position = defaultPosition + new Vector3(0, (-110 * i) / aspectRatio, 0);
+            DialogueOptionBubbleOutlines[i].GetComponent<RectTransform>().position = defaultPosition + new Vector3(0,(-110 * i) / aspectRatio, 0);
+            DialogueOptionBubbles[i].SetActive(false);
+            DialogueOptionBubbleOutlines[i].SetActive(false);
+        }
+
     }
 
     public void SetAsActiveDialogue()
     {
-        MainDialogueStart = new Vector3(50, 125, 0);
-        newLineOffset = 32;
-        header_start_pos = new Vector3(125, 130, 0);
-        character_icon_pos = new Vector3(50, 150, 0);
-
         textPool.GetComponent<RectTransform>().position = new Vector3(300, 300, 0);
         textPool.GetComponent<RectTransform>().sizeDelta = new Vector2(598, 597);
         textPool.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
@@ -79,10 +99,26 @@ public class TextDisplay : MonoBehaviour
         {
             textChars[i].GetComponent<RectTransform>().position = newPosition + new Vector3(localLineOffset, 0, 0);
             textChars[i].GetComponent<ShakeLetter>().UpdateCenterPos(textChars[i].GetComponent<RectTransform>().position);
-            localLineOffset += GetCharacterWidth(textChars[i].GetComponent<TextMeshProUGUI>());
+            localLineOffset += GetCharacterWidth(textChars[i].GetComponent<TextMeshProUGUI>()) / aspectRatio;
         }
     }
-    
+
+    public void DisplayingOptions()
+    {
+        startPos = OptionDialogueStart;
+    }
+
+    public void StopDisplayingOptions()
+    {
+        startPos = MainDialogueStart;
+    }
+
+    public void NewOption()
+    {
+        currentLineOffset = 0.0f;
+        startPos.y -= optionOffset;
+    }
+
     public void StopTypeWriterEffect()
     {
         stopTypewriterEffect = true;
@@ -116,6 +152,32 @@ public class TextDisplay : MonoBehaviour
         textChars.AddRange(textPool.Claim(displayText.Length));
         ClearCharProperties(displayText);
         StartCoroutine(DisplayText(displayText));
+    }
+
+    public void DisplayActiveBubble(bool isActive)
+    {
+        DialogueBubble.gameObject.SetActive(isActive);
+        DialogueBubbleOutline.gameObject.SetActive(isActive);
+    }
+
+    public void DisplayActiveOptionBubble(bool isActive, int optionCount)
+    {
+        if (isActive)
+        {
+            for (int i = 0; i < optionCount; ++i)
+            {
+                DialogueOptionBubbles[i].SetActive(true);
+                DialogueOptionBubbleOutlines[i].SetActive(true);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 3; ++i)
+            {
+                DialogueOptionBubbles[i].SetActive(false);
+                DialogueOptionBubbleOutlines[i].SetActive(false);
+            }
+        }
     }
 
     public void DisplayDialogueHeader(string dialogue_header_text, Sprite header_icon)
@@ -211,7 +273,7 @@ public class TextDisplay : MonoBehaviour
             textChars[i + textCharsStartIndex].GetComponent<TextMeshProUGUI>().text = GetStartCharTags(i) + chars[i].ToString() + GetEndCharTags(i);
             textChars[i + textCharsStartIndex].GetComponent<RectTransform>().position = startPos + new Vector3(currentLineOffset, 0, 0);
             ApplyTextModifiers(i, textChars[i + textCharsStartIndex]);
-            currentLineOffset += GetCharacterWidth(textChars[i + textCharsStartIndex].GetComponent<TextMeshProUGUI>());
+            currentLineOffset += GetCharacterWidth(textChars[i + textCharsStartIndex].GetComponent<TextMeshProUGUI>()) / aspectRatio;
             if (!isPaused)
             {
                 yield return new WaitForSeconds(current_char_delay);
@@ -244,7 +306,7 @@ public class TextDisplay : MonoBehaviour
             textChars[i + textCharsStartIndex].GetComponent<TextMeshProUGUI>().text = GetStartCharTags(i) + chars[i].ToString() + GetEndCharTags(i);
             textChars[i + textCharsStartIndex].GetComponent<RectTransform>().position = startPos + new Vector3(currentLineOffset, 0, 0);
             ApplyTextModifiers(i, textChars[i + textCharsStartIndex]);
-            currentLineOffset += GetCharacterWidth(textChars[i + textCharsStartIndex].GetComponent<TextMeshProUGUI>());
+            currentLineOffset += GetCharacterWidth(textChars[i + textCharsStartIndex].GetComponent<TextMeshProUGUI>()) / aspectRatio;
         }
     }
 
@@ -256,7 +318,7 @@ public class TextDisplay : MonoBehaviour
             textChars[i + textCharsStartIndex].GetComponent<TextMeshProUGUI>().text = GetStartCharTags(i) + chars[i].ToString() + GetEndCharTags(i);
             textChars[i + textCharsStartIndex].GetComponent<RectTransform>().position = startPos + new Vector3(currentLineOffset, 0, 0);
             ApplyTextModifiers(i, textChars[i + textCharsStartIndex]);
-            currentLineOffset += GetCharacterWidth(textChars[i + textCharsStartIndex].GetComponent<TextMeshProUGUI>());
+            currentLineOffset += GetCharacterWidth(textChars[i + textCharsStartIndex].GetComponent<TextMeshProUGUI>()) / aspectRatio;
         }
     }
 

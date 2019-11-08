@@ -77,10 +77,13 @@ public class DialogueComponent : MonoBehaviour
         if (nextDialogue)
         {
             m_textDisplay.DisplayDialogueHeader(dialogue.characterName, characterComp.characterIcon);
-            m_textDisplay.NewLine();
 
             // do all the actions for the current dialogue
+            m_textDisplay.StopDisplayingOptions();
+            m_textDisplay.DisplayActiveOptionBubble(false, 0);
+            m_textDisplay.DisplayActiveBubble(true);
             m_textDisplay.Display(dialogue.dialogueText);
+
             AddItemsToInventory(dialogue);
             UpdateQuests(dialogue);
             characterComp.OnCharacterTalk(dialogue.GetDialogueTextWithoutTags());
@@ -100,7 +103,6 @@ public class DialogueComponent : MonoBehaviour
             m_textDisplay.StopTypeWriterEffect();
             m_textDisplay.ClearDisplay();
             m_textDisplay.DisplayDialogueHeader(dialogue.characterName, characterComp.characterIcon);
-            m_textDisplay.NewLine();
             m_textDisplay.AddToDisplayImmediate(dialogue.dialogueText);
             return;
         }
@@ -148,6 +150,7 @@ public class DialogueComponent : MonoBehaviour
             {
                 isActive = false;
                 currentActiveDialogue = null;
+                m_textDisplay.DisplayActiveBubble(false);
             }
         }
         // selecting player option
@@ -347,7 +350,11 @@ public class DialogueComponent : MonoBehaviour
 
     private void DisplayDialogueOptions(List<int> next_dialogue_list)
     {
+        m_textDisplay.DisplayActiveBubble(false);
+        m_textDisplay.DisplayActiveOptionBubble(true, next_dialogue_list.Count);
         m_textDisplay.ClearDisplay();
+        m_textDisplay.DisplayingOptions();
+        
         //header details
         DialogueData header_dialogue;
         m_dialogueAsset.m_dialogueData.TryGetValue(next_dialogue_list[0], out header_dialogue);
@@ -378,7 +385,7 @@ public class DialogueComponent : MonoBehaviour
                     else
                         m_textDisplay.AddToDisplayImmediate(dialogue.dialogueText);
                 }
-                m_textDisplay.NewLine();
+                m_textDisplay.NewOption();
             }
             ++drawIndex;
         }
