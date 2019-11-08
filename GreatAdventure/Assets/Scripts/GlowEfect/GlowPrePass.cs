@@ -56,8 +56,8 @@ public class GlowPrePass : MonoBehaviour
 
     private void ReleaseRenderTargets()
     {
-        PrePass.Release();
-        Blurred.Release();
+        PrePass?.Release();
+        Blurred?.Release();
     }
 
     private void CreateRenderTargets()
