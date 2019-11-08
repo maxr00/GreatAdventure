@@ -41,6 +41,11 @@ public class GlowObject : MonoBehaviour
 
     void Update()
     {
+        if (DialogueComponent.currentActiveDialogue != null)
+        {
+            TurnOffGlow();
+        }
+
         currentColor = Color.Lerp(currentColor, targetColor, Time.deltaTime * LerpFactor);
         for (int i = 0; i < materials.Count; ++i)
         {
