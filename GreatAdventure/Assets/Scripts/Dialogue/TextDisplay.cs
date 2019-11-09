@@ -14,14 +14,12 @@ public class TextDisplay : MonoBehaviour
     int textCharsStartIndex = 0;
 
     public GameObject CharacterIconPrefab;
-    public Sprite clearSprite;
     public Vector3 MainDialogueStart = new Vector3(0.1f, 0.25f, 0);
     public Vector3 OptionDialogueStart = new Vector3(0.22f, 0.28f, 0);
     public float newLineOffset = 0.05f;
     public float optionOffset = 0.1f;
 
-    public Vector3 header_start_pos = new Vector3(250, 25, 0);
-    //public Vector3 character_icon_pos = new Vector3(150, 240, 0);
+    public Vector3 header_start_pos = new Vector3(0.25f, 0.37f, 0);
     private GameObject characterIcon;
 
     //dialogue bubble details
