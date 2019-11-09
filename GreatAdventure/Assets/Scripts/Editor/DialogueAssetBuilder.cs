@@ -192,7 +192,7 @@ public class DialogueAssetBuilder : ScriptableObject
                 Plug out_plug = LoadInputPlug(data, ref data_index, PlugType.kOut);
                 node.m_outputPlugs.Add(out_plug.m_plugId, out_plug);
             }
-            m_nodeGraphModel.AddNode(node);
+            m_nodeGraphModel.AddNode(node); 
         }
 
         // edit here when dialogue data changes
@@ -201,7 +201,7 @@ public class DialogueAssetBuilder : ScriptableObject
             DialogueData dialogue = m_dialogueAsset.m_runtimeBuiltData[dialogue_index];
             m_nodeGraphModel.AddDialogueData(dialogue);
         }
-
+        m_nodeGraphModel.startNodeID = m_dialogueAsset.m_startIndex;
         //updating involved characters gameobject list
         m_dialogueAsset.LoadCharactersInvolvedGameObjects();
     }

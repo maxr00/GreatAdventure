@@ -54,6 +54,8 @@ public class NodeGraphModel
     public float plug_height = 20.0f;
     public float in_between_plug_height = 10.0f;
 
+    public int startNodeID = 0;
+
     public NodeGraphModel()
     {
         m_nodes = new Dictionary<int, Node>();
@@ -162,6 +164,9 @@ public class NodeGraphModel
         m_dialogueData.Remove(node_id);
         // removing actual node
         m_nodes.Remove(node_id);
+
+        if (startNodeID == node_id)
+            startNodeID = 0;
     }
 
     public int AddOutputPlugToNode(int node_id) // returns created plug id

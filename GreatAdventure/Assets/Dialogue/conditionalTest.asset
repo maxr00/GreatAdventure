@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7603831631141279651
+--- !u!114 &-7274403701837653072
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -437239296
+  m_Name: 902423040
   m_EditorClassIdentifier: 
-  node_id: -437239296
+  node_id: 902423040
   m_isStartNode: 0
-  branchingIndex: 0
-  characterName: Player
-  dialogueText: You selected option 2
-  previewDialogueText: Option2
-  characterSpeakingIndex: 0
+  branchingIndex: 1
+  characterName: Door
+  dialogueText: "you have an <i><b>eye???</i></b> \ni wont ask any questions..."
+  previewDialogueText: 
+  characterSpeakingIndex: 1
   emotion: 0
   itemsToGive: []
   questsToAdd: []
@@ -33,149 +33,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 
---- !u!114 &-6219210450822321494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -416590336
-  m_EditorClassIdentifier: 
-  node_id: -416590336
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: Door
-  dialogueText: 'wow nothing
-
-    like
-
-    really?'
-  previewDialogueText: 
-  characterSpeakingIndex: 1
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 1
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 00f437780080ee94
---- !u!114 &-3440866035633429354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: 1374447104
-  m_EditorClassIdentifier: 
-  node_id: 1374447104
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: Player
-  dialogueText: You selected option 1
-  previewDialogueText: Option1
-  characterSpeakingIndex: 0
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 
---- !u!114 &-1481244139568267095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -750744064
-  m_EditorClassIdentifier: 
-  node_id: -750744064
-  m_isStartNode: 1
-  branchingIndex: 0
-  characterName: Door
-  dialogueText: show me what you have
-  previewDialogueText: 
-  characterSpeakingIndex: 1
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 1
-  itemsToCheck:
-  - {fileID: 11400000, guid: a57c214f3586b6a4ebf3f4263e0ada60, type: 2}
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 1
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 00562be700e2c935
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dd4f336407e46342afbdf2e5056f0f1, type: 3}
-  m_Name: conditionalTest
-  m_EditorClassIdentifier: 
-  m_startIndex: -750744064
-  m_runtimeBuiltData:
-  - {fileID: 6047150611862784004}
-  - {fileID: -1481244139568267095}
-  - {fileID: -6219210450822321494}
-  - {fileID: 7125320048618313659}
-  - {fileID: 6463912339129754546}
-  - {fileID: 4934038409417801513}
-  - {fileID: 6927968592240873443}
-  - {fileID: 3700604829798622517}
-  - {fileID: -3440866035633429354}
-  - {fileID: -7603831631141279651}
-  - {fileID: 4950942160358576577}
-  m_assetData: 9`302384512`1095143424`-1796308992`61480320`-731319552`1210635904`-416590336`-750744064`-1441522176`1877797120`-1871798784`902423040`-750744064`1058159104`-914369024`2094070656`-1796308992`-416590336`2060846592`601785600`-174746496`2016932864`-416590336`893820032`1457362048`-911336064`-1439951872`902423040`-115528832`-337923968`575899008`1374447104`505924608`-1323904768`557994368`691852928`-437239296`505924608`1875425536`1869396224`-1298434304`831096320`505924608`2079517056`-1855978112`11`1095143424`745`143`150`75`False`1095143424`61480320`0`1`1095143424`-1334602752`0`-750744064`86`174`150`105`True`-750744064`-1021087104`0`2`-750744064`1877797120`0`-750744064`-914369024`1`-416590336`302`105`150`105`False`-416590336`-1441522176`0`2`-416590336`1457362048`0`-416590336`601785600`0`902423040`302`288`150`75`False`902423040`1058159104`0`1`902423040`-337923968`0`-1439951872`524`286`150`75`False`-1439951872`-115528832`0`1`-1439951872`97907328`0`2016932864`511`56`150`75`False`2016932864`893820032`0`1`2016932864`-502263040`0`-1796308992`511`145`150`75`False`-1796308992`2060846592`0`1`-1796308992`-731319552`0`505924608`95`448`150`135`False`505924608`1954077440`0`3`505924608`557994368`0`505924608`1869396224`0`505924608`-1855978112`0`1374447104`321`452`150`75`False`1374447104`-1323904768`0`1`1374447104`1574979456`0`-437239296`325`520`150`75`False`-437239296`1875425536`0`1`-437239296`479342464`0`831096320`324`592`150`75`False`831096320`2079517056`0`1`831096320`683433984`0`
-  m_charactersInvolvedStrings:
-  - Player
-  - Door
-  SceneName: LevelTest
-  m_CharactersInvoled:
-  - {fileID: 0}
-  - {fileID: 0}
-  m_isActiveDialogue: 1
---- !u!114 &3700604829798622517
+  m_nextDialogueData: 00142caa
+--- !u!114 &-3425337769936162809
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -209,7 +68,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_nextDialogueData: 0066ec510042f0e500868931
---- !u!114 &4934038409417801513
+--- !u!114 &-2973185142296756853
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -219,17 +78,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: 2016932864
+  m_Name: -1796308992
   m_EditorClassIdentifier: 
-  node_id: 2016932864
+  node_id: -1796308992
   m_isStartNode: 0
-  branchingIndex: 0
+  branchingIndex: 1
   characterName: Player
-  dialogueText: 'uh, ok bye
-
-
-    why am i talking to a door anyway?'
-  previewDialogueText: bye
+  dialogueText: what do you want?
+  previewDialogueText: what?
   characterSpeakingIndex: 0
   emotion: 0
   itemsToGive: []
@@ -245,8 +101,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 
---- !u!114 &4950942160358576577
+  m_nextDialogueData: 00904641
+--- !u!114 &-1204559761745799383
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -256,15 +112,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: 831096320
+  m_Name: -416590336
   m_EditorClassIdentifier: 
-  node_id: 831096320
+  node_id: -416590336
   m_isStartNode: 0
   branchingIndex: 0
-  characterName: Player
-  dialogueText: You selected option 3
-  previewDialogueText: Option3
-  characterSpeakingIndex: 0
+  characterName: Door
+  dialogueText: 'wow you have nothing<p>
+
+    really?'
+  previewDialogueText: 
+  characterSpeakingIndex: 1
   emotion: 0
   itemsToGive: []
   questsToAdd: []
@@ -273,14 +131,48 @@ MonoBehaviour:
   itemsToCheck: []
   questsRequired: []
   questsCompleted: []
-  m_isBranching: 0
+  m_isBranching: 1
   m_dialogueEvent:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 
---- !u!114 &6047150611862784004
+  m_nextDialogueData: 00f437780080ee94
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dd4f336407e46342afbdf2e5056f0f1, type: 3}
+  m_Name: conditionalTest
+  m_EditorClassIdentifier: 
+  m_startIndex: 399092736
+  m_runtimeBuiltData:
+  - {fileID: 356295682800114156}
+  - {fileID: 917801067494014879}
+  - {fileID: -1204559761745799383}
+  - {fileID: -7274403701837653072}
+  - {fileID: 2900275042809158470}
+  - {fileID: 5413644570563836261}
+  - {fileID: -2973185142296756853}
+  - {fileID: -3425337769936162809}
+  - {fileID: 6385615792201168956}
+  - {fileID: 4615794171777620584}
+  - {fileID: 5293780378234078790}
+  m_assetData: 9`302384512`1095143424`-1796308992`61480320`-731319552`777844480`902423040`399092736`1058159104`1563517952`-326605696`-416590336`399092736`-1441522176`1350081792`2094070656`-1796308992`-416590336`2060846592`601785600`-174746496`2016932864`-416590336`893820032`1457362048`-911336064`-1439951872`902423040`-115528832`-337923968`575899008`1374447104`505924608`-1323904768`557994368`691852928`-437239296`505924608`1875425536`1869396224`-1298434304`831096320`505924608`2079517056`-1855978112`11`1095143424`745`143`150`75`False`1095143424`61480320`0`1`1095143424`-1334602752`0`399092736`95`194`150`105`True`399092736`-1548802432`0`2`399092736`1350081792`0`399092736`1563517952`1`-416590336`302`105`150`105`False`-416590336`-1441522176`0`2`-416590336`1457362048`0`-416590336`601785600`0`902423040`302`288`150`75`False`902423040`1058159104`0`1`902423040`-337923968`0`-1439951872`524`286`150`75`False`-1439951872`-115528832`0`1`-1439951872`97907328`0`2016932864`511`56`150`75`False`2016932864`893820032`0`1`2016932864`-502263040`0`-1796308992`511`145`150`75`False`-1796308992`2060846592`0`1`-1796308992`-731319552`0`505924608`95`448`150`135`False`505924608`1954077440`0`3`505924608`557994368`0`505924608`1869396224`0`505924608`-1855978112`0`1374447104`321`452`150`75`False`1374447104`-1323904768`0`1`1374447104`1574979456`0`-437239296`325`520`150`75`False`-437239296`1875425536`0`1`-437239296`479342464`0`831096320`324`592`150`75`False`831096320`2079517056`0`1`831096320`683433984`0`
+  m_charactersInvolvedStrings:
+  - Player
+  - Door
+  SceneName: LevelTest
+  m_CharactersInvoled:
+  - {fileID: 0}
+  - {fileID: 0}
+  m_isActiveDialogue: 1
+--- !u!114 &356295682800114156
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -318,7 +210,42 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_nextDialogueData: 
---- !u!114 &6463912339129754546
+--- !u!114 &917801067494014879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: 399092736
+  m_EditorClassIdentifier: 
+  node_id: 399092736
+  m_isStartNode: 1
+  branchingIndex: 0
+  characterName: 
+  dialogueText: 
+  previewDialogueText: 
+  characterSpeakingIndex: 0
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 1
+  itemsToCheck:
+  - {fileID: 11400000, guid: a57c214f3586b6a4ebf3f4263e0ada60, type: 2}
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 1
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 00562be700e2c935
+--- !u!114 &2900275042809158470
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -356,7 +283,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_nextDialogueData: 
---- !u!114 &6927968592240873443
+--- !u!114 &4615794171777620584
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -366,14 +293,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -1796308992
+  m_Name: -437239296
   m_EditorClassIdentifier: 
-  node_id: -1796308992
+  node_id: -437239296
   m_isStartNode: 0
-  branchingIndex: 1
+  branchingIndex: 0
   characterName: Player
-  dialogueText: what do you want?
-  previewDialogueText: what?
+  dialogueText: You selected option 2
+  previewDialogueText: Option2
   characterSpeakingIndex: 0
   emotion: 0
   itemsToGive: []
@@ -389,8 +316,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 00904641
---- !u!114 &7125320048618313659
+  m_nextDialogueData: 
+--- !u!114 &5293780378234078790
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -400,15 +327,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: 902423040
+  m_Name: 831096320
   m_EditorClassIdentifier: 
-  node_id: 902423040
+  node_id: 831096320
   m_isStartNode: 0
-  branchingIndex: 1
-  characterName: Door
-  dialogueText: "you have an <i><b>eye???</i></b> \ni wont ask any questions..."
-  previewDialogueText: 
-  characterSpeakingIndex: 1
+  branchingIndex: 0
+  characterName: Player
+  dialogueText: You selected option 3
+  previewDialogueText: Option3
+  characterSpeakingIndex: 0
   emotion: 0
   itemsToGive: []
   questsToAdd: []
@@ -423,4 +350,75 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 00142caa
+  m_nextDialogueData: 
+--- !u!114 &5413644570563836261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: 2016932864
+  m_EditorClassIdentifier: 
+  node_id: 2016932864
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: Player
+  dialogueText: 'uh, ok bye
+
+
+    why am i talking to a door anyway?'
+  previewDialogueText: bye
+  characterSpeakingIndex: 0
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 
+--- !u!114 &6385615792201168956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: 1374447104
+  m_EditorClassIdentifier: 
+  node_id: 1374447104
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: Player
+  dialogueText: You selected option 1
+  previewDialogueText: Option1
+  characterSpeakingIndex: 0
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 

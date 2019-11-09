@@ -80,6 +80,14 @@ public class NodeGraphView : GUILayout
         if (asset != null)
             m_nodeGraphModel = asset.m_nodeGraphModel;
 
+        if (m_nodeGraphModel.startNodeID == 0)
+        {
+            int id = m_nodeGraphModel.AddNode(new Vector2(10, 10));
+            m_nodeGraphModel.AddOutputPlugToNode(id);
+            m_nodeGraphModel.GetDataFromNodeID(id).m_isStartNode = true;
+            m_nodeGraphModel.startNodeID = id;
+        }
+
         m_nodeGraphRect = graphRect;
         BeginArea(graphRect);
         Label("Node Graph");
@@ -356,6 +364,7 @@ public class NodeGraphView : GUILayout
     {
         DialogueData data = m_nodeGraphModel.GetDataFromNodeID(node_id);
         int characterSpeakingIndex = data.characterSpeakingIndex;
+        bool isStartNode = data.m_isStartNode;
         string dialogueText = data.dialogueText;
         Vector2 position = m_nodeGraphModel.GetNodeFromID(node_id).m_position;
         
@@ -363,12 +372,15 @@ public class NodeGraphView : GUILayout
         int new_id = m_nodeGraphModel.AddConditionalNode(position);
         m_nodeGraphModel.GetDataFromNodeID(new_id).dialogueText = dialogueText;
         m_nodeGraphModel.GetDataFromNodeID(new_id).characterSpeakingIndex = characterSpeakingIndex;
+        m_nodeGraphModel.GetDataFromNodeID(new_id).m_isStartNode = isStartNode;
+        m_nodeGraphModel.startNodeID = new_id;
     }
 
     private void ChangeToNormal(int node_id)
     {
         DialogueData data = m_nodeGraphModel.GetDataFromNodeID(node_id);
         int characterSpeakingIndex = data.characterSpeakingIndex;
+        bool isStartNode = data.m_isStartNode;
         string dialogueText = data.dialogueText;
         Vector2 position = m_nodeGraphModel.GetNodeFromID(node_id).m_position;
 
@@ -377,6 +389,8 @@ public class NodeGraphView : GUILayout
         m_nodeGraphModel.AddOutputPlugToNode(new_id);
         m_nodeGraphModel.GetDataFromNodeID(new_id).dialogueText = dialogueText;
         m_nodeGraphModel.GetDataFromNodeID(new_id).characterSpeakingIndex = characterSpeakingIndex;
+        m_nodeGraphModel.GetDataFromNodeID(new_id).m_isStartNode = isStartNode;
+        m_nodeGraphModel.startNodeID = new_id;
     }
 
     private void DuplicateNode(int node_id)
@@ -463,7 +477,9 @@ public class NodeGraphView : GUILayout
                     DrawNode(node, m_nodeSelectedStyle);
                 continue;
             }
-            if (node.isConditionalNode)
+            if (node.m_id == m_nodeGraphModel.startNodeID)
+                DrawStartNode(node, m_nodeStyle);
+            else if (node.isConditionalNode)
                 DrawConditionalNode(node, m_conditionalNodeStyle);
             else
                 DrawNode(node, m_nodeStyle);
@@ -506,6 +522,53 @@ public class NodeGraphView : GUILayout
             Label(displayText, Height(node.m_dimension.y));
         }
         EndArea();
+    }
+
+    private void DrawStartNode(Node node, GUIStyle style)
+    {
+        if (node.isConditionalNode)
+        {
+            Rect nodeRect = new Rect(node.m_position.x, node.m_position.y, node.m_dimension.x, node.m_dimension.y);
+
+            // draw plugs on specific node
+            int plug_count = 1;
+            foreach (KeyValuePair<int, Plug> output_plug in node.m_outputPlugs)
+            {
+                DrawConditionalOutPlug(output_plug.Value, nodeRect, m_outputPlugStyle, plug_count, node.m_outputPlugs.Count);
+                ++plug_count;
+            }
+
+
+            // drawing the node itself with the contents in it
+            GUI.Box(nodeRect, "", style);
+            float padding = 7f;
+            Rect nodeContentRect = new Rect(node.m_position.x + padding, node.m_position.y + padding, node.m_dimension.x - (2 * padding), node.m_dimension.y - (2 * padding));
+            BeginArea(nodeContentRect);
+            DialogueData data = m_nodeGraphModel.GetDataFromNodeID(node.m_id);
+            Label("Conditional Start Node", EditorStyles.boldLabel);
+            EndArea();
+        }
+        else
+        {
+            Rect nodeRect = new Rect(node.m_position.x, node.m_position.y, node.m_dimension.x, node.m_dimension.y);
+
+            // draw plugs on specific node
+            int plug_count = 1;
+            foreach (KeyValuePair<int, Plug> output_plug in node.m_outputPlugs)
+            {
+                DrawPlug(output_plug.Value, nodeRect, m_outputPlugStyle, plug_count, node.m_outputPlugs.Count);
+                ++plug_count;
+            }
+
+            // drawing the node itself with the contents in it
+            GUI.Box(nodeRect, "", style);
+            float padding = 7f;
+            Rect nodeContentRect = new Rect(node.m_position.x + padding, node.m_position.y + padding, node.m_dimension.x - (2 * padding), node.m_dimension.y - (2 * padding));
+            BeginArea(nodeContentRect);
+            //DialogueData data = m_nodeGraphModel.GetDataFromNodeID(node.m_id);
+            Label("Start Node", EditorStyles.boldLabel);
+            EndArea();
+        }
     }
 
     private void DrawConditionalNode(Node node, GUIStyle style)

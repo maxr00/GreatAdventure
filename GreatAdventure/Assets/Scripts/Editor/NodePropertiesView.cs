@@ -36,38 +36,41 @@ public class NodePropertiesView : GUILayout
                 DialogueData data = m_nodeGraphModel.GetDataFromNodeID(node_id);
                 if (data != null)
                 {
-                    data.m_isStartNode = Toggle(data.m_isStartNode, "Is start node");
-                    Label(" ");
+                    //data.m_isStartNode = Toggle(data.m_isStartNode, "Is start node");
+                    //Label(" ");
 
-                    Label("Choose branching index (order in which options are shown)");
-                    Label("Note: if this node is a result from a conditional node,");
-                    Label("choose 0 = false and 1 = true");
-                    data.branchingIndex = EditorGUILayout.IntField(data.branchingIndex);
-                    Label(" ");
-
-
-                    Label("Character Speaking");
-                    List<string> current_characters = asset.m_dialogueAsset.GetInvolvedCharacterStrings();
-                    if (current_characters.Count == 0)
+                    if (!data.m_isStartNode)
                     {
-                        Label("No characters in list", EditorStyles.boldLabel);
+                        Label("Choose branching index (order in which options are shown)");
+                        Label("Note: if this node is a result from a conditional node,");
+                        Label("choose 0 = false and 1 = true");
+                        data.branchingIndex = EditorGUILayout.IntField(data.branchingIndex);
+                        Label(" ");
+
+
+                        Label("Character Speaking");
+                        List<string> current_characters = asset.m_dialogueAsset.GetInvolvedCharacterStrings();
+                        if (current_characters.Count == 0)
+                        {
+                            Label("No characters in list", EditorStyles.boldLabel);
+                        }
+                        else
+                        {
+                            if (data.characterSpeakingIndex >= current_characters.Count)
+                                data.characterSpeakingIndex = 0;
+                            data.characterSpeakingIndex = EditorGUILayout.Popup(data.characterSpeakingIndex, current_characters.ToArray());
+                            data.characterName = current_characters[data.characterSpeakingIndex];
+                        }
+
+                        Label("Preview Text");
+                        data.previewDialogueText = TextArea(data.previewDialogueText, Height(50));
+
+                        Label("Dialogue Text");
+                        data.dialogueText = TextArea(data.dialogueText, Height(m_nodePropertiesRect.height * 0.25f));
+
+                        Label("Set character emotion to:");
+                        data.emotion = (CharacterComponent.Emotion)EditorGUILayout.EnumPopup(data.emotion);
                     }
-                    else
-                    {
-                        if (data.characterSpeakingIndex >= current_characters.Count)
-                            data.characterSpeakingIndex = 0;
-                        data.characterSpeakingIndex = EditorGUILayout.Popup(data.characterSpeakingIndex, current_characters.ToArray());
-                        data.characterName = current_characters[data.characterSpeakingIndex];
-                    }
-
-                    Label("Preview Text");
-                    data.previewDialogueText = TextArea(data.previewDialogueText, Height(50));
-
-                    Label("Dialogue Text");
-                    data.dialogueText = TextArea(data.dialogueText, Height(m_nodePropertiesRect.height * 0.25f));
-
-                    Label("Set character emotion to:");
-                    data.emotion = (CharacterComponent.Emotion)EditorGUILayout.EnumPopup(data.emotion);
 
                     if (!data.isConditionalBranching)
                     {
@@ -85,18 +88,6 @@ public class NodePropertiesView : GUILayout
                         Label("Item information", EditorStyles.boldLabel);
                         Label("Items to give at this dialogue node:");
                         {
-                            if (Button("Add item to give"))
-                            {
-                                data.itemsToGive.Add(ScriptableObject.CreateInstance<Item>());
-                            }
-                            if (Button("Remove item to give"))
-                            {
-                                int index = (data.itemsToGive.Count - 1 <= 0) ? 0 : data.itemsToGive.Count - 1;
-                                if (data.itemsToGive.Count > 0)
-                                {
-                                    data.itemsToGive.RemoveAt(index);
-                                }
-                            }
                             SerializedProperty stringsProperty = so.FindProperty("itemsToGive");
                             EditorGUILayout.PropertyField(stringsProperty, true); // True means show children
                             so.ApplyModifiedProperties();
@@ -106,36 +97,12 @@ public class NodePropertiesView : GUILayout
                         Label("Quest Information", EditorStyles.boldLabel);
                         Label("Quests to add on this node");
                         {
-                            if (Button("Add quest to give"))
-                            {
-                                data.questsToAdd.Add(ScriptableObject.CreateInstance<Quest>());
-                            }
-                            if (Button("Remove quest to give"))
-                            {
-                                int index = (data.questsToAdd.Count - 1 <= 0) ? 0 : data.questsToAdd.Count - 1;
-                                if (data.questsToAdd.Count > 0)
-                                {
-                                    data.questsToAdd.RemoveAt(index);
-                                }
-                            }
                             SerializedProperty stringsProperty = so.FindProperty("questsToAdd");
                             EditorGUILayout.PropertyField(stringsProperty, true); // True means show children
                             so.ApplyModifiedProperties();
                         }
                         Label("Quests to mark as complete on this node");
                         {
-                            if (Button("Add quest to complete"))
-                            {
-                                data.questsToComplete.Add(ScriptableObject.CreateInstance<Quest>());
-                            }
-                            if (Button("Remove quest to complete"))
-                            {
-                                int index = (data.questsToComplete.Count - 1 <= 0) ? 0 : data.questsToComplete.Count - 1;
-                                if (data.questsToComplete.Count > 0)
-                                {
-                                    data.questsToComplete.RemoveAt(index);
-                                }
-                            }
                             SerializedProperty stringsProperty = so.FindProperty("questsToComplete");
                             EditorGUILayout.PropertyField(stringsProperty, true); // True means show children
                             so.ApplyModifiedProperties();
@@ -152,19 +119,6 @@ public class NodePropertiesView : GUILayout
                         // items
                         Label("Items to check at this dialogue node:");
                         {
-                            if (Button("Add item to check"))
-                            {
-                                data.itemsToCheck.Add(ScriptableObject.CreateInstance<Item>());
-                            }
-                            if (Button("Remove item to check"))
-                            {
-                                int index = (data.itemsToCheck.Count - 1 <= 0) ? 0 : data.itemsToCheck.Count - 1;
-                                if (data.itemsToCheck.Count > 0)
-                                {
-                                    data.itemsToCheck.RemoveAt(index);
-                                }
-                            }
-
                             ScriptableObject target = data;
                             SerializedObject so = new SerializedObject(target);
                             SerializedProperty stringsProperty = so.FindProperty("itemsToCheck");
@@ -175,19 +129,6 @@ public class NodePropertiesView : GUILayout
                         //quests
                         Label("Quests required at this dialogue node:");
                         {
-                            if (Button("Add quest required"))
-                            {
-                                data.questsRequired.Add(ScriptableObject.CreateInstance<Quest>());
-                            }
-                            if (Button("Remove quest required"))
-                            {
-                                int index = (data.questsRequired.Count - 1 <= 0) ? 0 : data.questsRequired.Count - 1;
-                                if (data.questsRequired.Count > 0)
-                                {
-                                    data.questsRequired.RemoveAt(index);
-                                }
-                            }
-
                             ScriptableObject target = data;
                             SerializedObject so = new SerializedObject(target);
                             SerializedProperty stringsProperty = so.FindProperty("questsRequired");
@@ -197,19 +138,6 @@ public class NodePropertiesView : GUILayout
                         //quests
                         Label("Quests that need to be completed:");
                         {
-                            if (Button("Add quest to complete"))
-                            {
-                                data.questsCompleted.Add(ScriptableObject.CreateInstance<Quest>());
-                            }
-                            if (Button("Remove quest to complete"))
-                            {
-                                int index = (data.questsCompleted.Count - 1 <= 0) ? 0 : data.questsCompleted.Count - 1;
-                                if (data.questsCompleted.Count > 0)
-                                {
-                                    data.questsCompleted.RemoveAt(index);
-                                }
-                            }
-
                             ScriptableObject target = data;
                             SerializedObject so = new SerializedObject(target);
                             SerializedProperty stringsProperty = so.FindProperty("questsCompleted");

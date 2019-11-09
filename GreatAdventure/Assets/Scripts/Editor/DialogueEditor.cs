@@ -25,13 +25,6 @@ public class DialogueEditor : EditorWindow
     {
     }
 
-    [MenuItem("Window/Dialogue Editor")]
-    private static void OpenWindow()
-    {
-        DialogueEditor window = CreateWindow<DialogueEditor>();
-        window.titleContent = new GUIContent("Dialogue Editor");
-    }
-
     [MenuItem("Assets/Create/Dialogue Asset")]
     public static void CreateAsset()
     {
@@ -81,8 +74,8 @@ public class DialogueEditor : EditorWindow
 
     private void OnEnable()
     {
-        AssemblyReloadEvents.beforeAssemblyReload += OnBeforeAssemblyReload;
-        AssemblyReloadEvents.afterAssemblyReload += OnAfterAssemblyReload;
+        //AssemblyReloadEvents.beforeAssemblyReload += OnBeforeAssemblyReload;
+        //AssemblyReloadEvents.afterAssemblyReload += OnAfterAssemblyReload;
 
         resizerStyle = new GUIStyle();
         resizerStyle.normal.background = EditorGUIUtility.Load("icons/d_AvatarBlendBackground.png") as Texture2D;
