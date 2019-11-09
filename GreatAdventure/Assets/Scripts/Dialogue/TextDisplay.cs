@@ -17,7 +17,7 @@ public class TextDisplay : MonoBehaviour
     public Sprite clearSprite;
     public Vector3 MainDialogueStart = new Vector3(0.1f, 0.25f, 0);
     public Vector3 OptionDialogueStart = new Vector3(0.22f, 0.28f, 0);
-    public float newLineOffset = 48;
+    public float newLineOffset = 0.05f;
     public float optionOffset = 0.1f;
 
     public Vector3 header_start_pos = new Vector3(250, 25, 0);
@@ -29,8 +29,8 @@ public class TextDisplay : MonoBehaviour
     public GameObject DialogueBubbleOutline;
     public GameObject DialogueOptionBubble;
     public GameObject DialogueOptionBubbleOutline;
-    private GameObject[] DialogueOptionBubbles = new GameObject[3];
-    private GameObject[] DialogueOptionBubbleOutlines = new GameObject[3];
+    private static GameObject[] DialogueOptionBubbles = new GameObject[3];
+    private static GameObject[] DialogueOptionBubbleOutlines = new GameObject[3];
 
     private Vector3 startPos = new Vector3();
     private bool done = true;
@@ -57,6 +57,8 @@ public class TextDisplay : MonoBehaviour
 
         if (DialogueOptionBubble != null & DialogueOptionBubbleOutline != null)
         {
+            if (DialogueOptionBubbleOutlines[0] != null)
+                return;
             for (int i = 0; i < 3; ++i)
             {
                 DialogueOptionBubbles[i] = GameObject.Instantiate(DialogueOptionBubble, textPool.GetComponent<Transform>());
@@ -713,20 +715,25 @@ public class TextDisplay : MonoBehaviour
                         shake.shake_radius = float.Parse(tags[0]);
                         shake.shake_speed = float.Parse(tags[1]);
                     }
-                    shake.StartShake(charPos);
+
+                    if (isActiveDialogue)
+                        shake.StartShake(startPos, currentLineOffset);
+                    else
+                        shake.StartShake(charPos);
+
                     break;
                 }
             case TextEffect.TextEffectType.kWiggle:
                 {
-                    Vector3 charPos = startPos + new Vector3(currentLineOffset, 0, 0);
                     WiggleLetter wiggle = textChar.GetComponent<WiggleLetter>();
+                    CharacterText carTex = textChar.GetComponent<CharacterText>();
                     string[] tags = mod.tag_data.Split(",".ToCharArray());
                     if (tags.Length > 1)
                     {
                         wiggle.wiggle_height = float.Parse(tags[0]);
                         wiggle.wiggle_speed = float.Parse(tags[1]);
                     }
-                    wiggle.StartWiggle(charPos);
+                    wiggle.StartWiggle(isActiveDialogue);
                     break;
                 }
             case TextEffect.TextEffectType.kPause:

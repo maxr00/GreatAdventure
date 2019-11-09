@@ -12,9 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43165e6f089294342b023d29132dc9c3, type: 3}
   m_Name: loadData
   m_EditorClassIdentifier: 
-  allItems:
-  - {fileID: 11400000, guid: a57c214f3586b6a4ebf3f4263e0ada60, type: 2}
-  - {fileID: 11400000, guid: cdc8d5689d3cb2040a71521ba77a54bb, type: 2}
-  - {fileID: 11400000, guid: b63cc6b610a6c73448059b04f839ccc8, type: 2}
-  allQuests:
-  - {fileID: 11400000, guid: 877b6fd87b490dc46a5666258b572f77, type: 2}
+  allItems: []
+  allQuests: []

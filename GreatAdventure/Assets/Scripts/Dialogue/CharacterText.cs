@@ -7,6 +7,7 @@ public class CharacterText : MonoBehaviour
     public float anchorMin, anchorMax;
     public float left;
     public float top;
+
     // Start is called before the first frame update
     void Start()
     {
