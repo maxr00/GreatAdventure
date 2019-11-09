@@ -8,6 +8,9 @@ public class Quest : ScriptableObject
 
     public bool isComplete;
 
+    public List<Quest> subQuests;
+    public Quest parentQuest;
+
     // Start is called before the first frame update
     void Start()
     {

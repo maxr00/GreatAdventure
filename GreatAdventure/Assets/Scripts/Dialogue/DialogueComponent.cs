@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(TextDisplay))]
+[RequireComponent(typeof(CharacterComponent))]
 public class DialogueComponent : MonoBehaviour
 {
     public static DialogueComponent currentActiveDialogue = null;
