@@ -29,6 +29,8 @@ public class TextPool : MonoBehaviour
         foreach (GameObject obj in text)
         {
             obj.GetComponent<TextMeshProUGUI>().text = "";
+            if (obj.GetComponent<CharacterText>() != null)
+                obj.GetComponent<CharacterText>().ClearOffsets();
         }
         availableTextChar.AddRange(text);
     }

@@ -9,6 +9,7 @@ public class WiggleLetter : MonoBehaviour
     private Vector3 prev_position;
     float t = 0.0f;
     public bool isWiggling = false;
+    public bool isScreenSpace = true;
 
     // Start is called before the first frame update
     void Start()
@@ -21,19 +22,22 @@ public class WiggleLetter : MonoBehaviour
         if (isWiggling)
         {
             t += wiggle_speed * Time.deltaTime;
-
-            // why the fuck does this not compile ??
-            //GetComponent<RectTransform>().position.y += (wiggle_height * Mathf.Sin(t));
-
-            Vector3 currentPos = GetComponent<RectTransform>().position;
-            currentPos.y += (wiggle_height * Mathf.Sin(t));
-            GetComponent<RectTransform>().position = currentPos;
+            if (!isScreenSpace)
+            {
+                Vector3 currentPos = GetComponent<RectTransform>().position;
+                currentPos.y += (wiggle_height * Mathf.Sin(t));
+                GetComponent<RectTransform>().position = currentPos;
+            }
+            else
+            {
+                GetComponent<CharacterText>().top += (wiggle_height * Mathf.Sin(t));
+            }
         }
     }
 
-    public void StartWiggle(Vector3 startPos)
+    public void StartWiggle(bool ScreenSpace)
     {
-        isWiggling = true;
+        isWiggling = true; isScreenSpace = ScreenSpace;
         t = 0;
     }
 }
