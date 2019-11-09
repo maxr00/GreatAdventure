@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEditor;
 
@@ -27,6 +28,9 @@ public class DialogueAssetBuilder : ScriptableObject
 
     public void SaveAsset(NodeGraphModel model_data)
     {
+        if (m_dialogueAsset.SceneName != SceneManager.GetActiveScene().name)
+            return;
+
         m_dialogueAsset.m_assetData = "";
         // save connections
         m_dialogueAsset.m_assetData += model_data.GetConnections().Count + "`";
@@ -65,6 +69,10 @@ public class DialogueAssetBuilder : ScriptableObject
         ClearAsset();
         PopulateDialogueList(model_data);
         SaveBuiltDialogueData(model_data);
+
+        // only set it to current scene if there is no scene set in the past
+        if (m_dialogueAsset.SceneName == null)
+            m_dialogueAsset.SceneName = SceneManager.GetActiveScene().name;
 
         EditorUtility.SetDirty(m_dialogueAsset); // tells unity to data in this asset has changed and needs to saved if user asks
         AssetDatabase.SaveAssets();

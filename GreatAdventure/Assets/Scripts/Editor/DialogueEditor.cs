@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public class DialogueEditor : EditorWindow
 {
@@ -35,6 +36,7 @@ public class DialogueEditor : EditorWindow
     public static void CreateAsset()
     {
         DialogueAsset dialogue_asset = CreateInstance<DialogueAsset>();
+        dialogue_asset.SceneName = SceneManager.GetActiveScene().name;
         string asset_path = AssetDatabase.GetAssetPath(Selection.activeObject);
         if (asset_path == "")
         {
