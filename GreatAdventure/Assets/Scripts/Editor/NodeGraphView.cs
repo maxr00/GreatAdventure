@@ -336,6 +336,12 @@ public class NodeGraphView : GUILayout
         GenericMenu generic_menu = new GenericMenu();
         generic_menu.AddItem(new GUIContent("Remove Node"), false, () => RemoveNode(node_id));
         generic_menu.AddItem(new GUIContent("Duplicate Node"), false, () => DuplicateNode(node_id));
+        Node selectedNode = m_nodeGraphModel.GetNodeFromID(node_id);
+        if (selectedNode.isConditionalNode)
+            generic_menu.AddItem(new GUIContent("Change to Normal"), false, () => ChangeToNormal(node_id));
+        else
+            generic_menu.AddItem(new GUIContent("Change to Conditional"), false, () => ChangeToConditional(node_id));
+
         generic_menu.ShowAsContext();
     }
 
@@ -344,6 +350,33 @@ public class NodeGraphView : GUILayout
         GenericMenu generic_menu = new GenericMenu();
         generic_menu.AddItem(new GUIContent("Remove Connection"), false, () => OnClickRemoveConnection(connection));
         generic_menu.ShowAsContext();
+    }
+
+    private void ChangeToConditional(int node_id)
+    {
+        DialogueData data = m_nodeGraphModel.GetDataFromNodeID(node_id);
+        int characterSpeakingIndex = data.characterSpeakingIndex;
+        string dialogueText = data.dialogueText;
+        Vector2 position = m_nodeGraphModel.GetNodeFromID(node_id).m_position;
+        
+        RemoveNode(node_id);
+        int new_id = m_nodeGraphModel.AddConditionalNode(position);
+        m_nodeGraphModel.GetDataFromNodeID(new_id).dialogueText = dialogueText;
+        m_nodeGraphModel.GetDataFromNodeID(new_id).characterSpeakingIndex = characterSpeakingIndex;
+    }
+
+    private void ChangeToNormal(int node_id)
+    {
+        DialogueData data = m_nodeGraphModel.GetDataFromNodeID(node_id);
+        int characterSpeakingIndex = data.characterSpeakingIndex;
+        string dialogueText = data.dialogueText;
+        Vector2 position = m_nodeGraphModel.GetNodeFromID(node_id).m_position;
+
+        RemoveNode(node_id);
+        int new_id = m_nodeGraphModel.AddNode(position);
+        m_nodeGraphModel.AddOutputPlugToNode(new_id);
+        m_nodeGraphModel.GetDataFromNodeID(new_id).dialogueText = dialogueText;
+        m_nodeGraphModel.GetDataFromNodeID(new_id).characterSpeakingIndex = characterSpeakingIndex;
     }
 
     private void DuplicateNode(int node_id)

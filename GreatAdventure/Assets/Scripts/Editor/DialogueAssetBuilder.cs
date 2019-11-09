@@ -107,7 +107,6 @@ public class DialogueAssetBuilder : ScriptableObject
             m_dialogueAsset.m_runtimeBuiltData.Add(dialogue);
             dialogue.name = dialogue.node_id.ToString();
             AssetDatabase.AddObjectToAsset(dialogue, m_dialogueAsset);
-            Debug.Log(AssetDatabase.GetAssetPath(dialogue));
             AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(dialogue));
             EditorUtility.SetDirty(dialogue);
 
