@@ -77,7 +77,7 @@ public class ShakeLetter : MonoBehaviour
 
     public void StartShake(Vector3 startPos)
     {
-        isShaking = true;
+        isShaking = true; isScreenSpace = false;
         centerPoint = startPos;
         prev_position = startPos;
         current_shake_position = centerPoint + new Vector3(Random.Range(-shake_radius, shake_radius), Random.Range(-shake_radius, shake_radius), startPos.z);

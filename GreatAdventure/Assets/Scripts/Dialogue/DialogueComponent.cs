@@ -65,6 +65,7 @@ public class DialogueComponent : MonoBehaviour
 
                 //update current dialogue text positions with correct offset positions.
                 m_textDisplay.UpdateCurrentDisplay(dialogue.dialogueText, dialoguePosition);
+                m_textDisplay.UpdatePassiveBubble(characterComp.GetCurrentBubblePos());
             }
         }
     }
@@ -257,9 +258,11 @@ public class DialogueComponent : MonoBehaviour
         m_dialogueAsset.m_characterData.TryGetValue(dialogue.characterName, out characterComp);
         Vector3 dialoguePosition = characterComp.GetCurrentOffset();
 
+
         if (nextDialogue)
         {
             // do all the actions for the current dialogue
+            m_textDisplay.DisplayPassiveBubble(true, characterComp.GetCurrentBubblePos());
             m_textDisplay.Display(dialogue.dialogueText, dialoguePosition);
             AddItemsToInventory(dialogue);
             UpdateQuests(dialogue);
@@ -315,6 +318,7 @@ public class DialogueComponent : MonoBehaviour
             {
                 isActive = false;
                 currentActiveDialogue = null;
+                m_textDisplay.DisplayPassiveBubble(false, new Vector3(0, 0, 0));
             }
         }
     }

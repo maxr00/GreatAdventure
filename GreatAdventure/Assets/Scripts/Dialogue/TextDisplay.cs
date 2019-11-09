@@ -110,6 +110,12 @@ public class TextDisplay : MonoBehaviour
         }
     }
 
+    public void UpdatePassiveBubble(Vector3 newPosition)
+    {
+        DialogueBubble.transform.position = newPosition;
+        DialogueBubbleOutline.transform.position = newPosition;
+    }
+
     public void DisplayingOptions()
     {
         startPos = OptionDialogueStart;
@@ -185,6 +191,16 @@ public class TextDisplay : MonoBehaviour
                 DialogueOptionBubbleOutlines[i].SetActive(false);
             }
         }
+    }
+
+    public void DisplayPassiveBubble(bool isActive, Vector3 position)
+    {
+        DialogueBubble.SetActive(isActive);
+        DialogueBubbleOutline.SetActive(isActive);
+
+        DialogueBubble.transform.position = position;
+        DialogueBubbleOutline.transform.position = position;
+
     }
 
     public void DisplayDialogueHeader(string dialogue_header_text, Sprite header_icon)
