@@ -215,4 +215,33 @@ public class DialogueAssetBuilder : ScriptableObject
         plug.m_plugType = type;
         return plug;
     }
+
+    public List<int> GetNextDialogueData(DialogueData data, NodeGraphModel model_data)
+    {
+        List<NextDialogueDataContent> nextData = new List<NextDialogueDataContent>();
+        DialogueData dialogue = data;
+        // populating next branch ids
+        dialogue.m_nextDialogueData = new List<int>();
+        foreach (KeyValuePair<int, Connection> connection_pair in model_data.GetConnections())
+        {
+            Connection connection = connection_pair.Value;
+            if (connection.m_outputNodeId == dialogue.node_id)
+            {
+                // adding branching indices
+                DialogueData next_data = model_data.GetDataFromNodeID(connection.m_inputNodeId);
+                NextDialogueDataContent nextDataContent = new NextDialogueDataContent();
+                nextDataContent.branchingIndex = next_data.branchingIndex;
+                nextDataContent.nextNodeIndex = connection.m_inputNodeId;
+                nextData.Add(nextDataContent);
+            }
+        }
+
+        nextData.Sort(delegate (NextDialogueDataContent c1, NextDialogueDataContent c2) { return c1.branchingIndex.CompareTo(c2.branchingIndex); });
+        foreach (NextDialogueDataContent next_data in nextData)
+        {
+            dialogue.m_nextDialogueData.Add(next_data.nextNodeIndex);
+        }
+
+        return dialogue.m_nextDialogueData;
+    }
 }

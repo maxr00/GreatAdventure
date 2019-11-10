@@ -19,8 +19,9 @@ public class NodeGraphView : GUILayout
 
     private GUIStyle m_nodeStyle; // default
     private GUIStyle m_conditionalNodeStyle; // branching node style
+    private GUIStyle m_startNodeStyle;
+    private GUIStyle m_optionNodeStyle;
     private GUIStyle m_nodeSelectedStyle;
-    private GUIStyle m_conditionalNodeSelectedStyle;
     private GUIStyle m_inputPlugStyle;
     private GUIStyle m_outputPlugStyle;
     private GUIStyle m_outputFalsePlugStyle;
@@ -49,14 +50,21 @@ public class NodeGraphView : GUILayout
         m_conditionalNodeStyle.hover.background = EditorGUIUtility.Load("builtin skins/darkskin/images/node4.png") as Texture2D;
         m_conditionalNodeStyle.border = new RectOffset(12, 12, 12, 12);
 
-        m_nodeSelectedStyle = new GUIStyle();
-        m_nodeSelectedStyle.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/node5.png") as Texture2D;
-        m_nodeSelectedStyle.border = new RectOffset(15, 15, 15, 15);
+        // start node style
+        m_startNodeStyle = new GUIStyle();
+        m_startNodeStyle.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/node3.png") as Texture2D;
+        m_startNodeStyle.hover.background = EditorGUIUtility.Load("builtin skins/darkskin/images/node4.png") as Texture2D;
+        m_startNodeStyle.border = new RectOffset(12, 12, 12, 12);
 
-        // conditional selected node style
-        m_conditionalNodeSelectedStyle = new GUIStyle();
-        m_conditionalNodeSelectedStyle.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/node3.png") as Texture2D;
-        m_conditionalNodeSelectedStyle.border = new RectOffset(15, 15, 15, 15);
+        // option node style
+        m_optionNodeStyle = new GUIStyle();
+        m_optionNodeStyle.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/node5.png") as Texture2D;
+        m_optionNodeStyle.hover.background = EditorGUIUtility.Load("builtin skins/darkskin/images/node4.png") as Texture2D;
+        m_optionNodeStyle.border = new RectOffset(12, 12, 12, 12);
+
+        m_nodeSelectedStyle = new GUIStyle();
+        m_nodeSelectedStyle.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/node4.png") as Texture2D;
+        m_nodeSelectedStyle.border = new RectOffset(15, 15, 15, 15);
 
         m_inputPlugStyle = new GUIStyle();
         m_inputPlugStyle.normal.background = EditorGUIUtility.Load("builtin skins/lightskin/images/btn left.png") as Texture2D;
@@ -91,6 +99,9 @@ public class NodeGraphView : GUILayout
         m_nodeGraphRect = graphRect;
         BeginArea(graphRect);
         Label("Node Graph");
+
+        // write out asset errors
+
         DrawGrid(graphRect, 20, 0.2f, Color.gray); // light grid-lines
         DrawGrid(graphRect, 100, 0.4f, Color.gray); // dark grid-lines
         DrawNodes();
@@ -115,6 +126,13 @@ public class NodeGraphView : GUILayout
     {
         int modelID = m_nodeGraphModel.AddNode(position);
         m_nodeGraphModel.AddOutputPlugToNode(modelID);
+    }
+
+    public void AddOptionNode(Vector2 position)
+    {
+        int modelID = m_nodeGraphModel.AddNode(position);
+        m_nodeGraphModel.AddOutputPlugToNode(modelID);
+        m_nodeGraphModel.GetDataFromNodeID(modelID).m_isBranching = true;
     }
 
     public void AddConditionalNode(Vector2 position)
@@ -336,6 +354,7 @@ public class NodeGraphView : GUILayout
         GenericMenu generic_menu = new GenericMenu();
         generic_menu.AddItem(new GUIContent("Add Node"), false, () => AddNode(mouse_position));
         generic_menu.AddItem(new GUIContent("Add Conditional Node"), false, () => AddConditionalNode(mouse_position));
+        generic_menu.AddItem(new GUIContent("Add Option Node"), false, () => AddOptionNode(mouse_position));
         generic_menu.ShowAsContext();
     }
 
@@ -474,15 +493,19 @@ public class NodeGraphView : GUILayout
                 if (node.m_id == m_nodeGraphModel.startNodeID)
                     DrawStartNode(node, m_nodeSelectedStyle);
                 else if (node.isConditionalNode)
-                    DrawConditionalNode(node, m_conditionalNodeSelectedStyle);
+                    DrawConditionalNode(node, m_nodeSelectedStyle);
+                else if (node.m_outputPlugs.Count > 1)
+                    DrawOptionNode(node, m_nodeSelectedStyle);
                 else
                     DrawNode(node, m_nodeSelectedStyle);
                 continue;
             }
             if (node.m_id == m_nodeGraphModel.startNodeID)
-                DrawStartNode(node, m_nodeStyle);
+                DrawStartNode(node, m_startNodeStyle);
             else if (node.isConditionalNode)
                 DrawConditionalNode(node, m_conditionalNodeStyle);
+            else if (node.m_outputPlugs.Count > 1)
+                DrawOptionNode(node, m_optionNodeStyle);
             else
                 DrawNode(node, m_nodeStyle);
         }
@@ -515,6 +538,7 @@ public class NodeGraphView : GUILayout
         float padding = 7f;
         Rect nodeContentRect = new Rect(node.m_position.x + padding, node.m_position.y + padding, node.m_dimension.x - (2 * padding), node.m_dimension.y - (2 * padding));
         BeginArea(nodeContentRect);
+        Label("Node", EditorStyles.boldLabel);
         DialogueData data = m_nodeGraphModel.GetDataFromNodeID(node.m_id);
         if (data != null)
         {
@@ -522,6 +546,52 @@ public class NodeGraphView : GUILayout
             string tag_pattern = "<[^>]+>";
             string displayText = Regex.Replace(data.dialogueText, tag_pattern, "");
             Label(displayText, Height(node.m_dimension.y));
+        }
+        EndArea();
+    }
+
+    private void DrawOptionNode(Node node, GUIStyle style)
+    {
+        Rect nodeRect = new Rect(node.m_position.x, node.m_position.y, node.m_dimension.x, node.m_dimension.y);
+
+        // draw plugs on specific node
+        DrawPlug(node.m_inputPlug, nodeRect, m_inputPlugStyle, 1, 1);
+        int plug_count = 1;
+        Plug delete_plug = null;
+        foreach (KeyValuePair<int, Plug> output_plug in node.m_outputPlugs)
+        {
+            if (delete_plug == null)
+                delete_plug = DrawPlug(output_plug.Value, nodeRect, m_outputPlugStyle, plug_count, node.m_outputPlugs.Count);
+            else
+                DrawPlug(output_plug.Value, nodeRect, m_outputPlugStyle, plug_count, node.m_outputPlugs.Count);
+            ++plug_count;
+        }
+        if (delete_plug != null)
+        {
+            m_nodeGraphModel.RemoveOutputPlugFromNode(delete_plug.m_plugId, delete_plug.m_nodeId);
+        }
+
+
+        // drawing the node itself with the contents in it
+        GUI.Box(nodeRect, "", style);
+        float padding = 7f;
+        Rect nodeContentRect = new Rect(node.m_position.x + padding, node.m_position.y + padding, node.m_dimension.x - (2 * padding), node.m_dimension.y - (2 * padding));
+        BeginArea(nodeContentRect);
+        Label("Option", EditorStyles.boldLabel);
+        DialogueData data = m_nodeGraphModel.GetDataFromNodeID(node.m_id);
+        string tag_pattern = "<[^>]+>";
+        if (data.m_nextDialogueData != null)
+        {
+            foreach(var nodeId in data.m_nextDialogueData)
+            {
+                DialogueData nextData = m_nodeGraphModel.GetDataFromNodeID(nodeId);
+                if (nextData != null)
+                {
+                    string previewData = Regex.Replace(nextData.previewDialogueText, tag_pattern, "");
+                    Label(previewData);
+                    Label("");
+                }
+            }
         }
         EndArea();
     }
@@ -596,6 +666,7 @@ public class NodeGraphView : GUILayout
         DialogueData data = m_nodeGraphModel.GetDataFromNodeID(node.m_id);
         if (data != null)
         {
+            Label("Conditional", EditorStyles.boldLabel);
             Label(data.characterName);
             string tag_pattern = "<[^>]+>";
             string displayText = Regex.Replace(data.dialogueText, tag_pattern, "");
