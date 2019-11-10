@@ -160,11 +160,18 @@ public class NodePropertiesView : GUILayout
     }
 
     private void DisplayNormalNodeProperties(DialogueData data, DialogueAssetBuilder asset)
-    {            
+    {
+        //Label("Choose branching index (order in which options are shown)");
+        //Label("Note: if this node is a result from a conditional node,");
+        //Label("choose 0 = false and 1 = true");
+        //data.branchingIndex = EditorGUILayout.IntField(data.branchingIndex);
+        //Label(" ");
+
         if (data.branchingIndex == 0)
             Label("False condition node", EditorStyles.boldLabel);
         else if (data.branchingIndex == 1)
             Label("True condition node", EditorStyles.boldLabel);
+        else { Label("out index : " + data.branchingIndex.ToString()); }
 
         Label("Character Speaking");
         List<string> current_characters = asset.m_dialogueAsset.GetInvolvedCharacterStrings();
@@ -227,13 +234,16 @@ public class NodePropertiesView : GUILayout
 
     private void DisplayOptionNodeProperties(DialogueData data, int node_id, DialogueAssetBuilder asset)
     {
-        Node node = m_nodeGraphModel.GetNodeFromID(node_id);
-
-        Label("Choose branching index (order in which options are shown)");
-        Label("Note: if this node is a result from a conditional node,");
-        Label("choose 0 = false and 1 = true");
-        data.branchingIndex = EditorGUILayout.IntField(data.branchingIndex);
-        Label(" ");
+        //Label("Choose branching index (order in which options are shown)");
+        //Label("Note: if this node is a result from a conditional node,");
+        //Label("choose 0 = false and 1 = true");
+        //data.branchingIndex = EditorGUILayout.IntField(data.branchingIndex);
+        //Label(" ");
+        if (data.branchingIndex == 0)
+            Label("False condition node", EditorStyles.boldLabel);
+        else if (data.branchingIndex == 1)
+            Label("True condition node", EditorStyles.boldLabel);
+        else { Label("out index : " + data.branchingIndex.ToString()); }
 
         // get next dialogue nodes
         List<int> nextData = asset.GetNextDialogueData(data, m_nodeGraphModel);
@@ -266,13 +276,17 @@ public class NodePropertiesView : GUILayout
     }
 
     private void DisplayConditionalNodeProperties(DialogueData data, int node_id, DialogueAssetBuilder asset)
-    {            
-        Label("Choose branching index (order in which options are shown)");
-        Label("Note: if this node is a result from a conditional node,");
-        Label("choose 0 = false and 1 = true");
-        data.branchingIndex = EditorGUILayout.IntField(data.branchingIndex);
-        Label(" ");
-
+    {
+        //Label("Choose branching index (order in which options are shown)");
+        //Label("Note: if this node is a result from a conditional node,");
+        //Label("choose 0 = false and 1 = true");
+        //data.branchingIndex = EditorGUILayout.IntField(data.branchingIndex);
+        //Label(" ");
+        if (data.branchingIndex == 0)
+            Label("False condition node", EditorStyles.boldLabel);
+        else if (data.branchingIndex == 1)
+            Label("True condition node", EditorStyles.boldLabel);
+        else { Label("out index : " + data.branchingIndex.ToString()); }
 
         Label("Character Speaking");
         List<string> current_characters = asset.m_dialogueAsset.GetInvolvedCharacterStrings();

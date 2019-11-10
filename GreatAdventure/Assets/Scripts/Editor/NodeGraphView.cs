@@ -596,6 +596,20 @@ public class NodeGraphView : GUILayout
         Rect nodeContentRect = new Rect(node.m_position.x + padding, node.m_position.y + padding, node.m_dimension.x - (2 * padding), node.m_dimension.y - (2 * padding));
         BeginArea(nodeContentRect);
         Label("Option", EditorStyles.boldLabel);
+
+        int currIndex = 0;
+        OutputPlugToNode outputdata;
+        foreach (var outplug in node.m_outputPlugs)
+        {
+            outputdata = m_nodeGraphModel.GetOutputPlugToNode(node.m_id, currIndex);
+            if (outputdata != null)
+            {
+                DialogueData inputNodeData = m_nodeGraphModel.GetDataFromNodeID(outputdata.inputNodeID);
+                inputNodeData.branchingIndex = currIndex;
+            }
+            ++currIndex;
+        }
+
         DialogueData data = m_nodeGraphModel.GetDataFromNodeID(node.m_id);
         string tag_pattern = "<[^>]+>";
         if (data.m_nextDialogueData != null)
@@ -682,11 +696,13 @@ public class NodeGraphView : GUILayout
         DialogueData data = m_nodeGraphModel.GetDataFromNodeID(node.m_id);
         if (data != null)
         {
+            var rightAlign = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.UpperRight };
             Label("Conditional", EditorStyles.boldLabel);
-            Label(data.characterName);
+            Label("True", rightAlign);
+            Label("");
             string tag_pattern = "<[^>]+>";
             string displayText = Regex.Replace(data.dialogueText, tag_pattern, "");
-            Label(displayText, Height(node.m_dimension.y));
+            Label("False", rightAlign);
         }
 
         OutputPlugToNode outputdata = m_nodeGraphModel.GetOutputPlugToNode(node.m_id, 0);
@@ -801,7 +817,7 @@ public class NodeGraphView : GUILayout
     private void DrawConditionalOutPlug(Plug plug, Rect node_rect, GUIStyle style, int plug_count, int total_count)
     {
         Rect plug_rect = new Rect(0, 0, m_plugDimensions.x, m_plugDimensions.y);
-        plug_rect.y = node_rect.y + ((node_rect.height / (total_count + 1)) + (in_between_plug_height * (plug_count - 1)) + (plug_height * (plug_count - 1))) - plug_rect.height * 0.5f;
+        plug_rect.y = node_rect.y + ((node_rect.height / (total_count + 1)) + ((in_between_plug_height + 3f)* (plug_count - 1)) + (plug_height * (plug_count - 1))) - plug_rect.height * 0.5f;
         switch (plug.m_plugType)
         {
             case PlugType.kIn: // position is on left side of the node

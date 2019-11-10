@@ -134,6 +134,14 @@ public class DialogueAssetBuilder : ScriptableObject
                     // adding branching indices
                     DialogueData next_data = model_data.GetDataFromNodeID(connection.m_inputNodeId);
                     NextDialogueDataContent nextDataContent = new NextDialogueDataContent();
+
+                    if (next_data.branchingIndex == -1)
+                    {
+                        Plug outputplug_index = model_data.GetNodeFromID(connection.m_outputNodeId).m_outputPlugs[connection.m_outputPlugId];
+                        Debug.Log(outputplug_index.m_plugIndex);
+                        next_data.branchingIndex = outputplug_index.m_plugIndex;
+                    }
+
                     nextDataContent.branchingIndex = next_data.branchingIndex;
                     nextDataContent.nextNodeIndex = connection.m_inputNodeId;
                     nextData.Add(nextDataContent);
@@ -230,6 +238,13 @@ public class DialogueAssetBuilder : ScriptableObject
                 // adding branching indices
                 DialogueData next_data = model_data.GetDataFromNodeID(connection.m_inputNodeId);
                 NextDialogueDataContent nextDataContent = new NextDialogueDataContent();
+
+                if (next_data.branchingIndex == -1)
+                {
+                    Plug outputplug_index = model_data.GetNodeFromID(connection.m_outputNodeId).m_outputPlugs[connection.m_outputPlugId];
+                    Debug.Log(outputplug_index.m_plugIndex);
+                    next_data.branchingIndex = outputplug_index.m_plugIndex;
+                }
                 nextDataContent.branchingIndex = next_data.branchingIndex;
                 nextDataContent.nextNodeIndex = connection.m_inputNodeId;
                 nextData.Add(nextDataContent);
