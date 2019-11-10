@@ -7,9 +7,9 @@ public class ThiefMovement : MonoBehaviour
 {
     public Transform player;
     public Transform[] waypoints;
-    public int waypointSteps = 5;
+    public float waypointStep = 5;
 
-    public Vector3[] steppedWaypoints;
+    public List<Vector3> steppedWaypoints = new List<Vector3>();
     public int target;
     public int progressionDir = 1;
 
@@ -66,10 +66,25 @@ public class ThiefMovement : MonoBehaviour
             gameObject.GetComponent<NavMeshAgent>().speed = navMoveSpeed;
         }
 
-        steppedWaypoints = new Vector3[waypoints.Length * waypointSteps];
-        for(int i = 0; i < steppedWaypoints.Length; i++)
+        //steppedWaypoints = new Vector3[waypoints.Length * waypointSteps];
+        for (int i = 0; i < waypoints.Length; i++)
         {
-            steppedWaypoints[i] = Vector3.Lerp(waypoints[i / 5].position, waypoints[(i / 5 + 1) % waypoints.Length].position, (i % 5) / 5.0f);
+            Vector3 curr = waypoints[i].position;
+            Vector3 next = waypoints[(i + 1) % waypoints.Length].position;
+
+            int numSteps = 0; // just in case something bad happens, dont eat all of my memory in an infinite loop
+            for(Vector3 w = curr; w != next && numSteps < 100;)
+            {
+                numSteps++;
+                steppedWaypoints.Add(w);
+
+                if (Vector3.Distance(w, next) > waypointStep + (waypointStep / 5.0f))
+                    w += (next - curr).normalized * waypointStep;
+                else
+                    break;
+            }
+
+            //steppedWaypoints[i] = Vector3.Lerp(waypoints[i / 5].position, waypoints[(i / 5 + 1) % waypoints.Length].position, (i % 5) / 5.0f);
         }
     }
 
@@ -84,6 +99,16 @@ public class ThiefMovement : MonoBehaviour
         }
 
         Vector3 target = steppedWaypoints[this.target];
+
+        // Debug draw
+        foreach (Vector3 a in steppedWaypoints)
+        {
+            if(a == target)
+                Debug.DrawLine(a, a + Vector3.up, Color.red);
+            else
+                Debug.DrawLine(a, a + Vector3.up, Color.white);
+        }
+        Debug.DrawLine(transform.position, target, Color.blue);
 
         //if not on screen, use navmesha agent
         dist = Vector3.Distance(target, transform.position);
@@ -201,8 +226,8 @@ public class ThiefMovement : MonoBehaviour
     int PickNextTarget()
     {
         int curr = this.target;
-        int next = (curr + progressionDir + steppedWaypoints.Length) % steppedWaypoints.Length;
-        int prev = (curr - progressionDir + steppedWaypoints.Length) % steppedWaypoints.Length;
+        int next = (curr + progressionDir + steppedWaypoints.Count) % steppedWaypoints.Count;
+        int prev = (curr - progressionDir + steppedWaypoints.Count) % steppedWaypoints.Count;
 
         float nextDist = Vector3.Distance(steppedWaypoints[next], player.position);
         float prevDist = Vector3.Distance(steppedWaypoints[prev], player.position);
