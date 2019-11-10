@@ -30,6 +30,11 @@ public class NodeGraphView : GUILayout
     public float plug_height = 20.0f;
     public float in_between_plug_height = 10.0f;
 
+    private Texture errorTex;
+    private Texture QuestGivenTex;
+    private Texture QuestCompleteTex;
+    private Texture ItemGivenTex;
+
     // used for drawing connections
     private Plug m_currentSelectedInPlug;
     private Plug m_currentSelectedOutPlug;
@@ -81,6 +86,9 @@ public class NodeGraphView : GUILayout
         m_outputFalsePlugStyle.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/btn right.png") as Texture2D;
         m_outputFalsePlugStyle.active.background = EditorGUIUtility.Load("builtin skins/darkskin/images/btn right on.png") as Texture2D;
         m_outputFalsePlugStyle.border = new RectOffset(4, 4, 12, 12);
+
+        // textures
+        errorTex = EditorGUIUtility.Load("builtin skins/darkskin/images/btn right on.png") as Texture2D;
     }
 
     public void DrawNodeGraph(Rect graphRect, DialogueAssetBuilder asset)

@@ -79,7 +79,7 @@ public class DialogueComponent : MonoBehaviour
 
         if (nextDialogue)
         {
-            if (!dialogue.m_isStartNode)
+            if (!dialogue.m_isStartNode && !dialogue.m_isBranching)
             {
 
                 m_textDisplay.DisplayDialogueHeader(dialogue.characterName, characterComp.characterIcon);
@@ -97,10 +97,21 @@ public class DialogueComponent : MonoBehaviour
             else
             {
                 if (dialogue.isConditionalBranching)
+                {
                     m_currentDialogueIndex = CheckDialogueConditions(dialogue);
-                if (dialogue.m_nextDialogueData.Count == 1)
+                    nextDialogue = true;
+                }
+                else if (dialogue.m_nextDialogueData.Count == 1)
+                {
                     m_currentDialogueIndex = dialogue.m_nextDialogueData[0];
-                nextDialogue = true;
+                    nextDialogue = true;
+                }
+                else if (dialogue.m_nextDialogueData.Count > 1)
+                {
+                    // display all branching options
+                    DisplayDialogueOptions(dialogue.m_nextDialogueData);
+                    nextDialogue = false;
+                }
             }
 
             AddItemsToInventory(dialogue);
@@ -290,10 +301,21 @@ public class DialogueComponent : MonoBehaviour
             else
             {
                 if (dialogue.isConditionalBranching)
+                {
                     m_currentDialogueIndex = CheckDialogueConditions(dialogue);
-                if (dialogue.m_nextDialogueData.Count == 1)
+                    nextDialogue = true;
+                }
+                else if (dialogue.m_nextDialogueData.Count == 1)
+                {
                     m_currentDialogueIndex = dialogue.m_nextDialogueData[0];
-                nextDialogue = true;
+                    nextDialogue = true;
+                }
+                else if (dialogue.m_nextDialogueData.Count > 1)
+                {
+                    // display all branching options
+                    DisplayDialogueOptions(dialogue.m_nextDialogueData);
+                    nextDialogue = false;
+                }
             }
 
             AddItemsToInventory(dialogue);
