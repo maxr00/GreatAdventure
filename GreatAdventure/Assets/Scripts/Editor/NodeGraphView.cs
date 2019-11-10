@@ -471,7 +471,9 @@ public class NodeGraphView : GUILayout
             // if current node is in selected nodes list, draw it with the selected node style
             if (m_nodeIDsSelected.Find(x => x == node.m_id) == node.m_id)
             {
-                if (node.isConditionalNode)
+                if (node.m_id == m_nodeGraphModel.startNodeID)
+                    DrawStartNode(node, m_nodeSelectedStyle);
+                else if (node.isConditionalNode)
                     DrawConditionalNode(node, m_conditionalNodeSelectedStyle);
                 else
                     DrawNode(node, m_nodeSelectedStyle);
@@ -545,7 +547,8 @@ public class NodeGraphView : GUILayout
             Rect nodeContentRect = new Rect(node.m_position.x + padding, node.m_position.y + padding, node.m_dimension.x - (2 * padding), node.m_dimension.y - (2 * padding));
             BeginArea(nodeContentRect);
             DialogueData data = m_nodeGraphModel.GetDataFromNodeID(node.m_id);
-            Label("Conditional Start Node", EditorStyles.boldLabel);
+            Label("Conditional", EditorStyles.boldLabel);
+            Label("Start Node", EditorStyles.boldLabel);
             EndArea();
         }
         else
