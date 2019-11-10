@@ -9,7 +9,7 @@ public class DialogueData : ScriptableObject
 {
     public int node_id;
     public bool m_isStartNode;
-    public int branchingIndex = 0;
+    public int branchingIndex = -1;
     public string characterName = "";
     public string dialogueText = "";
     public string previewDialogueText = "";

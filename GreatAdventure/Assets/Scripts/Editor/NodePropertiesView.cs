@@ -92,18 +92,6 @@ public class NodePropertiesView : GUILayout
 
     private void DisplayStartNodeProperties(DialogueData data, int node_id)
     {
-        // for making start nodes have options? 
-        //if (data.m_isBranching && !data.isConditionalBranching)
-        //{
-        //    if (m_nodeGraphModel != null)
-        //    {
-        //        if (Button("Add Dialogue Option"))
-        //        {
-        //            m_nodeGraphModel.AddOutputPlugToNode(node_id);
-        //        }
-        //    }
-        //}
-
         if (!data.isConditionalBranching)
         {
             ScriptableObject target = data;
@@ -173,12 +161,10 @@ public class NodePropertiesView : GUILayout
 
     private void DisplayNormalNodeProperties(DialogueData data, DialogueAssetBuilder asset)
     {            
-        Label("Choose branching index (order in which options are shown)");
-        Label("Note: if this node is a result from a conditional node,");
-        Label("choose 0 = false and 1 = true");
-        data.branchingIndex = EditorGUILayout.IntField(data.branchingIndex);
-        Label(" ");
-
+        if (data.branchingIndex == 0)
+            Label("False condition node", EditorStyles.boldLabel);
+        else if (data.branchingIndex == 1)
+            Label("True condition node", EditorStyles.boldLabel);
 
         Label("Character Speaking");
         List<string> current_characters = asset.m_dialogueAsset.GetInvolvedCharacterStrings();
