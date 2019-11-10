@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9037342749512935783
+--- !u!114 &-9094170795183669734
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,13 +10,118 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -800914432
+  m_Name: 15850496
   m_EditorClassIdentifier: 
-  node_id: -800914432
+  node_id: 15850496
   m_isStartNode: 0
   branchingIndex: 0
   characterName: OnionLad
-  dialogueText: Sorry kids, you're still too young.
+  dialogueText: Welcome to the Onion Emporeum!
+  previewDialogueText: 
+  characterSpeakingIndex: 1
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 1
+  itemsToCheck: []
+  questsRequired:
+  - {fileID: 11400000, guid: 7d295227e23b7cf49a7795842d5c8fa9, type: 2}
+  questsCompleted: []
+  m_isBranching: 1
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 0016d744002ac774
+--- !u!114 &-8703697721187388107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: 1959209472
+  m_EditorClassIdentifier: 
+  node_id: 1959209472
+  m_isStartNode: 0
+  branchingIndex: 1
+  characterName: Player
+  dialogueText: We are here to pick up a package
+  previewDialogueText: 
+  characterSpeakingIndex: 0
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 1
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted:
+  - {fileID: 11400000, guid: 7d295227e23b7cf49a7795842d5c8fa9, type: 2}
+  m_isBranching: 1
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 000443d0004c5b7c
+--- !u!114 &-8201379227796385221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -1026570240
+  m_EditorClassIdentifier: 
+  node_id: -1026570240
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: OnionLad
+  dialogueText: You can tell him I got his package right here, but I'm not going to
+    hand it over to a bunch of kids, sorry.
+  previewDialogueText: 
+  characterSpeakingIndex: 1
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 00a4bc37
+--- !u!114 &-7347077779558370314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: 2023510528
+  m_EditorClassIdentifier: 
+  node_id: 2023510528
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: Player
+  dialogueText: Dang, got us there
   previewDialogueText: 
   characterSpeakingIndex: 0
   emotion: 0
@@ -33,8 +138,77 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 004caaa0
---- !u!114 &-8874831915254599147
+  m_nextDialogueData: 
+--- !u!114 &-6349780308746044409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: 1054154752
+  m_EditorClassIdentifier: 
+  node_id: 1054154752
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: Player
+  dialogueText: I do taxes. And also, will die soon. Because of how old I am.
+  previewDialogueText: 
+  characterSpeakingIndex: 0
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 003cbd32
+--- !u!114 &-6170164378589556386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: 949600256
+  m_EditorClassIdentifier: 
+  node_id: 949600256
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: OnionLad
+  dialogueText: Sorry, company policy, can't give any packages to kids.
+  previewDialogueText: 
+  characterSpeakingIndex: 1
+  emotion: 0
+  itemsToGive: []
+  questsToAdd:
+  - {fileID: 11400000, guid: 7d295227e23b7cf49a7795842d5c8fa9, type: 2}
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 
+--- !u!114 &-5882422749773564623
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -54,7 +228,7 @@ MonoBehaviour:
 
     Here''s your package, sir.'
   previewDialogueText: 
-  characterSpeakingIndex: 0
+  characterSpeakingIndex: 1
   emotion: 0
   itemsToGive: []
   questsToAdd: []
@@ -71,7 +245,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_nextDialogueData: 
---- !u!114 &-7910890339789454208
+--- !u!114 &-4430426235460938538
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,144 +263,6 @@ MonoBehaviour:
   characterName: Player
   dialogueText: But we *need* to pick up that package for him
   previewDialogueText: 
-  characterSpeakingIndex: 1
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 00c09938
---- !u!114 &-6777225088510218415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: 1959209472
-  m_EditorClassIdentifier: 
-  node_id: 1959209472
-  m_isStartNode: 0
-  branchingIndex: 1
-  characterName: Player
-  dialogueText: We are here to pick up a package
-  previewDialogueText: 
-  characterSpeakingIndex: 1
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 1
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted:
-  - {fileID: 11400000, guid: 7d295227e23b7cf49a7795842d5c8fa9, type: 2}
-  m_isBranching: 1
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 000443d0004c5b7c
---- !u!114 &-4842200616039534100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: 2023510528
-  m_EditorClassIdentifier: 
-  node_id: 2023510528
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: Player
-  dialogueText: Dang, got us there
-  previewDialogueText: 
-  characterSpeakingIndex: 1
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 
---- !u!114 &-3563320929109853844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -1179944960
-  m_EditorClassIdentifier: 
-  node_id: -1179944960
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: Player
-  dialogueText: Jerkboy. I am an adult, look at my trenchcoat.
-  previewDialogueText: 
-  characterSpeakingIndex: 1
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 00f0525e
---- !u!114 &-1425818382587905577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -1026570240
-  m_EditorClassIdentifier: 
-  node_id: -1026570240
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: OnionLad
-  dialogueText: You can tell him I got his package right here, but I'm not going to
-    hand it over to a bunch of kids, sorry.
-  previewDialogueText: 
   characterSpeakingIndex: 0
   emotion: 0
   itemsToGive: []
@@ -242,8 +278,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 00a4bc37
---- !u!114 &-1394125563768695371
+  m_nextDialogueData: 00c09938
+--- !u!114 &-3320419688540259843
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -261,7 +297,7 @@ MonoBehaviour:
   characterName: Player
   dialogueText: What if I told you were *are* adults?
   previewDialogueText: 
-  characterSpeakingIndex: 1
+  characterSpeakingIndex: 0
   emotion: 0
   itemsToGive: []
   questsToAdd: []
@@ -277,7 +313,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_nextDialogueData: 001273d8
---- !u!114 &-1386200057815817483
+--- !u!114 &-2247027500061417564
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -287,13 +323,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: 1054154752
+  m_Name: -800914432
   m_EditorClassIdentifier: 
-  node_id: 1054154752
+  node_id: -800914432
   m_isStartNode: 0
   branchingIndex: 0
-  characterName: Player
-  dialogueText: I do taxes. And also, will die soon. Because of how old I am.
+  characterName: OnionLad
+  dialogueText: Sorry kids, you're still too young.
   previewDialogueText: 
   characterSpeakingIndex: 1
   emotion: 0
@@ -310,8 +346,187 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 003cbd32
---- !u!114 &-1044834717773830808
+  m_nextDialogueData: 004caaa0
+--- !u!114 &-1987202214486318882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -663547392
+  m_EditorClassIdentifier: 
+  node_id: -663547392
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: OnionLad
+  dialogueText: You don't look like adults
+  previewDialogueText: 
+  characterSpeakingIndex: 1
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 00529c78
+--- !u!114 &-1577664167924012300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: 1154946560
+  m_EditorClassIdentifier: 
+  node_id: 1154946560
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: OnionLad
+  dialogueText: How can I help you kids?
+  previewDialogueText: 
+  characterSpeakingIndex: 1
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 00e6e9a5
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dd4f336407e46342afbdf2e5056f0f1, type: 3}
+  m_Name: OnionLad
+  m_EditorClassIdentifier: 
+  m_startIndex: -2134476800
+  m_runtimeBuiltData:
+  - {fileID: 4941574919472451621}
+  - {fileID: -1577664167924012300}
+  - {fileID: 2943784780884064650}
+  - {fileID: 3483689095310837541}
+  - {fileID: -8201379227796385221}
+  - {fileID: -4430426235460938538}
+  - {fileID: -6170164378589556386}
+  - {fileID: 6047273349199384916}
+  - {fileID: -2247027500061417564}
+  - {fileID: -3320419688540259843}
+  - {fileID: -1987202214486318882}
+  - {fileID: -7347077779558370314}
+  - {fileID: -8703697721187388107}
+  - {fileID: 4161200799170286818}
+  - {fileID: 3118762111021930713}
+  - {fileID: -6349780308746044409}
+  - {fileID: -5882422749773564623}
+  - {fileID: -9094170795183669734}
+  m_assetData: 17`-733529728`1959209472`15850496`-584989824`-1272279296`-1761404928`-1511397888`1154946560`1362997120`1433185280`-522230784`-1026570240`65392640`-326658944`-987702528`-1059044480`65392640`-1511397888`408380544`-33085952`-764841216`-800914432`1959209472`-1918472576`-478271744`1385328000`1154946560`15850496`-1465698944`-1165561216`-1805802880`-1599452160`-800914432`-1304954880`980411648`1681269376`-663547392`-1599452160`3337600`1593929344`-839433344`2023510528`-663547392`-1350115584`-1392745472`-1969602816`2086358016`1959209472`-924982144`-1981072896`-809518848`-1179944960`2086358016`1676307968`1973902080`-986629888`1582493696`-1179944960`1027251456`280224896`-756384640`1054154752`1582493696`-1966093056`-368831616`-2024305920`851262464`1054154752`-1180194048`932791168`1840688000`935109632`-1026570240`1943984768`-1722742016`-290349824`949600256`935109632`-675433216`547901696`-1200008832`15850496`-2134476800`123803776`-1225146624`18`-2134476800`10`10`150`75`False`-2134476800`1567019520`0`1`-2134476800`-1225146624`0`1154946560`172`192`150`75`False`1154946560`-1465698944`0`1`1154946560`1433185280`0`-1511397888`169`260`150`75`False`-1511397888`1362997120`0`1`-1511397888`-33085952`0`65392640`169`329`150`75`False`65392640`408380544`0`1`65392640`-987702528`0`-1026570240`169`396`150`75`False`-1026570240`-326658944`0`1`-1026570240`-1722742016`0`935109632`167`462`150`75`False`935109632`1943984768`0`1`935109632`547901696`0`949600256`167`528`150`75`False`949600256`-675433216`0`1`949600256`-2071516288`0`2086358016`624`166`150`75`False`2086358016`-924982144`0`1`2086358016`1973902080`0`-800914432`387`251`150`75`False`-800914432`-1918472576`0`1`-800914432`980411648`0`-1599452160`389`319`150`75`False`-1599452160`-1304954880`0`1`-1599452160`1593929344`0`-663547392`391`391`150`75`False`-663547392`3337600`0`1`-663547392`-1392745472`0`2023510528`389`465`150`75`False`2023510528`-1350115584`0`1`2023510528`1548768640`0`1959209472`377`128`150`105`True`1959209472`-584989824`0`2`1959209472`-1981072896`0`1959209472`-478271744`1`-1179944960`625`241`150`75`False`-1179944960`1676307968`0`1`-1179944960`280224896`0`1582493696`631`314`150`75`False`1582493696`1027251456`0`1`1582493696`-368831616`0`1054154752`632`387`150`75`False`1054154752`-1966093056`0`1`1054154752`932791168`0`851262464`635`457`150`75`False`851262464`-1180194048`0`1`851262464`1718690176`0`15850496`151`75`150`105`True`15850496`123803776`0`2`15850496`-1272279296`0`15850496`-1165561216`1`
+  m_charactersInvolvedStrings:
+  - Player
+  - OnionLad
+  - Penny
+  SceneName: Town
+  m_CharactersInvoled:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_isActiveDialogue: 1
+--- !u!114 &2943784780884064650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -1511397888
+  m_EditorClassIdentifier: 
+  node_id: -1511397888
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: Player
+  dialogueText: WE ARE FORMING A PIRATE CREW DO YOU WANT TO J-
+  previewDialogueText: 
+  characterSpeakingIndex: 0
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 00d0e503
+--- !u!114 &3118762111021930713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: 1582493696
+  m_EditorClassIdentifier: 
+  node_id: 1582493696
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: OnionLad
+  dialogueText: Yes, I can see, it is a very nice trenchcoat
+  previewDialogueText: 
+  characterSpeakingIndex: 1
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 0020d53e
+--- !u!114 &3483689095310837541
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -345,45 +560,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_nextDialogueData: 00c8cfc2
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dd4f336407e46342afbdf2e5056f0f1, type: 3}
-  m_Name: OnionLad
-  m_EditorClassIdentifier: 
-  m_startIndex: -1441038336
-  m_runtimeBuiltData:
-  - {fileID: 2046962346566211650}
-  - {fileID: 1646815993022214119}
-  - {fileID: 8334813739972558680}
-  - {fileID: -1044834717773830808}
-  - {fileID: -1425818382587905577}
-  - {fileID: -7910890339789454208}
-  - {fileID: 3127680236137753584}
-  - {fileID: 3151111730349174588}
-  - {fileID: -9037342749512935783}
-  - {fileID: -1394125563768695371}
-  - {fileID: 650069335398974079}
-  - {fileID: -4842200616039534100}
-  - {fileID: -6777225088510218415}
-  - {fileID: -3563320929109853844}
-  - {fileID: 2459470710557157858}
-  - {fileID: -1386200057815817483}
-  - {fileID: -8874831915254599147}
-  m_assetData: 16`-1954011392`1154946560`-1441038336`-1465698944`346648064`-1761404928`-1511397888`1154946560`1362997120`1433185280`1956167296`65392640`-1511397888`408380544`-33085952`-148189952`-1026570240`65392640`-326658944`-987702528`-764841216`-800914432`1959209472`-1918472576`-478271744`-1113020800`1959209472`-1441038336`-584989824`-1156153088`-1805802880`-1599452160`-800914432`-1304954880`980411648`1681269376`-663547392`-1599452160`3337600`1593929344`-839433344`2023510528`-663547392`-1350115584`-1392745472`-1969602816`2086358016`1959209472`-924982144`-1981072896`-809518848`-1179944960`2086358016`1676307968`1973902080`-986629888`1582493696`-1179944960`1027251456`280224896`-756384640`1054154752`1582493696`-1966093056`-368831616`-2024305920`851262464`1054154752`-1180194048`932791168`1840688000`935109632`-1026570240`1943984768`-1722742016`-290349824`949600256`935109632`-675433216`547901696`17`-1441038336`171`59`150`105`True`-1441038336`-1262871168`0`2`-1441038336`-1156153088`0`-1441038336`346648064`1`1154946560`254`168`150`75`False`1154946560`-1465698944`0`1`1154946560`1433185280`0`-1511397888`251`236`150`75`False`-1511397888`1362997120`0`1`-1511397888`-33085952`0`65392640`251`305`150`75`False`65392640`408380544`0`1`65392640`-987702528`0`-1026570240`251`372`150`75`False`-1026570240`-326658944`0`1`-1026570240`-1722742016`0`935109632`249`438`150`75`False`935109632`1943984768`0`1`935109632`547901696`0`949600256`249`504`150`75`False`949600256`-675433216`0`1`949600256`-2071516288`0`2086358016`706`142`150`75`False`2086358016`-924982144`0`1`2086358016`1973902080`0`-800914432`469`227`150`75`False`-800914432`-1918472576`0`1`-800914432`980411648`0`-1599452160`471`295`150`75`False`-1599452160`-1304954880`0`1`-1599452160`1593929344`0`-663547392`473`367`150`75`False`-663547392`3337600`0`1`-663547392`-1392745472`0`2023510528`471`441`150`75`False`2023510528`-1350115584`0`1`2023510528`1548768640`0`1959209472`459`104`150`105`True`1959209472`-584989824`0`2`1959209472`-1981072896`0`1959209472`-478271744`1`-1179944960`707`217`150`75`False`-1179944960`1676307968`0`1`-1179944960`280224896`0`1582493696`713`290`150`75`False`1582493696`1027251456`0`1`1582493696`-368831616`0`1054154752`714`363`150`75`False`1054154752`-1966093056`0`1`1054154752`932791168`0`851262464`717`433`150`75`False`851262464`-1180194048`0`1`851262464`1718690176`0`
-  m_charactersInvolvedStrings:
-  - Player
-  SceneName: Town
-  m_CharactersInvoled:
-  - {fileID: 0}
-  m_isActiveDialogue: 1
---- !u!114 &650069335398974079
+--- !u!114 &4161200799170286818
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -393,13 +570,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -663547392
+  m_Name: -1179944960
   m_EditorClassIdentifier: 
-  node_id: -663547392
+  node_id: -1179944960
   m_isStartNode: 0
   branchingIndex: 0
-  characterName: OnionLad
-  dialogueText: You don't look like adults
+  characterName: Player
+  dialogueText: Jerkboy. I am an adult, look at my trenchcoat.
   previewDialogueText: 
   characterSpeakingIndex: 0
   emotion: 0
@@ -416,8 +593,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 00529c78
---- !u!114 &1646815993022214119
+  m_nextDialogueData: 00f0525e
+--- !u!114 &4941574919472451621
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -427,82 +604,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: 1154946560
+  m_Name: -2134476800
   m_EditorClassIdentifier: 
-  node_id: 1154946560
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: OnionLad
-  dialogueText: How can I help you kids?
-  previewDialogueText: 
-  characterSpeakingIndex: 0
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 00e6e9a5
---- !u!114 &2046962346566211650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -1441038336
-  m_EditorClassIdentifier: 
-  node_id: -1441038336
+  node_id: -2134476800
   m_isStartNode: 1
   branchingIndex: 0
-  characterName: OnionLad
-  dialogueText: Welcome to the Onion Emporeum!
-  previewDialogueText: 
-  characterSpeakingIndex: 0
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 1
-  itemsToCheck: []
-  questsRequired:
-  - {fileID: 11400000, guid: 7d295227e23b7cf49a7795842d5c8fa9, type: 2}
-  questsCompleted: []
-  m_isBranching: 1
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 0016d744002ac774
---- !u!114 &2459470710557157858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: 1582493696
-  m_EditorClassIdentifier: 
-  node_id: 1582493696
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: OnionLad
-  dialogueText: Yes, I can see, it is a very nice trenchcoat
+  characterName: 
+  dialogueText: 
   previewDialogueText: 
   characterSpeakingIndex: 0
   emotion: 0
@@ -519,43 +627,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 0020d53e
---- !u!114 &3127680236137753584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: 949600256
-  m_EditorClassIdentifier: 
-  node_id: 949600256
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: OnionLad
-  dialogueText: Sorry, company policy, can't give any packages to kids.
-  previewDialogueText: 
-  characterSpeakingIndex: 0
-  emotion: 0
-  itemsToGive: []
-  questsToAdd:
-  - {fileID: 11400000, guid: 7d295227e23b7cf49a7795842d5c8fa9, type: 2}
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 
---- !u!114 &3151111730349174588
+  m_nextDialogueData: 00dcf100
+--- !u!114 &6047273349199384916
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -573,40 +646,6 @@ MonoBehaviour:
   characterName: OnionLad
   dialogueText: Sure thing, sir, who is the package for?
   previewDialogueText: 
-  characterSpeakingIndex: 0
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 0078abb9
---- !u!114 &8334813739972558680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -1511397888
-  m_EditorClassIdentifier: 
-  node_id: -1511397888
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: Player
-  dialogueText: WE ARE FORMING A PIRATE CREW DO YOU WANT TO J-
-  previewDialogueText: 
   characterSpeakingIndex: 1
   emotion: 0
   itemsToGive: []
@@ -622,4 +661,4 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 00d0e503
+  m_nextDialogueData: 0078abb9
