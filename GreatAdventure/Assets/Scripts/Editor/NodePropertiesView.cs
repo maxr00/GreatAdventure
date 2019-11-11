@@ -92,6 +92,9 @@ public class NodePropertiesView : GUILayout
 
     private void DisplayStartNodeProperties(DialogueData data, int node_id)
     {
+        // Error messages
+        DisplayErrorMessages(data.node_id);
+
         if (!data.isConditionalBranching)
         {
             ScriptableObject target = data;
@@ -156,11 +159,14 @@ public class NodePropertiesView : GUILayout
                 EditorGUILayout.PropertyField(stringsProperty, true); // True means show children
                 so.ApplyModifiedProperties();
             }
-        }        
+        }
     }
 
     private void DisplayNormalNodeProperties(DialogueData data, DialogueAssetBuilder asset)
     {
+        // Error messages
+        DisplayErrorMessages(data.node_id);
+
         if (data.branchingIndex == 0)
             Label("False condition node", EditorStyles.boldLabel);
         else if (data.branchingIndex == 1)
@@ -192,7 +198,7 @@ public class NodePropertiesView : GUILayout
 
         Label("Set character emotion to:");
         data.emotion = (CharacterComponent.Emotion)EditorGUILayout.EnumPopup(data.emotion);
-            
+
         // giving items/quests/completeing quests
         ScriptableObject target = data;
         SerializedObject so = new SerializedObject(target);
@@ -228,6 +234,9 @@ public class NodePropertiesView : GUILayout
 
     private void DisplayOptionNodeProperties(DialogueData data, int node_id, DialogueAssetBuilder asset)
     {
+        // Error messages
+        DisplayErrorMessages(data.node_id);
+
         if (data.branchingIndex == 0)
             Label("False condition node", EditorStyles.boldLabel);
         else if (data.branchingIndex == 1)
@@ -266,11 +275,14 @@ public class NodePropertiesView : GUILayout
 
     private void DisplayConditionalNodeProperties(DialogueData data, int node_id, DialogueAssetBuilder asset)
     {
+        // Error messages
+        DisplayErrorMessages(data.node_id);
+
         if (data.branchingIndex == 0)
             Label("False condition node", EditorStyles.boldLabel);
         else if (data.branchingIndex == 1)
             Label("True condition node", EditorStyles.boldLabel);
-        else { Label("out index : " + data.branchingIndex.ToString()); }           
+        else { Label("out index : " + data.branchingIndex.ToString()); }
 
         Label("");
         // items
@@ -364,5 +376,25 @@ public class NodePropertiesView : GUILayout
         Label("Wiggle: <wiggle=height,speed> .. </wiggle>", Width(m_nodePropertiesRect.width - 20));
         //pause
         Label("Pause: <p> for default pause time OR <p=duration>", Width(m_nodePropertiesRect.width - 20));
+    }
+
+    public void DisplayErrorMessages(int node_id)
+    {
+        List<string> error_messages = m_nodeGraphModel.GetErrorMesssages(node_id);
+        GUIStyle error_label = new GUIStyle();
+        error_label.fontStyle = FontStyle.Bold;
+        error_label.fontSize = 16;
+        error_label.normal.textColor = new Color(171f / 255f, 19f / 255f, 0);
+        if (error_messages.Count > 0)
+        {
+            Label("AAAAAAAA Errors!", error_label);
+            Label("");
+            error_label.fontSize = 13;
+            foreach (var error in error_messages)
+            {
+                Label(error, error_label);
+            }
+            Label("");
+        }
     }
 }

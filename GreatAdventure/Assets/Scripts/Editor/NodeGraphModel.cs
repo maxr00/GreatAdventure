@@ -14,7 +14,7 @@ public class Node
     public Plug GetOutputPlugAtIndex(int plugIndex)
     {
         int currIndex = 0;
-        foreach(var plug_pair in m_outputPlugs)
+        foreach (var plug_pair in m_outputPlugs)
         {
             if (plug_pair.Value.m_plugIndex == plugIndex)
                 return plug_pair.Value;
@@ -315,5 +315,75 @@ public class NodeGraphModel
         }
 
         return null;
+    }
+
+    public List<string> GetErrorMesssages(int node_id)
+    {
+        DialogueData data = GetDataFromNodeID(node_id);
+        Node node = GetNodeFromID(node_id);
+
+        List<string> error_messages = new List<string>();
+
+        // for conditional
+        if (data.isConditionalBranching)
+        {
+            foreach (var item in data.itemsToCheck)
+            {
+                if (item == null)
+                {
+                    error_messages.Add("Error in Items to check");
+                    break;
+                }
+            }
+
+            foreach (var quest in data.questsCompleted)
+            {
+                if (quest == null)
+                {
+                    error_messages.Add("Error in Quests needed to be completed");
+                    break;
+                }
+            }
+
+            foreach (var quest in data.questsRequired)
+            {
+                if (quest == null)
+                {
+                    error_messages.Add("Error in quests required");
+                    break;
+                }
+            }
+        }
+        else if (node.m_outputPlugs.Count == 1)
+        {
+            foreach (var item in data.itemsToGive)
+            {
+                if (item == null)
+                {
+                    error_messages.Add("Error in Items to Give");
+                    break;
+                }
+            }
+
+            foreach (var quest in data.questsToAdd)
+            {
+                if (quest == null)
+                {
+                    error_messages.Add("Error in quests to add");
+                    break;
+                }
+            }
+
+            foreach (var quest in data.questsToComplete)
+            {
+                if (quest == null)
+                {
+                    error_messages.Add("Error in quests to mark as complete");
+                    break;
+                }
+            }
+        }
+
+        return error_messages;
     }
 }

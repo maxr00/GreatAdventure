@@ -5,42 +5,44 @@ using UnityEngine.AI;
 
 public class ThiefMovement : MonoBehaviour
 {
+    public Transform carBody;
     public Transform player;
+
     public Transform[] waypoints;
     public float waypointStep = 5;
-
-    public List<Vector3> steppedWaypoints = new List<Vector3>();
     public int target;
     public int progressionDir = 1;
-
     public float repickDistance = 2;
-    
-    public float moveSpeed = 1.2f;
-    public float maxSpeed = 15;
-    public float burstSpeed = 20;
 
-    public float turnThreshold = 0.8f;
-    public float turnSlowdown = 1.1f;
-    public float turnSpeedup = 4.0f;
-
-    public float groundCheckHeight = 1.2f;
-    public float bodyRadius = 0.5f;
-    public float stoppedSlowing = 1.2f;
-
-    public float standingGravity = 9.8f / 2;
-    public float fallGravity = 9.8f * 2;
-
-    public LayerMask groundLayer;
-
-    public float navMeshDist = 10;
-    public bool isNavMesh = false;
-    public float navMoveSpeed = 5;
+    List<Vector3> steppedWaypoints = new List<Vector3>();
 
     Rigidbody rbody;
-    CharacterAnimationController animController;
+    WheelTurner wheelTurner;
 
-    bool wasMoving = true;
+    Vector3 wheelsForward;
+
+    public float speed = 40;
+    public float reverseSpeed = 20;
+    public float turnSpeed = 50;
+    public float wheelTurnSpeed = 4;
+    public float wheelCorrectionSpeed = 2;
+    public float correctionSpeed = 2;
+    public float turnTilt = 20;
+    public float tiltSpeed = 2;
+
+    public float groundCheckHeight = 0.2f;
+
+    public float frontWheelDriveAmt = 0.2f;
+    public float backWheelDriveAmt = 1.0f;
+
+    public Vector2 groundDrag = new Vector2(1.5f, 1);
+    public Vector2 airDrag = new Vector2(1.5f, 1);
+    public float fallForce = 18;
+    bool inAir = false;
+
     public bool allowMovement = true;
+
+    private float tiltH = 0;
 
     Vector3[] forwardDirs =
         {
@@ -57,14 +59,8 @@ public class ThiefMovement : MonoBehaviour
     void Start()
     {
         rbody = GetComponent<Rigidbody>();
-        animController = GetComponent<CharacterAnimationController>();
-        NavMeshAgent agent = GetComponent<NavMeshAgent>();
-
-        if (agent != null)
-        {
-            gameObject.GetComponent<NavMeshAgent>().isStopped = true;
-            gameObject.GetComponent<NavMeshAgent>().speed = navMoveSpeed;
-        }
+        wheelTurner = GetComponent<WheelTurner>();
+        wheelsForward = transform.forward;
 
         //steppedWaypoints = new Vector3[waypoints.Length * waypointSteps];
         for (int i = 0; i < waypoints.Length; i++)
@@ -83,8 +79,6 @@ public class ThiefMovement : MonoBehaviour
                 else
                     break;
             }
-
-            //steppedWaypoints[i] = Vector3.Lerp(waypoints[i / 5].position, waypoints[(i / 5 + 1) % waypoints.Length].position, (i % 5) / 5.0f);
         }
     }
 
@@ -110,117 +104,84 @@ public class ThiefMovement : MonoBehaviour
         }
         Debug.DrawLine(transform.position, target, Color.blue);
 
-        //if not on screen, use navmesha agent
-        dist = Vector3.Distance(target, transform.position);
-        NavMeshAgent agent = GetComponent<NavMeshAgent>();
-        if (agent != null)
-        {
-            if (dist >= navMeshDist)
-            {
-                isNavMesh = true;
-                agent.isStopped = false;
-                agent.destination = target;
-                gameObject.GetComponent<NavMeshAgent>().speed = navMoveSpeed;
-                return;
-            }
-            else
-            {
-                isNavMesh = false;
-                agent.isStopped = true;
-            }
-        }
-
         var forward = new Vector3(target.x - transform.position.x, 0, target.z - transform.position.z).normalized;
-        if (!allowMovement)
-            forward = Vector3.zero;
 
-        // Angle check
-        Debug.DrawLine(transform.position, transform.position - transform.up * groundCheckHeight, Color.blue);
-        Debug.DrawLine(transform.position + forward, transform.position + forward - transform.up * groundCheckHeight, Color.gray);
+        if(allowMovement)
+            CarFixedUpdate(forward.x,forward.z);
+    }
 
-        if (Physics.Raycast(new Ray(transform.position, -Vector3.up), out var hit, groundCheckHeight, groundLayer) // Directly down
-            || Physics.Raycast(new Ray(transform.position + forward * bodyRadius, -Vector3.up), out var hitEdge, groundCheckHeight, groundLayer)) // Stuck on edge check
+    void CarFixedUpdate(float h, float v)
+    {
+        //HandleDrifting(h, v);
+        //HandleBoost();
+        //HandleSlam(ref h, ref v);
+        //if (Input.GetAxisRaw("Interact") != 0)
+        //    Slam(h, v);
+
+        // Turning
+        if (h != 0)
         {
-            // Grounded
-            rbody.AddForce(Vector3.down * standingGravity, ForceMode.Acceleration); // Stay on ground
+            wheelsForward = Vector3.Lerp(wheelsForward, transform.right * h, Time.deltaTime * wheelTurnSpeed);
+            wheelsForward = Vector3.ProjectOnPlane(wheelsForward, transform.up);
+        }
 
-            // Ramp check
-            Physics.Raycast(new Ray(transform.position + forward * bodyRadius, -Vector3.up), out var hitRamp, groundCheckHeight, groundLayer);
+        // Tilt
+        tiltH = Mathf.Lerp(tiltH, h, Time.deltaTime * tiltSpeed);
+        float tiltAmt = turnTilt;
+        carBody.localRotation = Quaternion.Euler(0, 0, Mathf.Abs(tiltH) * Vector3.Dot(wheelsForward, transform.right) * tiltAmt);
 
-            var move = forward.x * Vector3.right + forward.z * Vector3.forward;
-            //move = Vector3.ProjectOnPlane(move, hitRamp.normal).normalized;
+        if (inAir) // was in air last update
+        {
+            rbody.drag = groundDrag.x;
+            rbody.angularDrag = groundDrag.y;
+            inAir = false;
+        }
 
-            Debug.DrawLine(transform.position, transform.position + move, Color.red);
-
-            if (wasMoving)
-            {
-                if (Vector3.Dot(rbody.velocity.normalized, move) < turnThreshold)
-                {
-                    // If turning around, make it faster but slowing fighting velocity 
-                    rbody.velocity = new Vector3(rbody.velocity.x / turnSlowdown, rbody.velocity.y, rbody.velocity.z / turnSlowdown);
-                    rbody.AddForce(move * moveSpeed * turnSpeedup, ForceMode.Impulse);
-                }
-                else
-                {
-                    // Continue movement force
-                    rbody.AddForce(move * moveSpeed, ForceMode.Impulse);
-                }
-
-                // Smooth Turning:
-                /*
-                    if((transform.forward + Vector3.ProjectOnPlane(rbody.velocity, hitRamp.normal).normalized).sqrMagnitude > 0.1f)
-                        transform.forward = Vector3.Lerp(transform.forward, Vector3.ProjectOnPlane(rbody.velocity, hitRamp.normal).normalized, 0.3f); 
-                    else
-                        transform.forward = Vector3.Lerp(transform.forward, Vector3.ProjectOnPlane(rbody.velocity, hitRamp.normal).normalized, 0.6f); // Turn around 180 degrees
-                */
-
-                // 8-Dir Turning:
-                Vector3 dir = Vector3.forward;
-                float min = 0;
-                foreach (Vector3 d in forwardDirs)
-                {
-                    if (min < Vector3.Dot(d, rbody.velocity.normalized))
-                    {
-                        dir = d;
-                        min = Vector3.Dot(d, rbody.velocity.normalized);
-                    }
-                }
-
-                transform.forward = Vector3.Lerp(transform.forward, Vector3.ProjectOnPlane(dir, hitRamp.normal), 0.6f);
-            }
-            else
-            {
-                rbody.AddForce(move * burstSpeed, ForceMode.Impulse);
-            }
+        // Ground check
+        Debug.DrawLine(transform.position, transform.position + Vector3.down * groundCheckHeight, Color.red);
+        RaycastHit hit;
+        if (Physics.Linecast(transform.position, transform.position - Vector3.up * groundCheckHeight, out hit))
+        {
+            rbody.drag = groundDrag.x + hit.collider.material.dynamicFriction;
+            rbody.angularDrag = groundDrag.y + hit.collider.material.staticFriction;
         }
         else
         {
-            // Not on ground
-            rbody.AddForce(Vector3.down * fallGravity, ForceMode.Acceleration); // Fall faster
+            rbody.drag = airDrag.x;
+            rbody.angularDrag = airDrag.y;
+            inAir = true;
+
+            rbody.AddForce(Vector3.down * fallForce, ForceMode.Acceleration);
+
+            wheelTurner.Turn(wheelsForward);
         }
 
-        if (forward.sqrMagnitude < 0.025f) // if stopped input, slow down to stop
+        // Acceleration
+        if (v != 0)
         {
-            rbody.velocity = new Vector3(rbody.velocity.x / stoppedSlowing, rbody.velocity.y, rbody.velocity.z / stoppedSlowing);
+            float s = v > 0 ? speed : reverseSpeed;
+
+            rbody.AddForce((wheelsForward * frontWheelDriveAmt + transform.forward * backWheelDriveAmt).normalized * v * s, ForceMode.Acceleration);
+
+            // Turning Torque
+            if (h != 0)
+            {
+                rbody.AddTorque(transform.up * h * turnSpeed * Mathf.Sign(v), ForceMode.Acceleration);
+            }
+
+            wheelsForward = Vector3.Lerp(wheelsForward, transform.forward, Time.deltaTime * wheelCorrectionSpeed);
+            wheelsForward = Vector3.ProjectOnPlane(wheelsForward, Vector3.up);
+
+            float dot = Vector3.Dot(wheelsForward, transform.right);
+            rbody.AddTorque(transform.up * (1 - dot) * (correctionSpeed * Mathf.Sign(dot)), ForceMode.Acceleration);
         }
 
-        if (rbody.velocity.sqrMagnitude < 0.1f) // has the player stopped moving / is standing still?
-        {
-            wasMoving = false;
-        }
+        Debug.DrawLine(transform.position, transform.position + wheelsForward * 3, Color.blue);
+
+        if (v >= 0)
+            wheelTurner.Turn(wheelsForward);
         else
-        {
-            wasMoving = true;
-        }
-
-        float vel = rbody.velocity.magnitude;
-        if (vel >= maxSpeed)
-        {
-            rbody.velocity = new Vector3(rbody.velocity.x * maxSpeed / vel, rbody.velocity.y * maxSpeed / vel, rbody.velocity.z * maxSpeed / vel);
-        }
-
-        // Update animation controller details
-        //animController.movement = Vector3.forward;
+            wheelTurner.Turn(Vector3.Cross(wheelsForward, transform.up)); // Reverse
     }
 
     int PickNextTarget()
@@ -229,6 +190,9 @@ public class ThiefMovement : MonoBehaviour
         int next = (curr + progressionDir + steppedWaypoints.Count) % steppedWaypoints.Count;
         int prev = (curr - progressionDir + steppedWaypoints.Count) % steppedWaypoints.Count;
 
+        return next;
+
+        /*
         float nextDist = Vector3.Distance(steppedWaypoints[next], player.position);
         float prevDist = Vector3.Distance(steppedWaypoints[prev], player.position);
 
@@ -244,6 +208,6 @@ public class ThiefMovement : MonoBehaviour
         }
         else
             return next;
-
+        */
     }
 }

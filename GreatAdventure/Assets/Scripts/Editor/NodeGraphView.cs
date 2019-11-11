@@ -31,10 +31,10 @@ public class NodeGraphView : GUILayout
     public float plug_height = 20.0f;
     public float in_between_plug_height = 10.0f;
 
-    private Texture errorTex;
-    private Texture QuestGivenTex;
-    private Texture QuestCompleteTex;
-    private Texture ItemGivenTex;
+    private Texture2D errorTex;
+    private Texture2D QuestGivenTex;
+    private Texture2D QuestCompleteTex;
+    private Texture2D ItemGivenTex;
 
     // used for drawing connections
     private Plug m_currentSelectedInPlug;
@@ -177,7 +177,7 @@ public class NodeGraphView : GUILayout
                         }
                         m_isDragged = true;
                     }
-                    else if(m_nodeGraphRect.Contains(e.mousePosition))// clicked on graph
+                    else if (m_nodeGraphRect.Contains(e.mousePosition))// clicked on graph
                     {
                         m_isMultiSelectOn = true;
                         m_multiSelectStartPos = e.mousePosition;
@@ -407,7 +407,7 @@ public class NodeGraphView : GUILayout
         bool isStartNode = data.m_isStartNode;
         string dialogueText = data.dialogueText;
         Vector2 position = m_nodeGraphModel.GetNodeFromID(node_id).m_position;
-        
+
         RemoveNode(node_id);
         int new_id = m_nodeGraphModel.AddConditionalNode(position);
         m_nodeGraphModel.GetDataFromNodeID(new_id).dialogueText = dialogueText;
@@ -563,6 +563,15 @@ public class NodeGraphView : GUILayout
         DialogueData data = m_nodeGraphModel.GetDataFromNodeID(node.m_id);
         if (data != null)
         {
+            List<string> errors = m_nodeGraphModel.GetErrorMesssages(node.m_id);
+            if (errors.Count > 0)
+            {
+                GUIStyle error_label = new GUIStyle();
+                error_label.fontStyle = FontStyle.Bold;
+                error_label.normal.textColor = new Color(171f / 255f, 19f / 255f, 0);
+                Label("Errors!!", error_label);
+            }
+
             Label(data.characterName);
             string tag_pattern = "<[^>]+>";
             string displayText = Regex.Replace(data.dialogueText, tag_pattern, "");
@@ -618,7 +627,7 @@ public class NodeGraphView : GUILayout
         string tag_pattern = "<[^>]+>";
         if (data.m_nextDialogueData != null)
         {
-            foreach(var nodeId in data.m_nextDialogueData)
+            foreach (var nodeId in data.m_nextDialogueData)
             {
                 DialogueData nextData = m_nodeGraphModel.GetDataFromNodeID(nodeId);
                 if (nextData != null)
@@ -641,7 +650,7 @@ public class NodeGraphView : GUILayout
             // draw plugs on specific node
             Plug trueOutput = node.GetOutputPlugAtIndex(0);
             Plug falseOutput = node.GetOutputPlugAtIndex(1);
-           
+
             DrawConditionalOutPlug(trueOutput, nodeRect, m_outputTruePlugStyle, 1, node.m_outputPlugs.Count);
             DrawConditionalOutPlug(falseOutput, nodeRect, m_outputFalsePlugStyle, 2, node.m_outputPlugs.Count);
 
@@ -658,7 +667,6 @@ public class NodeGraphView : GUILayout
                 Label("True", rightAlign);
                 Label("");
                 string tag_pattern = "<[^>]+>";
-                string displayText = Regex.Replace(data.dialogueText, tag_pattern, "");
                 Label("False", rightAlign);
             }
 
@@ -692,8 +700,15 @@ public class NodeGraphView : GUILayout
             float padding = 7f;
             Rect nodeContentRect = new Rect(node.m_position.x + padding, node.m_position.y + padding, node.m_dimension.x - (2 * padding), node.m_dimension.y - (2 * padding));
             BeginArea(nodeContentRect);
-            //DialogueData data = m_nodeGraphModel.GetDataFromNodeID(node.m_id);
+            List<string> errors = m_nodeGraphModel.GetErrorMesssages(node.m_id);
             Label("Start Node", EditorStyles.boldLabel);
+            if (errors.Count > 0)
+            {
+                GUIStyle error_label = new GUIStyle();
+                error_label.fontStyle = FontStyle.Bold;
+                error_label.normal.textColor = new Color(171f / 255f, 19f / 255f, 0);
+                Label("Errors!!", error_label);
+            }
             EndArea();
         }
     }
@@ -725,6 +740,23 @@ public class NodeGraphView : GUILayout
             string tag_pattern = "<[^>]+>";
             string displayText = Regex.Replace(data.dialogueText, tag_pattern, "");
             Label("False", rightAlign);
+
+            List<string> errors = m_nodeGraphModel.GetErrorMesssages(node.m_id);
+            if (errors.Count > 0)
+            {
+                GUIStyle error_label = new GUIStyle();
+                error_label.fontStyle = FontStyle.Bold;
+                error_label.normal.textColor = new Color(171f / 255f, 19f / 255f, 0);
+                Label("Errors!!", error_label);
+            }
+            /*
+            if (data.questsRequired.Count > 0)
+                Label("Checking for quests");
+            if (data.questsToComplete.Count > 0)
+                Label("Checking for completed quests");
+            if (data.itemsToCheck.Count > 0)
+                Label("Checking for items");
+             */
         }
 
         OutputPlugToNode outputdata = m_nodeGraphModel.GetOutputPlugToNode(node.m_id, 0);
@@ -839,7 +871,7 @@ public class NodeGraphView : GUILayout
     private void DrawConditionalOutPlug(Plug plug, Rect node_rect, GUIStyle style, int plug_count, int total_count)
     {
         Rect plug_rect = new Rect(0, 0, m_plugDimensions.x, m_plugDimensions.y);
-        plug_rect.y = node_rect.y + ((node_rect.height / (total_count + 1)) + ((in_between_plug_height + 3f)* (plug_count - 1)) + (plug_height * (plug_count - 1))) - plug_rect.height * 0.5f;
+        plug_rect.y = node_rect.y + ((node_rect.height / (total_count + 1)) + ((in_between_plug_height + 3f) * (plug_count - 1)) + (plug_height * (plug_count - 1))) - plug_rect.height * 0.5f;
         switch (plug.m_plugType)
         {
             case PlugType.kIn: // position is on left side of the node
