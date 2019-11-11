@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEditor;
 
@@ -27,6 +28,9 @@ public class DialogueAssetBuilder : ScriptableObject
 
     public void SaveAsset(NodeGraphModel model_data)
     {
+        if (m_dialogueAsset.SceneName != SceneManager.GetActiveScene().name)
+            return;
+
         m_dialogueAsset.m_assetData = "";
         // save connections
         m_dialogueAsset.m_assetData += model_data.GetConnections().Count + "`";
@@ -66,6 +70,10 @@ public class DialogueAssetBuilder : ScriptableObject
         PopulateDialogueList(model_data);
         SaveBuiltDialogueData(model_data);
 
+        // only set it to current scene if there is no scene set in the past
+        if (m_dialogueAsset.SceneName == null)
+            m_dialogueAsset.SceneName = SceneManager.GetActiveScene().name;
+
         EditorUtility.SetDirty(m_dialogueAsset); // tells unity to data in this asset has changed and needs to saved if user asks
         AssetDatabase.SaveAssets();
     }
@@ -99,7 +107,6 @@ public class DialogueAssetBuilder : ScriptableObject
             m_dialogueAsset.m_runtimeBuiltData.Add(dialogue);
             dialogue.name = dialogue.node_id.ToString();
             AssetDatabase.AddObjectToAsset(dialogue, m_dialogueAsset);
-            Debug.Log(AssetDatabase.GetAssetPath(dialogue));
             AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(dialogue));
             EditorUtility.SetDirty(dialogue);
 
@@ -127,6 +134,14 @@ public class DialogueAssetBuilder : ScriptableObject
                     // adding branching indices
                     DialogueData next_data = model_data.GetDataFromNodeID(connection.m_inputNodeId);
                     NextDialogueDataContent nextDataContent = new NextDialogueDataContent();
+
+                    if (next_data.branchingIndex == -1)
+                    {
+                        Plug outputplug_index = model_data.GetNodeFromID(connection.m_outputNodeId).m_outputPlugs[connection.m_outputPlugId];
+                        Debug.Log(outputplug_index.m_plugIndex);
+                        next_data.branchingIndex = outputplug_index.m_plugIndex;
+                    }
+
                     nextDataContent.branchingIndex = next_data.branchingIndex;
                     nextDataContent.nextNodeIndex = connection.m_inputNodeId;
                     nextData.Add(nextDataContent);
@@ -185,7 +200,7 @@ public class DialogueAssetBuilder : ScriptableObject
                 Plug out_plug = LoadInputPlug(data, ref data_index, PlugType.kOut);
                 node.m_outputPlugs.Add(out_plug.m_plugId, out_plug);
             }
-            m_nodeGraphModel.AddNode(node);
+            m_nodeGraphModel.AddNode(node); 
         }
 
         // edit here when dialogue data changes
@@ -194,7 +209,7 @@ public class DialogueAssetBuilder : ScriptableObject
             DialogueData dialogue = m_dialogueAsset.m_runtimeBuiltData[dialogue_index];
             m_nodeGraphModel.AddDialogueData(dialogue);
         }
-
+        m_nodeGraphModel.startNodeID = m_dialogueAsset.m_startIndex;
         //updating involved characters gameobject list
         m_dialogueAsset.LoadCharactersInvolvedGameObjects();
     }
@@ -207,5 +222,41 @@ public class DialogueAssetBuilder : ScriptableObject
         plug.m_plugIndex = int.Parse(data[data_index++]);
         plug.m_plugType = type;
         return plug;
+    }
+
+    public List<int> GetNextDialogueData(DialogueData data, NodeGraphModel model_data)
+    {
+        List<NextDialogueDataContent> nextData = new List<NextDialogueDataContent>();
+        DialogueData dialogue = data;
+        // populating next branch ids
+        dialogue.m_nextDialogueData = new List<int>();
+        foreach (KeyValuePair<int, Connection> connection_pair in model_data.GetConnections())
+        {
+            Connection connection = connection_pair.Value;
+            if (connection.m_outputNodeId == dialogue.node_id)
+            {
+                // adding branching indices
+                DialogueData next_data = model_data.GetDataFromNodeID(connection.m_inputNodeId);
+                NextDialogueDataContent nextDataContent = new NextDialogueDataContent();
+
+                if (next_data.branchingIndex == -1)
+                {
+                    Plug outputplug_index = model_data.GetNodeFromID(connection.m_outputNodeId).m_outputPlugs[connection.m_outputPlugId];
+                    Debug.Log(outputplug_index.m_plugIndex);
+                    next_data.branchingIndex = outputplug_index.m_plugIndex;
+                }
+                nextDataContent.branchingIndex = next_data.branchingIndex;
+                nextDataContent.nextNodeIndex = connection.m_inputNodeId;
+                nextData.Add(nextDataContent);
+            }
+        }
+
+        nextData.Sort(delegate (NextDialogueDataContent c1, NextDialogueDataContent c2) { return c1.branchingIndex.CompareTo(c2.branchingIndex); });
+        foreach (NextDialogueDataContent next_data in nextData)
+        {
+            dialogue.m_nextDialogueData.Add(next_data.nextNodeIndex);
+        }
+
+        return dialogue.m_nextDialogueData;
     }
 }

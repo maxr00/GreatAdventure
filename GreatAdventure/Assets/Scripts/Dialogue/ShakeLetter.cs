@@ -58,6 +58,7 @@ public class ShakeLetter : MonoBehaviour
             curr_left = center_left + Random.Range(-shake_radius, shake_radius);
             t = 0.0f;
         }
+        GetComponent<CharacterText>().UpdateNow();
     }
 
     private void Shake_WS()

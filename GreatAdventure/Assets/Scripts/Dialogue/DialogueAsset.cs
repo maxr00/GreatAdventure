@@ -12,6 +12,9 @@ public class DialogueAsset : ScriptableObject
     [HideInInspector]public string m_assetData = ""; // for editor stuff
     public List<string> m_charactersInvolvedStrings;
 
+    // for locking asset when editing in the wrong scene
+    public string SceneName = null;
+
     // shown in editor
     [HideInInspector] public List<GameObject> m_CharactersInvoled;
     public bool m_isActiveDialogue = true;

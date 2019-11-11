@@ -31,6 +31,7 @@ public class WiggleLetter : MonoBehaviour
             else
             {
                 GetComponent<CharacterText>().top += (wiggle_height * Mathf.Sin(t));
+                GetComponent<CharacterText>().UpdateNow();
             }
         }
     }
@@ -38,6 +39,7 @@ public class WiggleLetter : MonoBehaviour
     public void StartWiggle(bool ScreenSpace)
     {
         isWiggling = true; isScreenSpace = ScreenSpace;
+        GetComponent<CharacterText>()?.UpdateNow();
         t = 0;
     }
 }

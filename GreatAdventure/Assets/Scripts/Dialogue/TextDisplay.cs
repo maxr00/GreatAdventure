@@ -295,6 +295,7 @@ public class TextDisplay : MonoBehaviour
                 textChars[i + textCharsStartIndex].GetComponent<CharacterText>().left = currentLineOffset;
                 textChars[i + textCharsStartIndex].GetComponent<CharacterText>().anchorMin = startPos.x;
                 textChars[i + textCharsStartIndex].GetComponent<CharacterText>().anchorMax = startPos.y;
+                textChars[i + textCharsStartIndex].GetComponent<CharacterText>().UpdateNow();
                 ApplyTextModifiers(i, textChars[i + textCharsStartIndex]);
                 currentLineOffset += GetCharacterWidth(textChars[i + textCharsStartIndex].GetComponent<TextMeshProUGUI>());
             }
@@ -341,7 +342,7 @@ public class TextDisplay : MonoBehaviour
                 textChars[i + textCharsStartIndex].GetComponent<CharacterText>().left = currentLineOffset;
                 textChars[i + textCharsStartIndex].GetComponent<CharacterText>().anchorMin = startPos.x;
                 textChars[i + textCharsStartIndex].GetComponent<CharacterText>().anchorMax = startPos.y;
-
+                textChars[i + textCharsStartIndex].GetComponent<CharacterText>().UpdateNow();
                 ApplyTextModifiers(i, textChars[i + textCharsStartIndex]);
                 currentLineOffset += GetCharacterWidth(textChars[i + textCharsStartIndex].GetComponent<TextMeshProUGUI>());
             }
@@ -366,6 +367,7 @@ public class TextDisplay : MonoBehaviour
                 textChars[i + textCharsStartIndex].GetComponent<CharacterText>().left = currentLineOffset;
                 textChars[i + textCharsStartIndex].GetComponent<CharacterText>().anchorMin = startPos.x;
                 textChars[i + textCharsStartIndex].GetComponent<CharacterText>().anchorMax = startPos.y;
+                textChars[i + textCharsStartIndex].GetComponent<CharacterText>().UpdateNow();
                 ApplyTextModifiers(i, textChars[i + textCharsStartIndex]);
                 currentLineOffset += GetCharacterWidth(textChars[i + textCharsStartIndex].GetComponent<TextMeshProUGUI>());
             }
@@ -395,6 +397,7 @@ public class TextDisplay : MonoBehaviour
         {
             textChars[i + textCharsStartIndex].GetComponent<WiggleLetter>().isWiggling = false;
             textChars[i + textCharsStartIndex].GetComponent<ShakeLetter>().isShaking = false;
+            textChars[i + textCharsStartIndex].GetComponent<CharacterText>().ClearOffsets();
         }
     }
 

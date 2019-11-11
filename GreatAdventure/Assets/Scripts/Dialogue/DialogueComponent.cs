@@ -79,17 +79,43 @@ public class DialogueComponent : MonoBehaviour
 
         if (nextDialogue)
         {
-            m_textDisplay.DisplayDialogueHeader(dialogue.characterName, characterComp.characterIcon);
+            if (!dialogue.m_isStartNode && !dialogue.m_isBranching)
+            {
 
-            // do all the actions for the current dialogue
-            m_textDisplay.StopDisplayingOptions();
-            m_textDisplay.DisplayActiveOptionBubble(false, 0);
-            m_textDisplay.DisplayActiveBubble(true);
-            m_textDisplay.Display(dialogue.dialogueText);
+                m_textDisplay.DisplayDialogueHeader(dialogue.characterName, characterComp.characterIcon);
+
+                // do all the actions for the current dialogue
+                m_textDisplay.StopDisplayingOptions();
+                m_textDisplay.DisplayActiveOptionBubble(false, 0);
+                m_textDisplay.DisplayActiveBubble(true);
+                m_textDisplay.Display(dialogue.dialogueText);
+
+                //character comp related actions
+                characterComp.OnCharacterTalk(dialogue.GetDialogueTextWithoutTags());
+                nextDialogue = false;
+            }
+            else
+            {
+                if (dialogue.isConditionalBranching)
+                {
+                    m_currentDialogueIndex = CheckDialogueConditions(dialogue);
+                    nextDialogue = true;
+                }
+                else if (dialogue.m_nextDialogueData.Count == 1)
+                {
+                    m_currentDialogueIndex = dialogue.m_nextDialogueData[0];
+                    nextDialogue = true;
+                }
+                else if (dialogue.m_nextDialogueData.Count > 1)
+                {
+                    // display all branching options
+                    DisplayDialogueOptions(dialogue.m_nextDialogueData);
+                    nextDialogue = false;
+                }
+            }
 
             AddItemsToInventory(dialogue);
             UpdateQuests(dialogue);
-            characterComp.OnCharacterTalk(dialogue.GetDialogueTextWithoutTags());
 
             // triggering dialogue game events
             if (dialogue.m_dialogueEvent != null)
@@ -97,7 +123,7 @@ public class DialogueComponent : MonoBehaviour
                 dialogue.m_dialogueEvent.Invoke();
             }
 
-            nextDialogue = false;
+            
         }
 
         bool isNextDialogueButtonPressed = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Mouse0);
@@ -256,31 +282,57 @@ public class DialogueComponent : MonoBehaviour
         m_dialogueAsset.m_dialogueData.TryGetValue(m_currentDialogueIndex, out dialogue);
         CharacterComponent characterComp;
         m_dialogueAsset.m_characterData.TryGetValue(dialogue.characterName, out characterComp);
-        Vector3 dialoguePosition = characterComp.GetCurrentOffset();
-
 
         if (nextDialogue)
         {
-            // do all the actions for the current dialogue
-            m_textDisplay.DisplayPassiveBubble(true, characterComp.GetCurrentBubblePos());
-            m_textDisplay.Display(dialogue.dialogueText, dialoguePosition);
+
+            if (!dialogue.m_isStartNode)
+            {
+                Vector3 dialoguePosition = characterComp.GetCurrentOffset();
+                
+                // do all the actions for the current dialogue
+                m_textDisplay.DisplayPassiveBubble(true, characterComp.GetCurrentBubblePos());
+                m_textDisplay.Display(dialogue.dialogueText, dialoguePosition);
+
+                //character comp related actions
+                characterComp.OnCharacterTalk(dialogue.GetDialogueTextWithoutTags());
+                nextDialogue = false;
+            }
+            else
+            {
+                if (dialogue.isConditionalBranching)
+                {
+                    m_currentDialogueIndex = CheckDialogueConditions(dialogue);
+                    nextDialogue = true;
+                }
+                else if (dialogue.m_nextDialogueData.Count == 1)
+                {
+                    m_currentDialogueIndex = dialogue.m_nextDialogueData[0];
+                    nextDialogue = true;
+                }
+                else if (dialogue.m_nextDialogueData.Count > 1)
+                {
+                    // display all branching options
+                    DisplayDialogueOptions(dialogue.m_nextDialogueData);
+                    nextDialogue = false;
+                }
+            }
+
             AddItemsToInventory(dialogue);
             UpdateQuests(dialogue);
-            characterComp.OnCharacterTalk(dialogue.GetDialogueTextWithoutTags());
 
             // triggering dialogue game events
             if (dialogue.m_dialogueEvent != null)
             {
                 dialogue.m_dialogueEvent.Invoke();
             }
-
-            nextDialogue = false;
         }
 
 
         bool isNextDialogueButtonPressed = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Mouse0);
         if (isNextDialogueButtonPressed && !m_textDisplay.iSDone())
         {
+            Vector3 dialoguePosition = characterComp.GetCurrentOffset();
             m_textDisplay.StopTypeWriterEffect();
             m_textDisplay.ClearDisplay();
             m_textDisplay.AddToDisplayImmediate(dialogue.dialogueText, dialoguePosition);
