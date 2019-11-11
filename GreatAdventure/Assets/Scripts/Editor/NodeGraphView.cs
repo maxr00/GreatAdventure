@@ -382,11 +382,14 @@ public class NodeGraphView : GUILayout
         generic_menu.AddItem(new GUIContent("Remove Node"), false, () => RemoveNode(node_id));
         generic_menu.AddItem(new GUIContent("Duplicate Node"), false, () => DuplicateNode(node_id));
         Node selectedNode = m_nodeGraphModel.GetNodeFromID(node_id);
-        if (selectedNode.isConditionalNode)
-            generic_menu.AddItem(new GUIContent("Change to Normal"), false, () => ChangeToNormal(node_id));
-        else
-            generic_menu.AddItem(new GUIContent("Change to Conditional"), false, () => ChangeToConditional(node_id));
-
+        DialogueData data = m_nodeGraphModel.GetDataFromNodeID(node_id);
+        if (!data.m_isStartNode)
+        {
+            if (selectedNode.isConditionalNode)
+                generic_menu.AddItem(new GUIContent("Change to Normal"), false, () => ChangeToNormal(node_id));
+            else
+                generic_menu.AddItem(new GUIContent("Change to Conditional"), false, () => ChangeToConditional(node_id));
+        }
         generic_menu.ShowAsContext();
     }
 
@@ -410,7 +413,7 @@ public class NodeGraphView : GUILayout
         m_nodeGraphModel.GetDataFromNodeID(new_id).dialogueText = dialogueText;
         m_nodeGraphModel.GetDataFromNodeID(new_id).characterSpeakingIndex = characterSpeakingIndex;
         m_nodeGraphModel.GetDataFromNodeID(new_id).m_isStartNode = isStartNode;
-        m_nodeGraphModel.startNodeID = new_id;
+        //if (isStartNode) m_nodeGraphModel.startNodeID = new_id;
     }
 
     private void ChangeToNormal(int node_id)
@@ -427,7 +430,7 @@ public class NodeGraphView : GUILayout
         m_nodeGraphModel.GetDataFromNodeID(new_id).dialogueText = dialogueText;
         m_nodeGraphModel.GetDataFromNodeID(new_id).characterSpeakingIndex = characterSpeakingIndex;
         m_nodeGraphModel.GetDataFromNodeID(new_id).m_isStartNode = isStartNode;
-        m_nodeGraphModel.startNodeID = new_id;
+        //if (isStartNode) m_nodeGraphModel.startNodeID = new_id;
     }
 
     private void DuplicateNode(int node_id)
@@ -636,13 +639,11 @@ public class NodeGraphView : GUILayout
             Rect nodeRect = new Rect(node.m_position.x, node.m_position.y, node.m_dimension.x, node.m_dimension.y);
 
             // draw plugs on specific node
-            int plug_count = 1;
-            foreach (KeyValuePair<int, Plug> output_plug in node.m_outputPlugs)
-            {
-                DrawConditionalOutPlug(output_plug.Value, nodeRect, m_outputPlugStyle, plug_count, node.m_outputPlugs.Count);
-                ++plug_count;
-            }
-
+            Plug trueOutput = node.GetOutputPlugAtIndex(0);
+            Plug falseOutput = node.GetOutputPlugAtIndex(1);
+           
+            DrawConditionalOutPlug(trueOutput, nodeRect, m_outputTruePlugStyle, 1, node.m_outputPlugs.Count);
+            DrawConditionalOutPlug(falseOutput, nodeRect, m_outputFalsePlugStyle, 2, node.m_outputPlugs.Count);
 
             // drawing the node itself with the contents in it
             GUI.Box(nodeRect, "", style);
@@ -650,9 +651,29 @@ public class NodeGraphView : GUILayout
             Rect nodeContentRect = new Rect(node.m_position.x + padding, node.m_position.y + padding, node.m_dimension.x - (2 * padding), node.m_dimension.y - (2 * padding));
             BeginArea(nodeContentRect);
             DialogueData data = m_nodeGraphModel.GetDataFromNodeID(node.m_id);
-            Label("Conditional", EditorStyles.boldLabel);
-            Label("Start Node", EditorStyles.boldLabel);
-            EndArea();
+            if (data != null)
+            {
+                var rightAlign = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.UpperRight };
+                Label("Conditional Start", EditorStyles.boldLabel);
+                Label("True", rightAlign);
+                Label("");
+                string tag_pattern = "<[^>]+>";
+                string displayText = Regex.Replace(data.dialogueText, tag_pattern, "");
+                Label("False", rightAlign);
+            }
+
+            OutputPlugToNode outputdata = m_nodeGraphModel.GetOutputPlugToNode(node.m_id, 0);
+            if (outputdata != null)
+            {
+                DialogueData inputNodeData = m_nodeGraphModel.GetDataFromNodeID(outputdata.inputNodeID);
+                inputNodeData.branchingIndex = 1;
+            }
+            outputdata = m_nodeGraphModel.GetOutputPlugToNode(node.m_id, 1);
+            if (outputdata != null)
+            {
+                DialogueData inputNodeData = m_nodeGraphModel.GetDataFromNodeID(outputdata.inputNodeID);
+                inputNodeData.branchingIndex = 0;
+            }
         }
         else
         {

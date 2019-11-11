@@ -15,7 +15,7 @@ public class DialogueEditor : EditorWindow
     private NodeGraphView m_nodeGraphView;
     private NodePropertiesView m_nodePropertiesView;
 
-    private float m_graphPanelSizeRatio = 0.8f;
+    private float m_graphPanelSizeRatio = 0.65f;
     private bool m_isResizing;
     private bool m_isNodeSelected;
 

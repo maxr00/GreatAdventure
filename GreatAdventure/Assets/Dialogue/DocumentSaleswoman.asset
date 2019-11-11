@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7140839987030395577
+--- !u!114 &-9096186487005114332
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -34,7 +34,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_nextDialogueData: 00d2638b
---- !u!114 &-3846171444021127559
+--- !u!114 &-5638646671201916251
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -70,7 +70,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_nextDialogueData: 
---- !u!114 &-2808052233248258171
+--- !u!114 &-5591629592226570598
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -80,13 +80,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -2140447744
+  m_Name: 573170688
   m_EditorClassIdentifier: 
-  node_id: -2140447744
+  node_id: 573170688
   m_isStartNode: 0
   branchingIndex: 0
   characterName: Player
-  dialogueText: I can give it a shot, if you want
+  dialogueText: What kind of documents do you sell?
   previewDialogueText: 
   characterSpeakingIndex: 1
   emotion: 0
@@ -103,8 +103,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 009e85f6
---- !u!114 &-2370633265629072536
+  m_nextDialogueData: 004813d9
+--- !u!114 &-5334343907296924449
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,7 +138,143 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_nextDialogueData: 006003b3
---- !u!114 &-1582727885906525480
+--- !u!114 &-947193291500953425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -2140447744
+  m_EditorClassIdentifier: 
+  node_id: -2140447744
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: Player
+  dialogueText: I can give it a shot, if you want
+  previewDialogueText: 
+  characterSpeakingIndex: 1
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 009e85f6
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dd4f336407e46342afbdf2e5056f0f1, type: 3}
+  m_Name: DocumentSaleswoman
+  m_EditorClassIdentifier: 
+  m_startIndex: -922132480
+  m_runtimeBuiltData:
+  - {fileID: -9096186487005114332}
+  - {fileID: -5591629592226570598}
+  - {fileID: 4413023024720632998}
+  - {fileID: 7356092752944940588}
+  - {fileID: -5334343907296924449}
+  - {fileID: 3329096352603676605}
+  - {fileID: 6328399854116517297}
+  - {fileID: -947193291500953425}
+  - {fileID: 8088812693238069192}
+  - {fileID: -5638646671201916251}
+  - {fileID: 4450023144774480726}
+  m_assetData: 10`-1989787904`573170688`-1956392448`1113711872`-714647936`945209984`-653047808`573170688`251219200`-282371200`-1206739456`-1088585728`-1956392448`2001423616`467998976`-906208640`-1971639296`-1088585728`-89565568`605340544`97651456`-1291624448`-1971639296`-910206208`-1485648640`58040704`-1549120512`-1291624448`1999314176`1988678016`-1956369408`-2140447744`-1549120512`-1388264832`603231104`-1253805312`-159015424`-2140447744`-1989735680`1510619392`-1893351936`626385920`-159015424`1856257792`909148544`-2069232128`-1956392448`-922132480`1881538560`396628992`11`-922132480`0`-20`150`75`False`-922132480`1792712064`0`1`-922132480`396628992`0`573170688`165`177`150`75`False`573170688`1113711872`0`1`573170688`-282371200`0`-653047808`170`249`150`75`False`-653047808`251219200`0`1`-653047808`-1144863872`0`-1088585728`396`38`150`75`False`-1088585728`2001423616`0`1`-1088585728`605340544`0`-1971639296`407`110`150`75`False`-1971639296`-89565568`0`1`-1971639296`-1485648640`0`-1291624448`412`183`150`75`False`-1291624448`-910206208`0`1`-1291624448`1988678016`0`-1549120512`411`254`150`75`False`-1549120512`1999314176`0`1`-1549120512`603231104`0`-2140447744`409`327`150`75`False`-2140447744`-1388264832`0`1`-2140447744`1510619392`0`-159015424`402`400`150`75`False`-159015424`-1989735680`0`1`-159015424`909148544`0`626385920`598`398`150`75`False`626385920`1856257792`0`1`626385920`1962975872`0`-1956392448`166`48`150`105`True`-1956392448`1881538560`0`2`-1956392448`467998976`0`-1956392448`-714647936`1`
+  m_charactersInvolvedStrings:
+  - Document Saleswoman
+  - Player
+  SceneName: Town
+  m_CharactersInvoled:
+  - {fileID: 0}
+  - {fileID: 0}
+  m_isActiveDialogue: 1
+--- !u!114 &3329096352603676605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -1291624448
+  m_EditorClassIdentifier: 
+  node_id: -1291624448
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: Player
+  dialogueText: Oh no!
+  previewDialogueText: 
+  characterSpeakingIndex: 1
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 004caaa3
+--- !u!114 &4413023024720632998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -653047808
+  m_EditorClassIdentifier: 
+  node_id: -653047808
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: Document Saleswoman
+  dialogueText: All kinds!
+  previewDialogueText: 
+  characterSpeakingIndex: 0
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 
+--- !u!114 &4450023144774480726
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -173,7 +309,76 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_nextDialogueData: 00e4292200801dbf
---- !u!114 &-1181730914751981626
+--- !u!114 &6328399854116517297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -1549120512
+  m_EditorClassIdentifier: 
+  node_id: -1549120512
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: Document Saleswoman
+  dialogueText: If only I knew how to drive this RC car used to catch thieves! I knew
+    I shouldn't have put off that training!
+  previewDialogueText: 
+  characterSpeakingIndex: 0
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 005c6b80
+--- !u!114 &7356092752944940588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -1088585728
+  m_EditorClassIdentifier: 
+  node_id: -1088585728
+  m_isStartNode: 0
+  branchingIndex: 1
+  characterName: Player
+  dialogueText: We would like some documents please
+  previewDialogueText: 
+  characterSpeakingIndex: 1
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 002c7b8a
+--- !u!114 &8088812693238069192
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -218,208 +423,3 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_nextDialogueData: 00e45525
---- !u!114 &-676667891430824773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -1549120512
-  m_EditorClassIdentifier: 
-  node_id: -1549120512
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: Document Saleswoman
-  dialogueText: If only I knew how to drive this RC car used to catch thieves! I knew
-    I shouldn't have put off that training!
-  previewDialogueText: 
-  characterSpeakingIndex: 0
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 005c6b80
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dd4f336407e46342afbdf2e5056f0f1, type: 3}
-  m_Name: DocumentSaleswoman
-  m_EditorClassIdentifier: 
-  m_startIndex: -922132480
-  m_runtimeBuiltData:
-  - {fileID: -7140839987030395577}
-  - {fileID: 3293256923992804849}
-  - {fileID: 2347373324982845544}
-  - {fileID: 3879019646533996389}
-  - {fileID: -2370633265629072536}
-  - {fileID: 8955231524146604675}
-  - {fileID: -676667891430824773}
-  - {fileID: -2808052233248258171}
-  - {fileID: -1181730914751981626}
-  - {fileID: -3846171444021127559}
-  - {fileID: -1582727885906525480}
-  m_assetData: 10`-1989787904`573170688`-1956392448`1113711872`-714647936`945209984`-653047808`573170688`251219200`-282371200`-1206739456`-1088585728`-1956392448`2001423616`467998976`-906208640`-1971639296`-1088585728`-89565568`605340544`97651456`-1291624448`-1971639296`-910206208`-1485648640`58040704`-1549120512`-1291624448`1999314176`1988678016`-1956369408`-2140447744`-1549120512`-1388264832`603231104`-1253805312`-159015424`-2140447744`-1989735680`1510619392`-1893351936`626385920`-159015424`1856257792`909148544`-2069232128`-1956392448`-922132480`1881538560`396628992`11`-922132480`10`10`150`75`False`-922132480`1792712064`0`1`-922132480`396628992`0`573170688`175`207`150`75`False`573170688`1113711872`0`1`573170688`-282371200`0`-653047808`180`279`150`75`False`-653047808`251219200`0`1`-653047808`-1144863872`0`-1088585728`406`68`150`75`False`-1088585728`2001423616`0`1`-1088585728`605340544`0`-1971639296`417`140`150`75`False`-1971639296`-89565568`0`1`-1971639296`-1485648640`0`-1291624448`422`213`150`75`False`-1291624448`-910206208`0`1`-1291624448`1988678016`0`-1549120512`421`284`150`75`False`-1549120512`1999314176`0`1`-1549120512`603231104`0`-2140447744`419`357`150`75`False`-2140447744`-1388264832`0`1`-2140447744`1510619392`0`-159015424`412`430`150`75`False`-159015424`-1989735680`0`1`-159015424`909148544`0`626385920`608`428`150`75`False`626385920`1856257792`0`1`626385920`1962975872`0`-1956392448`176`78`150`105`True`-1956392448`1881538560`0`2`-1956392448`467998976`0`-1956392448`-714647936`1`
-  m_charactersInvolvedStrings:
-  - Document Saleswoman
-  - Player
-  SceneName: Town
-  m_CharactersInvoled:
-  - {fileID: 0}
-  - {fileID: 0}
-  m_isActiveDialogue: 1
---- !u!114 &2347373324982845544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -653047808
-  m_EditorClassIdentifier: 
-  node_id: -653047808
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: Document Saleswoman
-  dialogueText: All kinds!
-  previewDialogueText: 
-  characterSpeakingIndex: 0
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 
---- !u!114 &3293256923992804849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: 573170688
-  m_EditorClassIdentifier: 
-  node_id: 573170688
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: Player
-  dialogueText: What kind of documents do you sell?
-  previewDialogueText: 
-  characterSpeakingIndex: 1
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 004813d9
---- !u!114 &3879019646533996389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -1088585728
-  m_EditorClassIdentifier: 
-  node_id: -1088585728
-  m_isStartNode: 0
-  branchingIndex: 1
-  characterName: Player
-  dialogueText: We would like some documents please
-  previewDialogueText: 
-  characterSpeakingIndex: 1
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 002c7b8a
---- !u!114 &8955231524146604675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -1291624448
-  m_EditorClassIdentifier: 
-  node_id: -1291624448
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: Player
-  dialogueText: Oh no!
-  previewDialogueText: 
-  characterSpeakingIndex: 1
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 004caaa3

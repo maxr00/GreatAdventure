@@ -1,246 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8549332720610685084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -802725888
-  m_EditorClassIdentifier: 
-  node_id: -802725888
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: Penny
-  dialogueText: What do you want us to do?
-  previewDialogueText: 
-  characterSpeakingIndex: 2
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 0068a582
---- !u!114 &-7595625517563095341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -576711680
-  m_EditorClassIdentifier: 
-  node_id: -576711680
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: Jerkboy
-  dialogueText: Heh, thanks kid
-  previewDialogueText: 
-  characterSpeakingIndex: 0
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 009433e5
---- !u!114 &-7357259181412072117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -1572311552
-  m_EditorClassIdentifier: 
-  node_id: -1572311552
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: Jerkboy
-  dialogueText: Oh it's you. Do you have my package?
-  previewDialogueText: 
-  characterSpeakingIndex: 0
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 1
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted:
-  - {fileID: 11400000, guid: d79931f9136aa3a4ba736f10e801501f, type: 2}
-  m_isBranching: 1
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 0046c0510024e48a
---- !u!114 &-7064683207015020181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -931923968
-  m_EditorClassIdentifier: 
-  node_id: -931923968
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: Player
-  dialogueText: Yeah! We are gonna be the best pirate crew ever! And we're gonna get
-    the treasure in Treasure Cove!
-  previewDialogueText: 
-  characterSpeakingIndex: 1
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 00544bf6
---- !u!114 &-6792354767508837237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: 1371555328
-  m_EditorClassIdentifier: 
-  node_id: 1371555328
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: Player
-  dialogueText: Uhhhh nope, not yet...
-  previewDialogueText: 
-  characterSpeakingIndex: 1
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 
---- !u!114 &-6560397981868963417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -1903324672
-  m_EditorClassIdentifier: 
-  node_id: -1903324672
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: Jerkboy
-  dialogueText: 'Crew you say? '
-  previewDialogueText: 
-  characterSpeakingIndex: 0
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 00f873c8
---- !u!114 &-6271540201243881638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -1964760064
-  m_EditorClassIdentifier: 
-  node_id: -1964760064
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: Player
-  dialogueText: YUP. Right here, here's you bag of onions
-  previewDialogueText: 
-  characterSpeakingIndex: 1
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 0014a0dd
---- !u!114 &-6239091638493274180
+--- !u!114 &-8107798102695483642
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -274,225 +34,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_nextDialogueData: 00f2cd06
---- !u!114 &-6009042178621115108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -449604608
-  m_EditorClassIdentifier: 
-  node_id: -449604608
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: Player
-  dialogueText: SO YOU'LL JOIN OUR CREW?
-  previewDialogueText: 
-  characterSpeakingIndex: 1
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 00227706
---- !u!114 &-5574693996480260732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: 715605504
-  m_EditorClassIdentifier: 
-  node_id: 715605504
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: Jerkboy
-  dialogueText: hahahahahaha
-  previewDialogueText: 
-  characterSpeakingIndex: 0
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 
---- !u!114 &-4944852936784053362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -1421907456
-  m_EditorClassIdentifier: 
-  node_id: -1421907456
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: Penny
-  dialogueText: Let's just go...
-  previewDialogueText: 
-  characterSpeakingIndex: 2
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 0046a72a
---- !u!114 &-4287339579939037065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -344393728
-  m_EditorClassIdentifier: 
-  node_id: -344393728
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: Player
-  dialogueText: You'll join us?? HECK YEAH!
-  previewDialogueText: 
-  characterSpeakingIndex: 1
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 006027d0
---- !u!114 &-2661997512903043383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -2103089152
-  m_EditorClassIdentifier: 
-  node_id: -2103089152
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: Jerkboy
-  dialogueText: I need a package picked up from my pal in the city, but I'm kinda
-    swamped here, if you can't tell.
-  previewDialogueText: 
-  characterSpeakingIndex: 0
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 00facc5e
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dd4f336407e46342afbdf2e5056f0f1, type: 3}
-  m_Name: Jerkboy
-  m_EditorClassIdentifier: 
-  m_startIndex: -1331204096
-  m_runtimeBuiltData:
-  - {fileID: -6792354767508837237}
-  - {fileID: 4850155991655977855}
-  - {fileID: -6560397981868963417}
-  - {fileID: -7064683207015020181}
-  - {fileID: 3743790801649948290}
-  - {fileID: -4287339579939037065}
-  - {fileID: -8549332720610685084}
-  - {fileID: -2661997512903043383}
-  - {fileID: 173282855390542929}
-  - {fileID: 3834700958007080421}
-  - {fileID: 8881837287571885002}
-  - {fileID: -7357259181412072117}
-  - {fileID: -6271540201243881638}
-  - {fileID: -7595625517563095341}
-  - {fileID: -6009042178621115108}
-  - {fileID: 8466662174433086765}
-  - {fileID: 4066197495042548901}
-  - {fileID: -6239091638493274180}
-  - {fileID: 6411365619690176342}
-  - {fileID: -4944852936784053362}
-  - {fileID: -5574693996480260732}
-  - {fileID: 4144916587728606369}
-  m_assetData: 21`-1182684160`1187688448`-1104112640`152880000`387880960`217643904`-1903324672`1187688448`-1243382912`-1243203072`-1749328000`-931923968`-1903324672`770373632`-1136664832`958733440`-162835456`-931923968`679089280`-625709440`-158706048`-344393728`-162835456`-969977600`-2006358784`397377536`-802725888`-344393728`1660794112`1928906624`-162103296`-2103089152`-802725888`-1717635200`264711040`-1822929792`1590491648`-2103089152`1043338240`1181249024`-1400748160`974648832`1590491648`-399895424`-352744832`-723395968`-1572311552`-1104112640`-1722623360`-1114920192`-2106192000`1371555328`-1572311552`1767512192`-219822208`-1754003072`-1964760064`-1572311552`260474368`-1509187200`1576991744`-576711680`-1964760064`-1574085760`-1135608704`-1293918464`-449604608`-576711680`644391424`1324798464`1125506816`108470784`-449604608`-1447887872`-751691648`-753664`1802131968`108470784`1021711360`1450996352`1609544832`-1342132224`1802131968`580628608`-374371712`-1234728576`114160128`-1342132224`-1782485632`-815454464`-1144356736`-1421907456`114160128`815400192`1116398592`-748755840`715605504`-1421907456`294189056`-580682880`1900894976`-1104112640`-1331204096`281162880`1921927168`22`1371555328`540`271`150`75`False`1371555328`1767512192`0`1`1371555328`371429120`0`1187688448`88`338`150`75`False`1187688448`152880000`0`1`1187688448`-1243203072`0`-1903324672`121`406`150`75`False`-1903324672`-1243382912`0`1`-1903324672`-1136664832`0`-931923968`154`477`150`75`False`-931923968`770373632`0`1`-931923968`-625709440`0`-162835456`185`543`150`75`False`-162835456`679089280`0`1`-162835456`-2006358784`0`-344393728`220`614`150`75`False`-344393728`-969977600`0`1`-344393728`1928906624`0`-802725888`248`685`150`75`False`-802725888`1660794112`0`1`-802725888`264711040`0`-2103089152`290`756`150`75`False`-2103089152`-1717635200`0`1`-2103089152`1181249024`0`1590491648`324`828`150`75`False`1590491648`1043338240`0`1`1590491648`-352744832`0`974648832`380`899`150`75`False`974648832`-399895424`0`1`974648832`-1795978496`0`-1331204096`36`122`150`75`False`-1331204096`-976957056`0`1`-1331204096`1921927168`0`-1572311552`306`250`150`105`True`-1572311552`-1722623360`0`2`-1572311552`-219822208`0`-1572311552`-1509187200`1`-1964760064`529`389`150`75`False`-1964760064`260474368`0`1`-1964760064`-1135608704`0`-576711680`577`460`150`75`False`-576711680`-1574085760`0`1`-576711680`1324798464`0`-449604608`610`534`150`75`False`-449604608`644391424`0`1`-449604608`-751691648`0`108470784`653`605`150`75`False`108470784`-1447887872`0`1`108470784`1450996352`0`1802131968`698`681`150`75`False`1802131968`1021711360`0`1`1802131968`-374371712`0`-1342132224`737`760`150`75`False`-1342132224`580628608`0`1`-1342132224`-815454464`0`114160128`767`829`150`75`False`114160128`-1782485632`0`1`114160128`1116398592`0`-1421907456`799`905`150`75`False`-1421907456`815400192`0`1`-1421907456`-580682880`0`715605504`834`974`150`75`False`715605504`294189056`0`1`715605504`-1101894016`0`-1104112640`93`221`150`105`True`-1104112640`281162880`0`2`-1104112640`-1114920192`0`-1104112640`387880960`1`
-  m_charactersInvolvedStrings:
-  - Jerkboy
-  - Player
-  - Penny
-  SceneName: Town
-  m_CharactersInvoled:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  m_isActiveDialogue: 1
---- !u!114 &173282855390542929
+--- !u!114 &-7762587935168535033
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -527,7 +69,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_nextDialogueData: 00f6173a
---- !u!114 &3743790801649948290
+--- !u!114 &-7628524645558134119
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -537,14 +79,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -162835456
+  m_Name: 715605504
   m_EditorClassIdentifier: 
-  node_id: -162835456
+  node_id: 715605504
   m_isStartNode: 0
   branchingIndex: 0
   characterName: Jerkboy
-  dialogueText: "Ok calm down... \nAlright, lets make a deal. If you need something
-    from me, first I need something from you."
+  dialogueText: hahahahahaha
   previewDialogueText: 
   characterSpeakingIndex: 0
   emotion: 0
@@ -561,8 +102,144 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 00f878eb
---- !u!114 &3834700958007080421
+  m_nextDialogueData: 
+--- !u!114 &-7616792409320192851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -449604608
+  m_EditorClassIdentifier: 
+  node_id: -449604608
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: Player
+  dialogueText: SO YOU'LL JOIN OUR CREW?
+  previewDialogueText: 
+  characterSpeakingIndex: 1
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 00227706
+--- !u!114 &-6691262691901277147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -576711680
+  m_EditorClassIdentifier: 
+  node_id: -576711680
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: Jerkboy
+  dialogueText: Heh, thanks kid
+  previewDialogueText: 
+  characterSpeakingIndex: 0
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 009433e5
+--- !u!114 &-6571227687183253548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: 1187688448
+  m_EditorClassIdentifier: 
+  node_id: 1187688448
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: Player
+  dialogueText: Are you Jerkboy? I need a navigator for my crew!
+  previewDialogueText: 
+  characterSpeakingIndex: 1
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 00928d8e
+--- !u!114 &-5325771309824555237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: 114160128
+  m_EditorClassIdentifier: 
+  node_id: 114160128
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: Player
+  dialogueText: YOU JERK
+  previewDialogueText: 
+  characterSpeakingIndex: 1
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 006a3fab
+--- !u!114 &-4474001136891001933
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -596,7 +273,365 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_nextDialogueData: 
---- !u!114 &4066197495042548901
+--- !u!114 &-4281761577240523347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -802725888
+  m_EditorClassIdentifier: 
+  node_id: -802725888
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: Penny
+  dialogueText: What do you want us to do?
+  previewDialogueText: 
+  characterSpeakingIndex: 2
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 0068a582
+--- !u!114 &-3797174498571368566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -1572311552
+  m_EditorClassIdentifier: 
+  node_id: -1572311552
+  m_isStartNode: 0
+  branchingIndex: 1
+  characterName: Jerkboy
+  dialogueText: Oh it's you. Do you have my package?
+  previewDialogueText: 
+  characterSpeakingIndex: 0
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 1
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted:
+  - {fileID: 11400000, guid: d79931f9136aa3a4ba736f10e801501f, type: 2}
+  m_isBranching: 1
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 0024e48a0046c051
+--- !u!114 &-3608306127308975106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -1964760064
+  m_EditorClassIdentifier: 
+  node_id: -1964760064
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: Player
+  dialogueText: YUP. Right here, here's you bag of onions
+  previewDialogueText: 
+  characterSpeakingIndex: 1
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 0014a0dd
+--- !u!114 &-3499016592670042740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -1104112640
+  m_EditorClassIdentifier: 
+  node_id: -1104112640
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: Jerkboy
+  dialogueText: Hey kids, get lost.
+  previewDialogueText: 
+  characterSpeakingIndex: 0
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 1
+  itemsToCheck: []
+  questsRequired:
+  - {fileID: 11400000, guid: d79931f9136aa3a4ba736f10e801501f, type: 2}
+  questsCompleted: []
+  m_isBranching: 1
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 00b0ca46006e48a2
+--- !u!114 &-3485376264278881220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: 108470784
+  m_EditorClassIdentifier: 
+  node_id: 108470784
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: Jerkboy
+  dialogueText: I said I'll help you out. So here's how I'm gonna help you, I'm gonna
+    give you the best advice you'll ever receive.
+  previewDialogueText: 
+  characterSpeakingIndex: 0
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 005a6a6b
+--- !u!114 &-1457534813163802643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -931923968
+  m_EditorClassIdentifier: 
+  node_id: -931923968
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: Player
+  dialogueText: Yeah! We are gonna be the best pirate crew ever! And we're gonna get
+    the treasure in Treasure Cove!
+  previewDialogueText: 
+  characterSpeakingIndex: 1
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 00544bf6
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dd4f336407e46342afbdf2e5056f0f1, type: 3}
+  m_Name: Jerkboy
+  m_EditorClassIdentifier: 
+  m_startIndex: -1331204096
+  m_runtimeBuiltData:
+  - {fileID: 3185386449908706940}
+  - {fileID: -6571227687183253548}
+  - {fileID: 3166354629836585424}
+  - {fileID: -1457534813163802643}
+  - {fileID: 7581678946326068908}
+  - {fileID: 5181604353782157128}
+  - {fileID: -4281761577240523347}
+  - {fileID: 2482612209726740273}
+  - {fileID: -7762587935168535033}
+  - {fileID: -4474001136891001933}
+  - {fileID: 2497480159036045144}
+  - {fileID: -3797174498571368566}
+  - {fileID: -3608306127308975106}
+  - {fileID: -6691262691901277147}
+  - {fileID: -7616792409320192851}
+  - {fileID: -3485376264278881220}
+  - {fileID: 2981247066726035374}
+  - {fileID: -8107798102695483642}
+  - {fileID: -5325771309824555237}
+  - {fileID: 1595022282397168474}
+  - {fileID: -7628524645558134119}
+  - {fileID: -3499016592670042740}
+  m_assetData: 21`-1182684160`1187688448`-1104112640`152880000`387880960`217643904`-1903324672`1187688448`-1243382912`-1243203072`-1749328000`-931923968`-1903324672`770373632`-1136664832`958733440`-162835456`-931923968`679089280`-625709440`-158706048`-344393728`-162835456`-969977600`-2006358784`397377536`-802725888`-344393728`1660794112`1928906624`-162103296`-2103089152`-802725888`-1717635200`264711040`-1822929792`1590491648`-2103089152`1043338240`1181249024`-1400748160`974648832`1590491648`-399895424`-352744832`-723395968`-1572311552`-1104112640`-1722623360`-1114920192`-2106192000`1371555328`-1572311552`1767512192`-219822208`-1754003072`-1964760064`-1572311552`260474368`-1509187200`1576991744`-576711680`-1964760064`-1574085760`-1135608704`-1293918464`-449604608`-576711680`644391424`1324798464`1125506816`108470784`-449604608`-1447887872`-751691648`-753664`1802131968`108470784`1021711360`1450996352`1609544832`-1342132224`1802131968`580628608`-374371712`-1234728576`114160128`-1342132224`-1782485632`-815454464`-1144356736`-1421907456`114160128`815400192`1116398592`-748755840`715605504`-1421907456`294189056`-580682880`1900894976`-1104112640`-1331204096`281162880`1921927168`22`1371555328`554`225`150`75`False`1371555328`1767512192`0`1`1371555328`371429120`0`1187688448`102`292`150`75`False`1187688448`152880000`0`1`1187688448`-1243203072`0`-1903324672`135`360`150`75`False`-1903324672`-1243382912`0`1`-1903324672`-1136664832`0`-931923968`168`431`150`75`False`-931923968`770373632`0`1`-931923968`-625709440`0`-162835456`199`497`150`75`False`-162835456`679089280`0`1`-162835456`-2006358784`0`-344393728`234`568`150`75`False`-344393728`-969977600`0`1`-344393728`1928906624`0`-802725888`262`639`150`75`False`-802725888`1660794112`0`1`-802725888`264711040`0`-2103089152`304`710`150`75`False`-2103089152`-1717635200`0`1`-2103089152`1181249024`0`1590491648`338`782`150`75`False`1590491648`1043338240`0`1`1590491648`-352744832`0`974648832`394`853`150`75`False`974648832`-399895424`0`1`974648832`-1795978496`0`-1331204096`50`76`150`75`False`-1331204096`-976957056`0`1`-1331204096`1921927168`0`-1572311552`320`204`150`105`True`-1572311552`-1722623360`0`2`-1572311552`-219822208`0`-1572311552`-1509187200`1`-1964760064`543`343`150`75`False`-1964760064`260474368`0`1`-1964760064`-1135608704`0`-576711680`591`414`150`75`False`-576711680`-1574085760`0`1`-576711680`1324798464`0`-449604608`624`488`150`75`False`-449604608`644391424`0`1`-449604608`-751691648`0`108470784`667`559`150`75`False`108470784`-1447887872`0`1`108470784`1450996352`0`1802131968`712`635`150`75`False`1802131968`1021711360`0`1`1802131968`-374371712`0`-1342132224`751`714`150`75`False`-1342132224`580628608`0`1`-1342132224`-815454464`0`114160128`781`783`150`75`False`114160128`-1782485632`0`1`114160128`1116398592`0`-1421907456`813`859`150`75`False`-1421907456`815400192`0`1`-1421907456`-580682880`0`715605504`848`928`150`75`False`715605504`294189056`0`1`715605504`-1101894016`0`-1104112640`107`175`150`105`True`-1104112640`281162880`0`2`-1104112640`-1114920192`0`-1104112640`387880960`1`
+  m_charactersInvolvedStrings:
+  - Jerkboy
+  - Player
+  - Penny
+  SceneName: Town
+  m_CharactersInvoled:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_isActiveDialogue: 1
+--- !u!114 &1595022282397168474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -1421907456
+  m_EditorClassIdentifier: 
+  node_id: -1421907456
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: Penny
+  dialogueText: Let's just go...
+  previewDialogueText: 
+  characterSpeakingIndex: 2
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 0046a72a
+--- !u!114 &2482612209726740273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -2103089152
+  m_EditorClassIdentifier: 
+  node_id: -2103089152
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: Jerkboy
+  dialogueText: I need a package picked up from my pal in the city, but I'm kinda
+    swamped here, if you can't tell.
+  previewDialogueText: 
+  characterSpeakingIndex: 0
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 00facc5e
+--- !u!114 &2497480159036045144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -1331204096
+  m_EditorClassIdentifier: 
+  node_id: -1331204096
+  m_isStartNode: 1
+  branchingIndex: 0
+  characterName: 
+  dialogueText: 
+  previewDialogueText: 
+  characterSpeakingIndex: 0
+  emotion: 0
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_nextDialogueData: 009430be
+--- !u!114 &2981247066726035374
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -632,7 +667,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_nextDialogueData: 00b000b0
---- !u!114 &4144916587728606369
+--- !u!114 &3166354629836585424
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -642,32 +677,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -1104112640
+  m_Name: -1903324672
   m_EditorClassIdentifier: 
-  node_id: -1104112640
+  node_id: -1903324672
   m_isStartNode: 0
   branchingIndex: 0
   characterName: Jerkboy
-  dialogueText: Hey kids, get lost.
+  dialogueText: 'Crew you say? '
   previewDialogueText: 
   characterSpeakingIndex: 0
   emotion: 0
   itemsToGive: []
   questsToAdd: []
   questsToComplete: []
-  isConditionalBranching: 1
+  isConditionalBranching: 0
   itemsToCheck: []
-  questsRequired:
-  - {fileID: 11400000, guid: d79931f9136aa3a4ba736f10e801501f, type: 2}
+  questsRequired: []
   questsCompleted: []
-  m_isBranching: 1
+  m_isBranching: 0
   m_dialogueEvent:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 00b0ca46006e48a2
---- !u!114 &4850155991655977855
+  m_nextDialogueData: 00f873c8
+--- !u!114 &3185386449908706940
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -677,13 +711,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: 1187688448
+  m_Name: 1371555328
   m_EditorClassIdentifier: 
-  node_id: 1187688448
+  node_id: 1371555328
   m_isStartNode: 0
-  branchingIndex: 0
+  branchingIndex: 1
   characterName: Player
-  dialogueText: Are you Jerkboy? I need a navigator for my crew!
+  dialogueText: Uhhhh nope, not yet...
   previewDialogueText: 
   characterSpeakingIndex: 1
   emotion: 0
@@ -700,8 +734,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 00928d8e
---- !u!114 &6411365619690176342
+  m_nextDialogueData: 
+--- !u!114 &5181604353782157128
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -711,13 +745,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: 114160128
+  m_Name: -344393728
   m_EditorClassIdentifier: 
-  node_id: 114160128
+  node_id: -344393728
   m_isStartNode: 0
   branchingIndex: 0
   characterName: Player
-  dialogueText: YOU JERK
+  dialogueText: You'll join us?? HECK YEAH!
   previewDialogueText: 
   characterSpeakingIndex: 1
   emotion: 0
@@ -734,8 +768,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 006a3fab
---- !u!114 &8466662174433086765
+  m_nextDialogueData: 006027d0
+--- !u!114 &7581678946326068908
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -745,14 +779,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: 108470784
+  m_Name: -162835456
   m_EditorClassIdentifier: 
-  node_id: 108470784
+  node_id: -162835456
   m_isStartNode: 0
   branchingIndex: 0
   characterName: Jerkboy
-  dialogueText: I said I'll help you out. So here's how I'm gonna help you, I'm gonna
-    give you the best advice you'll ever receive.
+  dialogueText: "Ok calm down... \nAlright, lets make a deal. If you need something
+    from me, first I need something from you."
   previewDialogueText: 
   characterSpeakingIndex: 0
   emotion: 0
@@ -769,38 +803,4 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 005a6a6b
---- !u!114 &8881837287571885002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -1331204096
-  m_EditorClassIdentifier: 
-  node_id: -1331204096
-  m_isStartNode: 1
-  branchingIndex: 0
-  characterName: 
-  dialogueText: 
-  previewDialogueText: 
-  characterSpeakingIndex: 0
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 009430be
+  m_nextDialogueData: 00f878eb
