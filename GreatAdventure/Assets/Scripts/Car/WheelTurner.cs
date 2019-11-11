@@ -17,9 +17,9 @@ public class WheelTurner : MonoBehaviour {
 		for (int i = 0; i < wheels.Length; i++)
 		{
 			offs[i] = new Vector3(
-				Vector3.Dot(wheels[i].position - transform.position, transform.forward),
-				Vector3.Dot(wheels[i].position - transform.position, transform.up),
-				Vector3.Dot(wheels[i].position - transform.position, transform.right)
+				Vector3.Dot(wheels[i].position - wheels[i].parent.position, wheels[i].parent.forward),
+				Vector3.Dot(wheels[i].position - wheels[i].parent.position, wheels[i].parent.up),
+				Vector3.Dot(wheels[i].position - wheels[i].parent.position, wheels[i].parent.right)
 				);
 		}
 	}
@@ -36,10 +36,10 @@ public class WheelTurner : MonoBehaviour {
 			wheels[i].up = forward;
 			wheels[i].Rotate(forward, 90);
 
-			wheels[i].position = transform.position + 
-				offs[i].x * transform.forward +
-				offs[i].y * transform.up +
-				offs[i].z * transform.right;
+			wheels[i].position = wheels[i].parent.position + 
+				offs[i].x * wheels[i].parent.forward +
+				offs[i].y * wheels[i].parent.up +
+				offs[i].z * wheels[i].parent.right;
 		}
 	}
 

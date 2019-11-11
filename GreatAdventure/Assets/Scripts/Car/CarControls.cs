@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CarControls : MonoBehaviour
 {
+    public Transform carBody;
 	Rigidbody rbody;
 	WheelTurner wheelTurner;
 
@@ -15,8 +16,10 @@ public class CarControls : MonoBehaviour
 	public float wheelTurnSpeed = 4;
 	public float wheelCorrectionSpeed = 2;
 	public float correctionSpeed = 2;
+    public float turnTilt = 20;
+    public float tiltSpeed = 2;
 
-	public float groundCheckHeight = 0.2f;
+    public float groundCheckHeight = 0.2f;
 
 	public float frontWheelDriveAmt = 0.2f;
 	public float backWheelDriveAmt = 1.0f;
@@ -41,6 +44,8 @@ public class CarControls : MonoBehaviour
     public ParticleSystem driftParticles;
     public float driftAutostop = 0.3f;
     public float driftBoostTime = 1.25f;
+    public float driftTilt = 30;
+    public float driftTiltSpeed = 4;
 
     [Header("Boost")]
 
@@ -61,6 +66,7 @@ public class CarControls : MonoBehaviour
     public Transform slamTarget;
     public float slamDistance = 3;
     public float slamForce = 100;
+    public float slamUpForce = 5;
     public float slamCooldown = 2;
     public float slamWiggle = 3;
     public int slamRocks = 2;
@@ -69,6 +75,8 @@ public class CarControls : MonoBehaviour
     public bool recoveringSlam = false;
 
     private float slamTimer = 0;
+
+    private float tiltH = 0;
 
     private void Update()
 	{
@@ -123,9 +131,24 @@ public class CarControls : MonoBehaviour
                 wheelsForward = Vector3.Lerp(wheelsForward, transform.right * (h + driftTurn * -Mathf.Sign(h)), Time.deltaTime * wheelTurnSpeed);
                 wheelsForward = Vector3.ProjectOnPlane(wheelsForward, transform.up);
             }
-		}
 
-		if(inAir) // was in air last update
+        }
+
+        // Tilt
+        tiltH = Mathf.Lerp(tiltH, h, Time.deltaTime * (drifting ? driftTiltSpeed : tiltSpeed));
+        float tiltAmt = drifting ? driftTilt : turnTilt;
+        carBody.localRotation = Quaternion.Euler(0, 0, Mathf.Abs(tiltH) * Vector3.Dot(wheelsForward, transform.right) * tiltAmt);
+
+        //if (Mathf.Sign(tiltH) == Mathf.Sign(Vector3.Dot(wheelsForward, transform.right)))
+        //    carBody.localRotation = q;
+        //else
+        //{
+        //    carBody.localRotation = Quaternion.Lerp(carBody.localRotation, Quaternion.identity, Time.deltaTime);
+        //}
+
+
+
+        if (inAir) // was in air last update
 		{
 			rbody.drag = groundDrag.x;
 			rbody.angularDrag = groundDrag.y;
@@ -171,7 +194,7 @@ public class CarControls : MonoBehaviour
             {
                 rbody.AddForce((wheelsForward * frontWheelDriveAmt + transform.forward * backWheelDriveAmt).normalized * v * s * driftSpeedMod, ForceMode.Acceleration);
 
-                // Turning Torque
+                // Drift Turning Torque
                 if(Mathf.Sign(h) == driftDirection)
                     rbody.AddTorque(transform.up * (h * driftTurnTorque) * turnSpeed * Mathf.Sign(v), ForceMode.Acceleration);
                 else
@@ -304,7 +327,7 @@ public class CarControls : MonoBehaviour
         //if (Mathf.Abs(h) > 0.5)
         //    dir = transform.right * h;
 
-        rbody.AddForce(dir * slamForce, ForceMode.Impulse);
+        rbody.AddForce(dir * slamForce + Vector3.up * slamUpForce, ForceMode.Impulse);
         slamTimer = slamCooldown;
         recoveringSlam = true;
     }
@@ -320,20 +343,21 @@ public class CarControls : MonoBehaviour
         {
             slamTimer = 0;
             recoveringSlam = false;
+            transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+            carBody.localRotation = Quaternion.identity;
             return;
         }
 
-        float wiggle = Mathf.Sin((slamTimer / slamCooldown) * 2 * Mathf.PI * slamWiggle);
+        float wiggle = Mathf.Sin((slamTimer / slamCooldown) * Mathf.PI * slamWiggle + Mathf.PI);
 
-        //rbody.AddTorque(transform.up * wiggle * 100, ForceMode.Acceleration);
+        rbody.AddTorque(transform.up * wiggle * 100, ForceMode.Acceleration);
 
         float percent = 1 - (slamTimer) / slamCooldown;
-        float rocks = slamRocks * 2;
-        float rock = slamRockAmplitude * Mathf.Sin(percent * 2 * (rocks/2) * (2 * Mathf.PI));
-        if ((int)(percent * rocks) % 2 == 0)
-            rock = -rock;
+        float rock = slamRockAmplitude * Mathf.Sin(percent * slamRocks * (2 * Mathf.PI));
 
-        rbody.AddTorque(transform.forward * rock * 1, ForceMode.VelocityChange);
+        carBody.localRotation = Quaternion.Euler(0, 0, rock);
+        //rbody.AddTorque(transform.forward * rock, ForceMode.VelocityChange);
+
 
         h = Mathf.Clamp(h * 0.25f + wiggle, -1, 1);
         v = Mathf.Clamp(v, -slamRecoveryMaxSpeed, slamRecoveryMaxSpeed);
