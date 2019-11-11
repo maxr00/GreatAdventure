@@ -32,7 +32,9 @@ public static class ActiveQuests
 
     public static bool IsQuestComplete(string questName)
     {
-       return GetQuestFromName(questName).isComplete;        
+        if (GetQuestFromName(questName) != null)
+            return GetQuestFromName(questName).isComplete;
+        return false;
     }
 
     public static void MarkQuestAsComplete(string questName)
