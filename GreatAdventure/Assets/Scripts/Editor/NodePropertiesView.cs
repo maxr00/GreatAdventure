@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class NodePropertiesView : GUILayout
 {
@@ -24,220 +25,288 @@ public class NodePropertiesView : GUILayout
 
         EditorGUI.BeginChangeCheck();
 
-        // display first node properties
-        if (selected_nodes != null) // if there has been a node selected, display that node's properties
+        if (SceneManager.GetActiveScene().name == asset.m_dialogueAsset.SceneName)
         {
-            Node first_node = m_nodeGraphModel.GetNodeFromID(selected_nodes[0]);
-            int node_id = first_node.m_id;
-            Label("Node Properties", EditorStyles.boldLabel);
-            DialogueData data = m_nodeGraphModel.GetDataFromNodeID(node_id);
-            if (data != null )
+            // display first node properties
+            if (selected_nodes != null) // if there has been a node selected, display that node's properties
             {
-                data.m_isStartNode = Toggle(data.m_isStartNode, "Is start node");
-                Label(" ");
-                
-                Label("Choose branching index (order in which options are shown)");
-                Label("Note: if this node is a result from a conditional node,");
-                Label("choose 0 = false and 1 = true");
-                data.branchingIndex = EditorGUILayout.IntField(data.branchingIndex);
-                Label(" ");
-
-
-                Label("Character Speaking");
-                List<string> current_characters = asset.m_dialogueAsset.GetInvolvedCharacterStrings();
-                if (current_characters.Count == 0)
+                Node first_node = m_nodeGraphModel.GetNodeFromID(selected_nodes[0]);
+                int node_id = first_node.m_id;
+                Label("Node Properties", EditorStyles.boldLabel);
+                DialogueData data = m_nodeGraphModel.GetDataFromNodeID(node_id);
+                if (data != null)
                 {
-                    Label("No characters in list", EditorStyles.boldLabel);
-                }
-                else
-                {
-                    if (data.characterSpeakingIndex >= current_characters.Count)
-                        data.characterSpeakingIndex = 0;
-                    data.characterSpeakingIndex = EditorGUILayout.Popup(data.characterSpeakingIndex, current_characters.ToArray());
-                    data.characterName = current_characters[data.characterSpeakingIndex];
-                }
-
-                Label("Preview Text");
-                data.previewDialogueText = TextArea(data.previewDialogueText, Height(50));
-
-                Label("Dialogue Text");
-                data.dialogueText = TextArea(data.dialogueText, Height(m_nodePropertiesRect.height * 0.25f));
-
-                Label("Set character emotion to:");
-                data.emotion = (CharacterComponent.Emotion)EditorGUILayout.EnumPopup(data.emotion);
-
-                if (!data.isConditionalBranching)
-                {
-                    if (m_nodeGraphModel != null)
+                    // draw start node
+                    if (data.m_isStartNode)
                     {
-                        if (Button("Add Dialogue Option"))
-                        {
-                            m_nodeGraphModel.AddOutputPlugToNode(node_id);
-                        }
+                        DisplayStartNodeProperties(data, node_id);
                     }
-
-                    ScriptableObject target = data;
-                    SerializedObject so = new SerializedObject(target);
-                    Label("");
-                    Label("Item information", EditorStyles.boldLabel);
-                    Label("Items to give at this dialogue node:");
+                    // draw condition node
+                    else if (data.isConditionalBranching)
                     {
-                        if (Button("Add item to give"))
-                        {
-                            data.itemsToGive.Add(ScriptableObject.CreateInstance<Item>());
-                        }
-                        if (Button("Remove item to give"))
-                        {
-                            int index = (data.itemsToGive.Count - 1 <= 0) ? 0 : data.itemsToGive.Count - 1;
-                            if (data.itemsToGive.Count > 0)
-                            {
-                                data.itemsToGive.RemoveAt(index);
-                            }
-                        }
-                        SerializedProperty stringsProperty = so.FindProperty("itemsToGive");
-                        EditorGUILayout.PropertyField(stringsProperty, true); // True means show children
-                        so.ApplyModifiedProperties();
+                        DisplayConditionalNodeProperties(data, node_id, asset);
                     }
-
-                    Label("");
-                    Label("Quest Information", EditorStyles.boldLabel);
-                    Label("Quests to add on this node");
+                    // draw option node
+                    else if (data.m_isBranching && !data.isConditionalBranching)
                     {
-                        if (Button("Add quest to give"))
-                        {
-                            data.questsToAdd.Add(ScriptableObject.CreateInstance<Quest>());
-                        }
-                        if (Button("Remove quest to give"))
-                        {
-                            int index = (data.questsToAdd.Count - 1 <= 0) ? 0 : data.questsToAdd.Count - 1;
-                            if (data.questsToAdd.Count > 0)
-                            {
-                                data.questsToAdd.RemoveAt(index);
-                            }
-                        }
-                        SerializedProperty stringsProperty = so.FindProperty("questsToAdd");
-                        EditorGUILayout.PropertyField(stringsProperty, true); // True means show children
-                        so.ApplyModifiedProperties();
+                        DisplayOptionNodeProperties(data, node_id, asset);
                     }
-                    Label("Quests to mark as complete on this node");
+                    // draw normal node
+                    else
                     {
-                        if (Button("Add quest to complete"))
-                        {
-                            data.questsToComplete.Add(ScriptableObject.CreateInstance<Quest>());
-                        }
-                        if (Button("Remove quest to complete"))
-                        {
-                            int index = (data.questsToComplete.Count - 1 <= 0) ? 0 : data.questsToComplete.Count - 1;
-                            if (data.questsToComplete.Count > 0)
-                            {
-                                data.questsToComplete.RemoveAt(index);
-                            }
-                        }
-                        SerializedProperty stringsProperty = so.FindProperty("questsToComplete");
-                        EditorGUILayout.PropertyField(stringsProperty, true); // True means show children
-                        so.ApplyModifiedProperties();
-                    }
-
-                    Label("Events to trigger at this node");
-                    SerializedProperty eventsProperty = so.FindProperty("m_dialogueEvent");
-                    EditorGUILayout.PropertyField(eventsProperty, true); // True means show children
-                    so.ApplyModifiedProperties();
-                }
-                else if (data.isConditionalBranching)
-                {
-                    Label("");
-                    // items
-                    Label("Items to check at this dialogue node:");
-                    {
-                        if (Button("Add item to check"))
-                        {
-                            data.itemsToCheck.Add(ScriptableObject.CreateInstance<Item>());
-                        }
-                        if (Button("Remove item to check"))
-                        {
-                            int index = (data.itemsToCheck.Count - 1 <= 0) ? 0 : data.itemsToCheck.Count - 1;
-                            if (data.itemsToCheck.Count > 0)
-                            {
-                                data.itemsToCheck.RemoveAt(index);
-                            }
-                        }
-
-                        ScriptableObject target = data;
-                        SerializedObject so = new SerializedObject(target);
-                        SerializedProperty stringsProperty = so.FindProperty("itemsToCheck");
-                        EditorGUILayout.PropertyField(stringsProperty, true); // True means show children
-                        so.ApplyModifiedProperties();
-                    }
-                    Label("");
-                    //quests
-                    Label("Quests required at this dialogue node:");
-                    {
-                        if (Button("Add quest required"))
-                        {
-                            data.questsRequired.Add(ScriptableObject.CreateInstance<Quest>());
-                        }
-                        if (Button("Remove quest required"))
-                        {
-                            int index = (data.questsRequired.Count - 1 <= 0) ? 0 : data.questsRequired.Count - 1;
-                            if (data.questsRequired.Count > 0)
-                            {
-                                data.questsRequired.RemoveAt(index);
-                            }
-                        }
-
-                        ScriptableObject target = data;
-                        SerializedObject so = new SerializedObject(target);
-                        SerializedProperty stringsProperty = so.FindProperty("questsRequired");
-                        EditorGUILayout.PropertyField(stringsProperty, true); // True means show children
-                        so.ApplyModifiedProperties();
-                    }
-                    //quests
-                    Label("Quests that need to be completed:");
-                    {
-                        if (Button("Add quest to complete"))
-                        {
-                            data.questsCompleted.Add(ScriptableObject.CreateInstance<Quest>());
-                        }
-                        if (Button("Remove quest to complete"))
-                        {
-                            int index = (data.questsCompleted.Count - 1 <= 0) ? 0 : data.questsCompleted.Count - 1;
-                            if (data.questsCompleted.Count > 0)
-                            {
-                                data.questsCompleted.RemoveAt(index);
-                            }
-                        }
-
-                        ScriptableObject target = data;
-                        SerializedObject so = new SerializedObject(target);
-                        SerializedProperty stringsProperty = so.FindProperty("questsCompleted");
-                        EditorGUILayout.PropertyField(stringsProperty, true); // True means show children
-                        so.ApplyModifiedProperties();
+                        DisplayNormalNodeProperties(data, asset);
                     }
                 }
-            }            
 
-        }
-        else if (asset != null) // display asset properties
-        {
-            DisplayAssetProperties(asset);
-            // cheat sheet for the tags in the markup so far
+            }
+            else if (asset != null) // display asset properties
             {
-                DisplayMarkupCheatSheet();
+                DisplayAssetProperties(asset);
+                // cheat sheet for the tags in the markup so far
+                {
+                    DisplayMarkupCheatSheet();
+                }
+            }
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                Undo.RecordObject(asset.m_dialogueAsset, "");
             }
         }
-
-        if (EditorGUI.EndChangeCheck())
+        else
         {
-            Undo.RecordObject(asset.m_dialogueAsset, "");
-        }
+            Label("Used in Scene :" + asset.m_dialogueAsset.SceneName, EditorStyles.boldLabel);
+            Label("Asset locked and not editable because you are in the incorrect scene");
 
+            Label("", EditorStyles.boldLabel);
+            Label("", EditorStyles.boldLabel);
+            Label("ONLY DO THIS IF YOU'RE SURE", EditorStyles.boldLabel);
+            if (Button("Change Asset to Current Scene"))
+            {
+                asset.m_dialogueAsset.SceneName = SceneManager.GetActiveScene().name;
+            }
+        }
         EndScrollView();
         EndArea();
+    }
+
+    private void DisplayStartNodeProperties(DialogueData data, int node_id)
+    {
+        if (!data.isConditionalBranching)
+        {
+            ScriptableObject target = data;
+            SerializedObject so = new SerializedObject(target);
+            Label("");
+            Label("Item information", EditorStyles.boldLabel);
+            Label("Items to give at this dialogue node:");
+            {
+                SerializedProperty stringsProperty = so.FindProperty("itemsToGive");
+                EditorGUILayout.PropertyField(stringsProperty, true); // True means show children
+                so.ApplyModifiedProperties();
+            }
+
+            Label("");
+            Label("Quest Information", EditorStyles.boldLabel);
+            Label("Quests to add on this node");
+            {
+                SerializedProperty stringsProperty = so.FindProperty("questsToAdd");
+                EditorGUILayout.PropertyField(stringsProperty, true); // True means show children
+                so.ApplyModifiedProperties();
+            }
+            Label("Quests to mark as complete on this node");
+            {
+                SerializedProperty stringsProperty = so.FindProperty("questsToComplete");
+                EditorGUILayout.PropertyField(stringsProperty, true); // True means show children
+                so.ApplyModifiedProperties();
+            }
+
+            Label("Events to trigger at this node");
+            SerializedProperty eventsProperty = so.FindProperty("m_dialogueEvent");
+            EditorGUILayout.PropertyField(eventsProperty, true); // True means show children
+            so.ApplyModifiedProperties();
+        }
+        else if (data.isConditionalBranching)
+        {
+            Label("");
+            // items
+            Label("Items to check at this dialogue node:");
+            {
+                ScriptableObject target = data;
+                SerializedObject so = new SerializedObject(target);
+                SerializedProperty stringsProperty = so.FindProperty("itemsToCheck");
+                EditorGUILayout.PropertyField(stringsProperty, true); // True means show children
+                so.ApplyModifiedProperties();
+            }
+            Label("");
+            //quests
+            Label("Quests required at this dialogue node:");
+            {
+                ScriptableObject target = data;
+                SerializedObject so = new SerializedObject(target);
+                SerializedProperty stringsProperty = so.FindProperty("questsRequired");
+                EditorGUILayout.PropertyField(stringsProperty, true); // True means show children
+                so.ApplyModifiedProperties();
+            }
+            //quests
+            Label("Quests that need to be completed:");
+            {
+                ScriptableObject target = data;
+                SerializedObject so = new SerializedObject(target);
+                SerializedProperty stringsProperty = so.FindProperty("questsCompleted");
+                EditorGUILayout.PropertyField(stringsProperty, true); // True means show children
+                so.ApplyModifiedProperties();
+            }
+        }        
+    }
+
+    private void DisplayNormalNodeProperties(DialogueData data, DialogueAssetBuilder asset)
+    {
+        if (data.branchingIndex == 0)
+            Label("False condition node", EditorStyles.boldLabel);
+        else if (data.branchingIndex == 1)
+            Label("True condition node", EditorStyles.boldLabel);
+        else { Label("out index : " + data.branchingIndex.ToString()); }
+
+        Label("Character Speaking");
+        List<string> current_characters = asset.m_dialogueAsset.GetInvolvedCharacterStrings();
+        if (current_characters.Count == 0)
+        {
+            Label("No characters in list", EditorStyles.boldLabel);
+        }
+        else
+        {
+            if (data.characterSpeakingIndex >= current_characters.Count)
+                data.characterSpeakingIndex = 0;
+            data.characterSpeakingIndex = EditorGUILayout.Popup(data.characterSpeakingIndex, current_characters.ToArray());
+            data.characterName = current_characters[data.characterSpeakingIndex];
+        }
+        if (data.previewDialogueText != "")
+        {
+            Label("Option Preview Text");
+            Label(data.previewDialogueText);
+            Label("");
+        }
+
+        Label("Dialogue Text");
+        data.dialogueText = TextArea(data.dialogueText, Height(m_nodePropertiesRect.height * 0.25f));
+
+        Label("Set character emotion to:");
+        data.emotion = (CharacterComponent.Emotion)EditorGUILayout.EnumPopup(data.emotion);
+            
+        // giving items/quests/completeing quests
+        ScriptableObject target = data;
+        SerializedObject so = new SerializedObject(target);
+        Label("");
+        Label("Item information", EditorStyles.boldLabel);
+        Label("Items to give at this dialogue node:");
+        {
+            SerializedProperty stringsProperty = so.FindProperty("itemsToGive");
+            EditorGUILayout.PropertyField(stringsProperty, true); // True means show children
+            so.ApplyModifiedProperties();
+        }
+
+        Label("");
+        Label("Quest Information", EditorStyles.boldLabel);
+        Label("Quests to add on this node");
+        {
+            SerializedProperty stringsProperty = so.FindProperty("questsToAdd");
+            EditorGUILayout.PropertyField(stringsProperty, true); // True means show children
+            so.ApplyModifiedProperties();
+        }
+        Label("Quests to mark as complete on this node");
+        {
+            SerializedProperty stringsProperty = so.FindProperty("questsToComplete");
+            EditorGUILayout.PropertyField(stringsProperty, true); // True means show children
+            so.ApplyModifiedProperties();
+        }
+
+        Label("Events to trigger at this node");
+        SerializedProperty eventsProperty = so.FindProperty("m_dialogueEvent");
+        EditorGUILayout.PropertyField(eventsProperty, true); // True means show children
+        so.ApplyModifiedProperties();
+    }
+
+    private void DisplayOptionNodeProperties(DialogueData data, int node_id, DialogueAssetBuilder asset)
+    {
+        if (data.branchingIndex == 0)
+            Label("False condition node", EditorStyles.boldLabel);
+        else if (data.branchingIndex == 1)
+            Label("True condition node", EditorStyles.boldLabel);
+        else { Label("out index : " + data.branchingIndex.ToString()); }
+
+        // get next dialogue nodes
+        List<int> nextData = asset.GetNextDialogueData(data, m_nodeGraphModel);
+        int optionIndex = 0;
+        foreach (var nextid in nextData)
+        {
+            Node nextNode = m_nodeGraphModel.GetNodeFromID(nextid);
+            if (nextNode != null)
+            {
+                DialogueData next = m_nodeGraphModel.GetDataFromNodeID(nextid);
+                if (next != null)
+                {
+                    Label("Preview Text for option " + optionIndex.ToString());
+                    next.previewDialogueText = TextArea(next.previewDialogueText, Height(50));
+                }
+            }
+            optionIndex++;
+        }
+
+        if (data.m_isBranching && !data.isConditionalBranching)
+        {
+            if (m_nodeGraphModel != null)
+            {
+                if (Button("Add Dialogue Option"))
+                {
+                    m_nodeGraphModel.AddOutputPlugToNode(node_id);
+                }
+            }
+        }
+    }
+
+    private void DisplayConditionalNodeProperties(DialogueData data, int node_id, DialogueAssetBuilder asset)
+    {
+        if (data.branchingIndex == 0)
+            Label("False condition node", EditorStyles.boldLabel);
+        else if (data.branchingIndex == 1)
+            Label("True condition node", EditorStyles.boldLabel);
+        else { Label("out index : " + data.branchingIndex.ToString()); }           
+
+        Label("");
+        // items
+        Label("Items to check at this dialogue node:");
+        {
+            ScriptableObject target = data;
+            SerializedObject so = new SerializedObject(target);
+            SerializedProperty stringsProperty = so.FindProperty("itemsToCheck");
+            EditorGUILayout.PropertyField(stringsProperty, true); // True means show children
+            so.ApplyModifiedProperties();
+        }
+        Label("");
+        //quests
+        Label("Quests required at this dialogue node:");
+        {
+            ScriptableObject target = data;
+            SerializedObject so = new SerializedObject(target);
+            SerializedProperty stringsProperty = so.FindProperty("questsRequired");
+            EditorGUILayout.PropertyField(stringsProperty, true); // True means show children
+            so.ApplyModifiedProperties();
+        }
+        //quests
+        Label("Quests that need to be completed:");
+        {
+            ScriptableObject target = data;
+            SerializedObject so = new SerializedObject(target);
+            SerializedProperty stringsProperty = so.FindProperty("questsCompleted");
+            EditorGUILayout.PropertyField(stringsProperty, true); // True means show children
+            so.ApplyModifiedProperties();
+        }
     }
 
     private void DisplayAssetProperties(DialogueAssetBuilder asset_builder)
     {
         Label("Dialogue Asset", EditorStyles.boldLabel);
+        Label("Used in Scene :" + asset_builder.m_dialogueAsset.SceneName, EditorStyles.boldLabel);
         DialogueAsset asset = asset_builder.m_dialogueAsset;
         asset.m_isActiveDialogue = Toggle(asset.m_isActiveDialogue, "Is Dialogue Active");
 

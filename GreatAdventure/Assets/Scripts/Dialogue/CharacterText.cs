@@ -21,10 +21,21 @@ public class CharacterText : MonoBehaviour
         GetComponent<RectTransform>().anchorMax = new Vector2(0, 0);
         GetComponent<RectTransform>().offsetMin = new Vector2(0, 0);
         GetComponent<RectTransform>().offsetMax = new Vector2(0, 0);
+        anchorMin = 0; anchorMax = 0; left = 0; top = 0;
+        UpdateNow();
     }
 
     // Update is called once per frame
     void Update()
+    {
+        GetComponent<RectTransform>().offsetMin = new Vector2(left, 0);
+        GetComponent<RectTransform>().offsetMax = new Vector2(0, top);
+
+        GetComponent<RectTransform>().anchorMin = new Vector2(anchorMin, 0);
+        GetComponent<RectTransform>().anchorMax = new Vector2(0, anchorMax);
+    }
+
+    public void UpdateNow()
     {
         GetComponent<RectTransform>().offsetMin = new Vector2(left, 0);
         GetComponent<RectTransform>().offsetMax = new Vector2(0, top);

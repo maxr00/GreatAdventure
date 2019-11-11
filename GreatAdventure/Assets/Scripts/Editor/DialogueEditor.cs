@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public class DialogueEditor : EditorWindow
 {
@@ -14,7 +15,7 @@ public class DialogueEditor : EditorWindow
     private NodeGraphView m_nodeGraphView;
     private NodePropertiesView m_nodePropertiesView;
 
-    private float m_graphPanelSizeRatio = 0.8f;
+    private float m_graphPanelSizeRatio = 0.65f;
     private bool m_isResizing;
     private bool m_isNodeSelected;
 
@@ -24,17 +25,11 @@ public class DialogueEditor : EditorWindow
     {
     }
 
-    [MenuItem("Window/Dialogue Editor")]
-    private static void OpenWindow()
-    {
-        DialogueEditor window = CreateWindow<DialogueEditor>();
-        window.titleContent = new GUIContent("Dialogue Editor");
-    }
-
     [MenuItem("Assets/Create/Dialogue Asset")]
     public static void CreateAsset()
     {
         DialogueAsset dialogue_asset = CreateInstance<DialogueAsset>();
+        dialogue_asset.SceneName = SceneManager.GetActiveScene().name;
         string asset_path = AssetDatabase.GetAssetPath(Selection.activeObject);
         if (asset_path == "")
         {
@@ -79,8 +74,8 @@ public class DialogueEditor : EditorWindow
 
     private void OnEnable()
     {
-        AssemblyReloadEvents.beforeAssemblyReload += OnBeforeAssemblyReload;
-        AssemblyReloadEvents.afterAssemblyReload += OnAfterAssemblyReload;
+        //AssemblyReloadEvents.beforeAssemblyReload += OnBeforeAssemblyReload;
+        //AssemblyReloadEvents.afterAssemblyReload += OnAfterAssemblyReload;
 
         resizerStyle = new GUIStyle();
         resizerStyle.normal.background = EditorGUIUtility.Load("icons/d_AvatarBlendBackground.png") as Texture2D;

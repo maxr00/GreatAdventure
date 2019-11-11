@@ -10,6 +10,28 @@ public class Node
     public Plug m_inputPlug;
     public Dictionary<int, Plug> m_outputPlugs; // key = plug.m_id
     public bool isConditionalNode = false;
+
+    public Plug GetOutputPlugAtIndex(int plugIndex)
+    {
+        int currIndex = 0;
+        foreach(var plug_pair in m_outputPlugs)
+        {
+            if (plug_pair.Value.m_plugIndex == plugIndex)
+                return plug_pair.Value;
+            ++currIndex;
+        }
+        return null;
+    }
+
+    public void SortOutputPlugIds()
+    {
+        int currIndex = 0;
+        foreach (var plug_pair in m_outputPlugs)
+        {
+            plug_pair.Value.m_plugIndex = currIndex;
+            ++currIndex;
+        }
+    }
 }
 
 public enum PlugType { kIn, kOut }
@@ -44,6 +66,13 @@ public class Connection
         m_outputPlugId = outputPlugId;
     }
 }
+public class OutputPlugToNode
+{
+    public int outputPlugID;
+    public int outputNodeID;
+    public int inputNodeID;
+}
+
 
 public class NodeGraphModel
 {
@@ -53,6 +82,8 @@ public class NodeGraphModel
 
     public float plug_height = 20.0f;
     public float in_between_plug_height = 10.0f;
+
+    public int startNodeID = 0;
 
     public NodeGraphModel()
     {
@@ -162,6 +193,9 @@ public class NodeGraphModel
         m_dialogueData.Remove(node_id);
         // removing actual node
         m_nodes.Remove(node_id);
+
+        if (startNodeID == node_id)
+            startNodeID = 0;
     }
 
     public int AddOutputPlugToNode(int node_id) // returns created plug id
@@ -172,6 +206,9 @@ public class NodeGraphModel
         newOutPlug.m_plugType = PlugType.kOut;
         GetNodeFromID(node_id).m_outputPlugs.Add(newOutPlug.m_plugId, newOutPlug);
         GetNodeFromID(node_id).m_dimension.y += in_between_plug_height + plug_height;
+
+        GetNodeFromID(node_id).SortOutputPlugIds();
+
         return newOutPlug.m_plugId;
     }
 
@@ -201,6 +238,9 @@ public class NodeGraphModel
         node.m_outputPlugs.Remove(output_id);
         // adjust node dimensions according to new plug count
         node.m_dimension.y -= in_between_plug_height + plug_height;
+
+        // sort output plugs ids
+        node.SortOutputPlugIds();
     }
 
     public Node GetNodeFromID(int node_id)
@@ -253,5 +293,27 @@ public class NodeGraphModel
     public void RemoveConnection(int connectionId)
     {
         m_connections.Remove(connectionId);
+    }
+
+    public OutputPlugToNode GetOutputPlugToNode(int node_id, int plug_index)
+    {
+        OutputPlugToNode result = new OutputPlugToNode();
+        Node node = GetNodeFromID(node_id);
+        Plug outPlug = node.GetOutputPlugAtIndex(plug_index);
+        foreach (KeyValuePair<int, Connection> connection_pair in GetConnections())
+        {
+            Connection connection = connection_pair.Value;
+            if (connection.m_outputNodeId == node_id && connection.m_outputPlugId == outPlug.m_plugId)
+            {
+                // adding branching indices
+                result.inputNodeID = connection.m_inputNodeId;
+                result.outputNodeID = connection.m_outputNodeId;
+                result.outputPlugID = connection.m_outputPlugId;
+
+                return result;
+            }
+        }
+
+        return null;
     }
 }
