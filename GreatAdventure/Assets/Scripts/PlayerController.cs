@@ -153,6 +153,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        interacting = Input.GetAxisRaw("Interact") != 0;
+        if (allowMovement)
+            interacting = Input.GetAxisRaw("Interact") != 0;
+        else
+            interacting = false;
     }
 }

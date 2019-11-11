@@ -26,6 +26,8 @@ public class CarControls : MonoBehaviour
     public float fallForce = 18;
     bool inAir = false;
 
+    [Header("Drift")]
+
     public bool drifting = false;
     public bool stoppedDrifting = false;
     public float driftTurn = 0.3f;
@@ -40,6 +42,8 @@ public class CarControls : MonoBehaviour
     public float driftAutostop = 0.3f;
     public float driftBoostTime = 1.25f;
 
+    [Header("Boost")]
+
     public float boostBonusSpeed = 40;
     public float boostTime = 0.5f;
     public bool boosting = false;
@@ -53,9 +57,20 @@ public class CarControls : MonoBehaviour
 
     private float currBoost = 0;
 
-    public float inputHoriz = 0, inputVert = 0;
+    [Header("Slam")]
+    public Transform slamTarget;
+    public float slamDistance = 3;
+    public float slamForce = 100;
+    public float slamCooldown = 2;
+    public float slamWiggle = 3;
+    public int slamRocks = 2;
+    public float slamRockAmplitude = 2;
+    public float slamRecoveryMaxSpeed = 0.5f;
+    public bool recoveringSlam = false;
 
-	private void Update()
+    private float slamTimer = 0;
+
+    private void Update()
 	{
 		if (Vector3.Dot(transform.up, Vector3.up) <= 0 && !inAir)
 		{
@@ -82,6 +97,11 @@ public class CarControls : MonoBehaviour
 
         HandleBoost();
 
+        HandleSlam(ref h, ref v);
+
+        if (Input.GetAxisRaw("Interact") != 0)
+            Slam(h,v);
+        
         // Turning
         if (h != 0)
 		{
@@ -161,8 +181,8 @@ public class CarControls : MonoBehaviour
 
 			wheelsForward = Vector3.Lerp(wheelsForward, transform.forward, Time.deltaTime * wheelCorrectionSpeed);
 			wheelsForward = Vector3.ProjectOnPlane(wheelsForward, Vector3.up);
-			
-			float dot = Vector3.Dot(wheelsForward, transform.right);
+
+            float dot = Vector3.Dot(wheelsForward, transform.right);
 			rbody.AddTorque(transform.up * (1 - dot) * (correctionSpeed * Mathf.Sign(dot)), ForceMode.Acceleration);
 		}
 		
@@ -174,9 +194,9 @@ public class CarControls : MonoBehaviour
 			wheelTurner.Turn(Vector3.Cross(wheelsForward, transform.up)); // Reverse
 
         // Jump
-		//if (Input.GetKeyDown(KeyCode.Space))
-		//	rbody.AddForce(Vector3.up * 10, ForceMode.VelocityChange);
-	}
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //	rbody.AddForce(Vector3.up * 10, ForceMode.VelocityChange);
+    }
 
     void HandleDrifting(float h, float v)
     {
@@ -267,5 +287,55 @@ public class CarControls : MonoBehaviour
         // Particles
         var emission = boostParticles.emission;
         emission.enabled = boosting;
+    }
+
+    void Slam(float h, float v)
+    {
+        if (recoveringSlam)
+            return;
+
+        if (Vector3.Distance(transform.position, slamTarget.position) > slamDistance)
+            return;
+
+        Vector3 dir = (slamTarget.position - transform.position).normalized;
+        dir.y = 0;
+
+        //Vector3 dir = transform.forward * v;
+        //if (Mathf.Abs(h) > 0.5)
+        //    dir = transform.right * h;
+
+        rbody.AddForce(dir * slamForce, ForceMode.Impulse);
+        slamTimer = slamCooldown;
+        recoveringSlam = true;
+    }
+
+    void HandleSlam(ref float h, ref float v)
+    {
+        if (!recoveringSlam)
+            return;
+
+        slamTimer -= Time.deltaTime;
+
+        if(slamTimer <= 0)
+        {
+            slamTimer = 0;
+            recoveringSlam = false;
+            return;
+        }
+
+        float wiggle = Mathf.Sin((slamTimer / slamCooldown) * 2 * Mathf.PI * slamWiggle);
+
+        //rbody.AddTorque(transform.up * wiggle * 100, ForceMode.Acceleration);
+
+        float percent = 1 - (slamTimer) / slamCooldown;
+        float rocks = slamRocks * 2;
+        float rock = slamRockAmplitude * Mathf.Sin(percent * 2 * (rocks/2) * (2 * Mathf.PI));
+        if ((int)(percent * rocks) % 2 == 0)
+            rock = -rock;
+
+        rbody.AddTorque(transform.forward * rock * 1, ForceMode.VelocityChange);
+
+        h = Mathf.Clamp(h * 0.25f + wiggle, -1, 1);
+        v = Mathf.Clamp(v, -slamRecoveryMaxSpeed, slamRecoveryMaxSpeed);
     }
 }
