@@ -605,7 +605,8 @@ public class NodeGraphView : GUILayout
             if (outputdata != null)
             {
                 DialogueData inputNodeData = m_nodeGraphModel.GetDataFromNodeID(outputdata.inputNodeID);
-                inputNodeData.branchingIndex = currIndex;
+                if (inputNodeData != null)
+                    inputNodeData.branchingIndex = currIndex;
             }
             ++currIndex;
         }

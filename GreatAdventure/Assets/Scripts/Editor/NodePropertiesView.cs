@@ -161,12 +161,6 @@ public class NodePropertiesView : GUILayout
 
     private void DisplayNormalNodeProperties(DialogueData data, DialogueAssetBuilder asset)
     {
-        //Label("Choose branching index (order in which options are shown)");
-        //Label("Note: if this node is a result from a conditional node,");
-        //Label("choose 0 = false and 1 = true");
-        //data.branchingIndex = EditorGUILayout.IntField(data.branchingIndex);
-        //Label(" ");
-
         if (data.branchingIndex == 0)
             Label("False condition node", EditorStyles.boldLabel);
         else if (data.branchingIndex == 1)
@@ -234,11 +228,6 @@ public class NodePropertiesView : GUILayout
 
     private void DisplayOptionNodeProperties(DialogueData data, int node_id, DialogueAssetBuilder asset)
     {
-        //Label("Choose branching index (order in which options are shown)");
-        //Label("Note: if this node is a result from a conditional node,");
-        //Label("choose 0 = false and 1 = true");
-        //data.branchingIndex = EditorGUILayout.IntField(data.branchingIndex);
-        //Label(" ");
         if (data.branchingIndex == 0)
             Label("False condition node", EditorStyles.boldLabel);
         else if (data.branchingIndex == 1)
@@ -277,44 +266,11 @@ public class NodePropertiesView : GUILayout
 
     private void DisplayConditionalNodeProperties(DialogueData data, int node_id, DialogueAssetBuilder asset)
     {
-        //Label("Choose branching index (order in which options are shown)");
-        //Label("Note: if this node is a result from a conditional node,");
-        //Label("choose 0 = false and 1 = true");
-        //data.branchingIndex = EditorGUILayout.IntField(data.branchingIndex);
-        //Label(" ");
         if (data.branchingIndex == 0)
             Label("False condition node", EditorStyles.boldLabel);
         else if (data.branchingIndex == 1)
             Label("True condition node", EditorStyles.boldLabel);
-        else { Label("out index : " + data.branchingIndex.ToString()); }
-
-        Label("Character Speaking");
-        List<string> current_characters = asset.m_dialogueAsset.GetInvolvedCharacterStrings();
-        if (current_characters.Count == 0)
-        {
-            Label("No characters in list", EditorStyles.boldLabel);
-        }
-        else
-        {
-            if (data.characterSpeakingIndex >= current_characters.Count)
-                data.characterSpeakingIndex = 0;
-            data.characterSpeakingIndex = EditorGUILayout.Popup(data.characterSpeakingIndex, current_characters.ToArray());
-            data.characterName = current_characters[data.characterSpeakingIndex];
-        }
-
-        if (data.previewDialogueText != "")
-        {
-            Label("Option Preview Text");
-            Label(data.previewDialogueText);
-            Label("");
-        }
-
-        Label("Dialogue Text");
-        data.dialogueText = TextArea(data.dialogueText, Height(m_nodePropertiesRect.height * 0.25f));
-
-        Label("Set character emotion to:");
-        data.emotion = (CharacterComponent.Emotion)EditorGUILayout.EnumPopup(data.emotion);
-            
+        else { Label("out index : " + data.branchingIndex.ToString()); }           
 
         Label("");
         // items
