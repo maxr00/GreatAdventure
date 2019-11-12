@@ -10,11 +10,11 @@ public class ThiefMovement : MonoBehaviour
 
     public Transform[] waypoints;
     public float waypointStep = 5;
-    public int target;
     public int progressionDir = 1;
     public float repickDistance = 2;
 
-    List<Vector3> steppedWaypoints = new List<Vector3>();
+    private int target;
+    private List<Vector3> steppedWaypoints = new List<Vector3>();
 
     Rigidbody rbody;
     WheelTurner wheelTurner;
@@ -29,6 +29,7 @@ public class ThiefMovement : MonoBehaviour
     public float correctionSpeed = 2;
     public float turnTilt = 20;
     public float tiltSpeed = 2;
+    public float normalRotationSpeed = 10;
 
     public float groundCheckHeight = 0.2f;
 
@@ -104,10 +105,16 @@ public class ThiefMovement : MonoBehaviour
         }
         Debug.DrawLine(transform.position, target, Color.blue);
 
-        var forward = new Vector3(target.x - transform.position.x, 0, target.z - transform.position.z).normalized;
+        Vector3 dir = (target - transform.position).normalized;
 
-        if(allowMovement)
-            CarFixedUpdate(forward.x,forward.z);
+        float h = Vector3.Dot(dir, transform.right);
+
+        float v = Mathf.Max(
+            Mathf.Abs(Vector3.Dot(dir, transform.forward)),
+            Mathf.Abs(Vector3.Dot(dir, transform.right) / 2));
+
+        if (allowMovement)
+            CarFixedUpdate(h, v);
     }
 
     void CarFixedUpdate(float h, float v)
@@ -126,9 +133,28 @@ public class ThiefMovement : MonoBehaviour
         }
 
         // Tilt
-        tiltH = Mathf.Lerp(tiltH, h, Time.deltaTime * tiltSpeed);
-        float tiltAmt = turnTilt;
-        carBody.localRotation = Quaternion.Euler(0, 0, Mathf.Abs(tiltH) * Vector3.Dot(wheelsForward, transform.right) * tiltAmt);
+
+        RaycastHit groundHit, rampHit;
+        if (Physics.Raycast(transform.position, -Vector3.up, out groundHit))
+        {
+            tiltH = Mathf.Lerp(tiltH, h, Time.deltaTime * tiltSpeed);
+            float tiltAmt = turnTilt;
+            
+            int sign = 1;
+            if (Physics.Raycast(transform.position + transform.forward * 0.1f, -Vector3.up, out rampHit) && rampHit.point.y > groundHit.point.y)
+                sign = -1;
+
+            carBody.localRotation = Quaternion.Euler(0, 0, Mathf.Abs(tiltH) * Vector3.Dot(wheelsForward, transform.right) * tiltAmt);
+
+            transform.localRotation = Quaternion.Lerp(
+                transform.localRotation,
+                Quaternion.Euler(sign * Vector3.Angle(Vector3.up, groundHit.normal), transform.localRotation.eulerAngles.y, 0),
+                Time.deltaTime * normalRotationSpeed);
+        }
+
+        //tiltH = Mathf.Lerp(tiltH, h, Time.deltaTime * tiltSpeed);
+        //float tiltAmt = turnTilt;
+        //carBody.localRotation = Quaternion.Euler(0, 0, Mathf.Abs(tiltH) * Vector3.Dot(wheelsForward, transform.right) * tiltAmt);
 
         if (inAir) // was in air last update
         {

@@ -18,6 +18,7 @@ public class CarControls : MonoBehaviour
 	public float correctionSpeed = 2;
     public float turnTilt = 20;
     public float tiltSpeed = 2;
+    public float normalRotationSpeed = 10;
 
     public float groundCheckHeight = 0.2f;
 
@@ -135,9 +136,26 @@ public class CarControls : MonoBehaviour
         }
 
         // Tilt
-        tiltH = Mathf.Lerp(tiltH, h, Time.deltaTime * (drifting ? driftTiltSpeed : tiltSpeed));
-        float tiltAmt = drifting ? driftTilt : turnTilt;
-        carBody.localRotation = Quaternion.Euler(0, 0, Mathf.Abs(tiltH) * Vector3.Dot(wheelsForward, transform.right) * tiltAmt);
+        RaycastHit groundHit, rampHit;
+        if(Physics.Raycast(transform.position, -Vector3.up, out groundHit))
+        {
+            tiltH = Mathf.Lerp(tiltH, h, Time.deltaTime * (drifting ? driftTiltSpeed : tiltSpeed));
+            float tiltAmt = drifting ? driftTilt : turnTilt;
+            //carBody.localRotation = Quaternion.identity;
+            //carBody.up = groundHit.normal;
+
+
+            int sign = 1;
+            if(Physics.Raycast(transform.position + transform.forward*0.1f, -Vector3.up, out rampHit) && rampHit.point.y > groundHit.point.y)
+                sign = -1;
+
+            carBody.localRotation = Quaternion.Euler(0, 0, Mathf.Abs(tiltH) * Vector3.Dot(wheelsForward, transform.right) * tiltAmt);
+
+            transform.localRotation = Quaternion.Lerp(
+                transform.localRotation,
+                Quaternion.Euler(sign * Vector3.Angle(Vector3.up, groundHit.normal), transform.localRotation.eulerAngles.y, 0),
+                Time.deltaTime * normalRotationSpeed);
+        }
 
         //if (Mathf.Sign(tiltH) == Mathf.Sign(Vector3.Dot(wheelsForward, transform.right)))
         //    carBody.localRotation = q;

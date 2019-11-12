@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[ExecuteInEditMode]
 [RequireComponent(typeof(Camera))]
 public class GlowPrePass : MonoBehaviour
 {
@@ -14,7 +13,7 @@ public class GlowPrePass : MonoBehaviour
     private int currentScreenWidth;
     private int currentScreenHeight;
 
-    void OnEnable()
+    void Start()
     {
         CreateRenderTargets();
     }
@@ -39,7 +38,6 @@ public class GlowPrePass : MonoBehaviour
 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
-        Graphics.Blit(source, destination);
         Graphics.SetRenderTarget(Blurred);
         GL.Clear(false, true, Color.clear);
 
@@ -52,6 +50,7 @@ public class GlowPrePass : MonoBehaviour
             Graphics.Blit(temp, Blurred, blurMat, 1);
             RenderTexture.ReleaseTemporary(temp);
         }
+        Graphics.Blit(source, destination);
     }
 
     private void ReleaseRenderTargets()

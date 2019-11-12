@@ -666,7 +666,6 @@ public class NodeGraphView : GUILayout
                 Label("Conditional Start", EditorStyles.boldLabel);
                 Label("True", rightAlign);
                 Label("");
-                string tag_pattern = "<[^>]+>";
                 Label("False", rightAlign);
             }
 
