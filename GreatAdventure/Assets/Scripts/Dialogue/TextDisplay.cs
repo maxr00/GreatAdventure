@@ -14,28 +14,30 @@ public class TextDisplay : MonoBehaviour
     int textCharsStartIndex = 0;
 
     public GameObject CharacterIconPrefab;
+    public GameObject CharacterNamePrefab;
     public Vector3 MainDialogueStart = new Vector3(0.1f, 0.25f, 0);
     public Vector3 OptionDialogueStart = new Vector3(0.22f, 0.28f, 0);
     public float newLineOffset = 0.05f;
     public float optionOffset = 0.1f;
 
-    public Vector3 header_start_pos = new Vector3(0.25f, 0.37f, 0);
-    private GameObject characterIcon;
+    public Vector2 anchoroffset = new Vector2(0.5f, 0.25f);
+    //public Vector3 header_start_pos = new Vector3(0.25f, 0.39f, 0);
+    public float header_xOffset = 75;
+    public float icon_xOffset = 250;
+
+    private static GameObject characterIcon = null;
+    private static GameObject characterName = null;
 
     //dialogue bubble details
     public GameObject DialogueBubble;
-    public GameObject DialogueBubbleOutline;
     public GameObject DialogueOptionBubble;
-    public GameObject DialogueOptionBubbleOutline;
     private static GameObject[] DialogueOptionBubbles = new GameObject[3];
-    private static GameObject[] DialogueOptionBubbleOutlines = new GameObject[3];
 
     private Vector3 startPos = new Vector3();
     private bool done = true;
     private string tag_pattern = "<[^>]+>";
     private float default_char_delay = 0.05f;
     public float current_char_delay = 0.05f;
-    //private bool isWaiting = false;
     private float default_pause_time = 1.0f;
     private bool isPaused = false;
     private float pause_time = 1.0f;
@@ -48,27 +50,25 @@ public class TextDisplay : MonoBehaviour
         textChars = new List<GameObject>();
         totalTextModifiers = new List<TextEffect>();
         textCharsStartIndex = 0;
-        characterIcon = GameObject.Instantiate(CharacterIconPrefab, textPool.GetComponent<Transform>());
+        if (characterIcon == null)
+            characterIcon = GameObject.Instantiate(CharacterIconPrefab, textPool.GetComponent<Transform>());
+        if (characterName == null)
+            characterName = GameObject.Instantiate(CharacterNamePrefab, textPool.GetComponent<Transform>());
         characterIcon.GetComponent<Image>().enabled = false;
+        characterName.SetActive(false);
         startPos = MainDialogueStart;
 
 
-        if (DialogueOptionBubble != null & DialogueOptionBubbleOutline != null)
+        if (DialogueOptionBubble != null)
         {
-            if (DialogueOptionBubbleOutlines[0] != null)
-                return;
             for (int i = 0; i < 3; ++i)
             {
                 DialogueOptionBubbles[i] = GameObject.Instantiate(DialogueOptionBubble, textPool.GetComponent<Transform>());
-                DialogueOptionBubbleOutlines[i] = GameObject.Instantiate(DialogueOptionBubbleOutline, textPool.GetComponent<Transform>());
                 Vector2 defaultAnchMin = DialogueOptionBubbles[i].GetComponent<RectTransform>().anchorMin;
                 Vector2 defaultAnchMax = DialogueOptionBubbles[i].GetComponent<RectTransform>().anchorMax;
                 DialogueOptionBubbles[i].GetComponent<RectTransform>().anchorMin = defaultAnchMin + new Vector2(0, (-0.1f * i));
-                DialogueOptionBubbleOutlines[i].GetComponent<RectTransform>().anchorMin = defaultAnchMin + new Vector2(0, (-0.1f * i));
                 DialogueOptionBubbles[i].GetComponent<RectTransform>().anchorMax = defaultAnchMax + new Vector2(0, (-0.1f * i));
-                DialogueOptionBubbleOutlines[i].GetComponent<RectTransform>().anchorMax = defaultAnchMax + new Vector2(0, (-0.1f * i));
                 DialogueOptionBubbles[i].SetActive(false);
-                DialogueOptionBubbleOutlines[i].SetActive(false);
             }
         }
     }
@@ -84,8 +84,6 @@ public class TextDisplay : MonoBehaviour
     public void SetAsPassiveDialogue(Vector3 obj_pos)
     {
         newLineOffset = 1.2f;
-        header_start_pos = new Vector3(0, 0, 0);
-        //character_icon_pos = new Vector3(0, 0, 0);
 
         textPool.GetComponent<RectTransform>().position = obj_pos;
         textPool.GetComponent<RectTransform>().sizeDelta = new Vector2(5, 5);
@@ -111,7 +109,6 @@ public class TextDisplay : MonoBehaviour
     public void UpdatePassiveBubble(Vector3 newPosition)
     {
         DialogueBubble.transform.position = newPosition;
-        DialogueBubbleOutline.transform.position = newPosition;
     }
 
     public void DisplayingOptions()
@@ -139,7 +136,11 @@ public class TextDisplay : MonoBehaviour
     {
         stopTypewriterEffect = false;
         done = false;
-        currentLineOffset = 0.0f;
+
+        float pixelOffset = -DialogueBubble.GetComponent<Image>().GetPixelAdjustedRect().width / 2.0f;
+        pixelOffset /= Camera.main.aspect;
+        
+        currentLineOffset = pixelOffset;
         current_char_delay = default_char_delay;
         PopulateModifierList(text);
         textCharsStartIndex = Mathf.Max(0, textChars.Count);
@@ -156,7 +157,16 @@ public class TextDisplay : MonoBehaviour
         MainDialogueStart = dialogueStart;
 
         done = false;
+
         currentLineOffset = 0.0f;
+        if (isActiveDialogue)
+        {
+            float pixelOffset = -DialogueBubble.GetComponent<Image>().GetPixelAdjustedRect().width / 2.0f;
+            pixelOffset /= Camera.main.aspect;
+
+            currentLineOffset = pixelOffset;
+        }
+
         PopulateModifierList(text);
         textCharsStartIndex = Mathf.Max(0, textChars.Count);
         string displayText = Regex.Replace(text, tag_pattern, "");
@@ -168,7 +178,6 @@ public class TextDisplay : MonoBehaviour
     public void DisplayActiveBubble(bool isActive)
     {
         DialogueBubble.gameObject.SetActive(isActive);
-        DialogueBubbleOutline.gameObject.SetActive(isActive);
     }
 
     public void DisplayActiveOptionBubble(bool isActive, int optionCount)
@@ -178,7 +187,6 @@ public class TextDisplay : MonoBehaviour
             for (int i = 0; i < optionCount; ++i)
             {
                 DialogueOptionBubbles[i].SetActive(true);
-                DialogueOptionBubbleOutlines[i].SetActive(true);
             }
         }
         else
@@ -186,7 +194,6 @@ public class TextDisplay : MonoBehaviour
             for (int i = 0; i < 3; ++i)
             {
                 DialogueOptionBubbles[i].SetActive(false);
-                DialogueOptionBubbleOutlines[i].SetActive(false);
             }
         }
     }
@@ -194,10 +201,8 @@ public class TextDisplay : MonoBehaviour
     public void DisplayPassiveBubble(bool isActive, Vector3 position)
     {
         DialogueBubble.SetActive(isActive);
-        DialogueBubbleOutline.SetActive(isActive);
 
         DialogueBubble.transform.position = position;
-        DialogueBubbleOutline.transform.position = position;
 
     }
 
@@ -207,21 +212,39 @@ public class TextDisplay : MonoBehaviour
         {
             characterIcon.GetComponent<Image>().enabled = true;
             characterIcon.GetComponent<Image>().sprite = header_icon;
-
+            characterIcon.GetComponent<Image>().preserveAspect = true;
         }
-        PopulateModifierList(dialogue_header_text);
-        currentLineOffset = 0.0f;
-        textCharsStartIndex = Mathf.Max(0, textChars.Count);
-        string displayText = Regex.Replace(dialogue_header_text, tag_pattern, "");
-        textChars.AddRange(textPool.Claim(displayText.Length));
-        ClearCharProperties(displayText);
-        DisplayTextImmediate(displayText, header_start_pos);
+
+        characterName.SetActive(true);
+        characterName.GetComponent<TextMeshProUGUI>().text = "<b>" + dialogue_header_text + "</b>";
+        characterName.GetComponent<TextMeshProUGUI>().fontSize = 40;
+        characterName.GetComponent<TextMeshProUGUI>().color = Color.black;
+        characterName.GetComponent<TextMeshProUGUI>().outlineColor = Color.white;
+        characterName.GetComponent<TextMeshProUGUI>().outlineWidth = 10f;
+
+
+
+        //PopulateModifierList(dialogue_header_text);
+
+        //float pixelOffset = (-DialogueBubble.GetComponent<Image>().GetPixelAdjustedRect().width / 2.0f) + header_xOffset;
+        //pixelOffset /= Camera.main.aspect;
+
+        //currentLineOffset = pixelOffset;
+        //textCharsStartIndex = Mathf.Max(0, textChars.Count);
+        //string displayText = Regex.Replace(dialogue_header_text, tag_pattern, "");
+        //textChars.AddRange(textPool.Claim(displayText.Length));
+        //ClearCharProperties(displayText);
+        //DisplayTextImmediate(displayText, header_start_pos);
     }
 
     public void AddToDisplayImmediate(string text)
     {
         PopulateModifierList(text);
-        currentLineOffset = 0.0f;
+
+        float pixelOffset = -DialogueBubble.GetComponent<Image>().GetPixelAdjustedRect().width / 2.0f;
+        pixelOffset /= Camera.main.aspect;
+
+        currentLineOffset = pixelOffset;
         textCharsStartIndex = Mathf.Max(0, textChars.Count);
         string displayText = Regex.Replace(text, tag_pattern, "");
         textChars.AddRange(textPool.Claim(displayText.Length));
@@ -235,6 +258,15 @@ public class TextDisplay : MonoBehaviour
         startPos = dialogueStart;
         PopulateModifierList(text);
         currentLineOffset = 0.0f;
+
+        if (isActiveDialogue)
+        {
+            float pixelOffset = -DialogueBubble.GetComponent<Image>().GetPixelAdjustedRect().width / 2.0f;
+            pixelOffset /= Camera.main.aspect;
+
+            currentLineOffset = pixelOffset;
+        }
+
         textCharsStartIndex = Mathf.Max(0, textChars.Count);
         string displayText = Regex.Replace(text, tag_pattern, "");
         textChars.AddRange(textPool.Claim(displayText.Length));
@@ -247,6 +279,14 @@ public class TextDisplay : MonoBehaviour
     {
         PopulateModifierList(text);
         currentLineOffset = 0.0f;
+        if (isActiveDialogue)
+        {
+            float pixelOffset = -DialogueBubble.GetComponent<Image>().GetPixelAdjustedRect().width / 2.0f;
+            pixelOffset /= Camera.main.aspect;
+
+            currentLineOffset = pixelOffset;
+        }
+
         textCharsStartIndex = Mathf.Max(0, textChars.Count);
         string displayText = Regex.Replace(text, tag_pattern, "");
 
@@ -267,23 +307,49 @@ public class TextDisplay : MonoBehaviour
     public void ClearDisplay()
     {
         currentLineOffset = 0.0f;
+
+        if (isActiveDialogue)
+        {
+            float pixelOffset = -DialogueBubble.GetComponent<Image>().GetPixelAdjustedRect().width / 2.0f;
+            pixelOffset /= Camera.main.aspect;
+
+            currentLineOffset = pixelOffset;
+        }
+
         startPos = MainDialogueStart;
         textPool.Unclaim(textChars);
         textChars = new List<GameObject>();
         characterIcon.GetComponent<Image>().enabled = false;
+        characterName.SetActive(false);
     }
 
     public void NewLine()
     {
         currentLineOffset = 0.0f;
+        if (isActiveDialogue)
+        {
+            float pixelOffset = -DialogueBubble.GetComponent<Image>().GetPixelAdjustedRect().width / 2.0f;
+            pixelOffset /= Camera.main.aspect;
+
+            currentLineOffset = pixelOffset;
+        }
+
         startPos.y -= newLineOffset;
     }
 
     IEnumerator DisplayText(string displayText)
     {
         var chars = displayText.ToCharArray();
+        bool word_wrap_nl = false;
         for (int i = 0; i < displayText.Length; i++)
         {
+            if (word_wrap_nl && chars[i] == ' ')
+            {
+                word_wrap_nl = false;
+                NewLine();
+                continue;
+            }
+
             if (chars[i] == '\n')
             {
                 NewLine();
@@ -293,11 +359,17 @@ public class TextDisplay : MonoBehaviour
             {
                 textChars[i + textCharsStartIndex].GetComponent<TextMeshProUGUI>().text = GetStartCharTags(i) + chars[i].ToString() + GetEndCharTags(i);
                 textChars[i + textCharsStartIndex].GetComponent<CharacterText>().left = currentLineOffset;
-                textChars[i + textCharsStartIndex].GetComponent<CharacterText>().anchorMin = startPos.x;
+                textChars[i + textCharsStartIndex].GetComponent<CharacterText>().anchorMin = anchoroffset.x;
                 textChars[i + textCharsStartIndex].GetComponent<CharacterText>().anchorMax = startPos.y;
                 textChars[i + textCharsStartIndex].GetComponent<CharacterText>().UpdateNow();
                 ApplyTextModifiers(i, textChars[i + textCharsStartIndex]);
                 currentLineOffset += GetCharacterWidth(textChars[i + textCharsStartIndex].GetComponent<TextMeshProUGUI>());
+
+                // word wrap check
+                float wordWrapOffset = (DialogueBubble.GetComponent<Image>().GetPixelAdjustedRect().width / 2.0f) - 100;
+                wordWrapOffset /= Camera.main.aspect;
+                if (currentLineOffset >= wordWrapOffset)
+                    word_wrap_nl = true;
             }
             else
             {
@@ -329,8 +401,15 @@ public class TextDisplay : MonoBehaviour
     private void DisplayTextImmediate(string displayText)
     {
         var chars = displayText.ToCharArray();
+        bool word_wrap_nl = false;
         for (int i = 0; i < displayText.Length; i++)
         {
+            if (word_wrap_nl && chars[i] == ' ')
+            {
+                word_wrap_nl = false;
+                NewLine();
+                continue;
+            }
             if (chars[i] == '\n')
             {
                 NewLine();
@@ -345,6 +424,12 @@ public class TextDisplay : MonoBehaviour
                 textChars[i + textCharsStartIndex].GetComponent<CharacterText>().UpdateNow();
                 ApplyTextModifiers(i, textChars[i + textCharsStartIndex]);
                 currentLineOffset += GetCharacterWidth(textChars[i + textCharsStartIndex].GetComponent<TextMeshProUGUI>());
+
+                // word wrap check
+                float wordWrapOffset = (DialogueBubble.GetComponent<Image>().GetPixelAdjustedRect().width / 2.0f) - 100;
+                wordWrapOffset /= Camera.main.aspect;
+                if (currentLineOffset >= wordWrapOffset)
+                    word_wrap_nl = true;
             }
             else
             {
@@ -359,8 +444,15 @@ public class TextDisplay : MonoBehaviour
     private void DisplayTextImmediate(string displayText, Vector3 startPos)
     {
         var chars = displayText.ToCharArray();
+        bool word_wrap_nl = false;
         for (int i = 0; i < displayText.Length; i++)
         {
+            if (word_wrap_nl && chars[i] == ' ')
+            {
+                word_wrap_nl = false;
+                NewLine();
+                continue;
+            }
             if (isActiveDialogue)
             {
                 textChars[i + textCharsStartIndex].GetComponent<TextMeshProUGUI>().text = GetStartCharTags(i) + chars[i].ToString() + GetEndCharTags(i);
@@ -370,6 +462,12 @@ public class TextDisplay : MonoBehaviour
                 textChars[i + textCharsStartIndex].GetComponent<CharacterText>().UpdateNow();
                 ApplyTextModifiers(i, textChars[i + textCharsStartIndex]);
                 currentLineOffset += GetCharacterWidth(textChars[i + textCharsStartIndex].GetComponent<TextMeshProUGUI>());
+
+                // word wrap check
+                float wordWrapOffset = (DialogueBubble.GetComponent<Image>().GetPixelAdjustedRect().width / 2.0f) - 100;
+                wordWrapOffset /= Camera.main.aspect;
+                if (currentLineOffset >= wordWrapOffset)
+                    word_wrap_nl = true;
             }
             else
             {
@@ -397,7 +495,7 @@ public class TextDisplay : MonoBehaviour
         {
             textChars[i + textCharsStartIndex].GetComponent<WiggleLetter>().isWiggling = false;
             textChars[i + textCharsStartIndex].GetComponent<ShakeLetter>().isShaking = false;
-            textChars[i + textCharsStartIndex].GetComponent<CharacterText>().ClearOffsets();
+            textChars[i + textCharsStartIndex].GetComponent<CharacterText>()?.ClearOffsets();
         }
     }
 

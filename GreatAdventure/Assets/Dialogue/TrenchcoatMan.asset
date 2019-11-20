@@ -1,77 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8940564366757306425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -1227575808
-  m_EditorClassIdentifier: 
-  node_id: -1227575808
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: Player
-  dialogueText: Huh, so they were also just kids in a trenchcoat
-  previewDialogueText: 
-  characterSpeakingIndex: 1
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete:
-  - {fileID: 11400000, guid: 7d295227e23b7cf49a7795842d5c8fa9, type: 2}
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 
---- !u!114 &-8757620330720033025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -1001105408
-  m_EditorClassIdentifier: 
-  node_id: -1001105408
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: Player
-  dialogueText: '...
-
-    Can we have the trenchcoat now?'
-  previewDialogueText: 
-  characterSpeakingIndex: 1
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 006035d5
---- !u!114 &-8359126314291930252
+--- !u!114 &-7062638054523494617
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,8 +19,9 @@ MonoBehaviour:
   dialogueText: We don't have any money
   previewDialogueText: 
   characterSpeakingIndex: 2
-  emotion: 0
+  characterEmotions: 000000000000000000000000
   itemsToGive: []
+  itemsToRemove: []
   questsToAdd: []
   questsToComplete: []
   isConditionalBranching: 0
@@ -99,13 +29,12 @@ MonoBehaviour:
   questsRequired: []
   questsCompleted: []
   m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  m_isEventNode: 0
+  eventObjects: []
+  eventObjectNames: []
+  eventFunctions: []
   m_nextDialogueData: 00d23cfd
---- !u!114 &-7148722942616085427
+--- !u!114 &-6957855491395769859
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,17 +44,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -225460736
+  m_Name: 1044299264
   m_EditorClassIdentifier: 
-  node_id: -225460736
+  node_id: 1044299264
   m_isStartNode: 0
   branchingIndex: 0
   characterName: TrenchcoatMan
-  dialogueText: '**(yeah but they got the documents)**'
+  dialogueText: '*(guys, we didn''t think this through enough)*'
   previewDialogueText: 
   characterSpeakingIndex: 0
-  emotion: 0
+  characterEmotions: 
   itemsToGive: []
+  itemsToRemove: []
   questsToAdd: []
   questsToComplete: []
   isConditionalBranching: 0
@@ -133,13 +63,12 @@ MonoBehaviour:
   questsRequired: []
   questsCompleted: []
   m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 008c8820
---- !u!114 &-5560598928730941084
+  m_isEventNode: 0
+  eventObjects: []
+  eventObjectNames: []
+  eventFunctions: []
+  m_nextDialogueData: 00be8ff2
+--- !u!114 &-6889812861383916207
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -149,86 +78,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: 1733981696
+  m_Name: -46345728
   m_EditorClassIdentifier: 
-  node_id: 1733981696
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: Penny
-  dialogueText: I think it's the trenchcoat.
-  previewDialogueText: 
-  characterSpeakingIndex: 2
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 
---- !u!114 &-5172219512850486245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -1302115840
-  m_EditorClassIdentifier: 
-  node_id: -1302115840
+  node_id: -46345728
   m_isStartNode: 0
   branchingIndex: 0
   characterName: TrenchcoatMan
-  dialogueText: MOVE ALONG, CHILDREN
+  dialogueText: DOCUMENTS.
   previewDialogueText: 
   characterSpeakingIndex: 0
-  emotion: 0
+  characterEmotions: 
   itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 1
-  itemsToCheck: []
-  questsRequired:
-  - {fileID: 11400000, guid: d79931f9136aa3a4ba736f10e801501f, type: 2}
-  questsCompleted: []
-  m_isBranching: 1
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 00a8ba28000ec39a
---- !u!114 &-5079942519777590911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: 1442683392
-  m_EditorClassIdentifier: 
-  node_id: 1442683392
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: Player
-  dialogueText: I know but he seems so adult-like
-  previewDialogueText: 
-  characterSpeakingIndex: 1
-  emotion: 0
-  itemsToGive: []
+  itemsToRemove: []
   questsToAdd: []
   questsToComplete: []
   isConditionalBranching: 0
@@ -236,47 +97,12 @@ MonoBehaviour:
   questsRequired: []
   questsCompleted: []
   m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 00765a67
---- !u!114 &-5032848404224443407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -1156495872
-  m_EditorClassIdentifier: 
-  node_id: -1156495872
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: TrenchcoatMan
-  dialogueText: <shake=5,10>DOCUMENTS</shake>
-  previewDialogueText: 
-  characterSpeakingIndex: 0
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 
---- !u!114 &-4748343742754125687
+  m_isEventNode: 0
+  eventObjects: []
+  eventObjectNames: []
+  eventFunctions: []
+  m_nextDialogueData: 00a82bd4
+--- !u!114 &-6778986957253527448
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -295,8 +121,9 @@ MonoBehaviour:
   dialogueText: Hi can we have your trenchcoat?
   previewDialogueText: 
   characterSpeakingIndex: 1
-  emotion: 0
+  characterEmotions: 
   itemsToGive: []
+  itemsToRemove: []
   questsToAdd: []
   questsToComplete: []
   isConditionalBranching: 1
@@ -305,13 +132,83 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 85bc5e077eca166418d182a4f0414fdc, type: 2}
   questsCompleted: []
   m_isBranching: 1
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 002cfce3007654ff
---- !u!114 &-3947939081551062392
+  m_isEventNode: 0
+  eventObjects: []
+  eventObjectNames: []
+  eventFunctions: []
+  m_nextDialogueData: 002cfce3008e79fc
+--- !u!114 &-5305448356679744609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: 1347788288
+  m_EditorClassIdentifier: 
+  node_id: 1347788288
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: 
+  dialogueText: 
+  previewDialogueText: 
+  characterSpeakingIndex: 0
+  characterEmotions: 
+  itemsToGive: []
+  itemsToRemove: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_isEventNode: 1
+  eventObjects:
+  - {fileID: 0}
+  eventObjectNames:
+  - CutsceneHelper
+  eventFunctions:
+  - SpawnCar
+  m_nextDialogueData: 0028eeb3
+--- !u!114 &-3912229983514039084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -1470358528
+  m_EditorClassIdentifier: 
+  node_id: -1470358528
+  m_isStartNode: 0
+  branchingIndex: 1
+  characterName: Finley
+  dialogueText: Got em right here
+  previewDialogueText: 
+  characterSpeakingIndex: 1
+  characterEmotions: 000000000000000000000000
+  itemsToGive: []
+  itemsToRemove: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_isEventNode: 0
+  eventObjects: []
+  eventObjectNames: []
+  eventFunctions: []
+  m_nextDialogueData: 0032f0e3
+--- !u!114 &-3880194582453993836
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -326,12 +223,13 @@ MonoBehaviour:
   node_id: -735336448
   m_isStartNode: 0
   branchingIndex: 0
-  characterName: Player
+  characterName: Finley
   dialogueText: Documents?
   previewDialogueText: 
   characterSpeakingIndex: 1
-  emotion: 0
+  characterEmotions: 000000000000000000000000
   itemsToGive: []
+  itemsToRemove: []
   questsToAdd: []
   questsToComplete: []
   isConditionalBranching: 0
@@ -339,13 +237,12 @@ MonoBehaviour:
   questsRequired: []
   questsCompleted: []
   m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  m_isEventNode: 0
+  eventObjects: []
+  eventObjectNames: []
+  eventFunctions: []
   m_nextDialogueData: 00b4a2f2
---- !u!114 &-3414595028093353814
+--- !u!114 &-3263516566427677949
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -355,32 +252,238 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -11241984
+  m_Name: 481161216
   m_EditorClassIdentifier: 
-  node_id: -11241984
+  node_id: 481161216
   m_isStartNode: 0
-  branchingIndex: 1
+  branchingIndex: 0
+  characterName: Finley
+  dialogueText: Just any documents?
+  previewDialogueText: 
+  characterSpeakingIndex: 1
+  characterEmotions: 000000000000000000000000
+  itemsToGive: []
+  itemsToRemove: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_isEventNode: 0
+  eventObjects: []
+  eventObjectNames: []
+  eventFunctions: []
+  m_nextDialogueData: 009e5550
+--- !u!114 &-2843019295012838167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -225460736
+  m_EditorClassIdentifier: 
+  node_id: -225460736
+  m_isStartNode: 0
+  branchingIndex: 0
   characterName: TrenchcoatMan
-  dialogueText: DOCUMENTS
+  dialogueText: '**(yeah but they got the documents)**'
   previewDialogueText: 
   characterSpeakingIndex: 0
-  emotion: 0
+  characterEmotions: 000000000000000000000000
   itemsToGive: []
+  itemsToRemove: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_isEventNode: 0
+  eventObjects: []
+  eventObjectNames: []
+  eventFunctions: []
+  m_nextDialogueData: 008c8820
+--- !u!114 &-2088142144949109613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -1276237824
+  m_EditorClassIdentifier: 
+  node_id: -1276237824
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: TrenchcoatMan
+  dialogueText: TRADE DOCUMENTS FOR TRENCHCOAT, YES YES, IT IS A DEAL. A BUSINESS
+    DEAL.
+  previewDialogueText: 
+  characterSpeakingIndex: 0
+  characterEmotions: 000000000000000000000000
+  itemsToGive: []
+  itemsToRemove: []
+  questsToAdd:
+  - {fileID: 11400000, guid: 85bc5e077eca166418d182a4f0414fdc, type: 2}
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_isEventNode: 0
+  eventObjects: []
+  eventObjectNames: []
+  eventFunctions: []
+  m_nextDialogueData: 
+--- !u!114 &-1588483092550691832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -224218112
+  m_EditorClassIdentifier: 
+  node_id: -224218112
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: TrenchcoatMan
+  dialogueText: FOR... WORK, WHICH I GO TO.
+  previewDialogueText: 
+  characterSpeakingIndex: 0
+  characterEmotions: 
+  itemsToGive: []
+  itemsToRemove: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_isEventNode: 0
+  eventObjects: []
+  eventObjectNames: []
+  eventFunctions: []
+  m_nextDialogueData: 00f0ad1c
+--- !u!114 &-1487260873234230231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: 1442683392
+  m_EditorClassIdentifier: 
+  node_id: 1442683392
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: Finley
+  dialogueText: I know but he seems so adult-like
+  previewDialogueText: 
+  characterSpeakingIndex: 1
+  characterEmotions: 000000000000000000000000
+  itemsToGive: []
+  itemsToRemove: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_isEventNode: 0
+  eventObjects: []
+  eventObjectNames: []
+  eventFunctions: []
+  m_nextDialogueData: 00765a67
+--- !u!114 &-1096029842742646905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -1302115840
+  m_EditorClassIdentifier: 
+  node_id: -1302115840
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: TrenchcoatMan
+  dialogueText: MOVE ALONG, CHILDREN
+  previewDialogueText: 
+  characterSpeakingIndex: 0
+  characterEmotions: 
+  itemsToGive: []
+  itemsToRemove: []
   questsToAdd: []
   questsToComplete: []
   isConditionalBranching: 1
   itemsToCheck: []
-  questsRequired: []
-  questsCompleted:
-  - {fileID: 11400000, guid: 85bc5e077eca166418d182a4f0414fdc, type: 2}
+  questsRequired:
+  - {fileID: 11400000, guid: d79931f9136aa3a4ba736f10e801501f, type: 2}
+  questsCompleted: []
   m_isBranching: 1
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 004611bb001c5ca8
---- !u!114 &-2969685543143910193
+  m_isEventNode: 0
+  eventObjects: []
+  eventObjectNames: []
+  eventFunctions: []
+  m_nextDialogueData: 00ccffb100901973
+--- !u!114 &-907757664878321266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: 1931055104
+  m_EditorClassIdentifier: 
+  node_id: 1931055104
+  m_isStartNode: 0
+  branchingIndex: 1
+  characterName: Finley
+  dialogueText: Can we borrow your trenchcoat?
+  previewDialogueText: 
+  characterSpeakingIndex: 1
+  characterEmotions: 000000000000000000000000
+  itemsToGive: []
+  itemsToRemove: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_isEventNode: 0
+  eventObjects: []
+  eventObjectNames: []
+  eventFunctions: []
+  m_nextDialogueData: 000ec39a
+--- !u!114 &-763096690758767451
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -401,8 +504,9 @@ MonoBehaviour:
     ...'
   previewDialogueText: 
   characterSpeakingIndex: 0
-  emotion: 0
+  characterEmotions: 
   itemsToGive: []
+  itemsToRemove: []
   questsToAdd: []
   questsToComplete: []
   isConditionalBranching: 0
@@ -410,149 +514,12 @@ MonoBehaviour:
   questsRequired: []
   questsCompleted: []
   m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  m_isEventNode: 0
+  eventObjects: []
+  eventObjectNames: []
+  eventFunctions: []
   m_nextDialogueData: 005854c4
---- !u!114 &-2579426834283374370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: 1044299264
-  m_EditorClassIdentifier: 
-  node_id: 1044299264
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: TrenchcoatMan
-  dialogueText: '*(guys, we didn''t think this through enough)*'
-  previewDialogueText: 
-  characterSpeakingIndex: 0
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 00be8ff2
---- !u!114 &-2286380469299982359
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: 481161216
-  m_EditorClassIdentifier: 
-  node_id: 481161216
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: Player
-  dialogueText: Just any documents?
-  previewDialogueText: 
-  characterSpeakingIndex: 1
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 0028eeb3
---- !u!114 &-1804405239653187804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -1470358528
-  m_EditorClassIdentifier: 
-  node_id: -1470358528
-  m_isStartNode: 0
-  branchingIndex: 1
-  characterName: Player
-  dialogueText: Got em right here
-  previewDialogueText: 
-  characterSpeakingIndex: 1
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 0032f0e3
---- !u!114 &-1587089435399295853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: 545819648
-  m_EditorClassIdentifier: 
-  node_id: 545819648
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: TrenchcoatMan
-  dialogueText: '*(the jig is up guys, we''ve been cornered)*'
-  previewDialogueText: 
-  characterSpeakingIndex: 0
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 00aed4b6
---- !u!114 &-48659026836778549
+--- !u!114 &-199213874106256254
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -571,8 +538,9 @@ MonoBehaviour:
   dialogueText: UM....
   previewDialogueText: 
   characterSpeakingIndex: 0
-  emotion: 0
+  characterEmotions: 
   itemsToGive: []
+  itemsToRemove: []
   questsToAdd: []
   questsToComplete: []
   isConditionalBranching: 0
@@ -580,11 +548,10 @@ MonoBehaviour:
   questsRequired: []
   questsCompleted: []
   m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  m_isEventNode: 0
+  eventObjects: []
+  eventObjectNames: []
+  eventFunctions: []
   m_nextDialogueData: 00be3e3e
 --- !u!114 &11400000
 MonoBehaviour:
@@ -600,33 +567,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_startIndex: 578427392
   m_runtimeBuiltData:
-  - {fileID: -4748343742754125687}
-  - {fileID: 6318199880360714102}
-  - {fileID: -8359126314291930252}
-  - {fileID: 871835980913709752}
-  - {fileID: -3947939081551062392}
-  - {fileID: 5744510472145364132}
-  - {fileID: -2286380469299982359}
-  - {fileID: -1804405239653187804}
-  - {fileID: 1903057788011880093}
-  - {fileID: -5032848404224443407}
-  - {fileID: 733789780292233151}
-  - {fileID: 1983336758830597383}
-  - {fileID: -5079942519777590911}
-  - {fileID: -5560598928730941084}
-  - {fileID: -3414595028093353814}
-  - {fileID: -2969685543143910193}
-  - {fileID: -8757620330720033025}
-  - {fileID: -48659026836778549}
-  - {fileID: -8940564366757306425}
-  - {fileID: -2579426834283374370}
-  - {fileID: -7148722942616085427}
-  - {fileID: -1587089435399295853}
-  - {fileID: -5172219512850486245}
-  m_assetData: 22`737873536`-470012928`-1698492928`-1209886720`-1901016064`-85477120`-2087936000`-470012928`817809536`1688997504`1524042112`-46345728`-2087936000`278465280`-578273536`1449056896`-735336448`-46345728`238585216`-1117617792`-200968192`-224218112`-735336448`-1236391168`-1157497856`1644695168`481161216`-224218112`-2047541248`1662493056`-1556135296`-1156495872`-11241984`-875742848`25149056`110055680`-1276237824`481161216`438073216`665918976`-317066752`-11241984`-1698492928`-81569024`891150080`-2131889664`683321344`-1302115840`-480666496`1617461376`2039729152`1442683392`683321344`1889744128`-1876749568`313649536`1733981696`1442683392`-94223744`493661056`541704832`-1470358528`-11241984`2086648064`-1477652096`-151304192`-470797824`-1470358528`53383936`690564992`1834156288`-1001105408`-470797824`400495616`-1342699136`666802304`-717922304`-1001105408`777015552`-995587456`-1897597184`1044299264`-717922304`1103396864`883733632`669024512`-1698492928`-1302115840`784432000`1510743296`2072607616`-225460736`1044299264`2047726080`-535849856`169260160`545819648`-225460736`-2113582080`651643008`1969488256`-1227575808`545819648`1615666432`785302144`354577792`-1302115840`578427392`-1494859008`-421859840`23`-1698492928`187`202`150`105`True`-1698492928`784432000`0`2`-1698492928`891150080`0`-1698492928`-1901016064`1`-470012928`185`315`150`75`False`-470012928`-1209886720`0`1`-470012928`1688997504`0`-2087936000`183`382`150`75`False`-2087936000`817809536`0`1`-2087936000`-578273536`0`-46345728`182`449`150`75`False`-46345728`278465280`0`1`-46345728`-1117617792`0`-735336448`185`527`150`75`False`-735336448`238585216`0`1`-735336448`-1157497856`0`-224218112`181`601`150`75`False`-224218112`-1236391168`0`1`-224218112`1662493056`0`481161216`182`674`150`75`False`481161216`-2047541248`0`1`481161216`665918976`0`-1470358528`626`173`150`75`False`-1470358528`2086648064`0`1`-1470358528`690564992`0`-1276237824`184`748`150`75`False`-1276237824`438073216`0`1`-1276237824`-958009856`0`-1156495872`406`296`150`75`False`-1156495872`-875742848`0`1`-1156495872`2129859456`0`578427392`-157`-2`150`75`False`578427392`974223232`0`1`578427392`-421859840`0`683321344`1`184`150`75`False`683321344`-480666496`0`1`683321344`-1876749568`0`1442683392`-9`259`150`75`False`1442683392`1889744128`0`1`1442683392`493661056`0`1733981696`-16`345`150`75`False`1733981696`-94223744`0`1`1733981696`-1490306816`0`-11241984`402`182`150`105`True`-11241984`-81569024`0`2`-11241984`-1477652096`0`-11241984`25149056`1`-470797824`635`253`150`75`False`-470797824`53383936`0`1`-470797824`-1342699136`0`-1001105408`646`324`150`75`False`-1001105408`400495616`0`1`-1001105408`-995587456`0`-717922304`649`399`150`75`False`-717922304`777015552`0`1`-717922304`883733632`0`-1227575808`653`665`150`75`False`-1227575808`1615666432`0`1`-1227575808`219583360`0`1044299264`648`466`150`75`False`1044299264`1103396864`0`1`1044299264`-535849856`0`-225460736`651`535`150`75`False`-225460736`2047726080`0`1`-225460736`651643008`0`545819648`654`598`150`75`False`545819648`-2113582080`0`1`545819648`785302144`0`-1302115840`15`79`150`105`True`-1302115840`-1494859008`0`2`-1302115840`1510743296`0`-1302115840`1617461376`1`
+  - {fileID: -6778986957253527448}
+  - {fileID: 1786568444016245388}
+  - {fileID: -7062638054523494617}
+  - {fileID: -6889812861383916207}
+  - {fileID: -3880194582453993836}
+  - {fileID: -1588483092550691832}
+  - {fileID: -3263516566427677949}
+  - {fileID: -3912229983514039084}
+  - {fileID: -2088142144949109613}
+  - {fileID: 3298359634218228229}
+  - {fileID: 4134547694086208419}
+  - {fileID: 2227954073480459489}
+  - {fileID: -1487260873234230231}
+  - {fileID: 657878176301132133}
+  - {fileID: 1607855760825136185}
+  - {fileID: -763096690758767451}
+  - {fileID: 7929237840802883481}
+  - {fileID: -199213874106256254}
+  - {fileID: 3160055937919921462}
+  - {fileID: -6957855491395769859}
+  - {fileID: -2843019295012838167}
+  - {fileID: 4233759788326654032}
+  - {fileID: -1096029842742646905}
+  - {fileID: 4866465449767333011}
+  - {fileID: -907757664878321266}
+  - {fileID: 6512520600124596583}
+  - {fileID: -5305448356679744609}
+  m_assetData: 26`737873536`-470012928`-1698492928`-1209886720`-1901016064`-85477120`-2087936000`-470012928`817809536`1688997504`1524042112`-46345728`-2087936000`278465280`-578273536`1449056896`-735336448`-46345728`238585216`-1117617792`-200968192`-224218112`-735336448`-1236391168`-1157497856`1644695168`481161216`-224218112`-2047541248`1662493056`-1556135296`-1156495872`-11241984`-875742848`25149056`-1149035136`1347788288`481161216`-1300067584`665918976`1440919680`-59142656`-1698492928`-741238656`891150080`825283968`-1308636160`-1302115840`689244672`1617461376`2039729152`1442683392`683321344`1889744128`-1876749568`313649536`1733981696`1442683392`-94223744`493661056`-2043242368`-11241984`-59142656`-81569024`-2137321728`-151304192`-470797824`-1470358528`53383936`690564992`1834156288`-1001105408`-470797824`400495616`-1342699136`666802304`-717922304`-1001105408`777015552`-995587456`-1897597184`1044299264`-717922304`1103396864`883733632`729447296`1931055104`-1302115840`-1287390080`1510743296`2072607616`-225460736`1044299264`2047726080`-535849856`169260160`545819648`-225460736`-2113582080`651643008`1969488256`-1227575808`545819648`1615666432`785302144`354577792`-1302115840`578427392`-1494859008`-421859840`-1889372288`683321344`-1308636160`-480666496`-706838400`-362243840`-1698492928`1931055104`784432000`1611494144`-162151808`-1470358528`-11241984`2086648064`-1477652096`-1700679680`-1276237824`1347788288`438073216`1598816640`27`-1698492928`173`92`150`105`True`-1698492928`784432000`0`2`-1698492928`891150080`0`-1698492928`-1901016064`1`-470012928`166`198`150`75`False`-470012928`-1209886720`0`1`-470012928`1688997504`0`-2087936000`166`268`150`75`False`-2087936000`817809536`0`1`-2087936000`-578273536`0`-46345728`167`356`150`75`False`-46345728`278465280`0`1`-46345728`-1117617792`0`-735336448`170`434`150`75`False`-735336448`238585216`0`1`-735336448`-1157497856`0`-224218112`166`508`150`75`False`-224218112`-1236391168`0`1`-224218112`1662493056`0`481161216`167`581`150`75`False`481161216`-2047541248`0`1`481161216`665918976`0`-1470358528`611`80`150`75`False`-1470358528`2086648064`0`1`-1470358528`690564992`0`-1276237824`282`677`150`75`False`-1276237824`438073216`0`1`-1276237824`-958009856`0`-1156495872`406`304`150`75`False`-1156495872`-875742848`0`1`-1156495872`2129859456`0`578427392`-172`-95`150`75`False`578427392`974223232`0`1`578427392`-421859840`0`683321344`-23`193`150`75`False`683321344`-480666496`0`1`683321344`-1876749568`0`1442683392`-22`264`150`75`False`1442683392`1889744128`0`1`1442683392`493661056`0`1733981696`-24`331`150`75`False`1733981696`-94223744`0`1`1733981696`-1490306816`0`-11241984`392`186`150`105`True`-11241984`-81569024`0`2`-11241984`-1477652096`0`-11241984`25149056`1`-470797824`620`160`150`75`False`-470797824`53383936`0`1`-470797824`-1342699136`0`-1001105408`631`231`150`75`False`-1001105408`400495616`0`1`-1001105408`-995587456`0`-717922304`634`306`150`75`False`-717922304`777015552`0`1`-717922304`883733632`0`-1227575808`638`572`150`75`False`-1227575808`1615666432`0`1`-1227575808`219583360`0`1044299264`633`373`150`75`False`1044299264`1103396864`0`1`1044299264`-535849856`0`-225460736`636`442`150`75`False`-225460736`2047726080`0`1`-225460736`651643008`0`545819648`636`506`150`75`False`545819648`-2113582080`0`1`545819648`785302144`0`-1302115840`-19`22`150`105`True`-1302115840`-1494859008`0`2`-1302115840`1510743296`0`-1302115840`1617461376`1`-1308636160`-21`126`150`75`False`-1308636160`689244672`0`1`-1308636160`-706838400`0`1931055104`175`15`150`75`False`1931055104`-1287390080`0`1`1931055104`1611494144`0`-59142656`370`61`150`75`False`-59142656`-741238656`0`1`-59142656`-2137321728`0`1347788288`122`653`150`75`False`1347788288`-1300067584`0`1`1347788288`1598816640`0`
   m_charactersInvolvedStrings:
   - TrenchcoatMan
-  - Player
+  - Finley
   - Penny
   SceneName: Town
   m_CharactersInvoled:
@@ -634,7 +605,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   m_isActiveDialogue: 1
---- !u!114 &733789780292233151
+--- !u!114 &657878176301132133
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -644,121 +615,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: 578427392
+  m_Name: 1733981696
   m_EditorClassIdentifier: 
-  node_id: 578427392
-  m_isStartNode: 1
-  branchingIndex: 0
-  characterName: 
-  dialogueText: 
-  previewDialogueText: 
-  characterSpeakingIndex: 0
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 004a63b2
---- !u!114 &871835980913709752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -46345728
-  m_EditorClassIdentifier: 
-  node_id: -46345728
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: TrenchcoatMan
-  dialogueText: DOCUMENTS.
-  previewDialogueText: 
-  characterSpeakingIndex: 0
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 00a82bd4
---- !u!114 &1903057788011880093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -1276237824
-  m_EditorClassIdentifier: 
-  node_id: -1276237824
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: TrenchcoatMan
-  dialogueText: TRADE DOCUMENTS FOR TRENCHCOAT, YES YES, IT IS A DEAL. A BUSINESS
-    DEAL.
-  previewDialogueText: 
-  characterSpeakingIndex: 0
-  emotion: 0
-  itemsToGive: []
-  questsToAdd:
-  - {fileID: 11400000, guid: 85bc5e077eca166418d182a4f0414fdc, type: 2}
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 
---- !u!114 &1983336758830597383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: 683321344
-  m_EditorClassIdentifier: 
-  node_id: 683321344
+  node_id: 1733981696
   m_isStartNode: 0
   branchingIndex: 0
   characterName: Penny
-  dialogueText: Wow what a weird man
+  dialogueText: I think it's the trenchcoat.
   previewDialogueText: 
   characterSpeakingIndex: 2
-  emotion: 0
+  characterEmotions: 000000000000000000000000
   itemsToGive: []
+  itemsToRemove: []
   questsToAdd: []
   questsToComplete: []
   isConditionalBranching: 0
@@ -766,13 +634,12 @@ MonoBehaviour:
   questsRequired: []
   questsCompleted: []
   m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 009afd55
---- !u!114 &5744510472145364132
+  m_isEventNode: 0
+  eventObjects: []
+  eventObjectNames: []
+  eventFunctions: []
+  m_nextDialogueData: 
+--- !u!114 &1607855760825136185
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -782,31 +649,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -224218112
+  m_Name: -11241984
   m_EditorClassIdentifier: 
-  node_id: -224218112
+  node_id: -11241984
   m_isStartNode: 0
-  branchingIndex: 0
+  branchingIndex: 1
   characterName: TrenchcoatMan
-  dialogueText: FOR... WORK, WHICH I GO TO.
+  dialogueText: DOCUMENTS
   previewDialogueText: 
   characterSpeakingIndex: 0
-  emotion: 0
+  characterEmotions: 
   itemsToGive: []
+  itemsToRemove: []
   questsToAdd: []
   questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
+  isConditionalBranching: 1
+  itemsToCheck:
+  - {fileID: 11400000, guid: 9ab60f92979269e4db5a7a43a404547c, type: 2}
   questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 00f0ad1c
---- !u!114 &6318199880360714102
+  questsCompleted:
+  - {fileID: 11400000, guid: 85bc5e077eca166418d182a4f0414fdc, type: 2}
+  m_isBranching: 1
+  m_isEventNode: 0
+  eventObjects: []
+  eventObjectNames: []
+  eventFunctions: []
+  m_nextDialogueData: 004611bb001c5ca8
+--- !u!114 &1786568444016245388
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -825,8 +694,9 @@ MonoBehaviour:
   dialogueText: WE CAN DO A TRANSACTION
   previewDialogueText: 
   characterSpeakingIndex: 0
-  emotion: 0
+  characterEmotions: 000000000000000000000000
   itemsToGive: []
+  itemsToRemove: []
   questsToAdd: []
   questsToComplete: []
   isConditionalBranching: 0
@@ -834,9 +704,284 @@ MonoBehaviour:
   questsRequired: []
   questsCompleted: []
   m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  m_isEventNode: 0
+  eventObjects: []
+  eventObjectNames: []
+  eventFunctions: []
   m_nextDialogueData: 00a08c83
+--- !u!114 &2227954073480459489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: 683321344
+  m_EditorClassIdentifier: 
+  node_id: 683321344
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: Penny
+  dialogueText: Wow what a weird man
+  previewDialogueText: 
+  characterSpeakingIndex: 2
+  characterEmotions: 000000000000000000000000
+  itemsToGive: []
+  itemsToRemove: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_isEventNode: 0
+  eventObjects: []
+  eventObjectNames: []
+  eventFunctions: []
+  m_nextDialogueData: 009afd55
+--- !u!114 &3160055937919921462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -1227575808
+  m_EditorClassIdentifier: 
+  node_id: -1227575808
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: Finley
+  dialogueText: Huh, so they were also just kids in a trenchcoat
+  previewDialogueText: 
+  characterSpeakingIndex: 1
+  characterEmotions: 000000000000000000000000
+  itemsToGive: []
+  itemsToRemove: []
+  questsToAdd: []
+  questsToComplete:
+  - {fileID: 11400000, guid: 7d295227e23b7cf49a7795842d5c8fa9, type: 2}
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_isEventNode: 0
+  eventObjects: []
+  eventObjectNames: []
+  eventFunctions: []
+  m_nextDialogueData: 
+--- !u!114 &3298359634218228229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -1156495872
+  m_EditorClassIdentifier: 
+  node_id: -1156495872
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: TrenchcoatMan
+  dialogueText: <shake=5,10>DOCUMENTS</shake>
+  previewDialogueText: 
+  characterSpeakingIndex: 0
+  characterEmotions: 000000000000000000000000
+  itemsToGive: []
+  itemsToRemove: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_isEventNode: 0
+  eventObjects: []
+  eventObjectNames: []
+  eventFunctions: []
+  m_nextDialogueData: 
+--- !u!114 &4134547694086208419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: 578427392
+  m_EditorClassIdentifier: 
+  node_id: 578427392
+  m_isStartNode: 1
+  branchingIndex: 0
+  characterName: 
+  dialogueText: 
+  previewDialogueText: 
+  characterSpeakingIndex: 0
+  characterEmotions: 
+  itemsToGive: []
+  itemsToRemove: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_isEventNode: 0
+  eventObjects: []
+  eventObjectNames: []
+  eventFunctions: []
+  m_nextDialogueData: 004a63b2
+--- !u!114 &4233759788326654032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: 545819648
+  m_EditorClassIdentifier: 
+  node_id: 545819648
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: TrenchcoatMan
+  dialogueText: '*(the jig is up guys, we''ve been cornered)*'
+  previewDialogueText: 
+  characterSpeakingIndex: 0
+  characterEmotions: 000000000000000000000000
+  itemsToGive:
+  - {fileID: 11400000, guid: 439431c7062fe6140a0cd882296d833f, type: 2}
+  itemsToRemove: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_isEventNode: 0
+  eventObjects: []
+  eventObjectNames: []
+  eventFunctions: []
+  m_nextDialogueData: 00aed4b6
+--- !u!114 &4866465449767333011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -1308636160
+  m_EditorClassIdentifier: 
+  node_id: -1308636160
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: TrenchcoatMan
+  dialogueText: MOVE ALONG, CHILDREN, I HAVE BUSINESS TO ATTEND.
+  previewDialogueText: 
+  characterSpeakingIndex: 0
+  characterEmotions: 000000000000000000000000
+  itemsToGive: []
+  itemsToRemove: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_isEventNode: 0
+  eventObjects: []
+  eventObjectNames: []
+  eventFunctions: []
+  m_nextDialogueData: 00a8ba28
+--- !u!114 &6512520600124596583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -59142656
+  m_EditorClassIdentifier: 
+  node_id: -59142656
+  m_isStartNode: 0
+  branchingIndex: 1
+  characterName: TrenchcoatMan
+  dialogueText: <wiggle=0.3,10>DOCUMENTS??</wiggle>
+  previewDialogueText: 
+  characterSpeakingIndex: 0
+  characterEmotions: 000000000000000000000000
+  itemsToGive: []
+  itemsToRemove: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_isEventNode: 0
+  eventObjects: []
+  eventObjectNames: []
+  eventFunctions: []
+  m_nextDialogueData: 007654ff
+--- !u!114 &7929237840802883481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -1001105408
+  m_EditorClassIdentifier: 
+  node_id: -1001105408
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: Finley
+  dialogueText: '...
+
+    Can we have the trenchcoat now?'
+  previewDialogueText: 
+  characterSpeakingIndex: 1
+  characterEmotions: 000000000000000000000000
+  itemsToGive: []
+  itemsToRemove: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_isEventNode: 0
+  eventObjects: []
+  eventObjectNames: []
+  eventFunctions: []
+  m_nextDialogueData: 006035d5

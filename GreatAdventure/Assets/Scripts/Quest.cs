@@ -25,11 +25,11 @@ public class Quest : ScriptableObject
 
     public void AddQuestToActiveQuests()
     {
-        ActiveQuests.AddQuest(questName, this);
+        ActiveQuests.AddQuest(name, this);
     }
 
     public void RemoveItemFromInventory()
     {
-        ActiveQuests.RemoveQuest(questName);
+        ActiveQuests.RemoveQuest(name);
     }
 }

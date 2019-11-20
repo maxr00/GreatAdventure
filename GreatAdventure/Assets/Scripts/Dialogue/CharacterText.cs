@@ -31,8 +31,8 @@ public class CharacterText : MonoBehaviour
         GetComponent<RectTransform>().offsetMin = new Vector2(left, 0);
         GetComponent<RectTransform>().offsetMax = new Vector2(0, top);
 
-        GetComponent<RectTransform>().anchorMin = new Vector2(anchorMin, 0);
-        GetComponent<RectTransform>().anchorMax = new Vector2(0, anchorMax);
+        GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0);
+        GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, anchorMax);
     }
 
     public void UpdateNow()
@@ -40,7 +40,7 @@ public class CharacterText : MonoBehaviour
         GetComponent<RectTransform>().offsetMin = new Vector2(left, 0);
         GetComponent<RectTransform>().offsetMax = new Vector2(0, top);
 
-        GetComponent<RectTransform>().anchorMin = new Vector2(anchorMin, 0);
-        GetComponent<RectTransform>().anchorMax = new Vector2(0, anchorMax);
+        GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0);
+        GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, anchorMax);
     }
 }

@@ -5,6 +5,9 @@ using UnityEngine.Events;
 
 public class Interactable : MonoBehaviour
 {
+    // Used to disable *all* interactables 
+    public static bool interactablesEnabled = true;
+
     [Header("Range satisfied by entering trigger collider, or using the 'range' variable")]
 
     public float range = 0;
@@ -18,12 +21,15 @@ public class Interactable : MonoBehaviour
     public UnityEvent activationFunc = new UnityEvent();
 
     PlayerController player;
+    GlowObject glowObj;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player")?.GetComponent<PlayerController>();
 
-        if(player == null)
+        glowObj = gameObject.GetComponent<GlowObject>();
+
+        if (player == null)
         {
             Debug.Log("No player found. Put the 'Player' tag on the player!");
         }
@@ -31,6 +37,12 @@ public class Interactable : MonoBehaviour
 
     void Update()
     {
+        if(!interactablesEnabled)
+        {
+            glowObj?.TurnOffGlow();
+            return;
+        }
+
         if(Vector3.Distance(player.transform.position, transform.position) <= range)
         {
             if(activateOnEnter)
@@ -44,7 +56,7 @@ public class Interactable : MonoBehaviour
                     Activate();
                 }
             }
-            GlowObject glowObj = gameObject.GetComponent<GlowObject>();
+
             if (glowObj != null)
             {
                 glowObj.TurnOnGlow();
@@ -52,7 +64,6 @@ public class Interactable : MonoBehaviour
         }
         else
         {
-            GlowObject glowObj = gameObject.GetComponent<GlowObject>();
             if (glowObj != null)
             {
                 glowObj.TurnOffGlow();

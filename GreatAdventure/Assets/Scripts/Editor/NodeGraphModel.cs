@@ -141,6 +141,7 @@ public class NodeGraphModel
     {
         Node node_to_duplicate = GetNodeFromID(node_id_to_duplicate);
         Node duplicate = new Node();
+        duplicate.isConditionalNode = node_to_duplicate.isConditionalNode;
         duplicate.m_id = duplicate.GetHashCode();
         duplicate.m_position = node_to_duplicate.m_position + new Vector2(20, 20);
         duplicate.m_inputPlug = new Plug();
@@ -150,7 +151,9 @@ public class NodeGraphModel
 
         //dialogue data
         DialogueData dialogue = GetDataFromNodeID(node_to_duplicate.m_id);
-        m_dialogueData.Add(duplicate.m_id, dialogue.Copy());
+        DialogueData dataCopy = dialogue.Copy();
+        dataCopy.node_id = duplicate.m_id;
+        m_dialogueData.Add(duplicate.m_id, dataCopy);
 
 
         duplicate.m_outputPlugs = new Dictionary<int, Plug>();
@@ -357,6 +360,15 @@ public class NodeGraphModel
         else if (node.m_outputPlugs.Count == 1)
         {
             foreach (var item in data.itemsToGive)
+            {
+                if (item == null)
+                {
+                    error_messages.Add("Error in Items to Give");
+                    break;
+                }
+            }
+
+            foreach (var item in data.itemsToRemove)
             {
                 if (item == null)
                 {

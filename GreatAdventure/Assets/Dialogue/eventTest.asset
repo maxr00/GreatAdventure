@@ -1,0 +1,173 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8013059565519088155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -816341504
+  m_EditorClassIdentifier: 
+  node_id: -816341504
+  m_isStartNode: 1
+  branchingIndex: 0
+  characterName: 
+  dialogueText: 
+  previewDialogueText: 
+  characterSpeakingIndex: 0
+  characterEmotions: 
+  itemsToGive: []
+  itemsToRemove: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_isEventNode: 0
+  eventObjects: []
+  eventObjectNames: []
+  eventFunctions: []
+  m_nextDialogueData: 00aebc20
+--- !u!114 &-5089572166432800108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: 1695857664
+  m_EditorClassIdentifier: 
+  node_id: 1695857664
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: PassiveDialogueBoi
+  dialogueText: <sp=0.0><shake=0.05,40>AAAAAAA!!!</shake></sp>
+  previewDialogueText: 
+  characterSpeakingIndex: 1
+  characterEmotions: 0000000000000000
+  itemsToGive:
+  - {fileID: 11400000, guid: a57c214f3586b6a4ebf3f4263e0ada60, type: 2}
+  itemsToRemove: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_isEventNode: 0
+  eventObjects:
+  - {fileID: 0}
+  eventObjectNames:
+  - PassiveDialogueBoi
+  eventFunctions:
+  - testDialogueEvent
+  - 
+  m_nextDialogueData: 00a8779d
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dd4f336407e46342afbdf2e5056f0f1, type: 3}
+  m_Name: eventTest
+  m_EditorClassIdentifier: 
+  m_startIndex: -816341504
+  m_runtimeBuiltData:
+  - {fileID: -8013059565519088155}
+  - {fileID: -5089572166432800108}
+  - {fileID: 1196774975915276312}
+  - {fileID: 3675065185126905689}
+  m_assetData: 3`853470592`1695857664`549236224`452089472`-1262287488`1784844032`549236224`-816341504`133795584`-1883602816`1658742912`-1653102592`1695857664`1951536256`-943993600`4`-816341504`-26`337`150`75`False`-816341504`-1990320896`0`1`-816341504`-1883602816`0`1695857664`373`335`150`75`False`1695857664`452089472`0`1`1695857664`-943993600`0`549236224`158`334`150`75`False`549236224`133795584`0`1`549236224`-1262287488`0`-1653102592`587`334`150`75`False`-1653102592`1951536256`0`1`-1653102592`555453184`0`
+  m_charactersInvolvedStrings:
+  - Player
+  - PassiveDialogueBoi
+  SceneName: LevelTest
+  m_CharactersInvoled:
+  - {fileID: 0}
+  - {fileID: 0}
+  m_isActiveDialogue: 0
+--- !u!114 &1196774975915276312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: 549236224
+  m_EditorClassIdentifier: 
+  node_id: 549236224
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: Player
+  dialogueText: BOO
+  previewDialogueText: 
+  characterSpeakingIndex: 0
+  characterEmotions: 0000000000000000
+  itemsToGive: []
+  itemsToRemove: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_isEventNode: 0
+  eventObjects: []
+  eventObjectNames: []
+  eventFunctions: []
+  m_nextDialogueData: 00bc1465
+--- !u!114 &3675065185126905689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -1653102592
+  m_EditorClassIdentifier: 
+  node_id: -1653102592
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: 
+  dialogueText: 
+  previewDialogueText: 
+  characterSpeakingIndex: 0
+  characterEmotions: 
+  itemsToGive: []
+  itemsToRemove: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_isEventNode: 1
+  eventObjects:
+  - {fileID: 0}
+  eventObjectNames:
+  - PassiveDialogueBoi
+  eventFunctions:
+  - testDialogueEvent2
+  m_nextDialogueData: 

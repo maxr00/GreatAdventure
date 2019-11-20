@@ -1,179 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8682002407168778704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: 407505920
-  m_EditorClassIdentifier: 
-  node_id: 407505920
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: passiveDialogueBoi
-  dialogueText: uh, um ok, here
-  previewDialogueText: 
-  characterSpeakingIndex: 1
-  emotion: 0
-  itemsToGive:
-  - {fileID: 11400000, guid: a57c214f3586b6a4ebf3f4263e0ada60, type: 2}
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 
---- !u!114 &-6986801050197297106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: 1035183104
-  m_EditorClassIdentifier: 
-  node_id: 1035183104
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: passiveDialogueBoi
-  dialogueText: i already gave you my <shake=0.1,2>EYE!</shake> <b>scram!</b>
-  previewDialogueText: 
-  characterSpeakingIndex: 1
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 1
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted:
-  - {fileID: 11400000, guid: 877b6fd87b490dc46a5666258b572f77, type: 2}
-  m_isBranching: 1
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 002cc95a00889c35
---- !u!114 &-6945208378623325336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: 2036907520
-  m_EditorClassIdentifier: 
-  node_id: 2036907520
-  m_isStartNode: 0
-  branchingIndex: 1
-  characterName: passiveDialogueBoi
-  dialogueText: '... why?'
-  previewDialogueText: 
-  characterSpeakingIndex: 1
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 1
-  itemsToCheck: []
-  questsRequired:
-  - {fileID: 11400000, guid: 877b6fd87b490dc46a5666258b572f77, type: 2}
-  questsCompleted: []
-  m_isBranching: 1
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 00e6b85a00fa3f8b
---- !u!114 &-1910998061420880117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -1748707328
-  m_EditorClassIdentifier: 
-  node_id: -1748707328
-  m_isStartNode: 1
-  branchingIndex: 0
-  characterName: 
-  dialogueText: 
-  previewDialogueText: 
-  characterSpeakingIndex: 0
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 00c8ca11
---- !u!114 &-333148676975050914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: -1958741504
-  m_EditorClassIdentifier: 
-  node_id: -1958741504
-  m_isStartNode: 0
-  branchingIndex: 1
-  characterName: Player
-  dialogueText: i need weird stuff
-  previewDialogueText: 
-  characterSpeakingIndex: 0
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 000c4a18
---- !u!114 &-312560461170939277
+--- !u!114 &-7227830594806339141
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -192,7 +19,7 @@ MonoBehaviour:
   dialogueText: hey
   previewDialogueText: 
   characterSpeakingIndex: 1
-  emotion: 0
+  characterEmotions: 0000000000000000
   itemsToGive: []
   questsToAdd: []
   questsToComplete: []
@@ -206,109 +33,10 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  eventObjects: []
+  eventFunctions: []
   m_nextDialogueData: 00c03c01
---- !u!114 &-57852988984355626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: 1522066944
-  m_EditorClassIdentifier: 
-  node_id: 1522066944
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: Player
-  dialogueText: i dont know..
-  previewDialogueText: 
-  characterSpeakingIndex: 0
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dd4f336407e46342afbdf2e5056f0f1, type: 3}
-  m_Name: inventoryTest
-  m_EditorClassIdentifier: 
-  m_startIndex: -1748707328
-  m_runtimeBuiltData:
-  - {fileID: -1910998061420880117}
-  - {fileID: 7087064256269748752}
-  - {fileID: -8682002407168778704}
-  - {fileID: 5792777295262497714}
-  - {fileID: -6945208378623325336}
-  - {fileID: -333148676975050914}
-  - {fileID: -57852988984355626}
-  - {fileID: -6986801050197297106}
-  - {fileID: 3108859912135336160}
-  - {fileID: -312560461170939277}
-  m_assetData: 9`1484921088`298502144`-1748707328`-1059883264`1465749248`-1536855552`2036907520`20758528`-2115407232`1723288576`1164439168`1035183104`20758528`1511590400`-1068877568`-624802944`407505920`-1958741504`160900608`-1216701312`-295229696`-1958741504`2036907520`179381760`783476992`1083846528`1522066944`2036907520`2018976256`-2008689152`223690240`899450880`1035183104`1459377664`222225408`-1614494976`1523133440`1035183104`-2010859136`328943488`-752395520`20758528`298502144`-1175595648`1839000960`10`-1748707328`16`99`150`75`False`-1748707328`-1433134976`0`1`-1748707328`1465749248`0`20758528`283`364`150`105`True`20758528`-1175595648`0`2`20758528`1723288576`0`20758528`-1068877568`1`407505920`917`260`150`75`False`407505920`160900608`0`1`407505920`1663701760`0`899450880`710`461`150`75`False`899450880`1459377664`0`1`899450880`-1332788480`0`2036907520`489`310`150`105`True`2036907520`-2115407232`0`2`2036907520`783476992`0`2036907520`-2008689152`1`-1958741504`704`265`150`75`False`-1958741504`179381760`0`1`-1958741504`-1216701312`0`1522066944`703`359`150`75`False`1522066944`2018976256`0`1`1522066944`-773189888`0`1035183104`484`473`150`105`True`1035183104`1511590400`0`2`1035183104`222225408`0`1035183104`328943488`1`1523133440`721`536`150`75`False`1523133440`-2010859136`0`1`1523133440`888025088`0`298502144`172`245`150`75`False`298502144`-1059883264`0`1`298502144`1839000960`0`
-  m_charactersInvolvedStrings:
-  - Player
-  - passiveDialogueBoi
-  SceneName: LevelTest
-  m_CharactersInvoled:
-  - {fileID: 0}
-  - {fileID: 0}
-  m_isActiveDialogue: 0
---- !u!114 &3108859912135336160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
-  m_Name: 1523133440
-  m_EditorClassIdentifier: 
-  node_id: 1523133440
-  m_isStartNode: 0
-  branchingIndex: 0
-  characterName: Player
-  dialogueText: yea, and it helped me finish a quest
-  previewDialogueText: 
-  characterSpeakingIndex: 0
-  emotion: 0
-  itemsToGive: []
-  questsToAdd: []
-  questsToComplete: []
-  isConditionalBranching: 0
-  itemsToCheck: []
-  questsRequired: []
-  questsCompleted: []
-  m_isBranching: 0
-  m_dialogueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_nextDialogueData: 
---- !u!114 &5792777295262497714
+--- !u!114 &-6100873948490011886
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -327,7 +55,7 @@ MonoBehaviour:
   dialogueText: what do i do with this?
   previewDialogueText: 
   characterSpeakingIndex: 0
-  emotion: 0
+  characterEmotions: 0000000000000000
   itemsToGive: []
   questsToAdd: []
   questsToComplete: []
@@ -341,8 +69,193 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  eventObjects: []
+  eventFunctions: []
   m_nextDialogueData: 
---- !u!114 &7087064256269748752
+--- !u!114 &-5948162089068101568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: 1522066944
+  m_EditorClassIdentifier: 
+  node_id: 1522066944
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: Player
+  dialogueText: i dont know..
+  previewDialogueText: 
+  characterSpeakingIndex: 0
+  characterEmotions: 0000000000000000
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  eventObjects: []
+  eventFunctions: []
+  m_nextDialogueData: 
+--- !u!114 &-3733891935700943283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: 1523133440
+  m_EditorClassIdentifier: 
+  node_id: 1523133440
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: Player
+  dialogueText: yea, and it helped me finish a quest
+  previewDialogueText: 
+  characterSpeakingIndex: 0
+  characterEmotions: 0000000000000000
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  eventObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  eventFunctions:
+  - hi
+  - htllo
+  - howdy
+  m_nextDialogueData: 
+--- !u!114 &-563109596113996171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -1958741504
+  m_EditorClassIdentifier: 
+  node_id: -1958741504
+  m_isStartNode: 0
+  branchingIndex: 1
+  characterName: Player
+  dialogueText: i need weird stuff
+  previewDialogueText: 
+  characterSpeakingIndex: 0
+  characterEmotions: 0000000000000000
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  eventObjects: []
+  eventFunctions: []
+  m_nextDialogueData: 000c4a18
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dd4f336407e46342afbdf2e5056f0f1, type: 3}
+  m_Name: inventoryTest
+  m_EditorClassIdentifier: 
+  m_startIndex: -1748707328
+  m_runtimeBuiltData:
+  - {fileID: 8348500612160923808}
+  - {fileID: 4529548777178249128}
+  - {fileID: 3159807297891904414}
+  - {fileID: -6100873948490011886}
+  - {fileID: 7448368431570458990}
+  - {fileID: -563109596113996171}
+  - {fileID: -5948162089068101568}
+  - {fileID: 9064623401161603495}
+  - {fileID: -3733891935700943283}
+  - {fileID: -7227830594806339141}
+  m_assetData: 9`1484921088`298502144`-1748707328`-1059883264`1465749248`-1536855552`2036907520`20758528`-2115407232`1723288576`1164439168`1035183104`20758528`1511590400`-1068877568`-624802944`407505920`-1958741504`160900608`-1216701312`-295229696`-1958741504`2036907520`179381760`783476992`1083846528`1522066944`2036907520`2018976256`-2008689152`223690240`899450880`1035183104`1459377664`222225408`-1614494976`1523133440`1035183104`-2010859136`328943488`-752395520`20758528`298502144`-1175595648`1839000960`10`-1748707328`-124`-29`150`75`False`-1748707328`-1433134976`0`1`-1748707328`1465749248`0`20758528`143`236`150`105`True`20758528`-1175595648`0`2`20758528`1723288576`0`20758528`-1068877568`1`407505920`777`132`150`75`False`407505920`160900608`0`1`407505920`1663701760`0`899450880`570`333`150`75`False`899450880`1459377664`0`1`899450880`-1332788480`0`2036907520`349`182`150`105`True`2036907520`-2115407232`0`2`2036907520`783476992`0`2036907520`-2008689152`1`-1958741504`564`137`150`75`False`-1958741504`179381760`0`1`-1958741504`-1216701312`0`1522066944`563`231`150`75`False`1522066944`2018976256`0`1`1522066944`-773189888`0`1035183104`344`345`150`105`True`1035183104`1511590400`0`2`1035183104`222225408`0`1035183104`328943488`1`1523133440`576`405`150`75`False`1523133440`-2010859136`0`1`1523133440`888025088`0`298502144`32`117`150`75`False`298502144`-1059883264`0`1`298502144`1839000960`0`
+  m_charactersInvolvedStrings:
+  - Player
+  SceneName: LevelTest
+  m_CharactersInvoled:
+  - {fileID: 0}
+  - {fileID: 0}
+  m_isActiveDialogue: 0
+--- !u!114 &3159807297891904414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: 407505920
+  m_EditorClassIdentifier: 
+  node_id: 407505920
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: passiveDialogueBoi
+  dialogueText: uh, um ok, here
+  previewDialogueText: 
+  characterSpeakingIndex: 1
+  characterEmotions: 0000000000000000
+  itemsToGive:
+  - {fileID: 11400000, guid: a57c214f3586b6a4ebf3f4263e0ada60, type: 2}
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  eventObjects: []
+  eventFunctions: []
+  m_nextDialogueData: 
+--- !u!114 &4529548777178249128
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -361,7 +274,7 @@ MonoBehaviour:
   dialogueText: give me your stuff
   previewDialogueText: 
   characterSpeakingIndex: 0
-  emotion: 0
+  characterEmotions: 
   itemsToGive: []
   questsToAdd: []
   questsToComplete: []
@@ -376,4 +289,116 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  eventObjects: []
+  eventFunctions: []
   m_nextDialogueData: 00a4b33d00be6879
+--- !u!114 &7448368431570458990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: 2036907520
+  m_EditorClassIdentifier: 
+  node_id: 2036907520
+  m_isStartNode: 0
+  branchingIndex: 1
+  characterName: passiveDialogueBoi
+  dialogueText: '... why?'
+  previewDialogueText: 
+  characterSpeakingIndex: 1
+  characterEmotions: 
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 1
+  itemsToCheck: []
+  questsRequired:
+  - {fileID: 11400000, guid: 877b6fd87b490dc46a5666258b572f77, type: 2}
+  questsCompleted: []
+  m_isBranching: 1
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  eventObjects: []
+  eventFunctions: []
+  m_nextDialogueData: 00e6b85a00fa3f8b
+--- !u!114 &8348500612160923808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: -1748707328
+  m_EditorClassIdentifier: 
+  node_id: -1748707328
+  m_isStartNode: 1
+  branchingIndex: 0
+  characterName: 
+  dialogueText: 
+  previewDialogueText: 
+  characterSpeakingIndex: 0
+  characterEmotions: 
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 0
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted: []
+  m_isBranching: 0
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  eventObjects: []
+  eventFunctions: []
+  m_nextDialogueData: 00c8ca11
+--- !u!114 &9064623401161603495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393235f8d37e6ae4db70ff17e574486f, type: 3}
+  m_Name: 1035183104
+  m_EditorClassIdentifier: 
+  node_id: 1035183104
+  m_isStartNode: 0
+  branchingIndex: 0
+  characterName: passiveDialogueBoi
+  dialogueText: i already gave you my <shake=0.1,2>EYE!</shake> <b>scram!</b>
+  previewDialogueText: 
+  characterSpeakingIndex: 1
+  characterEmotions: 
+  itemsToGive: []
+  questsToAdd: []
+  questsToComplete: []
+  isConditionalBranching: 1
+  itemsToCheck: []
+  questsRequired: []
+  questsCompleted:
+  - {fileID: 11400000, guid: 877b6fd87b490dc46a5666258b572f77, type: 2}
+  m_isBranching: 1
+  m_dialogueEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  eventObjects: []
+  eventFunctions: []
+  m_nextDialogueData: 002cc95a00889c35

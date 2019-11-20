@@ -108,7 +108,7 @@ public class CarControls : MonoBehaviour
 
         HandleSlam(ref h, ref v);
 
-        if (Input.GetAxisRaw("Interact") != 0)
+        if (Input.GetAxisRaw("SLAM") != 0)
             Slam(h,v);
         
         // Turning

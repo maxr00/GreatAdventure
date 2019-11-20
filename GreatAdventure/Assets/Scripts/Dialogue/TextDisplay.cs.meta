@@ -3,7 +3,14 @@ guid: d807784d71fd2a14fbcf2d0c2a044a89
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - textPool: {instanceID: 0}
+  - CharacterIconPrefab: {fileID: 2688998117795705485, guid: 23632f68c0ce4644e954742933b40cb4,
+      type: 3}
+  - DialogueBubble: {fileID: 3075523446443782720, guid: 9da45b9cb3770824c8e459afcfe8a0bd,
+      type: 3}
+  - DialogueOptionBubble: {fileID: 7877824606518064287, guid: 51c4bb50dfe6aa040a062789b537e779,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

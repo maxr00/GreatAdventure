@@ -9,6 +9,8 @@ public class ThiefHealth : MonoBehaviour
 
     private float timer = 0;
 
+    public ThiefChaseManager chaseManager;
+
     void Update()
     {
         if(timer > 0)
@@ -26,6 +28,11 @@ public class ThiefHealth : MonoBehaviour
             {
                 health--;
                 timer = cooldown;
+
+                if(health <= 0)
+                {
+                    chaseManager.EndThiefChase();
+                }
             }
         }
     }

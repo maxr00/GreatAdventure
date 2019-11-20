@@ -18,6 +18,13 @@ public class PlayerController : MonoBehaviour
 
     public float standingGravity = 9.8f / 2;
     public float fallGravity = 9.8f * 2;
+    public float jumpGravity = 9.8f * 3;
+
+    public float jumpForce = 10;
+    public float standingJumpForce = 7.5f;
+    bool jumpPressed = false;
+    bool jumping = false;
+    Vector3 jumpMove;
 
     public LayerMask groundLayer;
 
@@ -63,8 +70,16 @@ public class PlayerController : MonoBehaviour
         Debug.DrawLine(transform.position + forward, transform.position + forward - transform.up * groundCheckHeight, Color.gray);
 
 
-        if( Physics.Raycast(new Ray(transform.position, -Vector3.up), out var hit, groundCheckHeight, groundLayer) // Directly down
-            || Physics.Raycast(new Ray(transform.position + forward * bodyRadius, -Vector3.up), out var hitEdge, groundCheckHeight, groundLayer)) // Stuck on edge check
+        bool grounded = Physics.Raycast(new Ray(transform.position, -Vector3.up), out var hit, groundCheckHeight, groundLayer) // Directly down
+                     || Physics.Raycast(new Ray(transform.position + forward * bodyRadius, -Vector3.up), out var hitEdge, groundCheckHeight, groundLayer); // Stuck on edge check
+
+        if (grounded && jumping && rbody.velocity.y <= 0)
+        {
+            jumping = false; // Grounded and not ascending, not jumping
+            wasMoving = false; // Give boost on land
+        }
+
+        if (grounded && !jumping)
         {
             // Grounded
             rbody.AddForce(Vector3.down * standingGravity, ForceMode.Acceleration); // Stay on ground
@@ -72,7 +87,7 @@ public class PlayerController : MonoBehaviour
             // Ramp check
             Physics.Raycast(new Ray(transform.position + forward * bodyRadius, -Vector3.up), out var hitRamp, groundCheckHeight, groundLayer);
 
-            var move = horiz * Vector3.right + vert * Vector3.forward;
+            var move = horiz * Vector3.right + vert * Vector3.forward; // aka unnormalized forward
             if (!allowMovement)
                 move = Vector3.zero;
             //move = move.normalized; // feels better without
@@ -118,8 +133,25 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                //  Just started moving burst
                 rbody.AddForce(move * burstSpeed, ForceMode.Impulse);
             }
+
+            // Jump
+            if (allowMovement && Input.GetAxisRaw("Jump") != 0 && !jumpPressed && !jumping)
+            {
+                if(move == Vector3.zero)
+                    rbody.AddForce(Vector3.up * standingJumpForce, ForceMode.Impulse);
+                else
+                    rbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                jumping = true;
+                jumpMove = move;
+            }
+        }
+        else if(jumping)
+        {
+            rbody.AddForce(jumpMove * moveSpeed, ForceMode.Impulse);
+            rbody.AddForce(Vector3.down * jumpGravity, ForceMode.Acceleration); // Fall faster
         }
         else
         {
@@ -140,6 +172,11 @@ public class PlayerController : MonoBehaviour
         {
             wasMoving = true;
         }
+
+        if (Input.GetAxisRaw("Jump") != 0)
+            jumpPressed = true;
+        else
+            jumpPressed = false;
 
         float vel = rbody.velocity.magnitude;
         if (vel >= maxSpeed)

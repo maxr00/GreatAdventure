@@ -45,7 +45,7 @@ public class Buildingizer : MonoBehaviour
         Vector3 maxBound = transform.lossyScale * 0.5f;
 
         // Foundation and Inside
-        GameObject.Instantiate(foundation, new Vector3(transform.position.x, foundationY, transform.position.z), Quaternion.identity, parent.transform).transform.localScale = new Vector3(scale.x, 0.1f, scale.z);
+        GameObject.Instantiate(foundation, new Vector3(transform.position.x, foundationY, transform.position.z), Quaternion.identity, parent.transform).transform.localScale = new Vector3(scale.x, 0.1f, scale.z) * 0.99f;
         GameObject.Instantiate(inside, transform.position, Quaternion.identity, parent.transform).transform.localScale = scale * 0.99f;
 
         // Corner Bricks
@@ -59,6 +59,7 @@ public class Buildingizer : MonoBehaviour
         foreach(GameObject brick in bricks)
         {
             brick.GetComponent<ModularBuildingPiece>().repeats = new Vector3Int(0, (int)(repeatsPerScale * scale.y)-1, 0);
+            UpdateModular(brick);
         }
 
         // Windows
@@ -113,7 +114,30 @@ public class Buildingizer : MonoBehaviour
     {
         if(!Physics.Raycast(transform.position + position, DirToVector(dir), windowClearance))
         {
-            GameObject.Instantiate(window, transform.position + position, DirToRot(dir), parent.transform);
+            UpdateModularChildren(GameObject.Instantiate(window, transform.position + position, DirToRot(dir), parent.transform));
+        }
+    }
+
+    GameObject UpdateModular(GameObject g)
+    {
+        var m = g.GetComponent<ModularBuildingPiece>();
+        if (m)
+        {
+            m.locked = false;
+            m.Update();
+            m.locked = true;
+        }
+        return g;
+    }
+
+    void UpdateModularChildren(GameObject g)
+    {
+        var mods = g.GetComponentsInChildren<ModularBuildingPiece>();
+        foreach(var m in mods)
+        {
+            m.locked = false;
+            m.Update();
+            m.locked = true;
         }
     }
 

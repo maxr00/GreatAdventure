@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class NodePropertiesView : GUILayout
@@ -50,6 +49,10 @@ public class NodePropertiesView : GUILayout
                     else if (data.m_isBranching && !data.isConditionalBranching)
                     {
                         DisplayOptionNodeProperties(data, node_id, asset);
+                    }
+                    else if (data.m_isEventNode)
+                    {
+                        DisplayEventNode(data);
                     }
                     // draw normal node
                     else
@@ -99,7 +102,6 @@ public class NodePropertiesView : GUILayout
         {
             ScriptableObject target = data;
             SerializedObject so = new SerializedObject(target);
-            Label("");
             Label("Item information", EditorStyles.boldLabel);
             Label("Items to give at this dialogue node:");
             {
@@ -122,16 +124,11 @@ public class NodePropertiesView : GUILayout
                 EditorGUILayout.PropertyField(stringsProperty, true); // True means show children
                 so.ApplyModifiedProperties();
             }
-
-            Label("Events to trigger at this node");
-            SerializedProperty eventsProperty = so.FindProperty("m_dialogueEvent");
-            EditorGUILayout.PropertyField(eventsProperty, true); // True means show children
-            so.ApplyModifiedProperties();
         }
         else if (data.isConditionalBranching)
         {
-            Label("");
             // items
+            Label("Item information", EditorStyles.boldLabel);
             Label("Items to check at this dialogue node:");
             {
                 ScriptableObject target = data;
@@ -142,6 +139,7 @@ public class NodePropertiesView : GUILayout
             }
             Label("");
             //quests
+            Label("Quest information", EditorStyles.boldLabel);
             Label("Quests required at this dialogue node:");
             {
                 ScriptableObject target = data;
@@ -167,13 +165,16 @@ public class NodePropertiesView : GUILayout
         // Error messages
         DisplayErrorMessages(data.node_id);
 
-        if (data.branchingIndex == 0)
-            Label("False condition node", EditorStyles.boldLabel);
-        else if (data.branchingIndex == 1)
-            Label("True condition node", EditorStyles.boldLabel);
-        else { Label("out index : " + data.branchingIndex.ToString()); }
+        //if (data.branchingIndex == 0)
+        //    Label("False condition node", EditorStyles.boldLabel);
+        //else if (data.branchingIndex == 1)
+        //    Label("True condition node", EditorStyles.boldLabel);
+        //else { Label("out index : " + data.branchingIndex.ToString()); }
 
-        Label("Character Speaking");
+        Label("Dialogue Text Info", EditorStyles.boldLabel);
+
+        BeginHorizontal();
+        Label("Character Speaking: ");
         List<string> current_characters = asset.m_dialogueAsset.GetInvolvedCharacterStrings();
         if (current_characters.Count == 0)
         {
@@ -186,18 +187,41 @@ public class NodePropertiesView : GUILayout
             data.characterSpeakingIndex = EditorGUILayout.Popup(data.characterSpeakingIndex, current_characters.ToArray());
             data.characterName = current_characters[data.characterSpeakingIndex];
         }
+        EndHorizontal();
+        BeginHorizontal();
         if (data.previewDialogueText != "")
         {
-            Label("Option Preview Text");
-            Label(data.previewDialogueText);
+            var rightAlign = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleRight };
+            Label("Option Preview Text: ");
+            Label(data.previewDialogueText, rightAlign);
             Label("");
         }
+        EndHorizontal();
 
         Label("Dialogue Text");
         data.dialogueText = TextArea(data.dialogueText, Height(m_nodePropertiesRect.height * 0.25f));
-
-        Label("Set character emotion to:");
-        data.emotion = (CharacterComponent.Emotion)EditorGUILayout.EnumPopup(data.emotion);
+        
+        Label("");
+        Label("Character Emotions: ", EditorStyles.boldLabel);
+        if (current_characters.Count != data.characterEmotions.Count)
+        {
+            List<CharacterComponent.Emotion> temp = new List<CharacterComponent.Emotion>();
+            for (int i = 0; i < current_characters.Count; i++)
+            {
+                if (i < data.characterEmotions.Count)
+                    temp.Add(data.characterEmotions[i]);
+                else
+                    temp.Add(CharacterComponent.Emotion.Unchanged);
+            }
+            data.characterEmotions = temp;
+        }
+        for (int i = 0; i < current_characters.Count; ++i)
+        {
+            BeginHorizontal();
+            Label(current_characters[i] + ": ", Width(m_nodePropertiesRect.width / 2.0f));
+            data.characterEmotions[i] = (CharacterComponent.Emotion)EditorGUILayout.EnumPopup(data.characterEmotions[i]);
+            EndHorizontal();
+        }
 
         // giving items/quests/completeing quests
         ScriptableObject target = data;
@@ -207,6 +231,12 @@ public class NodePropertiesView : GUILayout
         Label("Items to give at this dialogue node:");
         {
             SerializedProperty stringsProperty = so.FindProperty("itemsToGive");
+            EditorGUILayout.PropertyField(stringsProperty, true); // True means show children
+            so.ApplyModifiedProperties();
+        }
+        Label("Items to take at this dialogue node:");
+        {
+            SerializedProperty stringsProperty = so.FindProperty("itemsToRemove");
             EditorGUILayout.PropertyField(stringsProperty, true); // True means show children
             so.ApplyModifiedProperties();
         }
@@ -226,10 +256,67 @@ public class NodePropertiesView : GUILayout
             so.ApplyModifiedProperties();
         }
 
-        Label("Events to trigger at this node");
-        SerializedProperty eventsProperty = so.FindProperty("m_dialogueEvent");
-        EditorGUILayout.PropertyField(eventsProperty, true); // True means show children
-        so.ApplyModifiedProperties();
+        Label("");
+        Label("Events to trigger at this node", EditorStyles.boldLabel);
+
+        BeginHorizontal();
+        if (Button("Add Dialogue Event"))
+        {
+            data.eventObjects.Add(null);
+            data.eventFunctions.Add(null);
+            data.eventObjectNames.Add(null);
+        }
+        if (Button("Remove Dialogue Event"))
+        {
+            int index = (data.eventObjects.Count - 1 <= 0) ? 0 : data.eventObjects.Count - 1;
+            if (data.eventObjects.Count > 0)
+            {
+                data.eventObjects.RemoveAt(index);
+                data.eventFunctions.RemoveAt(index);
+                data.eventObjectNames.RemoveAt(index);
+            }
+        }
+        EndHorizontal();
+        for (int i = 0; i < data.eventObjects.Count; ++i)
+        {
+            BeginHorizontal();
+            data.eventObjects[i] = EditorGUILayout.ObjectField(data.eventObjects[i], typeof(GameObject), true) as GameObject;
+            data.eventFunctions[i] = TextArea(data.eventFunctions[i], Width(m_nodePropertiesRect.width * 0.5f));
+            data.eventObjectNames[i] = data.eventObjects[i].name;
+            EndHorizontal();
+        }
+    }
+
+    private void DisplayEventNode(DialogueData data)
+    {
+        Label("Events to trigger at this node", EditorStyles.boldLabel);
+
+        BeginHorizontal();
+        if (Button("Add Dialogue Event"))
+        {
+            data.eventObjects.Add(null);
+            data.eventFunctions.Add(null);
+            data.eventObjectNames.Add(null);
+        }
+        if (Button("Remove Dialogue Event"))
+        {
+            int index = (data.eventObjects.Count - 1 <= 0) ? 0 : data.eventObjects.Count - 1;
+            if (data.eventObjects.Count > 0)
+            {
+                data.eventObjects.RemoveAt(index);
+                data.eventFunctions.RemoveAt(index);
+                data.eventObjectNames.RemoveAt(index);
+            }
+        }
+        EndHorizontal();
+        for (int i = 0; i < data.eventObjects.Count; ++i)
+        {
+            BeginHorizontal();
+            data.eventObjects[i] = EditorGUILayout.ObjectField(data.eventObjects[i], typeof(GameObject), true) as GameObject;
+            data.eventFunctions[i] = TextArea(data.eventFunctions[i], Width(m_nodePropertiesRect.width * 0.5f));
+            data.eventObjectNames[i] = data.eventObjects[i].name;
+            EndHorizontal();
+        }
     }
 
     private void DisplayOptionNodeProperties(DialogueData data, int node_id, DialogueAssetBuilder asset)
@@ -237,11 +324,11 @@ public class NodePropertiesView : GUILayout
         // Error messages
         DisplayErrorMessages(data.node_id);
 
-        if (data.branchingIndex == 0)
-            Label("False condition node", EditorStyles.boldLabel);
-        else if (data.branchingIndex == 1)
-            Label("True condition node", EditorStyles.boldLabel);
-        else { Label("out index : " + data.branchingIndex.ToString()); }
+        //if (data.branchingIndex == 0)
+        //    Label("False condition node", EditorStyles.boldLabel);
+        //else if (data.branchingIndex == 1)
+        //    Label("True condition node", EditorStyles.boldLabel);
+        //else { Label("out index : " + data.branchingIndex.ToString()); }
 
         // get next dialogue nodes
         List<int> nextData = asset.GetNextDialogueData(data, m_nodeGraphModel);
@@ -278,14 +365,14 @@ public class NodePropertiesView : GUILayout
         // Error messages
         DisplayErrorMessages(data.node_id);
 
-        if (data.branchingIndex == 0)
-            Label("False condition node", EditorStyles.boldLabel);
-        else if (data.branchingIndex == 1)
-            Label("True condition node", EditorStyles.boldLabel);
-        else { Label("out index : " + data.branchingIndex.ToString()); }
+        //if (data.branchingIndex == 0)
+        //    Label("False condition node", EditorStyles.boldLabel);
+        //else if (data.branchingIndex == 1)
+        //    Label("True condition node", EditorStyles.boldLabel);
+        //else { Label("out index : " + data.branchingIndex.ToString()); }
 
-        Label("");
         // items
+        Label("Item information", EditorStyles.boldLabel);
         Label("Items to check at this dialogue node:");
         {
             ScriptableObject target = data;
@@ -296,6 +383,7 @@ public class NodePropertiesView : GUILayout
         }
         Label("");
         //quests
+        Label("Quest information", EditorStyles.boldLabel);
         Label("Quests required at this dialogue node:");
         {
             ScriptableObject target = data;
@@ -327,6 +415,7 @@ public class NodePropertiesView : GUILayout
 
         Label("");
         Label("Characeters Involved");
+        BeginHorizontal();
         if (Button("Add character involved"))
         {
             asset.m_CharactersInvoled.Add(null);
@@ -339,6 +428,7 @@ public class NodePropertiesView : GUILayout
                 asset.m_CharactersInvoled.RemoveAt(index);
             }
         }
+        EndHorizontal();
         for (int i = 0; i < asset.m_CharactersInvoled.Count; ++i)
         {
             asset.m_CharactersInvoled[i] = EditorGUILayout.ObjectField(asset.m_CharactersInvoled[i], typeof(GameObject), true) as GameObject;

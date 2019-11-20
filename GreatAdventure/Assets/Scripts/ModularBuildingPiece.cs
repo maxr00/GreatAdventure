@@ -104,7 +104,6 @@ public class ModularBuildingPiece : MonoBehaviour
         if (!filter)
         {
             Start();
-            return;
         }
 
         if (isParent || isChild)
@@ -165,7 +164,6 @@ public class ModularBuildingPiece : MonoBehaviour
 
             currRepeats = meshRepeats;
         }
-
     }
 
     void Repeat3Slice()

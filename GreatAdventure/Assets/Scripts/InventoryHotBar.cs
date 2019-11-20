@@ -10,9 +10,12 @@ public class InventoryHotBar : MonoBehaviour
     bool canChangeSelection = true;
 
     public Rect itemStartPos;
-    public float widthBetweenItems;
+    //public float widthBetweenItems;
+    public float itemWidthPercent = 0.1f;
     public GameObject ui_item_prefab;
     public Sprite default_texture;
+
+    public GameObject inventoryBackground;
 
     private class uiItemData
     {
@@ -55,12 +58,18 @@ public class InventoryHotBar : MonoBehaviour
 
             DisplayItems();
 
+            inventoryBackground.SetActive(true);
+
             bool itemSelected = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Mouse0);
             if (itemSelected)
             {
                 Item item = Inventory.GetItemFromName(current_ui_items[currentSelectedItemIndex].itemName);
                 item.ItemSelectedInInventory();
             }
+        }
+        else
+        {
+            inventoryBackground.SetActive(false);
         }
     }
 
@@ -95,7 +104,7 @@ public class InventoryHotBar : MonoBehaviour
             Item item = item_pair.Value;
             uiItemData itemData = new uiItemData();
             itemData.itemName = item.itemName;
-            itemData.ui_item_object = Instantiate(ui_item_prefab, GetComponent<Transform>());
+            itemData.ui_item_object = Instantiate(ui_item_prefab, inventoryBackground.transform);
             current_ui_items.Add(itemData);
         }
     }
@@ -114,9 +123,11 @@ public class InventoryHotBar : MonoBehaviour
             //}
             uiObj.GetComponent<Image>().sprite = item.itemIcon;
 
-            uiObj.GetComponent<RectTransform>().position = new Vector3(itemStartPos.x + currentOffset, itemStartPos.y, 0);
-            uiObj.GetComponent<RectTransform>().sizeDelta = new Vector2(itemStartPos.width, itemStartPos.height);
-            currentOffset += widthBetweenItems + itemStartPos.width;
+            //uiObj.GetComponent<RectTransform>().position = new Vector3(itemStartPos.x + currentOffset, itemStartPos.y, 0);
+            //uiObj.GetComponent<RectTransform>().sizeDelta = new Vector2(itemStartPos.width, itemStartPos.height);
+            //currentOffset += widthBetweenItems + itemStartPos.width;
+            uiObj.GetComponent<RectTransform>().anchorMin = new Vector2(itemWidthPercent * i, 0);
+            uiObj.GetComponent<RectTransform>().anchorMax = new Vector2(itemWidthPercent * (i + 1), 1);
         }
     }
 }

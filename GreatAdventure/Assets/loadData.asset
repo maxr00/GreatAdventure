@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: loadData
   m_EditorClassIdentifier: 
   allItems: []
-  allQuests: []
+  allQuests:
+  - {fileID: 11400000, guid: 877b6fd87b490dc46a5666258b572f77, type: 2}

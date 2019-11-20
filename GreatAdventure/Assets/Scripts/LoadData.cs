@@ -22,7 +22,7 @@ public class LoadData : ScriptableObject
         quests = new Dictionary<string, Quest>();
         foreach(Quest quest in allQuests)
         {
-            quests.Add(quest.questName, quest);
+            quests.Add(quest.name, quest);
         }
     }
 
@@ -47,7 +47,7 @@ public class LoadData : ScriptableObject
         {
             Quest questToAdd;
             quests.TryGetValue(questsAcquired[i], out questToAdd);
-            ActiveQuests.AddQuest(questToAdd.questName, questToAdd);
+            ActiveQuests.AddQuest(questToAdd.name, questToAdd);
         }
     }
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class DialogueAsset : ScriptableObject
 {
@@ -40,13 +41,30 @@ public class DialogueAsset : ScriptableObject
         for (int dialogue_index = 0; dialogue_index < m_runtimeBuiltData.Count; ++dialogue_index)
         {
             DialogueData dialogue = m_runtimeBuiltData[dialogue_index];
+            LoadCharacterEmotions(dialogue);
+            // loading objects for events
+            dialogue.eventObjects = new List<GameObject>();
+            for (int i = 0; i < dialogue.eventObjectNames.Count; ++i)
+            {
+                dialogue.eventObjects.Add(FindGameObject(dialogue.eventObjectNames[i]));
+            }
+
             m_dialogueData.Add(dialogue.node_id, dialogue);
         }
 
         for (int gameob_index = 0; gameob_index < m_charactersInvolvedStrings.Count; ++gameob_index)
         {
             string go_name = m_charactersInvolvedStrings[gameob_index];
-            m_characterData.Add(go_name, GameObject.Find(go_name).GetComponent<CharacterComponent>());
+            m_characterData.Add(go_name, FindGameObject(go_name).GetComponent<CharacterComponent>());
+        }
+    }
+
+    private void LoadCharacterEmotions(DialogueData data)
+    {
+        data.emotionsDictionary = new Dictionary<string, CharacterComponent.Emotion>();
+        for (int i = 0; i < data.characterEmotions.Count; ++i)
+        {
+            data.emotionsDictionary.Add(m_charactersInvolvedStrings[i], data.characterEmotions[i]);
         }
     }
 
@@ -69,12 +87,28 @@ public class DialogueAsset : ScriptableObject
             for (int gameob_index = 0; gameob_index < m_charactersInvolvedStrings.Count; ++gameob_index)
             {
                 string go_name = m_charactersInvolvedStrings[gameob_index];
-                m_CharactersInvoled.Add(GameObject.Find(go_name));
+                m_CharactersInvoled.Add(FindGameObject(go_name));
             }
         }
         else
         {
             m_CharactersInvoled.Add(null);
         }
+    }
+
+    public GameObject FindGameObject(string obj_name)
+    {
+        foreach (GameObject go in Resources.FindObjectsOfTypeAll(typeof(GameObject)) as GameObject[])
+        {
+            if (go.hideFlags == HideFlags.NotEditable || go.hideFlags == HideFlags.HideAndDontSave)
+                continue;
+
+            if (EditorUtility.IsPersistent(go.transform.root.gameObject))
+                continue;
+
+            if (obj_name == go.name)
+                return go;
+        }
+        return null;
     }
 }

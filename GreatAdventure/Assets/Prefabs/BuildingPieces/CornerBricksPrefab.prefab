@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7844f08cfa2fd7d42adaa3ac089ae116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locked: 0
+  locked: 1
   repeats: {x: 0, y: 0, z: 0}
   filter: {fileID: 7123498952786545659}
   mode: 0

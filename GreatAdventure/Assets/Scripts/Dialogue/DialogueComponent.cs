@@ -79,9 +79,8 @@ public class DialogueComponent : MonoBehaviour
 
         if (nextDialogue)
         {
-            if (!dialogue.m_isStartNode && !dialogue.m_isBranching)
+            if (!dialogue.m_isStartNode && !dialogue.m_isBranching && !dialogue.m_isEventNode)
             {
-
                 m_textDisplay.DisplayDialogueHeader(dialogue.characterName, characterComp.characterIcon);
 
                 // do all the actions for the current dialogue
@@ -92,6 +91,7 @@ public class DialogueComponent : MonoBehaviour
 
                 //character comp related actions
                 characterComp.OnCharacterTalk(dialogue.GetDialogueTextWithoutTags());
+                SetAllCharacterEmotions(dialogue);
                 nextDialogue = false;
             }
             else
@@ -112,21 +112,28 @@ public class DialogueComponent : MonoBehaviour
                     DisplayDialogueOptions(dialogue.m_nextDialogueData);
                     nextDialogue = false;
                 }
+                else if (dialogue.m_nextDialogueData.Count == 0)
+                {
+                    isActive = false;
+                    currentActiveDialogue = null;
+                    m_textDisplay.DisplayActiveBubble(false);
+                    OnDialogueComplete();
+                }
             }
 
-            AddItemsToInventory(dialogue);
+            UpdateInventory(dialogue);
             UpdateQuests(dialogue);
 
             // triggering dialogue game events
-            if (dialogue.m_dialogueEvent != null)
+            for (int i = 0; i < dialogue.eventObjects.Count; ++i)
             {
-                dialogue.m_dialogueEvent.Invoke();
+                dialogue.eventObjects[i].SendMessage(dialogue.eventFunctions[i]);
             }
 
-            
+
         }
 
-        bool isNextDialogueButtonPressed = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Mouse0);
+        bool isNextDialogueButtonPressed = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.E);
         if (isNextDialogueButtonPressed && !m_textDisplay.iSDone())
         {
             m_textDisplay.StopTypeWriterEffect();
@@ -180,6 +187,7 @@ public class DialogueComponent : MonoBehaviour
                 isActive = false;
                 currentActiveDialogue = null;
                 m_textDisplay.DisplayActiveBubble(false);
+                OnDialogueComplete();
             }
         }
         // selecting player option
@@ -205,6 +213,21 @@ public class DialogueComponent : MonoBehaviour
         }
     }
 
+    private void RemoveItemsFromInventory(DialogueData dialogue)
+    {
+        foreach (Item item in dialogue.itemsToRemove)
+        {
+            if (Inventory.HasItem(item.itemName))
+                Inventory.RemoveItem(item.itemName);
+        }
+    }
+
+    private void UpdateInventory(DialogueData dialogue)
+    {
+        AddItemsToInventory(dialogue);
+        RemoveItemsFromInventory(dialogue);
+    }
+
     private bool CheckItemsInInventory(DialogueData dialogue)
     {
         bool hasItem = true;
@@ -219,14 +242,14 @@ public class DialogueComponent : MonoBehaviour
     {
         foreach (Quest quest in dialogue.questsToAdd)
         {
-            if (!ActiveQuests.HasQuest(quest.questName))
-                ActiveQuests.AddQuest(quest.questName, quest);
+            if (!ActiveQuests.HasQuest(quest.name))
+                ActiveQuests.AddQuest(quest.name, quest);
         }
 
         foreach (Quest quest in dialogue.questsToComplete)
         {
-            if (ActiveQuests.HasQuest(quest.questName))
-                ActiveQuests.MarkQuestAsComplete(quest.questName);
+            if (ActiveQuests.HasQuest(quest.name))
+                ActiveQuests.MarkQuestAsComplete(quest.name);
         }
     }
 
@@ -235,7 +258,7 @@ public class DialogueComponent : MonoBehaviour
         bool hasQuest = true;
         foreach(Quest quest in dialogue.questsRequired)
         {
-            hasQuest &= ActiveQuests.HasQuest(quest.questName);
+            hasQuest &= ActiveQuests.HasQuest(quest.name);
         }
         return hasQuest;
     }
@@ -245,7 +268,7 @@ public class DialogueComponent : MonoBehaviour
         bool areQuestsComplete = true;
         foreach (Quest quest in dialogue.questsCompleted)
         {
-            areQuestsComplete &= ActiveQuests.IsQuestComplete(quest.questName);
+            areQuestsComplete &= ActiveQuests.IsQuestComplete(quest.name);
         }
         return areQuestsComplete;
     }
@@ -286,7 +309,7 @@ public class DialogueComponent : MonoBehaviour
         if (nextDialogue)
         {
 
-            if (!dialogue.m_isStartNode)
+            if (!dialogue.m_isStartNode && !dialogue.m_isEventNode)
             {
                 Vector3 dialoguePosition = characterComp.GetCurrentOffset();
                 
@@ -296,6 +319,7 @@ public class DialogueComponent : MonoBehaviour
 
                 //character comp related actions
                 characterComp.OnCharacterTalk(dialogue.GetDialogueTextWithoutTags());
+                SetAllCharacterEmotions(dialogue);
                 nextDialogue = false;
             }
             else
@@ -316,15 +340,20 @@ public class DialogueComponent : MonoBehaviour
                     DisplayDialogueOptions(dialogue.m_nextDialogueData);
                     nextDialogue = false;
                 }
+                else if (dialogue.m_nextDialogueData.Count == 0)
+                {
+                    isActive = false;
+                    currentActiveDialogue = null;
+                    m_textDisplay.DisplayPassiveBubble(false, new Vector3(0, 0, 0));
+                    OnDialogueComplete();
+                }
             }
 
-            AddItemsToInventory(dialogue);
+            UpdateInventory(dialogue);
             UpdateQuests(dialogue);
-
-            // triggering dialogue game events
-            if (dialogue.m_dialogueEvent != null)
+            for (int i = 0; i < dialogue.eventObjects.Count; ++i)
             {
-                dialogue.m_dialogueEvent.Invoke();
+                dialogue.eventObjects[i].SendMessage(dialogue.eventFunctions[i]);
             }
         }
 
@@ -341,12 +370,6 @@ public class DialogueComponent : MonoBehaviour
         if (isNextDialogueButtonPressed && m_textDisplay.iSDone())
         {
             m_textDisplay.ClearDisplay();
-
-            // triggering dialogue game events
-            if (dialogue.m_dialogueEvent != null)
-            {
-                dialogue.m_dialogueEvent.Invoke();
-            }
 
             // next dialogue is not branching
             if (dialogue.m_nextDialogueData.Count == 1)
@@ -371,6 +394,7 @@ public class DialogueComponent : MonoBehaviour
                 isActive = false;
                 currentActiveDialogue = null;
                 m_textDisplay.DisplayPassiveBubble(false, new Vector3(0, 0, 0));
+                OnDialogueComplete();
             }
         }
     }
@@ -397,6 +421,7 @@ public class DialogueComponent : MonoBehaviour
             nextDialogue = true;
             m_currentDialogueIndex = m_dialogueAsset.m_startIndex;
             currentActiveDialogue = this;
+            OnDialogueStart();
         }
     }
 
@@ -404,6 +429,17 @@ public class DialogueComponent : MonoBehaviour
     {
         isActive = false;
         currentActiveDialogue = null;
+        OnDialogueComplete();
+    }
+
+    public void SetAllCharacterEmotions(DialogueData data)
+    {
+        foreach (var emotion_pair in data.emotionsDictionary)
+        {
+            CharacterComponent characterComp;
+            m_dialogueAsset.m_characterData.TryGetValue(emotion_pair.Key, out characterComp);
+            characterComp?.SetCharacterEmotion(emotion_pair.Value);
+        }
     }
 
     private void DisplayDialogueOptions(List<int> next_dialogue_list)
@@ -449,4 +485,28 @@ public class DialogueComponent : MonoBehaviour
         hasPlayerOptions = true;
         nextDialogue = false;
     }
+
+    public void OnDialogueComplete()
+    {
+        var player = GameObject.FindGameObjectWithTag("Player")?.GetComponent<PlayerController>();
+        if (player != null)
+        {
+            player.allowMovement = true;
+
+            Invoke("ReenableInteractables", 0.75f);
+        }
+    }
+    void ReenableInteractables() { Interactable.interactablesEnabled = true; }
+
+    public void OnDialogueStart()
+    {
+        var player = GameObject.FindGameObjectWithTag("Player")?.GetComponent<PlayerController>();
+        if (player != null)
+        {
+            player.allowMovement = false;
+
+            Interactable.interactablesEnabled = false;
+        }
+    }
 }
+

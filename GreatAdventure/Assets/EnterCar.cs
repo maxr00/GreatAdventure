@@ -11,11 +11,6 @@ public class EnterCar : MonoBehaviour
     bool entered = false;
     Transform oldParent = null;
 
-    public void Enable()
-    {
-        gameObject.SetActive(true);
-    }
-
     public void Enter()
     {
         GetComponent<CarControls>().enabled = true;
@@ -45,6 +40,7 @@ public class EnterCar : MonoBehaviour
 
     private void Update()
     {
+        /* Debug:
         if (entered)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -52,5 +48,6 @@ public class EnterCar : MonoBehaviour
                 Exit();
             }
         }
+        */
     }
 }

@@ -207,6 +207,11 @@ public class DialogueAssetBuilder : ScriptableObject
         for (int dialogue_index = 0; dialogue_index < m_dialogueAsset.m_runtimeBuiltData.Count; ++dialogue_index)
         {
             DialogueData dialogue = m_dialogueAsset.m_runtimeBuiltData[dialogue_index];
+            dialogue.eventObjects = new List<GameObject>();
+            for (int i = 0; i < dialogue.eventObjectNames.Count; ++i)
+            {
+                dialogue.eventObjects.Add(m_dialogueAsset.FindGameObject(dialogue.eventObjectNames[i]));
+            }
             m_nodeGraphModel.AddDialogueData(dialogue);
         }
         m_nodeGraphModel.startNodeID = m_dialogueAsset.m_startIndex;

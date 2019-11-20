@@ -24,6 +24,7 @@ public class ThiefMovement : MonoBehaviour
     public float speed = 40;
     public float reverseSpeed = 20;
     public float turnSpeed = 50;
+    public float turnSpeedBoost = 5;
     public float wheelTurnSpeed = 4;
     public float wheelCorrectionSpeed = 2;
     public float correctionSpeed = 2;
@@ -81,6 +82,18 @@ public class ThiefMovement : MonoBehaviour
                     break;
             }
         }
+
+        for (int i = 0; i < steppedWaypoints.Count; i++)
+        {
+            Vector3 prev = steppedWaypoints[(i - 1 + steppedWaypoints.Count) % steppedWaypoints.Count];
+            Vector3 curr = steppedWaypoints[i];
+            Vector3 next = steppedWaypoints[(i + 1) % steppedWaypoints.Count];
+
+            Vector3 a = Vector3.Lerp(prev, curr, 0.5f);
+
+            steppedWaypoints[i] = Vector3.Lerp(a, next, 0.5f);
+        }
+
     }
 
     void FixedUpdate()
@@ -185,7 +198,7 @@ public class ThiefMovement : MonoBehaviour
         // Acceleration
         if (v != 0)
         {
-            float s = v > 0 ? speed : reverseSpeed;
+            float s = v > 0 ? speed + (Mathf.Abs(h) * turnSpeedBoost) : reverseSpeed;
 
             rbody.AddForce((wheelsForward * frontWheelDriveAmt + transform.forward * backWheelDriveAmt).normalized * v * s, ForceMode.Acceleration);
 
